@@ -1,0 +1,7 @@
+Alacritty README
+
+
+
+
+
+
