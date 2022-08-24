@@ -1,0 +1,15 @@
+#+title: Dotfiles
+#+description: A collection of my various configuration and dotfiles
+
+
+* Dependancies
+** alacritty
+*** alacritty-themes
+** fish
+*** pokemon-colorscripts-git
+*** pfetch
+*** neofetch
+*** exa
+** bash
+*** neofetch
+*** exa
