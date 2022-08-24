@@ -1,0 +1,9 @@
+#+TITLE: Awesome ReadMe
+#+DESCRIPTION: The README File for my AwesomeWM configuration
+
+* Additonal Information
+** Widgets
+*** Awesome-wm-widgets
+**** You need to clone this repo
+**** Then place the lines relating to the widgets you want
+**
