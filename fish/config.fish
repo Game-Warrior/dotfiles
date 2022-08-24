@@ -3,5 +3,9 @@ if status is-interactive
 
 export  PATH="$HOME/.emacs.d/bin:$PATH"
 
-neofetch
+#pokemon-colorscripts -n treecko
+#pokemon-colorscripts -r
+#neofetch
+pfetch
+
 end
