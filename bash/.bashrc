@@ -38,6 +38,7 @@ alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles exce
 alias vim='nvim'
 alias weather='curl wttr.in'
 alias update='sudo pacman -Syu'
+alias nr='nitrogen --restore'
 
 [[ "$(whoami)" = "root" ]] && return
 
@@ -91,6 +92,13 @@ _open_files_for_editing() {
 
 #pfetch
 neofetch
-#colorscripts
+
+#Pokemon Scripts
+#pokemon-colorscripts -n treecko
+#pokemon-colorscripts -r
+
+# ~/.bashrc
+
+eval "$(starship init bash)"
 
 

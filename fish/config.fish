@@ -3,9 +3,16 @@ if status is-interactive
 
 export  PATH="$HOME/.emacs.d/bin:$PATH"
 
-#pokemon-colorscripts -n treecko
-#pokemon-colorscripts -r
+#Terminal Bling
 #neofetch
 pfetch
+
+#Pokemon Prompts
+#pokemon-colorscripts -n treecko
+#pokemon-colorscripts -r
+
+# ~/.config/fish/config.fish
+
+starship init fish | source
 
 end
