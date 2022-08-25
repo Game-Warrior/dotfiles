@@ -10,6 +10,8 @@
 *** pfetch
 *** neofetch
 *** exa
+*** starship prompt
+**** https://starship.rs
 ** bash
 *** neofetch
 *** exa
