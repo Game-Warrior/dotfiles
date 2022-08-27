@@ -1,7 +1,10 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
-#Doom Emacs Sync
+#Fish Greeting
+set fish_greeting
+
+#Doom Emacs
 export  PATH="$HOME/.emacs.d/bin:$PATH"
 
 #Terminal Bling
