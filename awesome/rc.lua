@@ -591,6 +591,7 @@ awful.spawn("compton")
 awful.spawn("nitrogen --restore")
 awful.spawn("nm-applet")
 awful.spawn("/usr/bin/emacs --daemon")
+--awful.spawn("rustdesk")
 
 --Window Gaps
 beautiful.useless_gap = 4
