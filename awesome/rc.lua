@@ -214,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets`    
 --	    require("battery-widget") {},
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+--            mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -590,6 +590,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn("compton")
 awful.spawn("nitrogen --restore")
 awful.spawn("nm-applet")
+awful.spawn("/usr/bin/emacs --daemon")
 
 --Window Gaps
 beautiful.useless_gap = 4
