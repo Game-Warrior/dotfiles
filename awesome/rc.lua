@@ -48,7 +48,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -212,7 +212,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets`    
-	    require("battery-widget") {},
+--	    require("battery-widget") {},
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
@@ -587,12 +587,13 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Autostart Applications
-awful.spawn.with_shell("compton")
-awful.spawn.with_shell("nitrogen --restore")
+awful.spawn("compton")
+awful.spawn("nitrogen --restore")
+awful.spawn("nm-applet")
 
 --Window Gaps
 beautiful.useless_gap = 4
 
 --Set up a Network Widget
-local net_widgets = require("net_widgets")
+--local net_widgets = require("net_widgets")
 
