@@ -314,14 +314,14 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
- -- Dmenu
+-- Dmenu
     awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
               {description = "dmenu", group = "launcher"}),
- -- Brave
+-- Brave
     awful.key({ modkey },            "z",     function () awful.util.spawn("brave") end,
               {description = "launch brave", group = "applications"}),
 
- -- Emacs
+-- Emacs
     awful.key({ modkey },            "e",     function () awful.util.spawn("emacs") end,
               {description = "launch emacs", group = "applications"}),
 
@@ -587,7 +587,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Autostart Applications
-awful.spawn("compton")
+awful.spawn("picom")
 awful.spawn("nitrogen --restore")
 awful.spawn("nm-applet")
 awful.spawn("/usr/bin/emacs --daemon")
