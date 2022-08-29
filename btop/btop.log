@@ -1,0 +1,116 @@
+
+2022/08/26 (20:57:17) | ===> btop++ v.1.2.8
+2022/08/26 (20:57:17) | INFO: Logger set to DEBUG
+2022/08/26 (20:57:17) | DEBUG: Using locale en_US.UTF-8
+2022/08/26 (20:57:17) | INFO: Running on /dev/pts/1
+
+2022/08/26 (21:02:16) | ===> btop++ v.1.2.8
+2022/08/26 (21:02:16) | INFO: Logger set to DEBUG
+2022/08/26 (21:02:16) | DEBUG: Using locale en_US.UTF-8
+2022/08/26 (21:02:16) | INFO: Running on /dev/pts/1
+2022/08/26 (22:10:00) | DEBUG: Writing new config file
+2022/08/26 (22:10:00) | INFO: Quitting! Runtime: 01:07:44
+
+2022/08/26 (22:10:01) | ===> btop++ v.1.2.8
+2022/08/26 (22:10:01) | INFO: Logger set to DEBUG
+2022/08/26 (22:10:01) | DEBUG: Using locale en_US.UTF-8
+2022/08/26 (22:10:01) | INFO: Running on /dev/pts/1
+
+2022/08/26 (22:31:10) | ===> btop++ v.1.2.8
+2022/08/26 (22:31:10) | INFO: Logger set to DEBUG
+2022/08/26 (22:31:10) | DEBUG: Using locale en_US.UTF-8
+2022/08/26 (22:31:10) | INFO: Running on /dev/pts/0
+
+2022/08/26 (22:59:40) | ===> btop++ v.1.2.8
+2022/08/26 (22:59:40) | INFO: Logger set to DEBUG
+2022/08/26 (22:59:40) | DEBUG: Using locale en_US.UTF-8
+2022/08/26 (22:59:40) | INFO: Running on /dev/pts/0
+2022/08/26 (23:00:01) | DEBUG: Writing new config file
+2022/08/26 (23:00:01) | INFO: Quitting! Runtime: 00:00:21
+
+2022/08/26 (23:00:03) | ===> btop++ v.1.2.8
+2022/08/26 (23:00:03) | INFO: Logger set to DEBUG
+2022/08/26 (23:00:03) | DEBUG: Using locale en_US.UTF-8
+2022/08/26 (23:00:03) | INFO: Running on /dev/pts/0
+
+2022/08/27 (08:56:24) | ===> btop++ v.1.2.8
+2022/08/27 (08:56:24) | INFO: Logger set to DEBUG
+2022/08/27 (08:56:24) | DEBUG: Using locale en_US.UTF-8
+2022/08/27 (08:56:24) | INFO: Running on /dev/pts/0
+
+2022/08/27 (19:36:22) | ===> btop++ v.1.2.8
+2022/08/27 (19:36:22) | INFO: Logger set to DEBUG
+2022/08/27 (19:36:22) | DEBUG: Using locale en_US.UTF-8
+2022/08/27 (19:36:22) | INFO: Running on /dev/pts/0
+
+2022/08/27 (19:38:25) | ===> btop++ v.1.2.8
+2022/08/27 (19:38:25) | INFO: Logger set to DEBUG
+2022/08/27 (19:38:25) | DEBUG: Using locale en_US.UTF-8
+2022/08/27 (19:38:25) | INFO: Running on /dev/pts/0
+2022/08/27 (21:59:26) | DEBUG: Loading theme file: /usr/share/btop/themes/tomorrow-night.theme
+2022/08/27 (21:59:26) | DEBUG: Loading theme file: /usr/share/btop/themes/onedark.theme
+2022/08/27 (21:59:26) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix-light.theme
+2022/08/27 (21:59:26) | DEBUG: Loading theme file: /usr/share/btop/themes/HotPurpleTrafficLight.theme
+2022/08/27 (21:59:27) | DEBUG: Loading theme file: /usr/share/btop/themes/solarized_dark.theme
+2022/08/27 (21:59:27) | DEBUG: Loading theme file: /usr/share/btop/themes/monokai.theme
+2022/08/27 (21:59:27) | DEBUG: Loading theme file: /usr/share/btop/themes/whiteout.theme
+2022/08/27 (21:59:28) | DEBUG: Loading theme file: /usr/share/btop/themes/tokyo-storm.theme
+2022/08/27 (21:59:28) | DEBUG: Loading theme file: /usr/share/btop/themes/greyscale.theme
+2022/08/27 (21:59:28) | DEBUG: Loading theme file: /usr/share/btop/themes/dracula.theme
+2022/08/27 (21:59:28) | DEBUG: Loading theme file: /usr/share/btop/themes/flat-remix.theme
+2022/08/27 (21:59:29) | DEBUG: Loading theme file: /usr/share/btop/themes/ayu.theme
+2022/08/27 (21:59:29) | DEBUG: Loading theme file: /usr/share/btop/themes/nord.theme
+2022/08/27 (21:59:29) | DEBUG: Loading theme file: /usr/share/btop/themes/kyli0x.theme
+2022/08/27 (21:59:30) | DEBUG: Loading theme file: /usr/share/btop/themes/tokyo-night.theme
+2022/08/27 (21:59:30) | DEBUG: Loading theme file: /usr/share/btop/themes/dusklight.theme
+2022/08/27 (21:59:30) | DEBUG: Loading theme file: /usr/share/btop/themes/adapta.theme
+2022/08/27 (21:59:31) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark.theme
+2022/08/27 (21:59:31) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2022/08/27 (21:59:31) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark.theme
+2022/08/27 (21:59:32) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2022/08/27 (21:59:33) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark.theme
+2022/08/27 (21:59:35) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2022/08/27 (21:59:35) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+
+2022/08/29 (08:37:40) | ===> btop++ v.1.2.8
+2022/08/29 (08:37:40) | INFO: Logger set to DEBUG
+2022/08/29 (08:37:40) | DEBUG: Using locale en_US.UTF-8
+2022/08/29 (08:37:40) | INFO: Running on /dev/pts/0
+
+2022/08/29 (17:30:31) | ===> btop++ v.1.2.9
+2022/08/29 (17:30:31) | INFO: Logger set to DEBUG
+2022/08/29 (17:30:31) | DEBUG: Using locale en_US.UTF-8
+2022/08/29 (17:30:31) | INFO: Running on /dev/pts/1
+
+2022/08/29 (17:41:16) | ===> btop++ v.1.2.9
+2022/08/29 (17:41:16) | INFO: Logger set to DEBUG
+2022/08/29 (17:41:16) | DEBUG: Using locale en_US.UTF-8
+2022/08/29 (17:41:16) | INFO: Running on /dev/pts/0
+2022/08/29 (17:46:51) | DEBUG: Loading theme file: /usr/share/btop/themes/tomorrow-night.theme
+2022/08/29 (17:46:51) | DEBUG: Loading theme file: /usr/share/btop/themes/onedark.theme
+2022/08/29 (17:46:51) | DEBUG: Loading theme file: /usr/share/btop/themes/tomorrow-night.theme
+2022/08/29 (17:46:52) | DEBUG: Loading theme file: /usr/share/btop/themes/matcha-dark-sea.theme
+2022/08/29 (17:46:52) | DEBUG: Loading theme file: /usr/share/btop/themes/night-owl.theme
+2022/08/29 (17:46:53) | DEBUG: Loading theme file: /usr/share/btop/themes/everforest-dark-hard.theme
+2022/08/29 (17:46:53) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+2022/08/29 (17:46:53) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2022/08/29 (17:46:53) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+2022/08/29 (17:46:54) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_material_dark.theme
+2022/08/29 (17:46:54) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+
+2022/08/29 (19:12:48) | ===> btop++ v.1.2.9
+2022/08/29 (19:12:48) | INFO: Logger set to DEBUG
+2022/08/29 (19:12:48) | DEBUG: Using locale en_US.UTF-8
+2022/08/29 (19:12:48) | INFO: Running on /dev/pts/1
+
+2022/08/29 (19:49:03) | ===> btop++ v.1.2.9
+2022/08/29 (19:49:03) | INFO: Logger set to DEBUG
+2022/08/29 (19:49:03) | DEBUG: Using locale en_US.UTF-8
+2022/08/29 (19:49:03) | INFO: Running on /dev/pts/3
+2022/08/29 (19:49:03) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
+
+2022/08/29 (19:49:11) | ===> btop++ v.1.2.9
+2022/08/29 (19:49:11) | INFO: Logger set to DEBUG
+2022/08/29 (19:49:11) | DEBUG: Using locale en_US.UTF-8
+2022/08/29 (19:49:11) | INFO: Running on /dev/pts/1
+2022/08/29 (19:49:11) | DEBUG: Loading theme file: /usr/share/btop/themes/gruvbox_dark_v2.theme
