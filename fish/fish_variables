@@ -2,6 +2,8 @@
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_cfA:nvim\x20\x7e/\x2econfig/awesome/rc\x2elua
+SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dm
+SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_sp:sudo\x20pacman
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
