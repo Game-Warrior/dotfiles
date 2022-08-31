@@ -12,7 +12,6 @@ local wibox = require("wibox")
 --local battery_widget =require("awesome-wm-widgets.battery-widget.battery")
 --local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widgets")
 
-
 -- Theme handling library
 local beautiful = require("beautiful")
 
