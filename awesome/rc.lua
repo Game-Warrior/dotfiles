@@ -6,14 +6,21 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+--local battery_widget =require("awesome-wm-widgets.battery-widget.battery")
+--local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widgets")
+
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -215,6 +222,8 @@ awful.screen.connect_for_each_screen(function(s)
 --	    require("battery-widget") {},
             layout = wibox.layout.fixed.horizontal,
 --            mykeyboardlayout,
+--            battery_widget(),
+--            cpu_widget(),
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -592,10 +601,7 @@ awful.spawn("nitrogen --restore")
 awful.spawn("nm-applet")
 awful.spawn("/usr/bin/emacs --daemon")
 --awful.spawn("rustdesk")
+awful.spawn.with_shell("btop")
 
 --Window Gaps
 beautiful.useless_gap = 4
-
---Set up a Network Widget
---local net_widgets = require("net_widgets")
-
