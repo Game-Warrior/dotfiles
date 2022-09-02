@@ -1,17 +1,28 @@
 #+title: Dotfiles
 #+description: A collection of my various configuration and dotfiles
-
+#+author: Gardner Berry
 
 * Dependancies
+** awesome
+- nemo
+- Doom Emacs
+- brave-bin
+- librewolf-bin
+- alacritty
+- fish
+- lxapperance
 ** alacritty
-*** alacritty-themes
+- alacritty-themes
 ** fish
-*** pokemon-colorscripts-git
-*** pfetch
-*** neofetch
-*** exa
-*** starship prompt
+- pokemon-colorscripts-git
+- pfetch
+- neofetch
+- exa
+- starship prompt
 **** https://starship.rs
 ** bash
-*** neofetch
-*** exa
+- neofetch
+- exa
+- starship
+- pfetch
+- pokemon-colorscripts-git
