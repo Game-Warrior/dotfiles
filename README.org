@@ -2,6 +2,9 @@
 #+description: A collection of my various configuration and dotfiles
 #+author: Gardner Berry
 
+* Future Plans
+At some point I would like to create a script to install all of my .files on new systems but I think that is a little ways off
+
 * Dependancies
 ** awesome
 - nemo
@@ -11,6 +14,7 @@
 - alacritty
 - fish
 - lxapperance
+- nitrogen
 ** alacritty
 - alacritty-themes
 ** fish
@@ -26,3 +30,34 @@
 - starship
 - pfetch
 - pokemon-colorscripts-git
+
+* How to install my configs
+** Recomended packages
+*** You can just copy and paste this and it should install everything
+#+BEGIN_EXAMPLE
+yay -S brave-bin librewolf-bin starship exa pfetch pokemon-colorscripts-git lxapperance emacs nemo alcritty alacritty-themes lxapperance nitrogen fish
+#+END_EXAMPLE
+** .bashrc
+*** Copy and Past this to use my .bashrc
+#+BEGIN_EXAMPLE
+cp -r ~/dotfiles/bash/.bashrc ~/
+#+END_EXAMPLE
+** fish
+*** Copy and past to install my fish configs
+#+BEGIN_EXAMPLE
+cp -r ~/dotfiles/fish ~/.config
+#+END_EXAMPLE
+** alcritty
+*** Copy and paste for my alacritty config
+#+BEGIN_EXAMPLE
+cp -r ~/dofiles/alacritty ~/.config
+#+END_EXAMPLE
+** awesome
+*** Copy and paste for my awesomewm config
+#+BEGIN_EXAMPLE
+cp -r ~/dotfiles/awesome ~/.config
+#+END_EXAMPLE
+*** How to make my config the default fall back config
+#+BEGIN_EXAMPLE
+sudo cp -r ~/dotfiles/awesome/rc.lua /etc/xdg/awesome
+#+END_EXAMPLE
