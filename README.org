@@ -8,7 +8,7 @@ At some point I would like to create a script to install all of my .files on new
 * Dependancies
 ** awesome
 - nemo
-- Doom Emacs
+- [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
 - brave-bin
 - librewolf-bin
 - alacritty
