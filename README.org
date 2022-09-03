@@ -23,8 +23,7 @@ At some point I would like to create a script to install all of my .files on new
 - pfetch
 - neofetch
 - exa
-- starship prompt
-**** https://starship.rs
+- [[https://starship.rs][Starship]]
 ** bash
 - neofetch
 - exa
