@@ -15,6 +15,7 @@ At some point I would like to create a script to install all of my .files on new
 - fish
 - lxapperance
 - nitrogen
+- neovim
 ** alacritty
 - alacritty-themes
 ** fish
@@ -35,7 +36,7 @@ At some point I would like to create a script to install all of my .files on new
 ** Recomended packages
 *** You can just copy and paste this and it should install everything
 #+BEGIN_EXAMPLE
-yay -S brave-bin librewolf-bin starship exa pfetch pokemon-colorscripts-git lxapperance emacs nemo alcritty alacritty-themes lxapperance nitrogen fish
+yay -S brave-bin librewolf-bin starship exa pfetch pokemon-colorscripts-git lxapperance emacs nemo alcritty alacritty-themes lxapperance nitrogen fish neovim
 #+END_EXAMPLE
 ** .bashrc
 *** Copy and Past this to use my .bashrc
