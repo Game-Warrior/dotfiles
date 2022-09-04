@@ -2,8 +2,8 @@
 #+description: A collection of my various configuration and dotfiles
 #+author: Gardner Berry
 
-* Future Plans
-At some point I would like to create a script to install all of my .files on new systems but I think that is a little ways off
+* Outline
+These configuration files are made for arch linux and arch based distros so I can't garante its functionality on all my main distro is EndeavourOS. I any one wants to test my configs you are welcome to and please file bug reports, but I dont really have the time right now to do tests on multible distros.
 
 * Dependancies
 ** awesome
@@ -66,3 +66,7 @@ sudo cp -r ~/dotfiles/awesome/rc.lua /etc/xdg/awesome
 #+BEGIN_EXAMPLE
 cp -r ~/dotfiles/.doom.d ~/
 #+END_EXAMPLE
+
+
+* Future Plans
+I think that I will eventually make a shell script to install all of my configs but that may be a bit far off.
