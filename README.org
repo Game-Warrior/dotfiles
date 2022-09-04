@@ -61,3 +61,8 @@ cp -r ~/dotfiles/awesome ~/.config
 #+BEGIN_EXAMPLE
 sudo cp -r ~/dotfiles/awesome/rc.lua /etc/xdg/awesome
 #+END_EXAMPLE
+** Doom Emacs
+*** How to copy my Doom Emacs config
+#+BEGIN_EXAMPLE
+cp -r ~/dotfiles/.doom.d ~/
+#+END_EXAMPLE
