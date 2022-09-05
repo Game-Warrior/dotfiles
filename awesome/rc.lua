@@ -591,7 +591,7 @@ awful.spawn("compton")
 awful.spawn("nitrogen --restore")
 awful.spawn("nm-applet")
 awful.spawn("/usr/bin/emacs --daemon")
-awful.spawn("polybar")
+--awful.spawn("polybar")
 --awful.spawn("rustdesk")
 
 --Window Gaps
