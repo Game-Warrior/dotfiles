@@ -23,11 +23,11 @@ These configuration files are made for arch linux and arch based distros so I ca
 - pfetch
 - neofetch
 - exa
-- [[https://starship.rs][Starship]]
+- [[https://starship.rs][Starship Prompt]]
 ** bash
 - neofetch
 - exa
-- starship
+- [[https://starship.rs][Starship Prompt]]
 - pfetch
 - pokemon-colorscripts-git
 
