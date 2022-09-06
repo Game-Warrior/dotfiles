@@ -35,7 +35,7 @@ These configuration files are made for arch linux and arch based distros so I ca
 ** Recomended packages
 *** You can just copy and paste this and it should install everything
 #+BEGIN_EXAMPLE
-yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alcritty alacritty-themes lxapperance nitrogen fish neovim ripgrep fd
+yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty alacritty-themes lxappearance nitrogen fish neovim ripgrep fd
 #+END_EXAMPLE
 ** .bashrc
 *** Copy and Past this to use my .bashrc
