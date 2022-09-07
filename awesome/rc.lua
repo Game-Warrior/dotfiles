@@ -6,14 +6,20 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+--local battery_widget =require("awesome-wm-widgets.battery-widget.battery")
+--local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widgets")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -49,6 +55,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
+--terminal = "kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -106,7 +113,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
---{{{ Wibar
+-- {{{ Wibar
 -- Create a textclock widget
 local mytextclock = wibox.widget.textclock('%a %b %d, %I:%M')
 
@@ -170,9 +177,9 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+--    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 --      awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
---      awful.tag({ "SYS", "WWW", "SCH", "DEV", "GAMES", "CHAT" }, s, awful.layout.layouts[1])
+      awful.tag({ "SYS", "WWW","DEV", "GAMES", "CHAT", "SCH", "MEET" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -211,10 +218,12 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets`
-            --require("battery-widget") {},
+        { -- Right widgets`    
+--	    require("battery-widget") {},
             layout = wibox.layout.fixed.horizontal,
-            --mykeyboardlayout,
+--            mykeyboardlayout,
+--            battery_widget(),
+--            cpu_widget(),
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -314,14 +323,16 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
- -- Dmenu
+--Applications
+
+-- Dmenu
     awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
               {description = "dmenu", group = "launcher"}),
- -- Brave
-    awful.key({ modkey },            "z",     function () awful.util.spawn("brave") end,
-              {description = "launch brave", group = "applications"}),
+-- Brave
+--    awful.key({ modkey },            "z",     function () awful.util.spawn("brave") end,
+--              {description = "launch brave", group = "applications"}),
 
- -- Emacs
+-- Emacs
     awful.key({ modkey },            "e",     function () awful.util.spawn("emacs") end,
               {description = "launch emacs", group = "applications"}),
 
@@ -334,9 +345,14 @@ globalkeys = gears.table.join(
               {description = "launch discord", group = "applications"}),
 	
 -- Librewolf
-    awful.key({ modkey },            "b",     function () awful.util.spawn("librewolf") end,
+    awful.key({ modkey },            "z",     function () awful.util.spawn("librewolf") end,
               {description = "launch librewolf", group = "applications"}),    
-    
+
+-- Chromium
+    awful.key({ modkey },            "b",     function () awful.util.spawn("chromium") end,
+              {description = "launch chromium", group = "applications"}),
+
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -587,16 +603,12 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Autostart Applications
-awful.spawn("compton")
+awful.spawn("picom")
 awful.spawn("nitrogen --restore")
 awful.spawn("nm-applet")
 awful.spawn("/usr/bin/emacs --daemon")
---awful.spawn("polybar")
 --awful.spawn("rustdesk")
+--awful.spawn("btop")
 
 --Window Gaps
-beautiful.useless_gap = 4
-
---Set up a Network Widget
---local net_widgets = require("net_widgets")
-
+beautiful.useless_gap = 8
