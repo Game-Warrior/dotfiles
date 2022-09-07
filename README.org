@@ -39,9 +39,9 @@ yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch poke
 #+END_EXAMPLE
 ** .bashrc
 *** Copy and Past this to use my .bashrc
-#+BEGIN_EXPORT
+#+BEGIN_EXAMPLE
 cp -r ~/dotfiles/bash/.bashrc ~/
-#+END_EXPORT
+#+END_EXAMPLE
 ** fish
 *** Copy and past to install my fish configs
 #+BEGIN_EXAMPLE
