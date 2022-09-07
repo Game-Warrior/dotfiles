@@ -35,7 +35,7 @@ These configuration files are made for arch linux and arch based distros so I ca
 ** Recomended packages
 *** You can just copy and paste this and it should install everything
 #+BEGIN_EXAMPLE
-yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty alacritty-themes lxappearance nitrogen fish neovim ripgrep fd
+yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd
 #+END_EXAMPLE
 ** .bashrc
 *** Copy and Past this to use my .bashrc
@@ -66,7 +66,11 @@ sudo cp -r ~/dotfiles/awesome/rc.lua /etc/xdg/awesome
 #+BEGIN_EXAMPLE
 cp -r ~/dotfiles/.doom.d ~/
 #+END_EXAMPLE
-
+** .zsh
+*** How to install my Zsh config
+#+BEGIN_EXAMPLE
+cp -r ~/dofiles/zsh/.zshrc ~/
+#+END_EXAMPLE
 
 * Future Plans
 I think that I will eventually make a shell script to install all of my configs but that may be a bit far off.
