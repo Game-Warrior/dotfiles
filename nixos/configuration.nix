@@ -34,10 +34,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the Cinnamon Desktop Environment.
+  # Enable The Window Manager 
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
-  #services.xserver.windowManager.cinnamon.enable = true:
+  #services.xserver.desktopManager.cinnamon.enable = true;
+  services.xserver.windowManager.awesome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -122,18 +122,21 @@
     mpv
     libreoffice
     cura
+    rustdesk
 
     #Gaming
     steam 
     discord
     element-desktop
-
-    #Virt
     
     #Window Manager stuff
     awesome
     dmenu
     nitrogen
+    cinnamon.nemo
+    arandr
+    lxappearance
+
 	
   ];
 
