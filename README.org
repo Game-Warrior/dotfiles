@@ -73,4 +73,4 @@ cp -r ~/dofiles/zsh/.zshrc ~/
 #+END_EXAMPLE
 
 * Future Plans
-I think that I will eventually make a shell script to install all of my configs but that may be a bit far off.
+I think that I will eventually make a shell script to install all of my configs but that may be a bit far off. I am also currently testing my configs on NixOS so we will see where that goes.

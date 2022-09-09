@@ -68,6 +68,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Set the Default Users Shell
+   users.defaultUserShell - pkgs.fish;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gb = {
     isNormalUser = true;
@@ -80,8 +83,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "gb";
+  #services.xserver.displayManager.autoLogin.enable = true;
+  #services.xserver.displayManager.autoLogin.user = "gb";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
