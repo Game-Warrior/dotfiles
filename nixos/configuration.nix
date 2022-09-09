@@ -96,6 +96,8 @@
     neofetch
     exa
     starship
+    fd
+    ripgrep
 
     #shells
     home-manager
