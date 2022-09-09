@@ -37,6 +37,7 @@
   # Enable the Cinnamon Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.cinnamon.enable = true;
+  #services.xserver.windowManager.cinnamon.enable = true:
 
   # Configure keymap in X11
   services.xserver = {
@@ -126,6 +127,8 @@
     steam 
     discord
     element-desktop
+
+    #Virt
     
     #Window Manager stuff
     awesome
