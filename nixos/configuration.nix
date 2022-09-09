@@ -127,7 +127,7 @@
     mpv
     libreoffice
     cura
-    rustdesk
+    #rustdesk
 
     #Gaming
     steam 
