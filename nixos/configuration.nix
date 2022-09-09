@@ -69,7 +69,7 @@
   # services.xserver.libinput.enable = true;
 
   # Set the Default Users Shell
-   users.defaultUserShell - pkgs.fish;
+   #users.defaultUserShell - pkgs.fish;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gb = {
