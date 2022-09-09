@@ -50,3 +50,5 @@
 ;(unpin! t)
 
 (package! tldr)
+(package! evil-tutor)
+(package! org-roam)
