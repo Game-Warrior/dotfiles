@@ -36,4 +36,16 @@ echo "installing space vim"
 curl -sLf https://spacevim.org/install.sh | bash
 cd ~/.SpaceVim
 
+yay -S qemu-full virt-manager bridge-utils 
+echo "enableing libvirtd"
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
+echo "adding user to libvirt group"
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
+
+echo "changing the user shell to fish"
 chsh -s /usr/bin/fish
+
+echo "rebooting now"
+reboot
