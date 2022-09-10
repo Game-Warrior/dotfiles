@@ -8,8 +8,8 @@ set fish_greeting
 export  PATH="$HOME/.emacs.d/bin:$PATH"
 
 #Terminal Bling
-#neofetch
-pfetch
+neofetch
+#pfetch
 
 #Pokemon Prompts
 #pokemon-colorscripts -n treecko
