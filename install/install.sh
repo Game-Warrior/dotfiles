@@ -38,7 +38,7 @@ sleep 2
 yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 
 echo "downloading wallpapers from distrotube"
-git clone https://gitlab.com/dwt1/wallpapers
+git clone https://gitlab.com/dwt1/wallpapers ~/
 
 echo "installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
@@ -48,6 +48,7 @@ echo "installing space vim"
 curl -sLf https://spacevim.org/install.sh | bash
 cd ~/.SpaceVim
 
+echo "installing vm stuff"
 yay -S qemu-full virt-manager bridge-utils 
 echo "enableing libvirtd"
 sudo systemctl start libvirtd
