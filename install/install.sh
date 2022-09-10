@@ -3,28 +3,28 @@
 echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based distros"
 
 echo "installing awesomewm config"
-cp -r ~/Installation/awesome ~/.config
+cp -r ~/dotfiles/awesome ~/.config
 sleep 1
 echo "installing .bashrc"
-cp -r ~/Installation/bash/.bashrc ~/
+cp -r ~/dotfiles/bash/.bashrc ~/
 sleep 1
 echo "installing fish config"
-cp -r ~/Installation/fish ~/.config
+cp -r ~/dotfiles/fish ~/.config
 sleep 1
 echo "installing alacritty config"
-cp -r ~/Installation/alacritty ~/.config
+cp -r ~/dotfiles/alacritty ~/.config
 sleep 1
 echo "installing doom emacs config" 
-cp -r ~/Installation/.doom.d ~/
+cp -r ~/dotfiles/.doom.d ~/
 sleep 1
 echo "installing .zshrc"
-cp -r ~/Installation/zsh/.zshrc ~/
+cp -r ~/dotfiles/zsh/.zshrc ~/
 sleep 1
 echo "installing my btop config"
 mkdir ~/.config/btop&&cp -r ~/Installation/btop/btop.conf ~/.config/btop
 sleep 1
 echo "installing my neofetch config"
-cp -r ~/Installation/neofetch/ ~/.config/
+cp -r ~/dotfiles/neofetch/ ~/.config/
 
 echo "updating"
 sudo pacman -Syu
@@ -50,7 +50,7 @@ sleep 2
 echo "making wallpapers directory"
 mkdir ~/Wallpapers
 echo "adding my wallpapers"
-cp -r ~/Installation/wallpapers/ ~/Wallpapers/
+cp -r ~/dotfiles/wallpapers/ ~/Wallpapers/
 echo "downloading wallpapers from distrotube"
 git clone https://gitlab.com/dwt1/wallpapers ~/Wallpapers
 echo "setting wallpaper with nitrogen"
