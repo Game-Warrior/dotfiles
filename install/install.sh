@@ -42,7 +42,10 @@ sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritt
 sleep 3
 
 #try to install aur packages
+echo "trying to install aur packages"
 yay -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes
+
+sleep 2
 
 echo "making wallpapers directory"
 mkdir ~/Wallpapers
