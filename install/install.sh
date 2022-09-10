@@ -28,4 +28,12 @@ sleep 2
 
 yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 
+echo "installing doom emacs"
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
+echo "installing space vim"
+curl -sLf https://spacevim.org/install.sh | bash
+cd ~/.SpaceVim
+
 chsh -s /usr/bin/fish
