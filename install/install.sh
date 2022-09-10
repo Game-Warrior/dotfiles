@@ -71,7 +71,7 @@ yay -S qemu-full virt-manager bridge-utils
 echo "enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
-echo "adding user to libvirt group"
+echo "adding user to libvirt&kvm group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
 
