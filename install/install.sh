@@ -35,10 +35,19 @@ sleep 2
 #echo "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 #If it is than
 
-yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
+#yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
+echo "installing packages from the core repos"
+sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh emacs nitrogen fish neovim ripgrep fd chromium neofetch
 
+sleep 3
+
+#try to install aur packages
+yay -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes
+
+echo "making wallpapers directory"
+mkdir ~/Wallpapers
 echo "downloading wallpapers from distrotube"
-git clone https://gitlab.com/dwt1/wallpapers ~/
+git clone https://gitlab.com/dwt1/wallpapers ~/Wallpapers
 
 echo "installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
@@ -57,8 +66,12 @@ echo "adding user to libvirt group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
 
+sleep 3
+
 echo "changing the user shell to fish"
 chsh -s /usr/bin/fish
+
+sleep 3
 
 echo "rebooting now"
 reboot
