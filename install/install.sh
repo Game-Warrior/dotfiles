@@ -53,6 +53,9 @@ echo "adding my wallpapers"
 cp -r ~/Installation/wallpapers/ ~/Wallpapers/
 echo "downloading wallpapers from distrotube"
 git clone https://gitlab.com/dwt1/wallpapers ~/Wallpapers
+echo "setting wallpaper with nitrogen"
+nitrogen --set-scaled ~/Wallpapers/wallpapers/ArchWp.png
+nitrogen --save
 
 echo "installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
