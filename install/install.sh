@@ -74,7 +74,8 @@ sleep 3
 echo "changing the user shell to fish"
 chsh -s /usr/bin/fish
 
-sleep 3
+sleep 1
 
 echo "rebooting now"
+sleep 2
 reboot
