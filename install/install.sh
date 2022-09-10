@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Welcome to my Installation Script for Arch Linux and Arch Linux based distros"
+echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based distros"
 
 echo "installing awesomewm config"
 cp -r ~/dotfiles/awesome ~/.config
@@ -27,6 +27,9 @@ sleep 2
 #If it is than
 
 yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
+
+echo "downloading wallpapers from distrotube"
+git clone https://gitlab.com/dwt1/wallpapers
 
 echo "installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
