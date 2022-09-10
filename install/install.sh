@@ -4,18 +4,27 @@ echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based
 
 echo "installing awesomewm config"
 cp -r ~/dotfiles/awesome ~/.config
+sleep 1
 echo "installing .bashrc"
 cp -r ~/dotfiles/bash/.bashrc ~/
+sleep 1
 echo "installing fish config"
 cp -r ~/dotfiles/fish ~/.config
+sleep 1
 echo "installing alacritty config"
 cp -r ~/dotfiles/alacritty ~/.config
-echo "installing doom emacs config"
+sleep 1
+echo "installing doom emacs config" 
 cp -r ~/dotfiles/.doom.d ~/
+sleep 1
 echo "installing .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
+sleep 1
 echo "installing my btop config"
 mkdir ~/.config/btop&&cp -r ~/dotfiles/btop/btop.conf ~/.config/btop
+sleep 1
+echo "installing my neofetch config"
+cp -r ~/dotfiles/neofetch/ ~/.config/
 
 echo "updating"
 sudo pacman -Syu
