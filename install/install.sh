@@ -50,7 +50,7 @@ sleep 2
 echo "making wallpapers directory"
 mkdir ~/Wallpapers
 echo "adding my wallpapers"
-cp -r ~/dotfiles/wallpapers/ ~/Wallpapers/
+cp -r ~/dotfiles/gw-wallpapers/ ~/Wallpapers/
 echo "downloading wallpapers from distrotube"
 git clone https://gitlab.com/dwt1/wallpapers ~/Wallpapers
 
