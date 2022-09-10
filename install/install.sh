@@ -28,4 +28,4 @@ sleep 2
 
 yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 
-
+chsh -s /usr/bin/fish
