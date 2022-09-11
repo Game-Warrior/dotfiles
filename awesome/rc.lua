@@ -170,9 +170,10 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
---    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+--      awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 --      awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
-      awful.tag({ "SYS", "WWW", "VIDEOS", "DEV", "VIRT", "GAMES", "CHAT", "SCH", "MEET" }, s, awful.layout.layouts[1])
+      awful.tag({ "SYS", "WWW", "DEV", "VIRT", "GAMES", "CHAT", "SCH", "MEET" }, s, awful.layout.layouts[1])
+--      awful.tag({ "SYS", "WWW", "VIDEOS", "DEV", "VIRT", "GAMES", "CHAT", "SCH", "MEET" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -314,12 +315,13 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
+ -- Applications
  -- Dmenu
     awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
               {description = "dmenu", group = "launcher"}),
  -- Brave
-    awful.key({ modkey },            "z",     function () awful.util.spawn("brave") end,
-              {description = "launch brave", group = "applications"}),
+--    awful.key({ modkey },            "z",     function () awful.util.spawn("brave") end,
+--              {description = "launch brave", group = "applications"}),
 
  -- Emacs
     awful.key({ modkey },            "e",     function () awful.util.spawn("emacs") end,
@@ -333,9 +335,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "d",     function () awful.util.spawn("discord") end,
               {description = "launch discord", group = "applications"}),
 	
--- Librewolf
-    awful.key({ modkey },            "b",     function () awful.util.spawn("librewolf") end,
+-- Librewolf 
+    awful.key({ modkey },            "z",     function () awful.util.spawn("librewolf") end,
               {description = "launch librewolf", group = "applications"}),    
+
+-- Chromium 
+   awful.key({ modkey },            "b",     function () awful.util.spawn("chromium") end,
+             {description = "launch chromium", group = "launcher"}),
+
     
     awful.key({ modkey }, "x",
               function ()
