@@ -37,7 +37,7 @@ sleep 2
 
 #yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 echo "installing packages from the core repos"
-sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh emacs nitrogen fish neovim ripgrep fd chromium neofetch
+sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh emacs nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
 
 sleep 3
 
