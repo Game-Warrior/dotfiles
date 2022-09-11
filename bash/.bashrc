@@ -30,12 +30,13 @@ ShowInstallerIsoInfo() {
     fi
 }
 
+#Doom Emacs
 export  PATH="$HOME/.emacs.d/bin:$PATH"
 
 #alias ls='ls --color=auto'
 #alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 #alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles except "."
-alias ls='exa -la --color=always --group-directories-first'
+alias ls='exa -lah --color=always --group-directories-first'
 alias vim='nvim'
 alias weather='curl wttr.in'
 alias update='sudo pacman -Syu'
