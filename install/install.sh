@@ -26,8 +26,8 @@ sleep 1
 echo "installing my neofetch config"
 cp -r ~/dotfiles/neofetch/ ~/.config/
 
-echo "updating"
-sudo pacman -Syu
+#echo "updating"
+#sudo pacman -Syu
 
 sleep 2
 
@@ -37,7 +37,7 @@ sleep 2
 
 #yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 echo "installing packages from the core repos"
-sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh emacs nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
+sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
 
 sleep 3
 
@@ -52,7 +52,8 @@ mkdir ~/Wallpapers
 echo "adding my wallpapers"
 cp -r ~/dotfiles/gw-wallpapers/ ~/Wallpapers/
 echo "downloading wallpapers from distrotube"
-git clone https://gitlab.com/dwt1/wallpapers ~/Wallpapers
+cd ~/Wallpapers/
+git clone https://gitlab.com/dwt1/wallpapers
 
 #echo "setting wallpaper with nitrogen"
 #nitrogen --set-scaled ~/Wallpapers/wallpapers/ArchWp.png
