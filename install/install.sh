@@ -2,28 +2,28 @@
 
 echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based distros"
 
-echo "installing awesomewm config"
+echo "Copying my awesomewm config"
 cp -r ~/dotfiles/awesome ~/.config
 sleep 1
-echo "installing .bashrc"
+echo "Copying my .bashrc"
 cp -r ~/dotfiles/bash/.bashrc ~/
 sleep 1
-echo "installing fish config"
+echo "Copying my FISH config"
 cp -r ~/dotfiles/fish ~/.config
 sleep 1
-echo "installing alacritty config"
+echo "Copying my Alacritty config"
 cp -r ~/dotfiles/alacritty ~/.config
 sleep 1
-echo "installing doom emacs config" 
+echo "Copying my Doom Emacs config" 
 cp -r ~/dotfiles/.doom.d ~/
 sleep 1
-echo "installing .zshrc"
+echo "Copying my .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
 sleep 1
-echo "installing my btop config"
+echo "Copying my btop config"
 mkdir ~/.config/btop&&cp -r ~/Installation/btop/btop.conf ~/.config/btop
 sleep 1
-echo "installing my neofetch config"
+echo "Copying my Neofetch config"
 cp -r ~/dotfiles/neofetch/ ~/.config/
 
 #echo "updating"
@@ -36,22 +36,22 @@ sleep 2
 #If it is than
 
 #yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
-echo "installing packages from the core repos"
+echo "Installing Packages from the Core Repos"
 sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
 
 sleep 3
 
 #try to install aur packages
-echo "trying to install aur packages"
+echo "Trying to Install AUR Packages"
 yay -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes
 
 sleep 2
 
-echo "making wallpapers directory"
+echo "Making Wallpapers Directory"
 mkdir ~/Wallpapers
-echo "adding my wallpapers"
+echo "Adding my Wallpapers"
 cp -r ~/dotfiles/gw-wallpapers/ ~/Wallpapers/
-echo "downloading wallpapers from distrotube"
+echo "Downloading Distrotube's Wallpapers"
 cd ~/Wallpapers/
 git clone https://gitlab.com/dwt1/wallpapers
 
@@ -59,17 +59,17 @@ git clone https://gitlab.com/dwt1/wallpapers
 #nitrogen --set-scaled ~/Wallpapers/wallpapers/ArchWp.png
 #nitrogen --save
 
-echo "installing doom emacs"
+echo "Installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
 
-echo "installing space vim"
+echo "Installing space vim"
 curl -sLf https://spacevim.org/install.sh | bash
 cd ~/.SpaceVim
 
-echo "installing vm stuff"
+echo "Installing vm stuff"
 yay -S qemu-full virt-manager bridge-utils 
-echo "enableing libvirtd"
+echo "Enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 echo "adding user to libvirt&kvm group"
@@ -78,11 +78,11 @@ sudo usermod -aG kvm $USER
 
 sleep 3
 
-echo "changing the user shell to fish"
+echo "Changing the Uer Shell to Fish"
 chsh -s /usr/bin/fish
 
 sleep 1
 
-echo "rebooting now"
+echo "Rebooting Now"
 sleep 2
 reboot
