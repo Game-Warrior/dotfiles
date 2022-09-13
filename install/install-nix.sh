@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
+echo "Welcome to my Post Installtion script for NixOS"
 
 sleep 2
 
