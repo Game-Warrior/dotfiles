@@ -30,7 +30,7 @@ git clone https://gitlab.com/dwt1/wallpapers
 cd
 
 echo "Installing Doom Emacs"
-git clone --depth1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emac.d/bin/doom install
 
 echo "Installing Space VIM"
@@ -40,13 +40,12 @@ cd ~/.SpaceVim
 echo "Enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
-echo "Adding user to libvirt&kvm group"
-sudo usermod -aG libvirt $USER
-sudo usermod -aG kvm $USER
+#echo "Adding user to libvirt&kvm group"
+#sudo usermod -aG libvirt $USER
+#sudo usermod -aG kvm $USER
 
-sleep 3
+#sleep 3
 
-echo "Rebooting"
-sleep 3
-reboot
-
+#echo "Rebooting"
+#sleep 3
+#reboot
