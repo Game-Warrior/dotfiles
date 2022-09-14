@@ -43,7 +43,7 @@ sleep 3
 
 #try to install aur packages
 echo "Trying to Install AUR Packages"
-yay -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes
+paru -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes mint-themes mint-y-icons
 
 sleep 2
 
@@ -68,7 +68,7 @@ curl -sLf https://spacevim.org/install.sh | bash
 cd ~/.SpaceVim
 
 echo "Installing vm stuff"
-yay -S qemu-full virt-manager bridge-utils 
+paru -S qemu-full virt-manager bridge-utils dnsmasq
 echo "Enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
