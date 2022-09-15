@@ -4,25 +4,18 @@ echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based
 
 echo "Copying my awesomewm config"
 cp -r ~/dotfiles/awesome ~/.config
-sleep 1
 echo "Copying my .bashrc"
 cp -r ~/dotfiles/bash/.bashrc ~/
-sleep 1
 echo "Copying my FISH config"
 cp -r ~/dotfiles/fish ~/.config
-sleep 1
 echo "Copying my Alacritty config"
 cp -r ~/dotfiles/alacritty ~/.config
-sleep 1
 echo "Copying my Doom Emacs config" 
 cp -r ~/dotfiles/.doom.d ~/
-sleep 1
 echo "Copying my .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
-sleep 1
 echo "Copying my btop config"
-mkdir ~/.config/btop&&cp -r ~/Installation/btop/btop.conf ~/.config/btop
-sleep 1
+cp -r ~/Installation/btop ~/.config/
 echo "Copying my Neofetch config"
 cp -r ~/dotfiles/neofetch/ ~/.config/
 
