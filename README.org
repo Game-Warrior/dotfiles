@@ -3,7 +3,13 @@
 #+author: Gardner Berry
 
 * Outline
-These configuration files are made for arch linux and arch based distros so I can't garante its functionality on all my main distro is EndeavourOS. I any one wants to test my configs you are welcome to and please file bug reports, but I dont really have the time right now to do tests on multible distros.
+** Main
+These configurations were originally written for Arch Linux and its derivatives but it has expanded to now include NixOS and Ubuntu based Distros. I still haven't fully debuged the scripts in generaly eventually I hope I will finish them so DO NOT USE THEM they are still in Alpha so use at your own risk.
+
+* Installation Scripts
+** Arch Script
+** NixOS Script
+** Deb Script
 
 * Dependancies
 ** awesome
