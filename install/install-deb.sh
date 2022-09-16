@@ -19,6 +19,8 @@ echo "Copying my Neofetch config"
 cp -r ~/dotfiles/neofetch/ ~/.config/
 echo "Copying my .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
+echo "Copying my btop config"
+cp -r ~/dotfiles/btop ~/.config
 
 sleep 3
 
@@ -26,7 +28,7 @@ echo "Updating"
 sudo apt update&&sudo apt upgrade
 
 echo "Installing packages"
-sudo apt install awesome dmenu picom exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep chromium neofetch speedtest-cli
+sudo apt install awesome dmenu picom exa btop lxappearance emacs zsh nitrogen fish neovim ripgrep chromium neofetch speedtest-cli
 
 echo "Making Wallpapers Directory"
 mkdir ~/Wallpapers
@@ -38,7 +40,7 @@ git clone https://gitlab.com/dwt1/wallpapers
 cd
 
 echo "Installing Doom Emacs"
-git clone --depth1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emac.d/bin/doom install
 
 echo "Installing Space VIM"
