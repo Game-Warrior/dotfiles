@@ -2,6 +2,8 @@
 
 echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based distros"
 
+cd ~/
+
 echo "Copying my awesomewm config"
 cp -r ~/dotfiles/awesome ~/.config
 echo "Copying my .bashrc"
@@ -15,7 +17,7 @@ cp -r ~/dotfiles/.doom.d ~/
 echo "Copying my .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
 echo "Copying my btop config"
-cp -r ~/Installation/btop ~/.config/
+cp -r ~/dotfiles/btop ~/.config/
 echo "Copying my Neofetch config"
 cp -r ~/dotfiles/neofetch/ ~/.config/
 
@@ -32,6 +34,11 @@ sleep 2
 echo "Installing Packages from the Core Repos"
 sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
 
+echo "Installing the Paru AUR helper"
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 sleep 3
 
 #try to install aur packages
@@ -61,7 +68,7 @@ curl -sLf https://spacevim.org/install.sh | bash
 cd ~/.SpaceVim
 
 echo "Installing vm stuff"
-paru -S qemu-full virt-manager bridge-utils dnsmasq
+sudo pacman -S qemu-full virt-manager bridge-utils dnsmasq
 echo "Enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
@@ -74,8 +81,8 @@ sleep 3
 echo "Changing the Uer Shell to Fish"
 chsh -s /usr/bin/fish
 
-sleep 1
+#sleep 1
 
-echo "Rebooting Now"
-sleep 2
-reboot
+#echo "Rebooting Now"
+#sleep 2
+#reboot
