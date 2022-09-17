@@ -76,7 +76,9 @@ echo "adding user to libvirt&kvm group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
 
-sleep 3
+echo "Configuring git"
+git config --global user.name "Gardner Berry"
+git config --global user.email "berrygw06@gmail.com"
 
 echo "Changing the Uer Shell to Fish"
 chsh -s /usr/bin/fish
