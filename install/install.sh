@@ -33,6 +33,7 @@ sleep 2
 #yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 echo "Installing Packages from the Core Repos"
 sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
+sudo pacman -Rs gnu-free-fonts
 
 echo "Installing the Paru AUR helper"
 sudo pacman -S --needed base-devel git
