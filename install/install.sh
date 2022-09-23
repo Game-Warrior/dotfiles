@@ -45,8 +45,7 @@ makepkg -si
 sleep 3
 break;;
     n ) echo "Installing the Paru AUR helper"
-         sudo pacman -S paru
-    break;;
+         sudo pacman -S paru;;
     * ) echo "invalid response";;
 #        exit 1 ;;
 esac
