@@ -320,7 +320,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
               {description = "dmenu", group = "launcher"}),
  -- Brave
-    awful.key({ modkey },            "z",     function () awful.util.spawn("brave") end,
+    awful.key({ modkey },            "b",     function () awful.util.spawn("brave") end,
               {description = "launch brave", group = "applications"}),
 
  -- Emacs
@@ -336,17 +336,21 @@ globalkeys = gears.table.join(
               {description = "launch discord", group = "applications"}),
 	
 -- Librewolf 
-    awful.key({ modkey },            "b",     function () awful.util.spawn("librewolf") end,
-              {description = "launch librewolf", group = "applications"}),    
+--    awful.key({ modkey },            "b",     function () awful.util.spawn("librewolf") end,
+--              {description = "launch librewolf", group = "applications"}),    
 
 -- Chromium 
    awful.key({ modkey },            "c",     function () awful.util.spawn("chromium") end,
-             {description = "launch chromium", group = "launcher"}),
+             {description = "launch chromium", group = "applications"}),
 
 -- Virt-Manager
     awful.key({ modkey },            "v",     function () awful.util.spawn("virt-manager")end,
-              {description = "launch Virt-Manager", group = "luncher"}),
-    
+              {description = "launch Virt-Manager", group = "applications"}),
+
+-- Firefox 
+awful.key({ modkey },            "z",     function () awful.util.spawn("firefox")end,
+   		{description = "launch Firefox", group = "applications"}),     
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
