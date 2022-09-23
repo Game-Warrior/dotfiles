@@ -35,12 +35,21 @@ echo "Installing Packages from the Core Repos"
 sudo pacman -S awesome dmenu picom starship exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
 sudo pacman -Rs gnu-free-fonts
 
-echo "Installing the Paru AUR helper"
+read -p "If you are installing this on Arch Linux you will need to build paru but if you are using a derivitave e.g. EndavourOS it will be in your standard repos y to build n to install (y/n)" yn
+case $yn in
+    y ) echo "Building the Paru AUR helper"
 sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 sleep 3
+break;;
+    n ) echo "Installing the Paru AUR helper"
+         sudo pacman -S paru
+    break;;
+    * ) echo "invalid response";;
+#        exit 1 ;;
+esac
 
 #try to install aur packages
 echo "Trying to Install AUR Packages"
@@ -77,12 +86,19 @@ echo "adding user to libvirt&kvm group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
 
-echo "Configuring git"
+read -p "Do you want me to configure git (y/N)" yn
+case $yn in
+    y ) echo "Configuring git"
 git config --global user.name "Gardner Berry"
 git config --global user.email "berrygw06@gmail.com"
+break;;
+    n ) echo "Exiting"
+        exit;;
+    * ) echo "invailid response"
+esac
 
 echo "Changing the Uer Shell to Fish"
-chsh -s /usr/bin/fish
+chsh -s /bin/fish
 
 #sleep 1
 
