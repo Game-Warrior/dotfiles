@@ -1,82 +1,16 @@
-#+title: Dotfiles
-#+description: A collection of my various configuration and dotfiles
-#+author: Gardner Berry
+#+title: README
+us
+* Introduction
+ This is a collecton of my various configuration files and a bash script to install it.
+ BTW this script is not perfect so there may be problems durning the installation if you have a problem feel free to file an issue I will get to it as soon as I can.
 
-* Outline
-** Main
-These configurations were originally written for Arch Linux and its derivatives but it has expanded to now include NixOS and Ubuntu based Distros. I still haven't fully debuged the scripts in generaly eventually I hope I will finish them so DO NOT USE THEM they are still in Alpha so use at your own risk.
+* Scripts
+** Arch
+This one is the best tested I should work on most Arch based systems and is the only one I recomend you to use.
+** Nixos
+I dont know if this config is broken but I think my configuration.nix might not work on all nix systems
+** Ubuntu&Debian
+Idk this one still needs a lot of work but I will see if I can get this to work
 
-* Installation Scripts
-** Arch Script
-** NixOS Script
-** Deb Script
-
-* Dependancies
-** awesome
-- nemo
-- [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
-- brave-bin
-- librewolf-bin
-- alacritty
-- fish
-- lxapperance
-- nitrogen
-- neovim
-** alacritty
-- alacritty-themes
-** fish
-- pokemon-colorscripts-git
-- pfetch
-- neofetch
-- exa
-- [[https://starship.rs][Starship Prompt]]
-** bash
-- neofetch
-- exa
-- [[https://starship.rs][Starship Prompt]]
-- pfetch
-- pokemon-colorscripts-git
-
-* How to install my configs
-** Recommended packages
-*** You can just copy and paste this and it should install everything
-#+BEGIN_SRC
-yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git lxapperance emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
-#+END_SRC
-** .bashrc
-*** Copy and Past this to use my .bashrc
-#+BEGIN_SRC
-cp -r ~/dotfiles/bash/.bashrc ~/
-#+END_SRC
-** fish
-*** Copy and past to install my fish configs
-#+BEGIN_SRC
-cp -r ~/dotfiles/fish ~/.config
-#+END_SRC
-** alacrity
-*** Copy and paste for my alacritty config
-#+BEGIN_SRC
-cp -r ~/dofiles/alacritty ~/.config
-#+END_SRC
-** awesome
-*** Copy and paste for my awesomewm config
-#+BEGIN_SRC
-cp -r ~/dotfiles/awesome ~/.config
-#+END_SRC
-*** How to make my config the default fall back config
-#+BEGIN_SRC
-sudo cp -r ~/dotfiles/awesome/rc.lua /etc/xdg/awesome
-#+END_SRC
-** Doom Emacs
-*** How to copy my Doom Emacs config
-#+BEGIN_EXAMPLE
-cp -r ~/dotfiles/.doom.d ~/
-#+END_EXAMPLE
-** .zsh
-*** How to install my Zsh config
-#+BEGIN_SRC
-cp -r ~/dotfiles/zsh/.zshrc ~/
-#+END_SRC
-
-* Future Plans
-I think that I will eventually make a shell script to install all of my configs but that may be a bit far off. I am also currently testing my configs on NixOS so we will see where that goes.
+* Contributing
+You are welcome to contribute howevery you would like just keep in mind this is a personal project I is intended for my use case.
