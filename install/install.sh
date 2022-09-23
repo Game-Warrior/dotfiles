@@ -45,7 +45,8 @@ makepkg -si
 sleep 3
 break;;
     n ) echo "Installing the Paru AUR helper"
-         sudo pacman -S paru;;
+         sudo pacman -S paru
+         sleep 2;;
     * ) echo "invalid response";;
 #        exit 1 ;;
 esac
@@ -88,9 +89,9 @@ sudo usermod -aG kvm $USER
 read -p "Do you want me to configure git (y/N)" yn
 case $yn in
     y ) echo "Configuring git"
-git config --global user.name "Gardner Berry"
-git config --global user.email "berrygw06@gmail.com"
-break;;
+        git config --global user.name "Gardner Berry"
+        git config --global user.email "berrygw06@gmail.com"
+        exit;;
     n ) echo "Exiting"
         exit;;
     * ) echo "invailid response"
