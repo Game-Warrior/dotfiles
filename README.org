@@ -1,12 +1,12 @@
 #+title: README
-us
+
 * Introduction
  This is a collecton of my various configuration files and a bash script to install it.
  BTW this script is not perfect so there may be problems durning the installation if you have a problem feel free to file an issue I will get to it as soon as I can.
 
 * Scripts
 ** Arch
-This one is the best tested I should work on most Arch based systems and is the only one I recomend you to use.
+This one is the best tested I should work on most Arch(*btw*) based systems and is the only one I recomend you to use.
 ** Nixos
 I dont know if this config is broken but I think my configuration.nix might not work on all nix systems
 ** Ubuntu&Debian
