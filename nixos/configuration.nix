@@ -13,6 +13,7 @@
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
+#  boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -36,7 +37,7 @@
 
   # Enable The Window Manager 
   services.xserver.displayManager.lightdm.enable = true;
-  #services.xserver.desktopManager.cinnamon.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.windowManager.awesome.enable = true;
 
   # Configure keymap in X11
@@ -75,7 +76,7 @@
   users.users.gb = {
     isNormalUser = true;
     description = "gb";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "libvirt"];
     packages = with pkgs; [
       firefox
     #  thunderbird
@@ -119,8 +120,7 @@
 
     #Internet
     brave
-    chromium
-    librewolf
+    firefox
     zoom-us
 
     #Productivity
@@ -141,6 +141,9 @@
     cinnamon.nemo
     arandr
     lxappearance
+
+    #Utils
+    cmake
 
 	
   ];
