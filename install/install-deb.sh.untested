@@ -59,11 +59,10 @@ sudo usermod -aG kvm $USER
 sleep 2
 
 echo "Changing the User Shell to FISH"
-chsh -s /usr/bin/fish
+chsh -s /bin/fish
 
-sleep 3
+#sleep 3
 
-echo "Rebooting"
-sleep 3
-reboot
-
+#echo "Rebooting"
+#sleep 3
+#reboot
