@@ -6,7 +6,7 @@ sleep 2
 
 echo "Copying my Configs"
 echo "Copying awesome config"
-cp -r ~/dotfiles/awesome/rc.lua ~/.config/awesome/
+cp -r ~/dotfiles/awesome/ ~/.config/
 echo "Copying Fish Configs"
 cp -r ~/dotfiles/fish/ ~/.config/fish/
 echo "Copying .bashrc"
@@ -28,7 +28,7 @@ echo "Updating"
 sudo apt update&&sudo apt upgrade
 
 echo "Installing packages"
-sudo apt install awesome dmenu picom exa btop lxappearance emacs zsh nitrogen fish neovim ripgrep chromium neofetch speedtest-cli
+sudo apt install awesome dmenu picom exa btop lxappearance emacs zsh nitrogen fish neovim ripgrep neofetch speedtest-cli
 
 echo "Making Wallpapers Directory"
 mkdir ~/Wallpapers
@@ -43,9 +43,9 @@ echo "Installing Doom Emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emac.d/bin/doom install
 
-echo "Installing Space VIM"
-curl -sLf https://spacevim.org/install.sh | bash
-cd ~/.SpaceVim
+#echo "Installing Space VIM"
+#curl -sLf https://spacevim.org/install.sh | bash
+#cd ~/.SpaceVim
 
 echo "Installing VM stuff"
 sudo apt install qemu virt-manager bridge-utils
