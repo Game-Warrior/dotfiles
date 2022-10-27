@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+#source $HOME/git-repos/bashsimplecurses/simple_curses.sh
+
 echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
 
 sleep 2
@@ -48,7 +50,7 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 #cd ~/.SpaceVim
 
 echo "Installing VM stuff"
-sudo apt install qemu virt-manager bridge-utils
+sudo apt install qemu-system virt-manager bridge-utils
 echo "Enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
@@ -59,7 +61,7 @@ sudo usermod -aG kvm $USER
 sleep 2
 
 echo "Changing the User Shell to FISH"
-chsh -s /bin/fish
+chsh -s /usr/bin/fish
 
 #sleep 3
 
