@@ -74,8 +74,8 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-;; Dired
- (map! :leader
+;; Dired Configuration
+(map! :leader
       (:prefix ("d" . "dired")
        :desc "Open dired" "d" #'dired
        :desc "Dired jump to current" "j" #'dired-jump)
@@ -100,15 +100,10 @@
   (kbd "R") 'dired-do-rename
   (kbd "T") 'dired-do-touch
   (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill ; copies filename to kill ring.
-  (kbd "Z") 'dired-do-compress
   (kbd "+") 'dired-create-directory
-  (kbd "-") 'dired-do-kill-lines
+  (kbd "-") 'dired-up-directory
   (kbd "% l") 'dired-downcase
-  (kbd "% m") 'dired-mark-files-regexp
   (kbd "% u") 'dired-upcase
-  (kbd "* %") 'dired-mark-files-regexp
-  (kbd "* .") 'dired-mark-extension
-  (kbd "* /") 'dired-mark-directories
   (kbd "; d") 'epa-dired-do-decrypt
   (kbd "; e") 'epa-dired-do-encrypt)
 ;; Get file icons in dired
@@ -120,11 +115,13 @@
                               ("png" . "sxiv")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
-;; Dired Peep Mode
+;;Peep Dired mode
 (evil-define-key 'normal peep-dired-mode-map
   (kbd "j") 'peep-dired-next-file
   (kbd "k") 'peep-dired-prev-file)
 (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
-;; Making Files go the the trash can
-(setq delete-by-moving-to-trash t
-      trash-directory "~/.local/share/Trash/files/")
+;;Org-Mode
+;;Presentations
+(use-package org-tree-slide
+  :custom
+  (org-image-actual-with nil))
