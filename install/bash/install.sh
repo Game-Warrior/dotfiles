@@ -32,7 +32,7 @@ sleep 2
 
 #yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 echo "Installing Packages from the Core Repos"
-sudo pacman -S awesome dmenu picom starship arandr exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli
+sudo pacman -S awesome dmenu picom starship arandr exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli hunspell-en_us
 sudo pacman -Rs gnu-free-fonts
 
 read -p "If you are installing this on Arch Linux you will need to build paru but if you are using a derivitave e.g. EndavourOS it will be in your standard repos y to build n to install (y/n)" yn
