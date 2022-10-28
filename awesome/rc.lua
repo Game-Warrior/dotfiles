@@ -317,8 +317,8 @@ globalkeys = gears.table.join(
 
  -- Applications
  -- Dmenu
-    awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
-              {description = "dmenu", group = "launcher"}),
+--    awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
+--              {description = "dmenu", group = "launcher"}),
  -- Brave
     awful.key({ modkey },            "b",     function () awful.util.spawn("brave") end,
               {description = "launch brave", group = "applications"}),
@@ -340,8 +340,8 @@ globalkeys = gears.table.join(
 --              {description = "launch librewolf", group = "applications"}),    
 
 -- Chromium 
---   awful.key({ modkey },            "c",     function () awful.util.spawn("chromium") end,
---             {description = "launch chromium", group = "applications"}),
+   awful.key({ modkey },            "c",     function () awful.util.spawn("chromium") end,
+             {description = "launch chromium", group = "applications"}),
 
 -- Virt-Manager
     awful.key({ modkey },            "v",     function () awful.util.spawn("virt-manager")end,
@@ -362,7 +362,7 @@ awful.key({ modkey },            "z",     function () awful.util.spawn("firefox"
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "r", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -570,12 +570,12 @@ awful.spawn("compton")
 awful.spawn("nitrogen --restore")
 awful.spawn("nm-applet")
 awful.spawn("/usr/bin/emacs --daemon")
+awful.spawn("volumeicon")
 --awful.spawn("polybar")
 --awful.spawn("rustdesk")
-awful.spawn("volumeicon")
 
 --Window Gaps
-beautiful.useless_gap = 8
+beautiful.useless_gap = 10
 
 --Set up a Network Widget
 --local net_widgets = require("net_widgets")
