@@ -149,6 +149,7 @@
 
     #Utils
     cmake
+    hunspell
 
 	
   ];
