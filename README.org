@@ -1,16 +1,1 @@
 #+title: README
-
-* Introduction
- This is a collecton of my various configuration files and a bash script to install it.
- BTW this script is not perfect so there may be problems durning the installation if you have a problem feel free to file an issue I will get to it as soon as I can.
-
-* Scripts
-** Arch
-This one is the best tested I should work on most Arch(*btw*) based systems and is the only one I recomend you to use.
-** Nixos
-I dont know if this config is broken but I think my configuration.nix might not work on all nix systems
-** Ubuntu&Debian
-Idk this one still needs a lot of work but I will see if I can get this to work
-
-* Contributing
-You are welcome to contribute howevery you would like just keep in mind this is a personal project I is intended for my use case.
