@@ -47,17 +47,16 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
--- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
-
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+-- Local Settings
+local modkey      = "Mod4"
+local altkey      = "Mod1"
+local ctrlkey     = "Control"
+local terminal    = "alacritty"
+local browser     = "firefox"
+local editor      = os.getenv("EDITOR") or "vim"
+local emacs       = "emacsclient -c -a 'emacs' "
+local mediaplayer = "mpv"
+local soundplayer = "ffplay -nodisp -autoexit " -- The program that will play system sounds
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -86,7 +85,7 @@ awful.layout.layouts = {
 myawesomemenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "edit config", editor .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", function() awesome.quit() end },
 }
@@ -317,23 +316,23 @@ globalkeys = gears.table.join(
 
  -- Applications
  -- Dmenu
---    awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
---              {description = "dmenu", group = "launcher"}),
+    awful.key({ modkey },            "p",     function () awful.util.spawn("dmenu_run") end,
+              {description = "Dmenu", group = "launcher"}),
  -- Brave
     awful.key({ modkey },            "b",     function () awful.util.spawn("brave") end,
-              {description = "launch brave", group = "applications"}),
+              {description = "launch Brave", group = "applications"}),
 
  -- Emacs
     awful.key({ modkey },            "e",     function () awful.util.spawn("emacs") end,
-              {description = "launch emacs", group = "applications"}),
+              {description = "launch Emacs", group = "applications"}),
 
 -- Nemo
     awful.key({ modkey },            "a",     function () awful.util.spawn("nemo") end,
-              {description = "launch nemo", group = "applications"}),
+              {description = "launch Nemo", group = "applications"}),
 
 -- Discord
-    awful.key({ modkey },            "d",     function () awful.util.spawn("discord") end,
-              {description = "launch discord", group = "applications"}),
+--    awful.key({ modkey },            "d",     function () awful.util.spawn("discord") end,
+--              {description = "launch discord", group = "applications"}),
 	
 -- Librewolf 
 --    awful.key({ modkey },            "b",     function () awful.util.spawn("librewolf") end,
@@ -341,7 +340,7 @@ globalkeys = gears.table.join(
 
 -- Chromium 
    awful.key({ modkey },            "c",     function () awful.util.spawn("chromium") end,
-             {description = "launch chromium", group = "applications"}),
+             {description = "launch Chromium", group = "applications"}),
 
 -- Virt-Manager
     awful.key({ modkey },            "v",     function () awful.util.spawn("virt-manager")end,
@@ -349,7 +348,11 @@ globalkeys = gears.table.join(
 
 -- Firefox 
 awful.key({ modkey },            "z",     function () awful.util.spawn("firefox")end,
-   		{description = "launch Firefox", group = "applications"}),     
+              {description = "launch Firefox", group = "applications"}),
+-- Webcord
+    awful.key({ modkey },            "d",     function () awful.util.spawn("webcord") end,
+              {description = "launch Webcord", group = "applications"}),
+
 
     awful.key({ modkey }, "x",
               function ()
