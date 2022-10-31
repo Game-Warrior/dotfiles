@@ -3,7 +3,7 @@
 (setq user-full-name "Gardner Berry"
     user-mail-address "berrygw06@gmail.com")
 
-(setq frame-title-format "Hey bro just FYI, this buffer is called %b or something like that.")
+(setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
 (map! :leader
       (:prefix ("b". "buffer")
@@ -117,7 +117,7 @@ Open the eshell     (SPC e s)\
 \nOpen dired file manager (SPC d d)   \
 List of keybindings (SPC h b b)")
   ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  (setq dashboard-startup-banner "~/.config/doom/doom-emacs-dash.png")  ;; use custom image as banner
+  (setq dashboard-startup-banner "~/.doom.d/doom-emacs-dash.png")  ;; use custom image as banner
   ;;(setq dashboard-startup-banner "~/Pictures/GW-Logo.png")  ;; use custom image as banner
   (setq dashboard-center-content nil) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
