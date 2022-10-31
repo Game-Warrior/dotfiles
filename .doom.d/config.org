@@ -1,6 +1,6 @@
 #+TITLE: Gardner's Doom Emacs Config
 #+AUTHOR: Gardner Berry
-#+DESCRIPTION: DT's personal Doom Emacs config.
+#+DESCRIPTION: GW's personal Doom Emacs config.
 #+STARTUP: showeverything
 
 * TABLE OF CONTENTS :toc:
