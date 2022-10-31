@@ -72,7 +72,7 @@ Never lose your cursor.  When you scroll, your cursor will shine!  This is a glo
 #+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
     user-mail-address "berrygw06@gmail.com")
-
+#+end_src
 * BOOKMARKS AND BUFFERS
 Doom Emacs uses 'SPC b' for keybindings related to bookmarks and buffers.
 
