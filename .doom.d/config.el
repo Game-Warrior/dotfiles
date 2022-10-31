@@ -3,6 +3,8 @@
 (setq user-full-name "Gardner Berry"
     user-mail-address "berrygw06@gmail.com")
 
+(setq frame-title-format "Hey bro just FYI, this buffer is called %b or something like that.")
+
 (map! :leader
       (:prefix ("b". "buffer")
        :desc "List bookmarks" "L" #'list-bookmarks

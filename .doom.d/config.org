@@ -7,6 +7,7 @@
 - [[#about-this-config][ABOUT THIS CONFIG]]
 - [[#beacon][BEACON]]
 - [[#setting-username-and-email][Setting Username and Email]]
+- [[#title-bar][TITLE BAR]]
 - [[#bookmarks-and-buffers][BOOKMARKS AND BUFFERS]]
   - [[#bookmarks][Bookmarks]]
   - [[#buffers][Buffers]]
@@ -73,6 +74,12 @@ Never lose your cursor.  When you scroll, your cursor will shine!  This is a glo
 (setq user-full-name "Gardner Berry"
     user-mail-address "berrygw06@gmail.com")
 #+end_src
+* TITLE BAR
+Change the title bar format
+#+begin_src emacs-lisp
+    (setq frame-title-format "Hey bro just FYI, this buffer is called %b or something like that.")
+#+end_src
+
 * BOOKMARKS AND BUFFERS
 Doom Emacs uses 'SPC b' for keybindings related to bookmarks and buffers.
 
