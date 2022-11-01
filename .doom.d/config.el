@@ -7,6 +7,9 @@
 
 (set-face-attribute 'default nil :height 90)
 
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
+
 (map! :leader
       (:prefix ("b". "buffer")
        :desc "List bookmarks" "L" #'list-bookmarks

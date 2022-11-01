@@ -58,6 +58,7 @@
 - [[#splits][SPLITS]]
 - [[#winner-mode][WINNER MODE]]
 - [[#zap-to-char][ZAP TO CHAR]]
+- [[#treemacs][TREEMACS]]
 
 * ABOUT THIS CONFIG
 This is my personal Doom Emacs config.  Doom Emacs is a distribution of Emacs that uses the "evil" keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box.  I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs.  I will add a lot of examples of plugins and settings, some of them I may not even use personally.  I do this because many people following me on YouTube look at my configs as "documentation".
@@ -69,7 +70,7 @@ Never lose your cursor.  When you scroll, your cursor will shine!  This is a glo
 (beacon-mode 1)
 #+end_src
 
-* Setting Username and Email
+* SETTING USERNAME AND EMAIL
 #+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
     user-mail-address "berrygw06@gmail.com")
@@ -84,6 +85,13 @@ Change the title bar format
 Set default font scaling. I have added this for my laptop that has a hiDPi display.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil :height 90)
+#+end_src
+
+* SET DEFAULT BROWSER
+Set the default browser.
+#+begin_src emacs-lisp
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
 #+end_src
 
 * BOOKMARKS AND BUFFERS
@@ -1287,3 +1295,5 @@ Emacs provides a 'zap-to-char' command that kills from the current point to a ch
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
 #+END_SRC
+
+* TREEMACS
