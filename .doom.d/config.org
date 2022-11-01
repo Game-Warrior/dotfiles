@@ -8,6 +8,7 @@
 - [[#beacon][BEACON]]
 - [[#setting-username-and-email][Setting Username and Email]]
 - [[#title-bar][TITLE BAR]]
+- [[#set-font-size][SET FONT SIZE]]
 - [[#bookmarks-and-buffers][BOOKMARKS AND BUFFERS]]
   - [[#bookmarks][Bookmarks]]
   - [[#buffers][Buffers]]
@@ -77,6 +78,12 @@ Never lose your cursor.  When you scroll, your cursor will shine!  This is a glo
 Change the title bar format
 #+begin_src emacs-lisp
     (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
+#+end_src
+
+* SET FONT SIZE
+Set default font scaling. I have added this for my laptop that has a hiDPi display.
+#+begin_src emacs-lisp
+(set-face-attribute 'default nil :height 90)
 #+end_src
 
 * BOOKMARKS AND BUFFERS
