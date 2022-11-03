@@ -78,8 +78,3 @@
 (package! minimap)
 (package! olivetti)
 (package! fountain-mode)
-(package! palimpsest)
-(package! treemacs-evil)
-(package! treemacs-projectile)
-(package! treemacs-magit)
-(package! treemacs-persp)
