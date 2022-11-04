@@ -5,6 +5,8 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
+(setq browse-url-browser-function 'brave)
+
 (map! :leader
       (:prefix ("b". "buffer")
        :desc "List bookmarks" "L" #'list-bookmarks
@@ -186,7 +188,7 @@ List of keybindings (SPC h b b)")
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
 
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-solarized-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'counsel-load-theme)
 
@@ -264,13 +266,13 @@ List of keybindings (SPC h b b)")
        :desc "Evaluate last sexpression" "l" #'eval-last-sexp
        :desc "Evaluate elisp in region" "r" #'eval-region))
 
-(setq browse-url-browser-function 'eww-browse-url)
-(map! :leader
-      :desc "Search web for text between BEG/END"
-      "s w" #'eww-search-words
-      (:prefix ("e" . "evaluate/ERC/EWW")
-       :desc "Eww web browser" "w" #'eww
-       :desc "Eww reload page" "R" #'eww-reload))
+;;(setq browse-url-browser-function 'eww-browse-url)
+;;(map! :leader
+;;      :desc "Search web for text between BEG/END"
+;;      "s w" #'eww-search-words
+;;      (:prefix ("e" . "evaluate/ERC/EWW")
+;;       :desc "Eww web browser" "w" #'eww
+;;       :desc "Eww reload page" "R" #'eww-reload))
 
 (autoload 'exwm-enable "exwm-config.el")
 
