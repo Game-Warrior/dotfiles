@@ -78,3 +78,4 @@
 (package! minimap)
 (package! olivetti)
 (package! fountain-mode)
+(package! palimpsest)
