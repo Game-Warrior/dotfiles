@@ -79,3 +79,4 @@
 (package! olivetti)
 (package! fountain-mode)
 (package! org-re-reveal)
+(package! exwm)
