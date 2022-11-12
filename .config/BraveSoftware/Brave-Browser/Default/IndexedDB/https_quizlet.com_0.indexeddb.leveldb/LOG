@@ -1,0 +1,6 @@
+2022/08/23-16:21:59.379 850d Creating DB /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_quizlet.com_0.indexeddb.leveldb since it was missing.
+2022/08/23-16:21:59.383 850d Reusing MANIFEST /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_quizlet.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/08/23-16:22:18.102 7982 Level-0 table #5: started
+2022/08/23-16:22:18.104 7982 Level-0 table #5: 2239 bytes OK
+2022/08/23-16:22:18.107 7982 Delete type=0 #3
+2022/08/23-16:22:18.107 7982 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

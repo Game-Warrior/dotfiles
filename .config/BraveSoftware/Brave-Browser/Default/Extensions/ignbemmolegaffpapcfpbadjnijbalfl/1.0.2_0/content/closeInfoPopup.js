@@ -1,0 +1,1 @@
+new MutationObserver(((e,d)=>{var t;for(const o of e)if("childList"===o.type&&o.addedNodes.length>0)for(let e=0;e<o.addedNodes.length;e++){const n=o.addedNodes[e];n.querySelector('a[href*="twitter-blue-labs#nft"]')&&(null===(t=n.parentElement)||void 0===t||t.removeChild(n),d.disconnect());}})).observe(window.document.body,{subtree:!0,childList:!0});

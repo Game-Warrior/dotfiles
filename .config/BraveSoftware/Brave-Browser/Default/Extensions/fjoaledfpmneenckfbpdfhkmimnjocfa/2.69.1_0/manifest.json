@@ -1,0 +1,28 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "background.bundle.js", "moose.bundle.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icons/nordvpn-48-inactive.png",
+      "default_popup": "index.html",
+      "default_title": "NordVPN Browser Extension"
+   },
+   "content_security_policy": "script-src 'self' 'wasm-eval' https://www.google-analytics.com; object-src 'self'",
+   "description": "One click, and you're connected to the fastest VPN out there — NordVPN. Stay safe online with our VPN proxy extension for Chrome.",
+   "differential_fingerprint": "1.2b3f376d5113a4c9c599035acdbf15ac42896d5c0db9b411fbf083ca96312694",
+   "icons": {
+      "128": "./icons/nordvpn-128-active.png",
+      "16": "./icons/nordvpn-16-active.png",
+      "32": "./icons/nordvpn-32-active.png",
+      "48": "./icons/nordvpn-48-active.png"
+   },
+   "incognito": "spanning",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAovAakLldwMVE/HIEVD/yHY9EfNA+cTxEyR2u6Iw400mcGqz0fN+p93GNoP29k9XMWnlUYg63wKvxtDBfsEgoI064GHspNtooo2Sx3UIHcQB5L1jXoNcvmMLRbsqbdZfTSUDHmr6UeVoMmMtV5G08YR6bUVQPghkPfq03NhZ1M3ElFgjz6iCwyCl1WRDzbdntXZeFspJRQ9B2IaehFzjNDsN3nXR9QV6WRdN/VDh3EuWJjvwZAcer/uzDXCXGGJedsX+WwKVdiLBlvwF8y66EHPV4hqqfvHJHajp12Ia7EUGzoTtwD4vs/fCqkMtEIjbeLhmj6nO4SUfPRHQbRQIHSwIDAQAB",
+   "manifest_version": 2,
+   "name": "NordVPN - VPN Proxy for Privacy and Security",
+   "permissions": [ "proxy", "webRequest", "webRequestBlocking", "privacy", "\u003Call_urls>", "storage", "notifications", "tabs" ],
+   "short_name": "Web Proxy",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.69.1"
+}

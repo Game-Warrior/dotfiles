@@ -1,0 +1,15 @@
+2022/09/14-14:24:27.715 1347 Reusing MANIFEST /home/gardner/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2022/09/14-14:24:27.715 1347 Recovering log #48
+2022/09/14-14:24:27.715 1347 Reusing old log /home/gardner/.config/discord/Local Storage/leveldb/000048.log 
+2022/09/14-14:26:28.328 1358 Level-0 table #52: started
+2022/09/14-14:26:28.341 1358 Level-0 table #52: 1121272 bytes OK
+2022/09/14-14:26:28.343 1358 Delete type=0 #48
+2022/09/14-14:26:28.343 1358 Compacting 4@0 + 1@1 files
+2022/09/14-14:26:28.358 1358 Generated table #53@0: 59 keys, 1125162 bytes
+2022/09/14-14:26:28.358 1358 Compacted 4@0 + 1@1 files => 1125162 bytes
+2022/09/14-14:26:28.361 1358 compacted to: files[ 0 1 1 0 0 0 0 ]
+2022/09/14-14:26:28.361 1358 Delete type=2 #52
+2022/09/14-14:26:28.361 1358 Delete type=2 #47
+2022/09/14-14:26:28.361 1358 Delete type=2 #42
+2022/09/14-14:26:28.361 1358 Delete type=2 #49
+2022/09/14-14:26:28.361 1358 Delete type=2 #45

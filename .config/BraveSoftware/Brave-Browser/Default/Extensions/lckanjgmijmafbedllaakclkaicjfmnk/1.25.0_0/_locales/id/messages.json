@@ -1,0 +1,378 @@
+{
+   "badged_color_label": {
+      "description": "String ini digunakan sebagai nama untuk label warna lencana.",
+      "message": "Warna lencana"
+   },
+   "blocked_html_body": {
+      "description": "String ini digunakan sebagai body pada laman situs yang diblokir.",
+      "message": "Situs ini diblokir oleh Add-on \u003Cb>ClearURLs\u003C/b>, karena kami mengidentifikasi situs ini sebagai layanan periklanan dan/atau pelacakan. Untuk mengunjungi situs ini, Anda harus menonaktifkan sementara Add-on atau menonaktifkan pemblokiran domain di pengaturan ClearURLs. Setelah ini Anda dapat mengklik tombol di bawah ini untuk memuat halaman."
+   },
+   "blocked_html_button": {
+      "description": "String ini digunakan sebagai tombol pada laman situs yang diblokir.",
+      "message": "Kunjungi laman"
+   },
+   "blocked_html_title": {
+      "description": "String ini digunakan sebagai judul pada laman situs yang diblokir.",
+      "message": "Situs ini diblokir oleh \u003Cb>ClearURLs\u003C/b>"
+   },
+   "check_os_log": {
+      "description": "String ini digunakan pada log startup ClearURLs.",
+      "message": "[ClearURLs]: Log listener ditambahkan."
+   },
+   "cleaning_tool_btn": {
+      "description": "String ini digunakan sebagai nama untuk tombol bersihkan url.",
+      "message": "Bersihkan URL"
+   },
+   "cleaning_tool_clean_urls_label": {
+      "description": "String ini digunakan sebagai judul pada laman alat pembersih untuk URL bersih.",
+      "message": "Disini anda dapat menemukan URL yang telah dibersihkan:"
+   },
+   "cleaning_tool_description": {
+      "description": "String ini digunakan sebagai deskripsi alat pembersih.",
+      "message": "Dengan alat ini Anda dapat menempelkan URL dan ClearURLs akan membersihkan URL setelah mengklik tombol hijau. Anda dapat menempelkan beberapa URL sekaligus, tetapi setiap URL harus berada di baris yang terpisah."
+   },
+   "cleaning_tool_dirty_urls_label": {
+      "description": "String ini digunakan sebagai judul pada laman alat pembersih untuk URL kotor.",
+      "message": "Disini anda dapat menempelkan URL kotor:"
+   },
+   "cleaning_tool_page_title": {
+      "description": "String ini digunakan sebagai judul pada laman tool pembersih.",
+      "message": "tool pembersih CleanURLs"
+   },
+   "clipboard_copy_link": {
+      "description": "String ini digunakan dalam konteks menu untuk menyalin link bersih.",
+      "message": "Salin lokasi link bersih"
+   },
+   "configs_switch_statistics": {
+      "description": "String ini digunaakan sebagai nama untuk tombol switch statistik pada laman popup.",
+      "message": "Statistik"
+   },
+   "configs_switch_statistics_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol switch statistik pada laman popup.",
+      "message": "Aktivasi atau deaktivasi fungsi statistik"
+   },
+   "context_menu_enabled": {
+      "description": "String ini digunakan untuk mengaktifkan entri menu konteks untuk menyalin link bersih.",
+      "message": "Tampilkan entri menu konteks"
+   },
+   "context_menu_enabled_title": {
+      "description": "tidak diperlukan, hanya untuk mencegah pengecualian",
+      "message": " "
+   },
+   "core_error": {
+      "description": "String ini digunakan untuk memberitahu user, bahwa ClearURLs tidak dapat dimulai.",
+      "message": "[ClearURLs]: Addon tidak dapat mulai."
+   },
+   "core_save_on_disk": {
+      "description": "String ini digunakan untuk memberitahu user, ClearURLs menyimpan aturan pada disk.",
+      "message": "[ClearURLs]: Simpan dalam disk."
+   },
+   "domain_blocking_enabled": {
+      "description": "String ini digunakan sebagai label pada switch pemblokiran domain",
+      "message": "Izinkan pemblokiran domain (Dapat menyebabkan masalah pada halaman yang tidak mengizinkan AdBlocker)"
+   },
+   "domain_blocking_enabled_title": {
+      "description": "String ini digunakan sebagai judul untuk switch pemblokiran domain",
+      "message": "Izinkan pemblokiran domain (Dapat menyebabkan masalah pada halaman yang tidak mengizinkan AdBlocker)"
+   },
+   "donate_button": {
+      "description": "String ini digunakan untuk merujuk ke laman donasi.",
+      "message": "Donasi untuk pencipta ClearURLs."
+   },
+   "eTag_filtering_enabled": {
+      "description": "String ini digunakan sebagai label untuk switch pemfilteran ETag header",
+      "message": "Memfilter header ETag dari permintaan (Lihat juga \u003Ca href='https://en.wikipedia.org/wiki/HTTP_ETag#Tracking_using_ETags' target='_blank'>artikel ini\u003C/a>)"
+   },
+   "eTag_filtering_enabled_title": {
+      "description": "String ini digunakan sebagai judul untuk switch pemfilteran ETag header",
+      "message": "Filter header ETag. Petunjuk: Cache harus dibersihkan sebelum digunakan pertama kali."
+   },
+   "eTag_filtering_log": {
+      "description": "String ini digunakan pada pemfilteran header ETag pada log ClearURLs.",
+      "message": "Header ETag telah dihapus dari request ini"
+   },
+   "error_report_url": {
+      "description": "Note: Tidak digunakan saat ini.",
+      "message": "Sepertinya URL ini telah dilaporkan."
+   },
+   "extension_description": {
+      "description": "Deskripsi ekstensi (max. 132 karakter)",
+      "message": "Hapus elemen pelacak dari URL."
+   },
+   "hash_status_code_1": {
+      "description": "Kode status ini mengatakan, bahwa tidak ada pembaruan yang tersedia untuk aturan ClearURLs dan semuanya mutakhir.",
+      "message": "up to date"
+   },
+   "hash_status_code_2": {
+      "description": "Kode status ini mengatakan, rule ClearURLs berhasil diperbarui.",
+      "message": "diperbarui"
+   },
+   "hash_status_code_3": {
+      "description": "Kode status ini mengatakan, bahwa update tersedia untuk rule ClearURLs.",
+      "message": "update tersedia"
+   },
+   "hash_status_code_4": {
+      "description": "Kode status ini mengatakan, bahwa ClearURLs tidak dapat dimulai dengan benar.",
+      "message": "error"
+   },
+   "hash_status_code_5": {
+      "description": "Kode status ini mengatakan, sebuah error terjadi ketika mengupdate rule ClearURLs.",
+      "message": "Oops ada sesuatu yang salah!"
+   },
+   "history_listener_enabled": {
+      "description": "String ini digunakan sebagai nama untuk label listener API history.",
+      "message": "Mencegah tracking injection atas API history (See also: \u003Ca href='https://developer.mozilla.org/en-US/docs/Web/API/History_API#The_replaceState()_method' target='_blank'>The replaceState() method\u003C/a>)"
+   },
+   "local_hosts_skipping": {
+      "description": "String ini digunakan sebagai label untuk switch local host skipping",
+      "message": "Melewati URLs pada host lokal (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 100.64.0.0/10, 169.254.0.0/16, 127.0.0.1, localhost)"
+   },
+   "local_hosts_skipping_title": {
+      "description": "String ini digunakan sebagai judul untuk switch host skipping lokal",
+      "message": "Lewati URL pada host lokal"
+   },
+   "log_domain_blocked": {
+      "description": "String ini digunakan pada domain yang diblokir di log ClearURLs.",
+      "message": "Domain ini di blokir"
+   },
+   "log_html_export_button": {
+      "description": "String ini digunakan untuk tombol eksport pada laman log.",
+      "message": "Eksport"
+   },
+   "log_html_export_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol eksport pada laman log.",
+      "message": "Mengeksport log global"
+   },
+   "log_html_import_button": {
+      "description": "String ini digunakan untuk tombol import pada laman log.",
+      "message": "Import"
+   },
+   "log_html_import_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol import pada laman log.",
+      "message": "Mengimport log global"
+   },
+   "log_html_page_title": {
+      "description": "String ini digunakan sebagai header dalam laman log.",
+      "message": "Log dari ClearURLs"
+   },
+   "log_html_reset_button": {
+      "description": "String ini digunakan untuk tombol reset pada laman log.",
+      "message": "Reset"
+   },
+   "log_html_reset_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol reset pada laman log.",
+      "message": "Reset log global"
+   },
+   "log_html_table_head_1": {
+      "description": "String ini digunakan sebagai judul tabel pada laman log.",
+      "message": "Sebelum diproses"
+   },
+   "log_html_table_head_2": {
+      "description": "String ini digunakan sebagai judul tabel pada laman log.",
+      "message": "Setelah diproses"
+   },
+   "log_html_table_head_3": {
+      "description": "String ini digunakan sebagai judul tabel pada laman log.",
+      "message": "Aturan"
+   },
+   "log_html_table_head_4": {
+      "description": "String ini digunakan sebagai judul tabel pada laman log.",
+      "message": "Waktu"
+   },
+   "log_ping_blocked": {
+      "description": "String ini digunakan pada pengauditan hyperlink di log ClearURLs.",
+      "message": "Pengauditan hyperlink ini diblokir"
+   },
+   "log_redirect": {
+      "description": "String ini digunakan pada pengalihan di log ClearURLs.",
+      "message": "Url ini dialihkan"
+   },
+   "ping_blocking_enabled": {
+      "description": "String ini digunakan sebagai label untuk switch pengauditan hyperlink",
+      "message": "Memblokir audit hyperlink (Lihat juga \u003Ca href='https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing' target='_blank'>artikel ini\u003C/a>)"
+   },
+   "ping_blocking_enabled_title": {
+      "description": "String ini digunakan sebagai judul pada switch pengauditan hyperlink",
+      "message": "Blokir pengauditan hyperlink"
+   },
+   "popup_html_configs_head": {
+      "description": "String ini digunakan sebagai judul untuk konfigurasi pada laman popup.",
+      "message": "Konfigurasi"
+   },
+   "popup_html_configs_head_title": {
+      "description": "tidak diperlukan, hanya untuk mencegah pengecualian",
+      "message": " "
+   },
+   "popup_html_configs_switch_badges": {
+      "description": "String ini digunakan sebagai nama untuk tombol lencana pada laman popup.",
+      "message": "Lencana"
+   },
+   "popup_html_configs_switch_badges_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol switch lencana pada laman popup.",
+      "message": "Menunjukkan jumlah url yang dibersihkan"
+   },
+   "popup_html_configs_switch_filter": {
+      "description": "String ini digunakan sebagai nama untuk tombol filter switch pada laman popup.",
+      "message": "Filter"
+   },
+   "popup_html_configs_switch_filter_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol filter switch pada laman popup.",
+      "message": "Filters switch mengaktifkan fungsi membersihkan dari ClearURLs. Jika kamu menonaktifkan opsi ini, seluruh addon akan nonaktif"
+   },
+   "popup_html_configs_switch_log": {
+      "description": "String ini digunakan sebagai nama untuk tombol logging switch pada laman popup.",
+      "message": "Mencatat"
+   },
+   "popup_html_configs_switch_log_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol logging switch pada laman popup.",
+      "message": "Log hanya disimpan secara lokal. Kami tidak menyarankan fitur ini jika Anda tidak membutuhkannya"
+   },
+   "popup_html_log_head": {
+      "description": "String ini digunakan sebagai nama untuk tombol log pada laman popup.",
+      "message": "Log"
+   },
+   "popup_html_log_head_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol log dalam laman popup.",
+      "message": "Membuka log"
+   },
+   "popup_html_report_button": {
+      "description": "Note: Tidak digunakan saat ini.",
+      "message": "Laporkan URL ini"
+   },
+   "popup_html_report_button_title": {
+      "description": "Tidak digunakan saat ini.",
+      "message": "Laporkan URL saat ini dari tab ini."
+   },
+   "popup_html_rules_status_head": {
+      "description": "String ini digunakan sebagai judul untuk bagian status aturan pada laman popup.",
+      "message": "Status aturan"
+   },
+   "popup_html_rules_status_head_title": {
+      "description": "tidak diperlukan, hanya untuk mencegah pengecualian",
+      "message": " "
+   },
+   "popup_html_statistics_blocked": {
+      "description": "String ini digunakan sebagai nama untuk elemen yang diblokir pada laman popup.",
+      "message": "Diblokir"
+   },
+   "popup_html_statistics_blocked_title": {
+      "description": "tidak diperlukan, hanya untuk mencegah pengecualian",
+      "message": " "
+   },
+   "popup_html_statistics_elements": {
+      "description": "String ini digunakan sebagai nama untuk elemen pada laman popup.",
+      "message": "Elemen"
+   },
+   "popup_html_statistics_elements_title": {
+      "description": "tidak diperlukan, hanya untuk mencegah pengecualian",
+      "message": " "
+   },
+   "popup_html_statistics_head": {
+      "description": "String ini digunakan sebagai judul untuk statistik pada laman popup.",
+      "message": "Statistik"
+   },
+   "popup_html_statistics_head_title": {
+      "description": "tidak diperlukan, hanya untuk mencegah pengecualian",
+      "message": " "
+   },
+   "popup_html_statistics_percentage": {
+      "description": "String ini digunakan sebagai nama untuk persentase elemen yang diblokir pada laman popup.",
+      "message": "Persentase"
+   },
+   "popup_html_statistics_percentage_title": {
+      "description": "tidak diperlukan, hanya untuk mencegah pengecualian",
+      "message": " "
+   },
+   "popup_html_statistics_reset_button": {
+      "description": "String ini digunakan sebagai nama untuk tombol reset statistik pada laman popup.",
+      "message": "Reset"
+   },
+   "popup_html_statistics_reset_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol reset statistik pada laman popup.",
+      "message": "Reset statistik global"
+   },
+   "referral_marketing_enabled": {
+      "description": "String ini digunakan sebagai label pada switch marketing referral",
+      "message": "Izinkan marketing referral"
+   },
+   "referral_marketing_enabled_title": {
+      "description": "String ini digunakan sebagai judul pada switch marketing referral",
+      "message": "Izinkan marketing referral"
+   },
+   "setting_hash_url_label": {
+      "description": "String ini digunakan sebagai nama untuk label url rule.hash.",
+      "message": "Url ke file rules.hash (hash)"
+   },
+   "setting_html_export_button": {
+      "description": "String ini digunakan sebagai nama untuk tombol eksport pada laman pengaturan.",
+      "message": "Eksport"
+   },
+   "setting_html_export_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol eksport pada laman pengaturan.",
+      "message": "Eksport semua"
+   },
+   "setting_html_import_button": {
+      "description": "String ini digunakan sebagai nama untuk tombol reset pada laman pengaturan.",
+      "message": "Import"
+   },
+   "setting_html_import_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol import pada laman pengaturan.",
+      "message": "Import semua"
+   },
+   "setting_html_reset_button": {
+      "description": "String ini digunakan sebagai nama untuk tombol reset dalam laman pengaturan.",
+      "message": "Reset"
+   },
+   "setting_html_reset_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol reset dalam laman pengaturan.",
+      "message": "Reset semua"
+   },
+   "setting_log_limit_label": {
+      "description": "String ini digunakan sebagai nama untuk label batas label.",
+      "message": "Membatasi log ke entri $LIMIT$.",
+      "placeholders": {
+         "limit": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "setting_report_server_label": {
+      "description": "Note: Tidak digunakan saat ini.",
+      "message": "Laporkan server untuk URL"
+   },
+   "setting_rule_url_label": {
+      "description": "String ini digunakan sebagai nama untuk label aturan url.",
+      "message": "Url ke file data.json (aturan)"
+   },
+   "setting_types_label": {
+      "description": "String ini digunakan sebagai nama untuk label tipe.",
+      "message": "\u003Ca href='https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType' target='_blank'>Tipe request\u003C/a> (expert level)"
+   },
+   "settings_html_page_title": {
+      "description": "String ini digunakan sebagai judul dalam laman pengaturan.",
+      "message": "Pengaturan ClearURLs"
+   },
+   "settings_html_save_button": {
+      "description": "String ini digunakan sebagai nama untuk tombol simpan&muat-ulang pada laman pengaturan.",
+      "message": "Simpan & muat-ulang addon"
+   },
+   "settings_html_save_button_title": {
+      "description": "String ini digunakan sebagai judul untuk tombol simpan&muat-ulang pada laman pengaturan.",
+      "message": "Simpan pengaturan"
+   },
+   "success_report_url": {
+      "description": "Note: Tidak digunakan saat ini.",
+      "message": "URL berhasil dilaporkan. Kami akan mengecek URL ini segera."
+   },
+   "watchdog": {
+      "description": "String ini digunakan sebagai text untuk wacthdog",
+      "message": "[ClearURLs]: Watchdog telah mendeteksi masalah dan gagal sebanyak $TIMES$ kali.",
+      "placeholders": {
+         "times": {
+            "content": "$1",
+            "example": "3"
+         }
+      }
+   }
+}

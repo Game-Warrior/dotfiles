@@ -1,0 +1,7 @@
+2022/09/19-18:50:13.420 2fa5 Reusing MANIFEST /home/gardner/.config/chromium/Default/IndexedDB/https_docs.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/09/19-18:50:13.420 2fa5 Recovering log #3
+2022/09/19-18:50:13.421 2fa5 Reusing old log /home/gardner/.config/chromium/Default/IndexedDB/https_docs.google.com_0.indexeddb.leveldb/000003.log 
+2022/09/19-20:55:15.785 48c3 Level-0 table #5: started
+2022/09/19-20:55:15.788 48c3 Level-0 table #5: 8399 bytes OK
+2022/09/19-20:55:15.790 48c3 Delete type=0 #3
+2022/09/19-20:55:15.790 48c3 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

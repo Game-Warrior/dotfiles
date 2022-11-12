@@ -1,0 +1,17 @@
+2022/11/11-08:22:47.839 672c Reusing MANIFEST /home/gardner/.config/WebCord/Local Storage/leveldb/MANIFEST-000001
+2022/11/11-08:22:47.840 672c Recovering log #63
+2022/11/11-08:22:47.844 672c Level-0 table #66: started
+2022/11/11-08:22:47.890 672c Level-0 table #66: 1184451 bytes OK
+2022/11/11-08:22:47.893 672c Delete type=0 #63
+2022/11/11-08:22:47.893 671e Compacting 4@0 + 1@1 files
+2022/11/11-08:22:47.942 671e Generated table #68@0: 49 keys, 1207350 bytes
+2022/11/11-08:22:47.942 671e Compacted 4@0 + 1@1 files => 1207350 bytes
+2022/11/11-08:22:47.950 671e compacted to: files[ 0 1 1 0 0 0 0 ]
+2022/11/11-08:22:47.950 671e Delete type=2 #57
+2022/11/11-08:22:47.950 671e Delete type=2 #59
+2022/11/11-08:22:47.950 671e Delete type=2 #66
+2022/11/11-08:22:47.950 671e Delete type=2 #64
+2022/11/11-08:22:47.950 671e Delete type=2 #61
+2022/11/11-08:24:49.771 6760 Level-0 table #70: started
+2022/11/11-08:24:49.819 6760 Level-0 table #70: 1193163 bytes OK
+2022/11/11-08:24:49.822 6760 Delete type=0 #67

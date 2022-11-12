@@ -1,0 +1,396 @@
+{
+   "checksum": "3480c110e3d0451c214f0182140b1478",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13308023474899716",
+            "date_last_used": "13312648961592903",
+            "guid": "41f21310-d833-4793-b452-ab8210605570",
+            "id": "43",
+            "name": "",
+            "type": "url",
+            "url": "https://mail.google.com/mail/u/0/#inbox"
+         }, {
+            "date_added": "13171574384000000",
+            "date_last_used": "0",
+            "guid": "93b0e856-977e-43c8-b5ed-f78333b7183a",
+            "id": "8",
+            "name": "",
+            "type": "url",
+            "url": "https://www.amazon.com/"
+         }, {
+            "date_added": "13193022050000000",
+            "date_last_used": "13312646928467088",
+            "guid": "8a81d6f8-83e9-4f85-9a69-ff207461c9ca",
+            "id": "9",
+            "name": "",
+            "type": "url",
+            "url": "https://www.youtube.com/?gl=US"
+         }, {
+            "date_added": "13310255272577778",
+            "date_last_used": "13310528454445133",
+            "guid": "df043a7b-83c7-40b0-b4f3-b06d89d5655d",
+            "id": "45",
+            "name": "",
+            "type": "url",
+            "url": "https://odysee.com/"
+         }, {
+            "date_added": "13312585943682931",
+            "date_last_used": "0",
+            "guid": "0934055e-63f3-4697-b979-914fb5a4aa31",
+            "id": "58",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "",
+            "type": "url",
+            "url": "https://nebula.tv/"
+         }, {
+            "date_added": "13304469818025306",
+            "date_last_used": "13312001736561098",
+            "guid": "72e4cd0e-de8e-47a8-9d04-1f897d84c812",
+            "id": "10",
+            "name": "",
+            "type": "url",
+            "url": "https://old.reddit.com/"
+         }, {
+            "date_added": "13217730763000000",
+            "date_last_used": "0",
+            "guid": "eee8b9a4-17ef-4efa-962e-1670a665d032",
+            "id": "11",
+            "name": "",
+            "type": "url",
+            "url": "https://en.wikipedia.org/wiki/Main_Page"
+         }, {
+            "date_added": "13217547329000000",
+            "date_last_used": "13312509244690735",
+            "guid": "539aa811-e8d5-4a4b-951c-33e6a28b06f9",
+            "id": "12",
+            "name": "",
+            "type": "url",
+            "url": "https://music.youtube.com/"
+         }, {
+            "date_added": "13219816063000000",
+            "date_last_used": "13312593633974822",
+            "guid": "a37aa5e9-3fd9-45ad-83fc-ff87f19f6d88",
+            "id": "13",
+            "name": "",
+            "type": "url",
+            "url": "https://translate.google.com/?hl=en&tab=rT&authuser=0"
+         }, {
+            "children": [ {
+               "date_added": "13268103403000000",
+               "date_last_used": "0",
+               "guid": "caf5c379-8df6-4e52-af90-1b346be06d09",
+               "id": "15",
+               "name": "Fleet Carrier router",
+               "type": "url",
+               "url": "https://www.spansh.co.uk/fleet-carrier"
+            }, {
+               "date_added": "13255114305000000",
+               "date_last_used": "0",
+               "guid": "83c5fadd-aa01-4d76-9a1d-c7d45532b090",
+               "id": "16",
+               "name": "CMDR Gamewarrior010 [INARA]",
+               "type": "url",
+               "url": "https://inara.cz/cmdr/268950/"
+            }, {
+               "date_added": "13255114273000000",
+               "date_last_used": "0",
+               "guid": "ba86f54e-cc74-4e32-860a-68653bbb965f",
+               "id": "17",
+               "name": "ED Astrometrics Interactive Map",
+               "type": "url",
+               "url": "https://edastro.com/galmap/"
+            }, {
+               "date_added": "13255114297000000",
+               "date_last_used": "0",
+               "guid": "95c1ffe4-0d84-4f48-b726-7f293fbd8666",
+               "id": "18",
+               "name": "Coriolis EDCD Edition - Shipyard",
+               "type": "url",
+               "url": "https://coriolis.io/"
+            }, {
+               "date_added": "13256270785000000",
+               "date_last_used": "0",
+               "guid": "0542b164-5094-4f16-a670-e8d31583759b",
+               "id": "19",
+               "name": "Elite Dangerous Materials - Google Drive",
+               "type": "url",
+               "url": "https://docs.google.com/spreadsheets/d/1gG4SLhbET4-v7v2ahB2swT2AWwsdUfj4lVA4KNrVm_8/htmlview"
+            }, {
+               "date_added": "13254335055000000",
+               "date_last_used": "0",
+               "guid": "06a00e76-73fd-457d-83ba-d234b85a0cbf",
+               "id": "20",
+               "name": "The Voyager Trail / Routes / Galactic Mapping / EDSM - Elite Dangerous Star Map",
+               "type": "url",
+               "url": "https://www.edsm.net/en/galactic-routes/show/id/1765/name/The+Voyager+Trail"
+            }, {
+               "date_added": "13251952281000000",
+               "date_last_used": "0",
+               "guid": "c8c9ba75-9cde-4cb5-a4c0-ecabe4e16e4e",
+               "id": "21",
+               "name": "ED Tutorials: Learn to Fly Dangerously",
+               "type": "url",
+               "url": "https://www.edtutorials.com/"
+            }, {
+               "date_added": "13255114252000000",
+               "date_last_used": "0",
+               "guid": "24b7c10b-5d66-4aba-9350-c966dacd9f77",
+               "id": "22",
+               "name": "https://script.google.com/macros/s/AKfycbx6cEi2RRVZum98jZinXqzyK74RrHPVF71Qlmg8HEE1Z6e-4FLw/exec",
+               "type": "url",
+               "url": "https://script.google.com/macros/s/AKfycbx6cEi2RRVZum98jZinXqzyK74RrHPVF71Qlmg8HEE1Z6e-4FLw/exec"
+            }, {
+               "date_added": "13250723748000000",
+               "date_last_used": "0",
+               "guid": "4db59bac-7d69-4c24-bd34-2f30768d6d8a",
+               "id": "23",
+               "name": "Neutron Plotter",
+               "type": "url",
+               "url": "https://spansh.co.uk/plotter"
+            }, {
+               "date_added": "13244687706000000",
+               "date_last_used": "0",
+               "guid": "6744c543-4410-44b5-82fb-9ea73c425ab8",
+               "id": "24",
+               "name": "Miner's Tool",
+               "type": "url",
+               "url": "https://edtools.cc/miner"
+            }, {
+               "date_added": "13259468410000000",
+               "date_last_used": "0",
+               "guid": "31e1988e-26cc-4464-acee-7067d2022b91",
+               "id": "25",
+               "name": "(14) 🧨 The Best Ways to Farm ALL Engineering Materials in Elite Dangerous Guide Manufactured Encoded Raw - YouTube",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=iHl-SsKQfe4&t=576s"
+            }, {
+               "date_added": "13247539331000000",
+               "date_last_used": "0",
+               "guid": "2b07acf9-052e-47aa-8cdc-5558ba30971a",
+               "id": "26",
+               "name": "CMDRs ToolBox",
+               "type": "url",
+               "url": "https://cmdrs-toolbox.com/"
+            }, {
+               "date_added": "13238293975000000",
+               "date_last_used": "0",
+               "guid": "8a224d54-a465-416b-a019-6e3edf8996e2",
+               "id": "27",
+               "name": "Elite: Dangerous Database - EDDB",
+               "type": "url",
+               "url": "https://eddb.io/"
+            }, {
+               "date_added": "13261363188000000",
+               "date_last_used": "0",
+               "guid": "3fd82fab-e8e2-489c-8b46-ef4941cf7bc1",
+               "id": "28",
+               "name": "BPMC Mining Maps - Google Sheets",
+               "type": "url",
+               "url": "https://docs.google.com/spreadsheets/d/1mJk5w4tR7LxsoTADBhCG3aNwnD5DYlRIOSIRFcd8BM8/edit#gid=0"
+            }, {
+               "date_added": "13247539331000000",
+               "date_last_used": "0",
+               "guid": "8b1643ae-3955-4d4b-936c-2144a9a9f1d0",
+               "id": "29",
+               "name": "CMDRs ToolBox",
+               "type": "url",
+               "url": "https://cmdrs-toolbox.com/"
+            }, {
+               "date_added": "13255114297000000",
+               "date_last_used": "0",
+               "guid": "aa50ecf1-2c87-4d36-8fa5-1bf05f3556fc",
+               "id": "30",
+               "name": "Coriolis EDCD Edition - Shipyard",
+               "type": "url",
+               "url": "https://coriolis.io/"
+            } ],
+            "date_added": "13288550831155339",
+            "date_last_used": "0",
+            "date_modified": "13288550831155339",
+            "guid": "87a172c3-c94e-48c4-a4d3-7a55e5365049",
+            "id": "14",
+            "name": "Elite Dangerous",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13274571068000000",
+               "date_last_used": "0",
+               "guid": "e02c4de3-98ab-4a52-9241-f9a4c551b068",
+               "id": "32",
+               "name": "Linksys Smart Wi-Fi",
+               "type": "url",
+               "url": "http://192.168.1.1/ui/1.0.99.206964/dynamic/home.html"
+            }, {
+               "date_added": "13291573520845590",
+               "date_last_used": "0",
+               "guid": "b1223319-062d-4a0a-8399-c48ae4ccbdc3",
+               "id": "33",
+               "name": "Miami Router",
+               "type": "url",
+               "url": "http://192.168.1.254/cgi-bin/home.ha"
+            } ],
+            "date_added": "13292777425557502",
+            "date_last_used": "0",
+            "date_modified": "13292777425557502",
+            "guid": "76e99de1-b164-49c6-8948-0a3188233376",
+            "id": "31",
+            "name": "Networking",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13310255337433723",
+               "date_last_used": "0",
+               "guid": "b46a85d4-27e5-43b7-a76c-cf50a56fc048",
+               "id": "54",
+               "name": "Water History",
+               "type": "url",
+               "url": "https://www.waterhistory.org/histories/reclamation/"
+            }, {
+               "date_added": "13310255386142619",
+               "date_last_used": "0",
+               "guid": "9366aeae-6c03-4020-89f3-3b6dd4c5f742",
+               "id": "55",
+               "name": "CRS History of the Bureau of Reclamation",
+               "type": "url",
+               "url": "https://crsreports.congress.gov/product/pdf/R/R46303"
+            }, {
+               "date_added": "13310255451793725",
+               "date_last_used": "0",
+               "guid": "825e3595-18d8-4768-9b13-c2035c48bdec",
+               "id": "52",
+               "name": "Glen Canyon Institute History of the Bureau of Reclamation",
+               "type": "url",
+               "url": "https://www.glencanyon.org/history-of-the-bureau-of-reclamation/"
+            }, {
+               "date_added": "13310255487327838",
+               "date_last_used": "0",
+               "guid": "61978f84-d7e2-490e-a459-e64ebf869ddb",
+               "id": "53",
+               "name": "USBR History",
+               "type": "url",
+               "url": "https://www.usbr.gov/history/OriginsandGrowths/Volume1.pdf"
+            }, {
+               "date_added": "13310255518448748",
+               "date_last_used": "0",
+               "guid": "884eaa99-a2f7-4a25-9fcd-3f8a1618154d",
+               "id": "51",
+               "name": "The Visionary John Wesley Powell Had a Plan for Developing the West, But Nobody Listened | At the Smithsonian| Smithsonian Magazine",
+               "type": "url",
+               "url": "https://www.smithsonianmag.com/smithsonian-institution/visionary-john-wesley-powell-had-plan-developing-west-nobody-listened-180969182/"
+            }, {
+               "date_added": "13310255524281980",
+               "date_last_used": "0",
+               "guid": "e03375c7-797a-4256-a064-582c6dbfd1b8",
+               "id": "56",
+               "name": "Early-Indian-Tribes-Western-United-States.jpg (1559×2000)",
+               "type": "url",
+               "url": "https://www.gifex.com/images/0X0/2009-09-18-8511/Early-Indian-Tribes-Western-United-States.jpg"
+            }, {
+               "date_added": "13310255534422002",
+               "date_last_used": "0",
+               "guid": "b7af8c1a-b007-46f8-84d0-55ef77871505",
+               "id": "50",
+               "name": "Geographic Names Information System",
+               "type": "url",
+               "url": "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/45730"
+            } ],
+            "date_added": "13310255298325930",
+            "date_last_used": "0",
+            "date_modified": "13310255534422002",
+            "guid": "03c631a4-279d-470e-b516-84d215cd2d1d",
+            "id": "49",
+            "name": "Colorado River Project",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13310593030629128",
+               "date_last_used": "0",
+               "guid": "2eb10484-c4d7-482c-b1d8-3fcc4a3bcfb3",
+               "id": "47",
+               "name": "English to French, Italian, German & Spanish Dictionary - WordReference.com",
+               "type": "url",
+               "url": "https://www.wordreference.com/"
+            }, {
+               "date_added": "13310593122212958",
+               "date_last_used": "0",
+               "guid": "2727bda7-9009-45ca-8895-f009df95fbd0",
+               "id": "48",
+               "name": "Conjugación verbo español: futuro, indicativo, subjuntivo, verbos irregulares, terminaciones | Conjugador Reverso",
+               "type": "url",
+               "url": "https://conjugador.reverso.net/conjugacion-espanol.html"
+            } ],
+            "date_added": "13310255310104647",
+            "date_last_used": "0",
+            "date_modified": "13312585943682931",
+            "guid": "d4d1598b-3d6f-4f02-a750-7d6731edcf63",
+            "id": "46",
+            "name": "Spanish",
+            "type": "folder"
+         } ],
+         "date_added": "13305174869974889",
+         "date_last_used": "0",
+         "date_modified": "13312585958473056",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13305174869974890",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [ {
+            "date_added": "13304904343423449",
+            "date_last_used": "0",
+            "guid": "c2f0deb0-e6ff-4d7b-89e7-d1cc5977bd29",
+            "id": "5",
+            "name": "New tab",
+            "type": "url",
+            "url": "https://www.youtube.com/?gl=US"
+         }, {
+            "date_added": "13292275613279434",
+            "date_last_used": "0",
+            "guid": "4920e750-5c51-421d-a5bc-3f1575a70547",
+            "id": "6",
+            "name": "New tab",
+            "type": "url",
+            "url": "chrome-native://newtab/"
+         }, {
+            "date_added": "13304710382830371",
+            "date_last_used": "0",
+            "guid": "fba0e45c-1d34-4ef1-b69e-35e52ff3f90e",
+            "id": "7",
+            "name": "frac_turfgrass.jpg (540×387)",
+            "type": "url",
+            "url": "https://eoimages.gsfc.nasa.gov/images/imagerecords/6000/6019/frac_turfgrass.jpg"
+         }, {
+            "date_added": "13305650478509016",
+            "date_last_used": "0",
+            "guid": "ef24f7b5-80d7-4323-95b9-664d6cb6c4fc",
+            "id": "36",
+            "name": "Light and Crispy Waffles Recipe - Pam Anderson | Food & Wine",
+            "type": "url",
+            "url": "https://www.foodandwine.com/recipes/light-and-crispy-waffles"
+         } ],
+         "date_added": "13305174869974891",
+         "date_last_used": "0",
+         "date_modified": "13305650478509016",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CooBChAIiIECEgrwlPWzjGEAAAAAEgAaWGQxTTBac2dXc3pQallEL2ZmdjZYQTl0RlRJUjVvb0ZaVVJtZm84bG42K2VKdkVSOUY3T3ZCd0I0K0ZhalhQVEswemdzNWlZWUUyL2RiZGUxTHlBdk1RPT0gASoYbDlsZ2dLcXdNZ0UrUGFLaTNKbnduZz09EqcBCC8SogEKHDEzNXpEeWduVTI2aHhnYzU1emVmZktOM3R6Yz0SJDM1MTgwMzgzLTUyMTItNDI5My05MTdiLTIzMmZlODYyMjI2YRgAIAAoADCEk9TjvjA45ePT474wQOXj0+O+MEocSkZVd0E2S3BuK3FIUUlhWFRwK2szS2tRT2tjPVoeIhxpRVlZaUlBRTgrZTNTb05RWVo1bjNHdE1PZzg9ZWy7O1ISgwEIAhJ/ChxZY1NUb252RVNQd3FDczRMMmNyVmh2NjhMOTg9EiRjMzU0OWYxMy0xMmUyLTQyYzAtYWY2Yy0yMTE4NTI5NTA3YjAYACAAKAAwATi0quqX6S9AtKrql+kvShxvUFZraHdCUmJWNjVLQ1dSMitJT05IV29PdTg9WgBlAAAAABKnAQg2EqIBChx3Mm5qSEQzZHpRMHFsajFCMElqc3dqZm9XVUU9EiQwM2JlNTM1Yi0xMWM2LTRjMGItOWQ1YS05YTEwMGY2OTA2NTQYACAAKAAw1b/Uwr0wONnP0MK9MEDZz9DCvTBKHG1tUFltbUNPLzVuY25yNXlxQklxNFcvdGU1TT1aHiIcanJBdzVzL0paOFl3Nnd6U1I5bk9SSnpBMmZZPWUAAAAAEqkBCC4SpAEKHDExUnVaZDVGMEY1N1pSOGc2dG9RVFlFRDFMbz0SJDcwOWY0OGMyLTg4MjQtNGViOC04YTg5LWM5M2Y4NzBlNTllYxgAIAAoADDGjc/CvTA4mPrOwr0wQJj6zsK9MEocL0hzdUJEZzBvS2Vldk1BVUlsY3ZmS2x6eVFZPVogIh7//y9FR2NuM2Z1clptdnU2UHQxSkY5eTc1b2xaYz1lAAAAABKoAQgSEqMBChxSSUk0N0tJclU3ZklqM1NaV21FVVV3TW5UblE9EiRmZDJlMjViNS1jYzE4LTRjNDEtOTc3ZC00NWI0MzQ5MjlmMjYYACAAKAAw9Nue6+8vOPzl6pfpL0D85eqX6S9KHFlPcXRYWWNQcXQ5WEsybnQwRHhjUkZwQlZGOD1aHyIdvTBLWjUxNEVkRzY2ZmVYd2pWdDRqVUliMlQ0cz1lrDTIkRKoAQgJEqMBChxnUEEzWGFPL093SGVXck93MGRKQzdYeDM5eU09EiQxYThiNTYxNi0yMTNlLTQyZTctYmI5OS05MWMwMTI3ZDFkODEYACAAKAAwjLOwy8QwOPrl6pfpL0CMs7DLxDBKHEpjeGF2N0VNbi9hTnpVaUVvY05lNHpvY2VOTT1aHyIdvGRpV25oMkFYUXhmYXlSNm1GMW9sMEowTXpsWT1lOPk5MxKoAQgtEqMBChxYMW9tc1c0M1FhOTJJdEVlaHVLSmFqRFF3R0U9EiQ4NTM2N2JkNy02NDQxLTQyNzYtYjMzNS00ZjFkYWI4MTQyZjMYACACKAIwyrOwy8QwOILVzMK9MEDKs7DLxDBKHGIrTnNkY3F4MGlYMTdrbEdIYmE5S3VSSkdXcz1aHyIdyFFxSzZRcjV2YXJ4cFZ2RlpIaUNOY1FISVJ1RT1lUL2WbxKoAQgyEqMBChxhMjFjcStXOWw0cy9QMnRRYityQ3dNQ0dOT2M9EiQ0OWI5ZjdhYy02N2M4LTRkMWQtOGQ2ZS1lOGE4NmRiMWY4MjYYACAAKAAwjObcwr0wONbS3MK9MEDW0tzCvTBKHFZvTUpGUkw1MisxWE5hS1BlOHdpUTU1VjlYYz1aHyId/VdZendvWnlQa3RlUTZGQ1U4YUdGL21zcmw4WT1lwmGX0hKoAQgHEqMBChx0MzRWZithVHNCM1JpWkxjcVAvbXBEOGhLaWM9EiQ3NjYwZTEyOC00NjdiLTRmMTMtYTJmNC02YTY0MDM5NzUxNTMYACAAKAAwv/bP7qgwOPK5y+6oMEDyucvuqDBKHDlySzlSdmZhSzFzSTJGUWRDK1VOV0JWcS8rUT1aHyIduy9qQytmL3RYamVFQUlYanV0OVVxNk1GL2NwZz1lAAAAABKnAQgwEqIBChxHV05BT0lWa01WZ3pOaTlidjlHcXJZQjRBSjA9EiQ4NWNlNTgyNS1mN2Q1LTQxYmEtYjMzNi0zY2YwODcxNTYyNGEYACAAKAAw7cHZ474wOKWv2eO+MEClr9njvjBKHHhkRWJ2c3R6ZGYrUDhoN3F6VE9xbmhUdVNJZz1aHiIcb1VFYnNRVTgxVHNrYXl5bHJ2UW1JK2F0VmxrPWWFqG1dEqkBCBsSpAEKHEhxSGk1WjV0MGE4SGxtN3N1R0t2M1hYUjRtbz0SJDE0NzU1MjA1LTk2ODgtNGM3My04ZWE3LTc3MGUyNDM0Njc2NBgAIAAoADDa257r7y84++Xql+kvQPvl6pfpL0ocRWhFc1d6R01rUnhiSlRWVkRFOE5xU0xvaHRNPVogIh7/1VZ3TnFid3cwcmhZMDZyOUVSNHpwK2RjMGxnOD1llB3d+hKoAQgPEqMBChxXQXpBL1IxY0V4eVVUL2pHc0o5MnA1V0Njbzg9EiRjNTZmY2Q3Mi1jNWJmLTRiNWItYmUwMC02ZWE2ZDE5N2RhOTMYACAAKAAwmqTs+6cwOPvl6pfpL0D75eqX6S9KHEY2MU9mNUVoY05YRmdqdXlIczBDVWJWVVpuQT1aHyIdXEt6cW5aWHZ5b2JEWVhEbS81ZXFNQzZ4VTkzcz1l+ICRIxKpAQgdEqQBChw4SnZ5TjR4RERnYlJhR0p0QWw1eDhkdXVCNjA9EiQ0NDdiNWE1Yy1kYmVlLTQ3NjktYmVjYy1kOGJjYmYwZDA5ZGUYACAAKAAw6uLN4vQvOPzl6pfpL0D85eqX6S9KHGc1K3pBUFZjV05DaWlDTHpJQjBkN2dzQTRzVT1aICIe//Vwd0dBV1lxOW1nVm9CRzhrU05uQmxVUEROblE9ZRjjvfwSpwEIBhKiAQoceE95R000NlVMRkdrMmsyN2EvS0JZK2d0R3BJPRIkZTQ5NTU1NzgtMGIwYy00YjNkLTlhMTYtZDRmMDk3MDk2Y2ZhGAAgACgAMPO7ncX6LzjmrJ3F+i9A5qydxfovShw5V2paa0l5bnArUjhwTGFzL1gweE5kbjlzUW89Wh4iHHc1c2VGU2wvZmtYWThEUmNDU2VSRmtOMDl6WT1lAAAAABKnAQgIEqIBChxkZDdyaGRzYitvQk1UY2tNME1wSXBhRTllbU09EiRjMDQxYmRhZC02ZmMxLTQyYzktODEzOC1kZDc0ODM5OTE3ZjIYACAEKAQwqrOwy8QwOPrl6pfpL0Cqs7DLxDBKHE1ydFFnb3JpdGhwRTljcXF6RWdRSTNxUXVkdz1aHiIceXBhRENxdWZadmFzelhBNmZyTFc2ZzF1WS9RPWXDfjbUEqcBCCsSogEKHERTRyt1S0lvZ0pFZXpUcGhmczh3OTlRMTFhQT0SJGQ5Y2FkNjEzLWJhNmUtNDNkYS05YTFiLTkwYzM2MGY4MDk1MRgAIAAoADC1s7DLxDA41MWymrUwQLWzsMvEMEocaHpreWVXYnovMkdzeFNzK05XV3paMXVDWjRFPVoeIhxEaTVLdjIvdEJETHNFVk41eEliWGI5Zk9lRzg9ZYugjNESqAEIFxKjAQocUnNGMjVxQkY1dXVKWCt4TGRyOUxVUkFUY3hnPRIkYWNiOGJhYjktN2FiYi00NmRhLWE0YzQtNDViNTAzNWMyNTA5GAAgACgAMMjbnuvvLzj85eqX6S9A/OXql+kvShxLMDBjWHVabllVMzdPS3NQZGxiM0ZaWnhjRjA9Wh8iHf00bjl0cjBmays1MHNYY0ZGYVdzNlJjcFNCb2M9ZfiAkSMSqAEIEBKjAQocRzJGcEFZQk9sOFZocTVvTERRcGdHeDluUXd3PRIkZTQ2ZGU1ZmEtYTlkNC00NDQ0LWFlZDMtNmIyZDU1NGI1ODFhGAAgASgBMMTvgJ2rMDj85eqX6S9AxO+AnaswShxVVDlIdW44NEpUUDZVSWlIS25lWDNJa0JtT0U9Wh8iHWZOd0tIenNxbmlCYnJGOUJDNlJHNHhiTW1nNkk9ZWwJ+z8SqAEIDRKjAQocWkF1eENoOGt2U1FKNzRKSXFSRGp6L25oK1pNPRIkYzhkYjJmYTEtYWE1My00MzM0LTg5YzctNWViYWJmMTQxZDBmGAAgAigCMLCzsMvEMDj75eqX6S9AsLOwy8QwShxVcHF5czdSaFhtRFkyRlJ3WENVeDVyMWdpRVE9Wh8iHftLb1p3Y0Z1ZlFJc3pxb3NSNDExa1UyWks3dFE9ZcXPkAESqQEIHBKkAQocd0pBTWp3cjNIR3RuMVY5ZEEwK3B3NEJVdTJRPRIkYTY5NTJlYmItZDkyMi00NDllLTk0YmItMDEzNTZhNzc5NmZkGAAgACgAMNPbnuvvLzj85eqX6S9A/OXql+kvShw4SFVNOUEvK3h5S2FRN1dDMnM2NWhtV253Smc9WiAiHv/qUzhFcVo4amdoTzRQdFVMcjY0SWVxWUFIdDdBPWWgZtvoEqgBCDUSowEKHFh3V1Y2S3RKOEowS2o5dVlyTHN4RDVMZlFsTT0SJGU2NmM1MWQwLTU5YmQtNDg2Ni1hNjNkLTA2NThkNjNmMDQ3ORgAIAAoADCX9tnCvTA43+LZwr0wQN/i2cK9MEoccDl4RmtMTHQ1dEZuanpGbEVWRmZvU2FmV0N3PVofIh3taG9pYVFMTjNJdm02TGpEWU9HbjVQWHZZWUJrPWUAAAAAEqgBCDoSowEKHGdCbVUyWWFmVzhIQ3hzbkxzK05YanZvMHpLYz0SJGE2YWUzMWM2LTU2NTQtNDFmMy1hZWMzLTRmMzVkYmE5NGM0YRgAIAcoBzC4yvqZxjA4g8X5mcYwQMm4+pnGMEocVmFjSW5mWnQ1NUxzeVd1M3graG0wL1A2bEpFPVofIh3OY3NLYmJYbmRURitFSC9HZmNSUFBWRUdxc2c0PWVR2U3bEqkBCB4SpAEKHEw1dzM1RmZNaDlPb0dMR1NBWlVocHNUaEpYZz0SJGZjODAwMjkxLThjODUtNDE2NC1hMWJjLWNhMTJjMmM4N2VmMBgAIAAoADCFs4yWhzA4uZDE1ewvQLmQxNXsL0ocWlYzMytpYUo5ejk1cXhlaFI1UGlzbFhUc2xzPVogIh7/+nFoUG9wOVcwRndXYnhzdXlQT2l5QndPWmo3ST1lrDTIkRKoAQgKEqMBChxWZjFaTFIxR0VVbmV0ZjZXRTk5aUZYZ0JqYXc9EiQ3ZTA1MDU1Yi0xMjI3LTRmYjYtOTFiYS1kZWU2MWQyYThjZDgYACACKAIwlLOwy8QwOKnF8PunMECUs7DLxDBKHElZSzE4NVBWaWpKNmw4RDdLS0VXNkJBQUk1UT1aHyId1Xk4Y3orWGEzMTF3OGIxT2M5d2djamgxYkhIND1ldtEJAhKoAQgYEqMBChxoY2NPMFV1dUVaRmFGT1pXVFRub3JMRjdqalU9EiQzYTcwNDI3YS0wZjhhLTQ0MWYtYjViZS00NWIzZWZhNDY3ZWIYACAAKAAw4Nue6+8vOPzl6pfpL0D85eqX6S9KHGI1TkNvdVZsRVljeHdPSFNMaEU4NVl6M2J1VT1aHyId/lBKQXZ4OVhDUWZyU2VCQ2JzRjdrK3c2T1RiUT1lYVJZbBKDAQgBEn8KHHl4Si82ZnZrZWNyN2twNUVRekI0dFdMcGRiRT0SJDZlMWZiNTFhLWMzNDktNDhiYS05ZjQxLTUwNTZkNDcyZWZmYRgAIAAoADABOLSq6pfpL0C0quqX6S9KHGFSQ1dMZ2hGOWI1SW5xS0lEdnVKL2p2UWtGYz1aAGUAAAAAEqcBCCASogEKHDZYNXE5Z0F4UCtFQTZKQXAyZTVYc3h4Q0l3RT0SJDc1Y2IyZTA2LWZjZDYtNGE0Zi04ODY4LWUwNTQwMmNiOTNjOBgAIAAoADDt98G0/C84/OXql+kvQPzl6pfpL0ocbUhQbnRNbElnc044cTZMamg2NGEvbk9zU3ZNPVoeIhxtTFlZOFZ6TERQTnJCcTNDNFlBK3VaYUIvc2M9ZTnsmRwSqAEIFBKjAQocNk9UNUVseW5OU1Zsc3NmYlNZRGJRUSswZ1FBPRIkN2ExNWE4NDItZDdmOC00Njk4LTg4MDgtMDM3Nzk2NzM3OTBmGAAgACgAMOvbnuvvLzj85eqX6S9A/OXql+kvShxkYmowRUx0N3ZhdFVWZUY5SUhQR0FWTTVWcE09Wh8iHfdYbDZEdDNic2NRSVh6eDlHNHZ1Um5jVnlUNEE9ZRIlRfUSqAEIFhKjAQocZzh1cVZjMVp1SlN0RXBhdzVnaE9veVR2U1BVPRIkZDFiZTY0ZGItYWJiNC00YzIxLWJiZDctOTJlOTY5YjI1OGEyGAAgACgAMKOk7PunMDj85eqX6S9A/OXql+kvShxOZSsxSzVhcnBZSVF0c1FqTU1pQ3Z6WDZBRVE9Wh8iHfw2V1JmZlR0VWpkWWx4N1I4VXN2b2VCMEplMnc9ZUlNNnUSpwEIIRKiAQocV3A5d3RPZWwwSTJiTGlueFQ5WnBRUFBCSHA0PRIkMzk2ZmE0OTMtNWRiYy00NjZjLTgwZDQtYzBhNjA0NWE1OTVlGAAgACgAMN+lsZL9LzjPg7n29y9Az4O59vcvShx1b1VSNGUzVWZSMU1mUjQxYmowYi91VEI4b1U9Wh4iHHREbnBQakF0QjZHWGtLTERhTVc1RG04OC9jZz1lUk6NjhKoAQgZEqMBChxUMHhudy8zcWUxMUo1TWdZajg0SUhjTXNFS2c9EiQ2NDc3ZTZhZi0zMDg0LTRjNmEtYjc4YS1mYzkxODYwMGQwNGEYACAAKAAwo9ye6+8vOPzl6pfpL0D85eqX6S9KHG5ZYTRic2xwVllwR0dxZTUzOUIzQ2U0MnZmVT1aHyId/1dXU24vb0RpK0RIZGFQZnROSXdMTFpvWHZhVT1lOP122xKoAQgkEqMBChxHbFJCVFhqUUlvOER5NnJNaUtqUFQ3S29nUms9EiQ1MmM2OTU2Yi0yMDIzLTRlZjMtOTA4Yi04MjY1NzI5ZDY5MTEYACAAKAAwvbHurqwwOK+r7q6sMECvq+6urDBKHGs3dEVaOFg4WHRQMUE0MUdNVEZUVmtSNDlIND1aHyId3TA3NWFWSitUeXJERlhjMlMzbVlSa2ErNWM0RT1lX6Fh4RKpAQgOEqQBChw1aWovRUdZTGFsWk9RT3dMQWVTeC9FZklkcTg9EiQyMTU4Y2FlYy1hZjM1LTQ1MjQtYmFiNC1hYzU0NmMzYzI2ZWUYACAAKAAw+YzR5f0vOPzl6pfpL0D85eqX6S9KHDVvYk45Z0cwUFRXdnlmYVhnaTR3WDIzMzVGaz1aICIe/91aV1dHL3dtL2txMlQ4NnV2UkpjVlhpVTBMMTg9ZQAAAAASqQEIHxKkAQocS2svUkphWVR3NndiWVRheG9lMnRsV0k2UTNRPRIkMDYxNzJiMTctZmI5ZC00ODVhLWEzN2UtM2EzNDgxOWFlMjg4GAAgACgAMM3YwbT8LziVxcG0/C9AlcXBtPwvShxORngra0lLVmw5b2swTFVVcHpNc0NoR0dsS3c9WiAiHv/8TmtLRTdvLzV4RjEzaU5RY2hYU3A3NmZTb0VjPWUAAAAAEqgBCAsSowEKHEU5RVMxT3dSL0tnQmRGTnBhRnBqaTg3cFZTZz0SJGE2MWZlZDhiLWZiNWUtNDIyMS1iOWE0LWYxYjQ1NWU2NDVkNRgAIAIoAjDZs7DLxDA4++Xql+kvQNmzsMvEMEocSzJYYnBCTkUxb1JHVk9MYlJQR0lib2hRd1hBPVofIh3vb01iZzF2bFB0R2JIRXpKZi9leVdxa3ZqL2dvPWXhLlkQEqcBCAUSogEKHDQydmU0M0djdklic1NSdkhSSDFjTldBdytKST0SJDY3MzE1NmNkLTRhNWMtNDU2Mi1iYjdhLTg0YzYxYTAwMDY0OBgAIAAoADDftYOVqjA4/+6Jy6kwQP/uicupMEocODlJOWo3ZU44MkYwUVBTb09QbTFKekQzaDBRPVoeIhw2WDlGQk9haHFIOGtYblJILzlwU2xGUWs0R3M9ZTj5OTMSqAEIDBKjAQocRlFLUWFSS01hbWVWUUNHRUxObS9GMk9pMUJFPRIkNDI3MTA1ZDMtNzJmNi00Y2MxLWJlYzktMmM5ZjA3YjcwMTc0GAAgAigCML2zsMvEMDj75eqX6S9AvbOwy8QwShxQaEJEcU14MzZsZGFaTU1GNnczbkFZM1ExZEU9Wh8iHfdPM1Q1cjEyWWFsY0puQ1pxa2FuTC9md0pIelE9ZbxmcpsSqQEIGhKkAQoceHdsdU1MSVZhT0ZZZU82ODI2b2o2Vm9NdTEwPRIkMDk4NTdjMjYtODMwYi00Y2EzLTgzMjMtMzFkMmQxMjhhMjMyGAAgACgAMIjcnuvvLzi3kMTV7C9At5DE1ewvShxYSEVxMU1kVDFuaXFQM1JpUzAyaG43SWhuRUk9WiAiHv+rSGtiMDZobGNxdFk5ckk2UWNCamhES0ZYT2YwPWUY4738EqgBCDgSowEKHE5QZkJjUHZSaTZ6bzVob2NpK1ZldHdnSmhCMD0SJGI3YzFlYzZiLTRiNmEtNGEyOC04YWM4LTAyNTg2ODQzNGVjNhgAIAAoADCJl9zCvTA4uoPcwr0wQLqD3MK9MEocaWJrT3FFUHNZamdnRTQ0RTJNZ2plY2VGRThNPVofIh37ODZvVER0TVJvckhaaDRzQ0JmSGdwV2xhQml3PWWcbgKnEqgBCDcSowEKHGpxN3E5a0E2ek84ME9LYmlGOEpZRXJRWG83ST0SJDUzZjk0ZTMyLTdjNjctNDRkMS1iM2UyLTM2OWQ2ZGVhYzgwMhgAIAAoADDH39PCvTA4nszTwr0wQJ7M08K9MEocR1h4cGVFMFlYR01icU92V0xicFl5R0lrbllJPVofIh21NVFvRXEwTjl3OStoNWhRSStGTmtnaUVJeGhrPWUAAAAAEqgBCBMSowEKHE9YeWRPYTFqYmowQVYyV0xuTVQvNXE1MGYrYz0SJGUxNzNiZTc4LWI3NjEtNDE1Yy04NjgwLTRiMTgzYmVjOTczNRgAIAAoADCR3J7r7y84/OXql+kvQPzl6pfpL0ocbUFKRUNFUG5EdkUwZEd5TnlhMEI0YTVzQlJJPVofIh3vZE9aTzBWc1h4dWFXOG1hNFFpT2l5S2dDRkdVPWWgZtvoEqgBCBUSowEKHEJFbnhPR1h1Z0JZV29pb3o1SHhpWEh5ZllmUT0SJGMzZTgxY2QxLWQwNjQtNGRlNy05MzY5LTE0NDE3ZjlkY2EyORgAIAAoADD5257r7y84/OXql+kvQPzl6pfpL0ocSTE3cVZJU3B5WUFBNkZ1WGxTa1JEU3lYMGNvPVofIh37SS9ZMmJ5eDdwTTVvTGxBenBIVEFBYW1MQWpvPWWY0lWQEqcBCBESogEKHDNlYU0yOFBFU1NIYWk0VldCUVQ4WWg1WmU3az0SJDBhMDhjOWE0LTcyOWUtNDgwNS1hYmU4LThmNmQ3NmFmYTg4MxgAIAAoADCX3J7r7y84/OXql+kvQPzl6pfpL0ocTUdselljWDYwOHBKMmpEcFZ6djhmVFFoU0xjPVoeIhx6dGV4UUFqZDdIMjd1cFdwUUVoUmlOZ0pydFU9ZUCBFmQSqAEIMxKjAQocRWt0TXpOR2lFcGNRNWJzR29RT3pKN29na3BFPRIkNzNiNTk0ODYtYzVhYS00OTBmLWJjYTctOWIwZTYyNTQ1YmU3GAAgACgAMJ7p28K9MDjx1dvCvTBA8dXbwr0wShxHaUVkRGxhSVZEb1ZXSWZrTmVoUG9GbEN0V2c9Wh8iHfZ4eGNZZ2I3L0lvdUs4ZEZNMmRBdzE1S0NxdGs9ZRru0pQSqQEIMRKkAQocamtmZk90S3NzT21IRVJ6anE3MzVWM3RIczhRPRIkMWExZTdiOTktN2JhMS00MDcyLWExZDItYjA0NjZjYTNkMjAzGAAgACgAMOCxzsK9MDiWns7CvTBAlp7Owr0wShxjbjFoOXk2aGlWUXJlVmtqSHBBalROVitSK1U9WiAiHv/+bXhxallUUXRDTCtUeEZDaGlhVm5hekhOZHhvPWUAAAAAEqgBCDQSowEKHDRKSzQ0c1EwcHdoeG9tS0NucWpKQWtTYzRTcz0SJGFjNzkwNjBhLTgzMzAtNDI1Yi05ODZkLThlYTE5OTA1OTE3YxgAIAAoADD24NfCvTA4kc3Xwr0wQJHN18K9MEocRUpNSHpOMmlBdzB4Skdvc3BPTUVHM2x3S2tVPVofIh3aRWUwSi9ER3ZwbGsrMFVSNE5QNUxJLzVpM21vPWUAAAAAEoMBCAMSfwocbmpnRHU4OGVDcnZYcDg2cEQ3ZkhHY3FGcDg4PRIkNDFiZTk0ZjEtNGNhZC00NjM4LWIwOTgtNDBiNDQ2MDRmNDdkGAAgACgAMAE4tKrql+kvQLSq6pfpL0oceXpOQjAxY241NEE3Y1JVMHVUKy9QZ21UdFVvPVoAZQAAAAAwATgA",
+   "version": 1
+}

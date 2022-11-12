@@ -1,0 +1,21 @@
+2022/11/11-16:36:31.857 1a239 Reusing MANIFEST /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_music.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/11/11-16:36:31.857 1a239 Recovering log #4
+2022/11/11-16:36:31.861 1a239 Reusing old log /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_music.youtube.com_0.indexeddb.leveldb/000004.log 
+2022/11/11-16:42:48.201 30dcd Level-0 table #8: started
+2022/11/11-16:42:48.247 30dcd Level-0 table #8: 939122 bytes OK
+2022/11/11-16:42:48.250 30dcd Delete type=0 #4
+2022/11/11-16:44:39.176 2eb67 Compacting 1@1 + 1@2 files
+2022/11/11-16:44:39.183 2eb67 Generated table #9@1: 297 keys, 18390 bytes
+2022/11/11-16:44:39.183 2eb67 Compacted 1@1 + 1@2 files => 18390 bytes
+2022/11/11-16:44:39.185 2eb67 compacted to: files[ 0 0 1 0 0 0 0 ]
+2022/11/11-16:44:39.185 2eb67 Delete type=2 #5
+2022/11/11-16:44:39.185 2eb67 Delete type=2 #8
+2022/11/11-19:22:46.584 359ad Level-0 table #11: started
+2022/11/11-19:22:46.622 359ad Level-0 table #11: 931081 bytes OK
+2022/11/11-19:22:46.625 359ad Delete type=0 #7
+2022/11/11-19:23:03.888 383a9 Compacting 1@1 + 1@2 files
+2022/11/11-19:23:03.894 383a9 Generated table #12@1: 306 keys, 27737 bytes
+2022/11/11-19:23:03.894 383a9 Compacted 1@1 + 1@2 files => 27737 bytes
+2022/11/11-19:23:03.896 383a9 compacted to: files[ 0 0 1 0 0 0 0 ]
+2022/11/11-19:23:03.896 383a9 Delete type=2 #11
+2022/11/11-19:23:03.896 383a9 Delete type=2 #9

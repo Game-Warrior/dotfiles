@@ -1,0 +1,125 @@
+/*
+Stolen from https://gist.github.com/ghosh/4f94cf497d7090359a5c9f81caf60699
+*/
+/**************************\
+  Basic Modal Styles
+\**************************/
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 15px;
+  width: 60vw;
+  height: 80vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  background-color: var(--modal-bg-color);
+  border-radius: 7px;
+  box-shadow: -1 3px 9px 0 rgba(0,0,0,.12);
+  border: 0px solid rgba(0,0,0,.21)
+}
+
+/* Modal */
+.modal__container {
+  height: 70vh;
+  color: var(--text-color);
+  font-size: var(--font-size);
+  padding: 15px 20px;
+}
+
+.modal__container .headline {
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--divider-color);
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.modal__container label {
+  display: block;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.modal__container input {
+  max-width: 350px;
+}
+
+.modal__close {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: auto;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  background: none;
+  box-shadow: none !important;
+}
+
+.modal__close:hover, .modal__close:focus {
+  background: none !important;
+  box-shadow: none !important;
+  border: 0;
+}
+
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
+}

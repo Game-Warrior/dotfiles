@@ -1,0 +1,378 @@
+{
+   "badged_color_label": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Couleur du compteur"
+   },
+   "blocked_html_body": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Ce site Internet a été bloqué par l’extension \u003Cb>ClearURLs\u003C/b> ; il est identifié comme étant problématique, soit publicitaire, soit d’espionnage ; vous pouvez désactiver temporairement le blocage du site soit dans les paramétres, soit dans l’extension afin de vous y connecter. Il vous faudra raffraichir la page, soit par le navigateur, soit avec le bouton ci-dessous."
+   },
+   "blocked_html_button": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Se connecter"
+   },
+   "blocked_html_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Site Internet bloqué par \u003Cb>ClearURLs\u003C/b>"
+   },
+   "check_os_log": {
+      "description": "Cette ligne est utilisée au démarrage du journal de ClearURL.",
+      "message": "[ClearURLs]: Une base de données pour les URL a été ajoutée"
+   },
+   "cleaning_tool_btn": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Nettoyer les URL"
+   },
+   "cleaning_tool_clean_urls_label": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Vous trouverez ici les URL nettoyées :"
+   },
+   "cleaning_tool_description": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Ici, vous pouvez déposer des URL et ClearURLs les nettoiera par un clic sur le bouton vert. Vous pouvez mettre plusieurs URL mais chaque URL devra être mise sur une ligne séparée."
+   },
+   "cleaning_tool_dirty_urls_label": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Coller ici les URL à nettoyer :"
+   },
+   "cleaning_tool_page_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Outil de nettoyage pour ClearURLs"
+   },
+   "clipboard_copy_link": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Copier l’URL sans les traqueurs"
+   },
+   "configs_switch_statistics": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Statistiques"
+   },
+   "configs_switch_statistics_title": {
+      "description": "Sert à afficher la descriptio de la fonction sur la page des options.",
+      "message": "Activer ou désactiver les statistiques"
+   },
+   "context_menu_enabled": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Activer ClearUrls dans le menu contextuel (le clic droit sur une page)"
+   },
+   "context_menu_enabled_title": {
+      "description": "pas nécessaire, seulement pour éviter les exceptions",
+      "message": " "
+   },
+   "core_error": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "[ClearURLs]: L’extension n’a pas pu démarrer."
+   },
+   "core_save_on_disk": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "[ClearURLs]: Sauvegarder sur le disque."
+   },
+   "domain_blocking_enabled": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Bloquer les atteintes à la vie privée. Cependant, des sites peuvent detecter cette technique et refuser de marcher délibérément voire même afficher des avertissements"
+   },
+   "domain_blocking_enabled_title": {
+      "description": "Cette ligne est utilisée comme titre pour le bouton de blocage de domaine.",
+      "message": "Autoriser le blocage par domaine (ex : example.com) ; peut poser des problèmes d'affichage sur des sites refusant les bloqueurs de contenu"
+   },
+   "donate_button": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Soutenir le créateur de ClearURLs."
+   },
+   "eTag_filtering_enabled": {
+      "description": "Titre par le bouton de filtrage ETag",
+      "message": "Filtrer ETag ; les sites mettent dans le cache du Navigateur, ou Système d’Exploitation, un identifiant pour vous espionner"
+   },
+   "eTag_filtering_enabled_title": {
+      "description": "Titre par le bouton de filtrage ETag",
+      "message": "Filtre les identifications ETag, vous devez vider le cache lors de la premiere utilisation"
+   },
+   "eTag_filtering_log": {
+      "description": "Utilisé par le journal de ClearUrls et indiquer ce qui a été nettoyé",
+      "message": "L’identification ETag a été supprimée"
+   },
+   "error_report_url": {
+      "description": "Note : actuellement non utilisé.",
+      "message": "Il semble que cette URL a déjà été signalé."
+   },
+   "extension_description": {
+      "description": "Description des fonctions ; utilisez maximum 132 caractères.",
+      "message": "Retirer les traqueurs dans les adresses Internet."
+   },
+   "hash_status_code_1": {
+      "description": "Les règles ClearURLs sont à jour.",
+      "message": "à jour"
+   },
+   "hash_status_code_2": {
+      "description": "Cela indique la réussite des mises à jour des règles de ClearURLs.",
+      "message": "mis à jour"
+   },
+   "hash_status_code_3": {
+      "description": "Une mise à jour des règles de ClearURLs est disponible.",
+      "message": "mise à jour disponible"
+   },
+   "hash_status_code_4": {
+      "description": "ClearURLs n’a pas pu démarrer correctement.",
+      "message": "erreur"
+   },
+   "hash_status_code_5": {
+      "description": "Un problème est survenu pendant la mis à jour des règles ClearURLs",
+      "message": "Oh non! Un problème est survenu!"
+   },
+   "history_listener_enabled": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Empêcher les sites d’aller fouiner dans l'historique. (\u003Ca href='https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Manipuler_historique_du_navigateur' target='_blank'>La méthode utilisée est replaceState()\u003C/a>)"
+   },
+   "local_hosts_skipping": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Ignorer les IP des hôtes locaux, Box, routeurs, serveurs, etc. (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 100.64.0.0/10, 169.254.0.0/16, 127.0.0.1, localhost)"
+   },
+   "local_hosts_skipping_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Ignorer les IP ou URL sur les hôtes locaux, Box, routeur, serveur ..."
+   },
+   "log_domain_blocked": {
+      "description": "Cette ligne est pour les domaines bloqués dans le journal de ClearURLs.",
+      "message": "Ce domaine est bloqué"
+   },
+   "log_html_export_button": {
+      "description": "Cette ligne est utilisée pour le bouton d'exportation sur la page du journal.",
+      "message": "Exporter"
+   },
+   "log_html_export_button_title": {
+      "description": "Cette ligne est utilisée comme titre pour le bouton d'exportation de la page du journal.",
+      "message": "Exporter le journal"
+   },
+   "log_html_import_button": {
+      "description": "Cette ligne est utilisée pour le bouton d'importation sur la page de journal.",
+      "message": "Importer"
+   },
+   "log_html_import_button_title": {
+      "description": "Cette ligne est utilisée comme titre pour le bouton d'importation sur la page de journal.",
+      "message": "Importer le journal"
+   },
+   "log_html_page_title": {
+      "description": "Cette ligne est utilisée comme en-tête sur la page de journal.",
+      "message": "Journal d'événements de ClearURLs"
+   },
+   "log_html_reset_button": {
+      "description": "Cette ligne est utilisée comme titre de tableau sur la page du journal.",
+      "message": "Remise à zéro"
+   },
+   "log_html_reset_button_title": {
+      "description": "Cette ligne est utilisée comme titre pour le bouton de réinitialisation sur la page de journal.",
+      "message": "Réinitialiser entièrement le journal"
+   },
+   "log_html_table_head_1": {
+      "description": "Cette ligne est utilisée comme titre de tableau sur la page du journal.",
+      "message": "Avant traitement"
+   },
+   "log_html_table_head_2": {
+      "description": "Cette ligne est utilisée comme titre de tableau sur la page du journal.",
+      "message": "Après traitement"
+   },
+   "log_html_table_head_3": {
+      "description": "Cette ligne est utilisée comme titre de tableau sur la page du journal.",
+      "message": "Règle"
+   },
+   "log_html_table_head_4": {
+      "description": "Cette ligne est utilisée comme titre de tableau sur la page du journal.",
+      "message": "Date"
+   },
+   "log_ping_blocked": {
+      "description": "Cette ligne est utilisée pour de l'audit (espionnage) des liens hypertextes dans le journal ClearURLs.",
+      "message": "Bloquer l'audit des clics souris sur les liens hypertextes"
+   },
+   "log_redirect": {
+      "description": "Cette ligne est pour les redirections par le protocole ClearURL.",
+      "message": "Cette URL a été redirigée"
+   },
+   "ping_blocking_enabled": {
+      "description": "Utilisé pour le bouton activer/désactiver l'audit (espionnages) des liens hypertextes.",
+      "message": "Bloquer l'audit des clics souris sur les liens hypertextes (voyez \u003Ca href='https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing' target='_blank'>cet article en anglais\u003C/a>)"
+   },
+   "ping_blocking_enabled_title": {
+      "description": "Utilisé comme titre pour le bouton de l’audit des liens hypertextes.",
+      "message": "Bloquer l’espionnage par audit"
+   },
+   "popup_html_configs_head": {
+      "description": "Cette ligne est utilisée comme titre pour les paramétres de la page des options.",
+      "message": "Paramétres"
+   },
+   "popup_html_configs_head_title": {
+      "description": "pas nécessaire, seulement pour éviter les exceptions",
+      "message": " "
+   },
+   "popup_html_configs_switch_badges": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Compteur"
+   },
+   "popup_html_configs_switch_badges_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Afficher le nombre d'URL nettoyées"
+   },
+   "popup_html_configs_switch_filter": {
+      "description": "Cette ligne est utilisée comme nom pour le bouton de changement de filtre de la page des options.",
+      "message": "Filtre"
+   },
+   "popup_html_configs_switch_filter_title": {
+      "description": "Cette ligne est utilisée comme titre pour le bouton de changement de filtre sur la page des options.",
+      "message": "L'interrupteur de l'extension active ou désactive la fonction de nettoyage de ClearURLs"
+   },
+   "popup_html_configs_switch_log": {
+      "description": "Cette ligne est utilisée comme nom pour le bouton du interrupteur de journalisation d'evenements sur la page des options.",
+      "message": "Journalisation"
+   },
+   "popup_html_configs_switch_log_title": {
+      "description": "Cette ligne est utilisée comme titre pour le bouton du interrupteur de journalisation sur la page des options.",
+      "message": "Le journal est sauvé localement. Si vous n’avez pas besoin de le consulter, nous vous déconseillons de l'activer."
+   },
+   "popup_html_log_head": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Journal"
+   },
+   "popup_html_log_head_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Consulter le journal"
+   },
+   "popup_html_report_button": {
+      "description": "Annotation : actuellement non utilisé.",
+      "message": "Signaler cette URL"
+   },
+   "popup_html_report_button_title": {
+      "description": "actuellement non utilisé.",
+      "message": "Signaler un problème sur cette URL"
+   },
+   "popup_html_rules_status_head": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Règles de la base de données"
+   },
+   "popup_html_rules_status_head_title": {
+      "description": "pas nécessaire, seulement pour éviter les exceptions",
+      "message": " "
+   },
+   "popup_html_statistics_blocked": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Nb. de bloqués"
+   },
+   "popup_html_statistics_blocked_title": {
+      "description": "pas nécessaire, seulement pour éviter les exceptions",
+      "message": " "
+   },
+   "popup_html_statistics_elements": {
+      "description": "Sert à afficher la  de la fonction sur la page des options.",
+      "message": "Éléments"
+   },
+   "popup_html_statistics_elements_title": {
+      "description": "pas nécessaire, seulement pour éviter les exceptions",
+      "message": " "
+   },
+   "popup_html_statistics_head": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Statistiques"
+   },
+   "popup_html_statistics_head_title": {
+      "description": "pas nécessaire, seulement pour éviter les exceptions",
+      "message": " "
+   },
+   "popup_html_statistics_percentage": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Pourcentage"
+   },
+   "popup_html_statistics_percentage_title": {
+      "description": "pas nécessaire, seulement pour éviter les exceptions",
+      "message": " "
+   },
+   "popup_html_statistics_reset_button": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Remettre à zéro"
+   },
+   "popup_html_statistics_reset_button_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Remettre à zéro les statistiques globales"
+   },
+   "referral_marketing_enabled": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Permettre certaines actions commerciales"
+   },
+   "referral_marketing_enabled_title": {
+      "description": "Sert à afficher la description de la fonction sur la switch.",
+      "message": "Permettre certaines actions commerciales"
+   },
+   "setting_hash_url_label": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "L'URL du fichier rules.hash (signature de contrôle)"
+   },
+   "setting_html_export_button": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Exporter"
+   },
+   "setting_html_export_button_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Tout exporter"
+   },
+   "setting_html_import_button": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Importer"
+   },
+   "setting_html_import_button_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Tout importer"
+   },
+   "setting_html_reset_button": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Remettre à l’état initial"
+   },
+   "setting_html_reset_button_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Réinitialisation de tous les paramètres"
+   },
+   "setting_log_limit_label": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Nombre d’éléments à enregistrer dans le journal, $LIMIT$ de -1 à l’infini",
+      "placeholders": {
+         "limit": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "setting_report_server_label": {
+      "description": "Note : actuellement non utilisé.",
+      "message": "Serveur pour signaler des URL"
+   },
+   "setting_rule_url_label": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "L'URL du fichier data.json (règles)"
+   },
+   "setting_types_label": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "\u003Ca href='https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType' target='_blank'>Types de requête (webRequest)\u003C/a> (niveau expert)"
+   },
+   "settings_html_page_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Paramétrages de ClearURLs"
+   },
+   "settings_html_save_button": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Sauvegarder et redémarrer l’extension"
+   },
+   "settings_html_save_button_title": {
+      "description": "Sert à afficher la description de la fonction sur la page des options.",
+      "message": "Sauvegarde les paramétres"
+   },
+   "success_report_url": {
+      "description": "Note : actuellement non utilisé.",
+      "message": "Nous avons reçu votre signalement. Nous allons vérifier cette URL."
+   },
+   "watchdog": {
+      "description": "Utilisé pour la description du Watchdog.",
+      "message": "[ClearURLs]: Watchdog, très petit programme qui surveille les attaques de la mémoire vive, a détecté $TIMES$ problème(s)",
+      "placeholders": {
+         "times": {
+            "content": "$1",
+            "example": "3"
+         }
+      }
+   }
+}

@@ -1,0 +1,378 @@
+{
+   "badged_color_label": {
+      "description": "Deze tekenreeks wordt gebruikt als label van de embleemkleur.",
+      "message": "Embleemkleur"
+   },
+   "blocked_html_body": {
+      "description": "Deze tekenreeks wordt gebruikt als inhoud van de geblokkeerde pagina.",
+      "message": "Deze site is geblokkeerd door de \u003Cb>ClearURLs\u003C/b>-add-on omdat deze herkend is als een advertentie- en/of trackingdienst. Om deze site tóch te bezoeken, moet je de add-on tijdelijk uitschakelen of het blokkeren van domeinen uitschakelen in de instellingen. Klik daarna op onderstaande knop om de pagina te herladen."
+   },
+   "blocked_html_button": {
+      "description": "Deze tekenreeks wordt gebruikt als knop op de geblokkeerde pagina.",
+      "message": "Pagina bezoeken"
+   },
+   "blocked_html_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de geblokkeerde pagina.",
+      "message": "Deze site is geblokkeerd door \u003Cb>ClearURLs\u003C/b>"
+   },
+   "check_os_log": {
+      "description": "Deze tekenreeks wordt gebruikt zodra het aanleggen van het ClearURLs-logboek begonnen is.",
+      "message": "[ClearURLs]: Logboek is toegevoegd"
+   },
+   "cleaning_tool_btn": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de opschoonknop.",
+      "message": "URL's opschonen"
+   },
+   "cleaning_tool_clean_urls_label": {
+      "description": "Deze tekenreeks wordt gebruikt als naam op de opschoonpagina kopiëren van opgeschoonde url's.",
+      "message": "Hier vind je de opgeschoonde url's:"
+   },
+   "cleaning_tool_description": {
+      "description": "Deze tekenreeks wordt gebruikt als omschrijving van het opschoongereedschap.",
+      "message": "Met dit hulpmiddel kun je url's plakken die ClearURLs met één klik op de groene knop voor je opschoont. Je kunt meerdere url's plakken (één per regel)."
+   },
+   "cleaning_tool_dirty_urls_label": {
+      "description": "Deze tekenreeks wordt gebruikt als naam op de opschoonpagina voor het plakken van tracking-url's.",
+      "message": "Plak hier de tracking-url's:"
+   },
+   "cleaning_tool_page_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de opschoongereedschapspagina.",
+      "message": "ClearURLs-opschoongereedschap"
+   },
+   "clipboard_copy_link": {
+      "description": "Deze tekenreeks wordt gebruikt in het rechtermuisknopmenu om opgeschoonde links te kopiëren.",
+      "message": "Opgeschoonde link kopiëren"
+   },
+   "configs_switch_statistics": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de statistiekenknop op de pop-uppagina.",
+      "message": "Statistieken"
+   },
+   "configs_switch_statistics_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de statistiekenknop op de pop-uppagina.",
+      "message": "Statistieken bijhouden in-/uitschakelen"
+   },
+   "context_menu_enabled": {
+      "description": "Deze tekenreeks wordt gebruikt in het rechtermuisknopmenu om opgeschoonde links te kopiëren.",
+      "message": "Rechtermuisknopmenu-item tonen"
+   },
+   "context_menu_enabled_title": {
+      "description": "onnodig - alleen om uitzonderingen te voorkomen",
+      "message": " "
+   },
+   "core_error": {
+      "description": "Deze tekenreeks wordt gebruikt om te melden dat ClearURLs niet kan worden gestart.",
+      "message": "[ClearURLs]: De add-on kan niet worden gestart."
+   },
+   "core_save_on_disk": {
+      "description": "Deze tekenreeks wordt gebruikt om te melden dat de instellingen zijn opgeslagen op de schijf.",
+      "message": "[ClearURLs]: Opgeslagen op schijf."
+   },
+   "domain_blocking_enabled": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de domeinblokkerknop",
+      "message": "Blokkeren van domeinen toestaan (dit kan problemen veroorzaken op pagina's die geen advertentieblokkering niet toestaan)"
+   },
+   "domain_blocking_enabled_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de domeinblokkerknop",
+      "message": "Blokkeren van domeinen toestaan (dit kan problemen veroorzaken op pagina's die geen advertentieblokkering niet toestaan)"
+   },
+   "donate_button": {
+      "description": "Deze tekenreeks wordt gebruikt om te verwijzen naar de donatiepagina.",
+      "message": "Een donatie aan de ClearURLs-ontwikkelaar."
+   },
+   "eTag_filtering_enabled": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de ETag-kopfilteringknop",
+      "message": "Filter 'ETag-koppen' uit verzoeken (zie \u003Ca href='https://en.wikipedia.org/wiki/HTTP_ETag#Tracking_using_ETags' target='_blank'>dit artikel\u003C/a>)"
+   },
+   "eTag_filtering_enabled_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de ETag-kopfilteringknop",
+      "message": "Filter 'ETag-koppen'. Tip: leeg de cache alvorens het eerste gebruik."
+   },
+   "eTag_filtering_log": {
+      "description": "Deze tekenreeks wordt gebruikt bij ETag-kopfiltering in het logboek.",
+      "message": "De 'ETag-kop' is verwijderd uit dit verzoek"
+   },
+   "error_report_url": {
+      "description": "Opm.: wordt momenteel niet gebruikt.",
+      "message": "Het lijkt er op dat deze url al gemeld is."
+   },
+   "extension_description": {
+      "description": "Add-onomschrijving (max. 132 tekens)",
+      "message": "Verwijder trackingelementen uit url's."
+   },
+   "hash_status_code_1": {
+      "description": "Deze statuscode betekent dat er geen update voor de ClearURLs-regels beschikbaar is. Alles is up-to-date.",
+      "message": "up-to-date"
+   },
+   "hash_status_code_2": {
+      "description": "Deze statuscode betekent dat de ClearURLs-regels volledig geüpdatet zijn.",
+      "message": "geüpdatet"
+   },
+   "hash_status_code_3": {
+      "description": "Deze statuscode betekent dat er een update beschikbaar is voor de ClearURLs-regels.",
+      "message": "update beschikbaar"
+   },
+   "hash_status_code_4": {
+      "description": "Deze statuscode betekent dat ClearURLs niet correct gestart kan worden.",
+      "message": "foutmelding"
+   },
+   "hash_status_code_5": {
+      "description": "Deze statuscode betekent dat er iets mis is gegaan tijdens het updaten van de ClearURLs-regels.",
+      "message": "Oeps, er is iets misgegaan!"
+   },
+   "history_listener_enabled": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van het geschiedenis-api-label.",
+      "message": "Voorkom trackinginjectie middels de geschiedenis-api (zie: \u003Ca href='https://developer.mozilla.org/en-US/docs/Web/API/History_API#The_replaceState()_method' target='_blank'>replaceState()-methode\u003C/a>)"
+   },
+   "local_hosts_skipping": {
+      "description": "Deze tekenreeks wordt gebruikt als label van de lokalehostknop",
+      "message": "URL's op lokale hosts (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 100.64.0.0/10, 169.254.0.0/16, 127.0.0.1, localhost) overslaan"
+   },
+   "local_hosts_skipping_title": {
+      "description": "Deze tekenreeks wordt gebruikt als label van de lokalehostknop",
+      "message": "Sla url's op lokale hosts over"
+   },
+   "log_domain_blocked": {
+      "description": "Deze tekenreeks wordt gebruikt in het ClearURLs-logboek voor geblokkeerde domeinen.",
+      "message": "Dit domein wordt geblokkeerd"
+   },
+   "log_html_export_button": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de exportknop op de logboekpagina.",
+      "message": "Exporteren"
+   },
+   "log_html_export_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de exportknop op de logboekpagina.",
+      "message": "Exporteer het globale logboek"
+   },
+   "log_html_import_button": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de importknop op de logboekpagina.",
+      "message": "Importeren"
+   },
+   "log_html_import_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de importknop op de logboekpagina.",
+      "message": "Importeer het globale logboek"
+   },
+   "log_html_page_title": {
+      "description": "Deze tekenreeks wordt gebruikt als titel van het logboek.",
+      "message": "ClearURLs-logboek"
+   },
+   "log_html_reset_button": {
+      "description": "Deze tekenreeks wordt gebruikt bij de standaardwaardenknop in het logboek.",
+      "message": "Standaardwaarden"
+   },
+   "log_html_reset_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de standaardwaardenknop in het logboek.",
+      "message": "Zet het logboek terug op de standaardwaarde"
+   },
+   "log_html_table_head_1": {
+      "description": "Deze tekenreeks wordt gebruikt als tabeltitel in het logboek.",
+      "message": "Vóór verwerking"
+   },
+   "log_html_table_head_2": {
+      "description": "Deze tekenreeks wordt gebruikt als tabeltitel in het logboek.",
+      "message": "Ná verwerking"
+   },
+   "log_html_table_head_3": {
+      "description": "Deze tekenreeks wordt gebruikt als tabeltitel in het logboek.",
+      "message": "Regel"
+   },
+   "log_html_table_head_4": {
+      "description": "Deze tekenreeks wordt gebruikt als tabeltitel in het logboek.",
+      "message": "Tijd"
+   },
+   "log_ping_blocked": {
+      "description": "Deze tekenreeks wordt gebruikt bij 'hyperlink auditing' in het logboek.",
+      "message": "Deze 'hyperlink auditing' is geblokkeerd"
+   },
+   "log_redirect": {
+      "description": "Deze tekenreeks wordt gebruikt in het ClearURLs-logboek om doorverwijzingen aan te geven.",
+      "message": "Deze url werd doorgestuurd"
+   },
+   "ping_blocking_enabled": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de hyperlink-auditingknop",
+      "message": "'Hyperlink auditing\" blokkeren (zie \u003Ca href='https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing' target='_blank'>dit artikel\u003C/a>)"
+   },
+   "ping_blocking_enabled_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de hyperlink-auditing-klokkerknop",
+      "message": "'Hyperlink auditing\" blokkeren"
+   },
+   "popup_html_configs_head": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de instellingen op de pop-uppagina.",
+      "message": "Instellingen"
+   },
+   "popup_html_configs_head_title": {
+      "description": "onnodig - alleen om uitzonderingen te voorkomen",
+      "message": " "
+   },
+   "popup_html_configs_switch_badges": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de embleemknop op de pop-uppagina.",
+      "message": "Emblemen"
+   },
+   "popup_html_configs_switch_badges_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de embleemknop op de pop-uppagina.",
+      "message": "Aantal opgeschoonde url's tonen"
+   },
+   "popup_html_configs_switch_filter": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de filterknop op de pop-uppagina.",
+      "message": "Filter"
+   },
+   "popup_html_configs_switch_filter_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de filterknop op de pop-uppagina.",
+      "message": "De filterknop activeert de opschoonfunctionaliteit van ClearURLs. Als je deze uitschakelt, dan schakel je de hele add-on uit."
+   },
+   "popup_html_configs_switch_log": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de logknop op de pop-uppagina.",
+      "message": "Loggen"
+   },
+   "popup_html_configs_switch_log_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de logknop op de pop-uppagina.",
+      "message": "Het logboek wordt alleen lokaal bewaard. We raden aan dit uit te laten staan als je het niet nodig hebt."
+   },
+   "popup_html_log_head": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de logboekknop op de pop-uppagina.",
+      "message": "Logboek"
+   },
+   "popup_html_log_head_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de logboekknop op de pop-uppagina.",
+      "message": "Logboek openen"
+   },
+   "popup_html_report_button": {
+      "description": "Opm.: wordt momenteel niet gebruikt.",
+      "message": "Huidige url melden"
+   },
+   "popup_html_report_button_title": {
+      "description": "Wordt momenteel niet gebruikt.",
+      "message": "Meld de url van het huidige tabblad."
+   },
+   "popup_html_rules_status_head": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de regelstatussectie op de pop-uppagina.",
+      "message": "Regelstatus"
+   },
+   "popup_html_rules_status_head_title": {
+      "description": "onnodig - alleen om uitzonderingen te voorkomen",
+      "message": " "
+   },
+   "popup_html_statistics_blocked": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van het aantal geblokkeerde elementen op de pop-uppagina.",
+      "message": "Geblokkeerd"
+   },
+   "popup_html_statistics_blocked_title": {
+      "description": "onnodig - alleen om uitzonderingen te voorkomen",
+      "message": " "
+   },
+   "popup_html_statistics_elements": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de elementen op de pop-uppagina.",
+      "message": "Elementen"
+   },
+   "popup_html_statistics_elements_title": {
+      "description": "onnodig - alleen om uitzonderingen te voorkomen",
+      "message": " "
+   },
+   "popup_html_statistics_head": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de statistieken op de pop-uppagina.",
+      "message": "Statistieken"
+   },
+   "popup_html_statistics_head_title": {
+      "description": "onnodig - alleen om uitzonderingen te voorkomen",
+      "message": " "
+   },
+   "popup_html_statistics_percentage": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van het percentage geblokkeerde elementen op de pop-uppagina.",
+      "message": "Percentage"
+   },
+   "popup_html_statistics_percentage_title": {
+      "description": "onnodig - alleen om uitzonderingen te voorkomen",
+      "message": " "
+   },
+   "popup_html_statistics_reset_button": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de standaardwaardenknop op de pop-uppagina.",
+      "message": "Standaardwaarden"
+   },
+   "popup_html_statistics_reset_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de standaardwaardenknop op de pop-uppagina.",
+      "message": "Herstel de globale statistieken"
+   },
+   "referral_marketing_enabled": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de doorverwijzingsmarketingknop",
+      "message": "Doorverwijzingsmarketing toestaan"
+   },
+   "referral_marketing_enabled_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de doorverwijzingsmarketingknop",
+      "message": "Doorverwijzingsmarketing toestaan"
+   },
+   "setting_hash_url_label": {
+      "description": "Deze tekenreeks wordt gebruikt als label van de rule.hash-url.",
+      "message": "De url naar het rules.hash-bestand (hash)"
+   },
+   "setting_html_export_button": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de exportknop op de instellingenpagina.",
+      "message": "Exporteren"
+   },
+   "setting_html_export_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de exportknop op de instellingenpagina.",
+      "message": "Exporteer alles"
+   },
+   "setting_html_import_button": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de importknop op de instellingenpagina.",
+      "message": "Importeren"
+   },
+   "setting_html_import_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de importknop op de instellingenpagina.",
+      "message": "Importeer alles"
+   },
+   "setting_html_reset_button": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de stardaardwaardetknop op de instellingenpagina.",
+      "message": "Standaardwaarden"
+   },
+   "setting_html_reset_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de standaardwaardenknop op de instellingenpagina.",
+      "message": "Zet alles terug"
+   },
+   "setting_log_limit_label": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van het logboek-beperkingslabel.",
+      "message": "Beperk het logboek tot $LIMIT$ regels.",
+      "placeholders": {
+         "limit": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "setting_report_server_label": {
+      "description": "Opm.: wordt momenteel niet gebruikt.",
+      "message": "Meldingsserver voor url's"
+   },
+   "setting_rule_url_label": {
+      "description": "Deze tekenreeks wordt gebruikt als label van de regel-url.",
+      "message": "De url naar het data.json-bestand (regels)"
+   },
+   "setting_types_label": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de soorten verzoeken.",
+      "message": "\u003Ca href='https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType' target='_blank'>Soorten verzoeken\u003C/a> (voor ervaren gebruikers)"
+   },
+   "settings_html_page_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de instellingenpagina.",
+      "message": "ClearURLs-instellingen"
+   },
+   "settings_html_save_button": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de knop 'Opslaan en herladen' op de instellingenpagina.",
+      "message": "Add-on opslaan en herladen"
+   },
+   "settings_html_save_button_title": {
+      "description": "Deze tekenreeks wordt gebruikt als naam van de knop 'Opslaan en herladen' op de instellingenpagina.",
+      "message": "Slaat de instellingen op"
+   },
+   "success_report_url": {
+      "description": "Opm.: wordt momenteel niet gebruikt.",
+      "message": "De url is gemeld - we controleren deze z.s.m."
+   },
+   "watchdog": {
+      "description": "Deze tekenreeks wordt gebruikt als tekst bij de 'watchdog'",
+      "message": "[ClearURLs]: De 'watchdog' is tegen een probleem aangelopen en is al $TIMES$ keer mislukt.",
+      "placeholders": {
+         "times": {
+            "content": "$1",
+            "example": "3"
+         }
+      }
+   }
+}

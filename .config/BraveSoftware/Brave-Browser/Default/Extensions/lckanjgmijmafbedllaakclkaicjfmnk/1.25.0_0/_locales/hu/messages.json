@@ -1,0 +1,378 @@
+{
+   "badged_color_label": {
+      "description": "This string is used as name for the badged color label.",
+      "message": "Jelvény színe"
+   },
+   "blocked_html_body": {
+      "description": "Blokkolt oldal szövege",
+      "message": "Ezt az oldalt a \u003Cb>ClearURLs\u003C/b> bővítmény blokkolta mert úgy véltük hogy ez az oldal egy hirdető és/vagy követő szolgáltatás. Ha látni szeretnéd az oldalt akkor ideiglenesen kapcsold ki a bővítményt vagy kapcsold ki a domain blokkolást a beállításokban, azután pedig klikkelj lejjebb lévő gombra."
+   },
+   "blocked_html_button": {
+      "description": "Blokkolt oldal gomb",
+      "message": "Oldal meglátogatása"
+   },
+   "blocked_html_title": {
+      "description": "Blokkolt oldalak címe",
+      "message": "Ezt az oldalt blokkolta a \u003Cb>ClearURLs\u003C/b>"
+   },
+   "check_os_log": {
+      "description": "Naplózás elindult",
+      "message": "[ClearURLs]: naplózás elindult."
+   },
+   "cleaning_tool_btn": {
+      "description": "This string is used as name for the clean url button.",
+      "message": "URL tisztítás"
+   },
+   "cleaning_tool_clean_urls_label": {
+      "description": "This string is used as title on the cleaning tool page for the clean URLs.",
+      "message": "Itt láthatod a tisztított URL-eket:"
+   },
+   "cleaning_tool_description": {
+      "description": "This string is used as description of the cleaning tool.",
+      "message": "Az ide beillesztett URL-eket megtisztíthatod a ClearURLs segítségével, ha a zöld gombra nyomsz. Egyszerre több URL-t is megadhatsz, de a címeket soronként kell beírnod."
+   },
+   "cleaning_tool_dirty_urls_label": {
+      "description": "This string is used as title on the cleaning tool page for the dirty URLs.",
+      "message": "Itt adhatod meg az URL-eket:"
+   },
+   "cleaning_tool_page_title": {
+      "description": "This string is used as title on the cleaning tool page.",
+      "message": "Tisztító eszköz a ClearURLs-től"
+   },
+   "clipboard_copy_link": {
+      "description": "This string is used in the context menu to copy clean links.",
+      "message": "Tisztított link másolása"
+   },
+   "configs_switch_statistics": {
+      "description": "This string is used as name for the statistics switch button on the popup page.",
+      "message": "Statisztika"
+   },
+   "configs_switch_statistics_title": {
+      "description": "This string is used as title for the statistics switch button on the popup page.",
+      "message": "Statisztika funkció aktiválása, letiltása"
+   },
+   "context_menu_enabled": {
+      "description": "This string is used toggle the context menu entry to copy clean links.",
+      "message": "Környezeti menü elemei"
+   },
+   "context_menu_enabled_title": {
+      "description": "nem szükséges",
+      "message": "␣"
+   },
+   "core_error": {
+      "description": "This string is used to tell the user, that ClearURLs could not be started.",
+      "message": "[ClearURLs]: a bővítmény nem tudott elindulni."
+   },
+   "core_save_on_disk": {
+      "description": "This string is used to tell the user, that ClearURLs saved the settings on disk.",
+      "message": "[ClearURLs]: elmentve a lemezre."
+   },
+   "domain_blocking_enabled": {
+      "description": "Domain blokkolás kapcsoló",
+      "message": "Domain blokkolás bekapcsolása (AdBlockert tiltó oldalakon problémákhoz vezethet)"
+   },
+   "domain_blocking_enabled_title": {
+      "description": "Domain blokkolás kapcsoló tooltip",
+      "message": "Domain blokkolás bekapcsolása (AdBlockert tiltó oldalakon problémákhoz vezethet)"
+   },
+   "donate_button": {
+      "description": "This string is used to refer to a donation page.",
+      "message": "Adomány a ClearURLs készítőjének."
+   },
+   "eTag_filtering_enabled": {
+      "description": "ETag fejléc szűrő kapcsoló",
+      "message": "ETag fejlécek szűrése a kérésekben (Több infó: \u003Ca href='https://en.wikipedia.org/wiki/HTTP_ETag#Tracking_using_ETags' target='_blank'>this article\u003C/a>)"
+   },
+   "eTag_filtering_enabled_title": {
+      "description": "ETag fejléc szűrő kapcsoló tooltip",
+      "message": "ETag fejlécek kiszűréséhez. Tipp: Ürítsd ki a cache-t első használat előtt."
+   },
+   "eTag_filtering_log": {
+      "description": "ETag fejléc szűrése naplózásban",
+      "message": "ETag fejléc eltávolítva a kérésből"
+   },
+   "error_report_url": {
+      "description": "Megjegyzés: Jelenleg nincs használva.",
+      "message": "Úgy tűnik hogy ez a webcím már jelentve van."
+   },
+   "extension_description": {
+      "description": "Bővítmény leírása (max. 132 karakter)",
+      "message": "Követő elemek eltávolítása a webcímekből."
+   },
+   "hash_status_code_1": {
+      "description": "Ez az állapotkód jelzi, hogy nem elérhető frissítés ClearURLs szabályokra és minden naprakész",
+      "message": "naprakész"
+   },
+   "hash_status_code_2": {
+      "description": "Ez az állapotkód jelzi, hogy a ClearURLs szabályok sikeresen frissítve.",
+      "message": "frissítve"
+   },
+   "hash_status_code_3": {
+      "description": "Ez az állapotkód jelzi, hogy frissítés érhető el a ClearURLs szabályokra.",
+      "message": "frissítés érhető el"
+   },
+   "hash_status_code_4": {
+      "description": "Ez az állapotkód jelzi, hogy a ClearURLs-t nem lehetett elindítani rendesen.",
+      "message": "hiba"
+   },
+   "hash_status_code_5": {
+      "description": "Ez az állapotkód jelzi, hogy a hiba történt a ClearURLs szabályok frissítése közben.",
+      "message": "Hoppá, valami nincs rendben!"
+   },
+   "history_listener_enabled": {
+      "description": "History API",
+      "message": "History API követés injekció megakadályozása (Több infó: \u003Ca href='https://developer.mozilla.org/en-US/docs/Web/API/History_API#The_replaceState()_method' target='_blank'>The replaceState() method\u003C/a>)"
+   },
+   "local_hosts_skipping": {
+      "description": "Localhost címek átugrása",
+      "message": "Magánhálózati URL-k mellőzése (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 100.64.0.0/10, 169.254.0.0/16, 127.0.0.1, localhost)"
+   },
+   "local_hosts_skipping_title": {
+      "description": "Localhost címek átugrása tooltip",
+      "message": "Magánhálózati címeket mellőzi"
+   },
+   "log_domain_blocked": {
+      "description": "This string is used on blocked domains in the ClearURLs log.",
+      "message": "A domain blokkolva"
+   },
+   "log_html_export_button": {
+      "description": "Ez a string a napló exportálás gomb címe a naplózási oldalon.",
+      "message": "Export"
+   },
+   "log_html_export_button_title": {
+      "description": "Ez a string a globális napló exportálása gomb címe a naplózási oldalon.",
+      "message": "Globális napló exportálása"
+   },
+   "log_html_import_button": {
+      "description": "Import gomb a naplózási oldalon",
+      "message": "Import"
+   },
+   "log_html_import_button_title": {
+      "description": "Import gomb a naplózási oldalon tooltip",
+      "message": "Globális napló importálása"
+   },
+   "log_html_page_title": {
+      "description": "Naplózás oldal fejléce",
+      "message": "ClearURLs napló"
+   },
+   "log_html_reset_button": {
+      "description": "This string is used for the reset button on the log page.",
+      "message": "Nullázás"
+   },
+   "log_html_reset_button_title": {
+      "description": "This string is used as title for the reset button on the log page.",
+      "message": "Teljes napló törlése"
+   },
+   "log_html_table_head_1": {
+      "description": "Tábla címe a naplózás oldalon",
+      "message": "Feldolgozás előtt"
+   },
+   "log_html_table_head_2": {
+      "description": "This string is used as table title on the log page.",
+      "message": "Feldolgozást követően"
+   },
+   "log_html_table_head_3": {
+      "description": "This string is used as table title on the log page.",
+      "message": "Szabály"
+   },
+   "log_html_table_head_4": {
+      "description": "This string is used as table title on the log page.",
+      "message": "Idő"
+   },
+   "log_ping_blocked": {
+      "description": "Hyperlink vizsgálat naplózási oldalon",
+      "message": "Ez a hyperlink vizsgálat blokkolva"
+   },
+   "log_redirect": {
+      "description": "This string is used on redirections in the ClearURLs log.",
+      "message": "Ez az url átirányítva"
+   },
+   "ping_blocking_enabled": {
+      "description": "Hyperlink vizsgálat kapcsoló",
+      "message": "Hyperlink vizsgálat blokkolása (Több infó: \u003Ca href='https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing' target='_blank'>this article\u003C/a>)"
+   },
+   "ping_blocking_enabled_title": {
+      "description": "Hyperlink vizsgálat kapcsoló tooltip",
+      "message": "Hyperlink vizsgálat blokkolása"
+   },
+   "popup_html_configs_head": {
+      "description": "This string is used as title for the configs on the popup page.",
+      "message": "Beállítások"
+   },
+   "popup_html_configs_head_title": {
+      "description": "nem szükséges",
+      "message": "␣"
+   },
+   "popup_html_configs_switch_badges": {
+      "description": "This string is used as name for the badges switch button on the popup page.",
+      "message": "Jelvények"
+   },
+   "popup_html_configs_switch_badges_title": {
+      "description": "This string is used as title for the badges switch button on the popup page.",
+      "message": "Mutassa a tisztított URL-ek számát"
+   },
+   "popup_html_configs_switch_filter": {
+      "description": "This string is used as name for the filter switch button on the popup page.",
+      "message": "Szűrők"
+   },
+   "popup_html_configs_switch_filter_title": {
+      "description": "This string is used as title for the filter switch button on the popup page.",
+      "message": "A Szűrők kapcsoló aktiválja a ClearURLs tisztítás funkcióját. Ha kikapcsolod, akkor az egész bővítmény működése leáll."
+   },
+   "popup_html_configs_switch_log": {
+      "description": "This string is used as name for the logging switch button on the popup page.",
+      "message": "Naplózás"
+   },
+   "popup_html_configs_switch_log_title": {
+      "description": "This string is used as title for the logging switch button on the popup page.",
+      "message": "A napló helyileg lesz elmentve. Ha nincs rá szükséged inkább ne kapcsold be."
+   },
+   "popup_html_log_head": {
+      "description": "This string is used as name for the log button on the popup page.",
+      "message": "Napló"
+   },
+   "popup_html_log_head_title": {
+      "description": "This string is used as title for the log button on the popup page.",
+      "message": "Napló megnyitása"
+   },
+   "popup_html_report_button": {
+      "description": "Note: Currently not used.",
+      "message": "Aktív URL jelentése"
+   },
+   "popup_html_report_button_title": {
+      "description": "Currently not used.",
+      "message": "Jelenlegi fül URL címének jelentése."
+   },
+   "popup_html_rules_status_head": {
+      "description": "This string is used as title for the rules-status section on the popup page.",
+      "message": "Szabályok állapota"
+   },
+   "popup_html_rules_status_head_title": {
+      "description": "nem szükséges",
+      "message": "␣"
+   },
+   "popup_html_statistics_blocked": {
+      "description": "This string is used as name for the blocked elements on the popup page.",
+      "message": "Blokkolva"
+   },
+   "popup_html_statistics_blocked_title": {
+      "description": "nem szükséges",
+      "message": "␣"
+   },
+   "popup_html_statistics_elements": {
+      "description": "This string is used as name for the elements on the popup page.",
+      "message": "Összes elem"
+   },
+   "popup_html_statistics_elements_title": {
+      "description": "nem szükséges",
+      "message": "␣"
+   },
+   "popup_html_statistics_head": {
+      "description": "This string is used as title for the statistics on the popup page.",
+      "message": "Statisztika"
+   },
+   "popup_html_statistics_head_title": {
+      "description": "nem szükséges",
+      "message": "␣"
+   },
+   "popup_html_statistics_percentage": {
+      "description": "This string is used as name for the percentage of blocked elements on the popup page.",
+      "message": "Százalék"
+   },
+   "popup_html_statistics_percentage_title": {
+      "description": "nem szükséges",
+      "message": "␣"
+   },
+   "popup_html_statistics_reset_button": {
+      "description": "This string is used as name for the statistics reset button on the popup page.",
+      "message": "Nullázás"
+   },
+   "popup_html_statistics_reset_button_title": {
+      "description": "This string is used as title for the statistics reset button on the popup page.",
+      "message": "Teljes statisztika törlése"
+   },
+   "referral_marketing_enabled": {
+      "description": "Refferal marketing kapcsoló",
+      "message": "Refferal marketing engedélyezése"
+   },
+   "referral_marketing_enabled_title": {
+      "description": "Refferal marketing kapcsoló tooltip",
+      "message": "Engedélyezi a refferal marketinget"
+   },
+   "setting_hash_url_label": {
+      "description": "This string is used as name for the rule.hash url label.",
+      "message": "URL a rules.hash fájlhoz (hash)"
+   },
+   "setting_html_export_button": {
+      "description": "Export gomb a naplózási oldalon",
+      "message": "Export"
+   },
+   "setting_html_export_button_title": {
+      "description": "Export gomb a naplózási oldalon tooltip",
+      "message": "Minden exportálása"
+   },
+   "setting_html_import_button": {
+      "description": "Reset gomb beállítások oldalon",
+      "message": "Import"
+   },
+   "setting_html_import_button_title": {
+      "description": "Import gomb a beállitásokban tooltip",
+      "message": "Minden importálása"
+   },
+   "setting_html_reset_button": {
+      "description": "This string is used as name for the reset button on the settings page.",
+      "message": "Visszaállítás"
+   },
+   "setting_html_reset_button_title": {
+      "description": "This string is used as title for the reset button on the settings page.",
+      "message": "Minden visszaállítása alapértékre"
+   },
+   "setting_log_limit_label": {
+      "description": "Napló limit",
+      "message": "Napló korlátozása $LIMIT$ bevitelre.",
+      "placeholders": {
+         "limit": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "setting_report_server_label": {
+      "description": "Megjegyzés: Jelenleg nincs használva.",
+      "message": "Report szerver az URL-knek"
+   },
+   "setting_rule_url_label": {
+      "description": "This string is used as name for the rule url label.",
+      "message": "URL a data.json fájlhoz (szabályok)"
+   },
+   "setting_types_label": {
+      "description": "This string is used as name for the types label.",
+      "message": "\u003Ca href='https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType' target='_blank'>Request types\u003C/a> (haladó szint)"
+   },
+   "settings_html_page_title": {
+      "description": "This string is used as title on the settings page.",
+      "message": "ClearURLs beállításai"
+   },
+   "settings_html_save_button": {
+      "description": "This string is used as name for the save&reload button on the settings page.",
+      "message": "Mentés és bővítmény újraindítása"
+   },
+   "settings_html_save_button_title": {
+      "description": "This string is used as title for the save&reload button on the settings page.",
+      "message": "Beállítások elmentése"
+   },
+   "success_report_url": {
+      "description": "Megjegyzés: Jelenleg nincs használva.",
+      "message": "A webcím sikeresen jelentve. Hamarosan ellenőrizzük azt."
+   },
+   "watchdog": {
+      "description": "Watchdog szöveg",
+      "message": "[ClearURLs]: A watchdog problémába ütközött és már $TIMES$ sikertelen volt.",
+      "placeholders": {
+         "times": {
+            "content": "$1",
+            "example": "3"
+         }
+      }
+   }
+}

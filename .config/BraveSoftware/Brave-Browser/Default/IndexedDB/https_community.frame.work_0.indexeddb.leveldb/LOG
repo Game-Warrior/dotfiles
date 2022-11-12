@@ -1,0 +1,7 @@
+2022/09/10-11:43:40.482 1c25 Reusing MANIFEST /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_community.frame.work_0.indexeddb.leveldb/MANIFEST-000001
+2022/09/10-11:43:40.482 1c25 Recovering log #3
+2022/09/10-11:43:40.484 1c25 Reusing old log /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_community.frame.work_0.indexeddb.leveldb/000003.log 
+2022/09/10-11:46:56.115 ea3 Level-0 table #5: started
+2022/09/10-11:46:56.124 ea3 Level-0 table #5: 230598 bytes OK
+2022/09/10-11:46:56.127 ea3 Delete type=0 #3
+2022/09/10-11:46:56.127 ea3 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

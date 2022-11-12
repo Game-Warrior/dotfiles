@@ -1,0 +1,2028 @@
+{
+   "about": {
+      "message": "เกี่ยวกับ"
+   },
+   "acceptPolicies": {
+      "message": "By checking this box you agree to the following:"
+   },
+   "acceptPoliciesRequired": {
+      "message": "Terms of Service and Privacy Policy have not been acknowledged."
+   },
+   "account": {
+      "message": "บัญชี"
+   },
+   "addFolder": {
+      "message": "เพิ่มโฟลเดอร์"
+   },
+   "addItem": {
+      "message": "เพิ่มรายการ"
+   },
+   "addLogin": {
+      "message": "Add a Login"
+   },
+   "addLoginNotificationDesc": {
+      "message": "The \"Add Login Notification\" automatically prompts you to save new logins to your vault whenever you log into them for the first time."
+   },
+   "addSend": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "เพิ่ม Send"
+   },
+   "addedFolder": {
+      "message": "เพิ่มโฟลเดอร์แล้ว"
+   },
+   "addedItem": {
+      "message": "เพิ่มรายการแล้ว"
+   },
+   "address": {
+      "message": "ที่อยู่"
+   },
+   "address1": {
+      "message": "ที่อยู่ 1"
+   },
+   "address2": {
+      "message": "ที่อยู่ 2"
+   },
+   "address3": {
+      "message": "ที่อยู่ 3"
+   },
+   "allItems": {
+      "message": "รายการทั้งหมด"
+   },
+   "allSends": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Send ทั้งหมด"
+   },
+   "allVaults": {
+      "message": "All Vaults"
+   },
+   "apiAccessToken": {
+      "message": "API Access Token"
+   },
+   "apiKey": {
+      "message": "API Key"
+   },
+   "apiUrl": {
+      "message": "API Server URL"
+   },
+   "appName": {
+      "message": "bitwarden"
+   },
+   "april": {
+      "message": "เมษายน"
+   },
+   "attachmentSaved": {
+      "message": "บันทึกไฟล์แนบแล้ว"
+   },
+   "attachments": {
+      "message": "ไฟล์แนบ"
+   },
+   "august": {
+      "message": "สิงหาคม"
+   },
+   "authenticatorAppDesc": {
+      "description": "'Authy' and 'Google Authenticator' are product names and should not be translated.",
+      "message": "Use an authenticator app (such as Authy or Google Authenticator) to generate time-based verification codes."
+   },
+   "authenticatorAppTitle": {
+      "message": "Authenticator App"
+   },
+   "authenticatorKeyTotp": {
+      "message": "Authenticator Key (TOTP)"
+   },
+   "autoFill": {
+      "message": "กรอกข้อมูลอัตโนมัติ"
+   },
+   "autoFillAndSave": {
+      "message": "Auto-fill and Save"
+   },
+   "autoFillInfo": {
+      "message": "ไม่พบข้อมูลล็อกอินเพื่อใช้กรอกข้อมูลอัตโนมัติ สำหรับแท็บปัจจุบันของเบราว์เซอร์"
+   },
+   "autoFillOnPageLoadNo": {
+      "message": "Do not auto-fill on page load"
+   },
+   "autoFillOnPageLoadUseDefault": {
+      "message": "Use default setting"
+   },
+   "autoFillOnPageLoadYes": {
+      "message": "Auto-fill on page load"
+   },
+   "autoFillSuccess": {
+      "message": "Auto-filled Item"
+   },
+   "autoFillSuccessAndSavedUri": {
+      "message": "Auto-filled Item and Saved URI"
+   },
+   "autofillError": {
+      "message": "Unable to auto-fill the selected login on this page. Copy/paste your username and/or password instead."
+   },
+   "avoidAmbChar": {
+      "message": "Avoid Ambiguous Characters"
+   },
+   "awaitDesktop": {
+      "message": "Awaiting confirmation from desktop"
+   },
+   "awaitDesktopDesc": {
+      "message": "Please confirm using biometrics in the Bitwarden Desktop application to enable biometrics for browser."
+   },
+   "back": {
+      "message": "ย้อนกลับ"
+   },
+   "badgeCounterDesc": {
+      "message": "Indicate how many logins you have for the current web page."
+   },
+   "baseDomain": {
+      "description": "Domain name. Ex. website.com",
+      "message": "Base domain"
+   },
+   "baseUrl": {
+      "message": "URL ของเซิร์ฟเวอร์"
+   },
+   "biometricsNotEnabledDesc": {
+      "message": "Browser biometrics requires desktop biometric to be enabled in the settings first."
+   },
+   "biometricsNotEnabledTitle": {
+      "message": "Biometrics not enabled"
+   },
+   "biometricsNotSupportedDesc": {
+      "message": "Browser biometrics is not supported on this device."
+   },
+   "biometricsNotSupportedTitle": {
+      "message": "Biometrics not supported"
+   },
+   "bitWebVault": {
+      "message": "bitwarden Web Vault"
+   },
+   "brand": {
+      "message": "Brand"
+   },
+   "browserNotSupportClipboard": {
+      "message": "Your web browser does not support easy clipboard copying. Copy it manually instead."
+   },
+   "cancel": {
+      "message": "ยกเลิก"
+   },
+   "capitalize": {
+      "description": "Make the first letter of a work uppercase.",
+      "message": "ขึ้นต้นด้วยตัวพิมพ์ใหญ่"
+   },
+   "cardBrandMir": {
+      "message": "Mir"
+   },
+   "cardholderName": {
+      "message": "Cardholder Name"
+   },
+   "cards": {
+      "message": "Cards"
+   },
+   "catchallEmail": {
+      "message": "Catch-all Email"
+   },
+   "catchallEmailDesc": {
+      "message": "Use your domain's configured catch-all inbox."
+   },
+   "cfTypeBoolean": {
+      "message": "Boolean"
+   },
+   "cfTypeHidden": {
+      "message": "Hidden"
+   },
+   "cfTypeLinked": {
+      "description": "This describes a field that is 'linked' (tied) to another field.",
+      "message": "Linked"
+   },
+   "cfTypeText": {
+      "message": "ข้อความ"
+   },
+   "changeMasterPass": {
+      "message": "Change Master Password"
+   },
+   "changeMasterPassword": {
+      "message": "Change Master Password"
+   },
+   "changeMasterPasswordConfirmation": {
+      "message": "คุณสามารถเปลี่ยนรหัสผ่านหลักได้ที่เว็บตู้เซฟ bitwarden.com คุณต้องการเปิดเว็บไซต์เลยหรือไม่?"
+   },
+   "changedPasswordNotificationDesc": {
+      "message": "Ask to update a login's password when a change is detected on a website."
+   },
+   "checkPassword": {
+      "message": "Check if password has been exposed."
+   },
+   "cityTown": {
+      "message": "เมือง"
+   },
+   "clear": {
+      "description": "To clear something out. example: To clear browser history.",
+      "message": "Clear"
+   },
+   "clearClipboard": {
+      "description": "Clipboard is the operating system thing where you copy/paste data to on your device.",
+      "message": "ล้างคลิปบอร์ด"
+   },
+   "clearClipboardDesc": {
+      "description": "Clipboard is the operating system thing where you copy/paste data to on your device.",
+      "message": "Automatically clear copied values from your clipboard."
+   },
+   "clone": {
+      "message": "Clone"
+   },
+   "cloneItem": {
+      "message": "Clone Item"
+   },
+   "close": {
+      "message": "ปิด"
+   },
+   "codeSent": {
+      "message": "ส่งโค้ดแล้ว"
+   },
+   "collections": {
+      "message": "Collections"
+   },
+   "commandAutofillDesc": {
+      "message": "Auto-fill the last used login for the current website."
+   },
+   "commandGeneratePasswordDesc": {
+      "message": "Generate and copy a new random password to the clipboard."
+   },
+   "commandLockVaultDesc": {
+      "message": "ล็อกตู้เซฟ"
+   },
+   "commandOpenPopup": {
+      "message": "Open vault popup"
+   },
+   "commandOpenSidebar": {
+      "message": "Open vault in sidebar"
+   },
+   "company": {
+      "message": "บริษัท"
+   },
+   "confirmIdentity": {
+      "message": "ยืนยันตัวตนของคุณเพื่อดำเนินการต่อ"
+   },
+   "confirmMasterPasswordRequired": {
+      "message": "Master password retype is required."
+   },
+   "confirmVaultExport": {
+      "message": "Confirm Vault Export"
+   },
+   "contextMenuItemDesc": {
+      "message": "Use a secondary click to access password generation and matching logins for the website. "
+   },
+   "continue": {
+      "message": "ดำเนินการต่อไป"
+   },
+   "convertOrganizationEncryptionDesc": {
+      "message": "$ORGANIZATION$ is using SSO with a self-hosted key server. A master password is no longer required to log in for members of this organization.",
+      "placeholders": {
+         "organization": {
+            "content": "$1",
+            "example": "My Org Name"
+         }
+      }
+   },
+   "copyCustomFieldNameInvalidElement": {
+      "message": "Unable to identify a valid form element. Try inspecting the HTML instead."
+   },
+   "copyCustomFieldNameNotUnique": {
+      "message": "No unique identifier found."
+   },
+   "copyElementIdentifier": {
+      "message": "Copy Custom Field Name"
+   },
+   "copyNote": {
+      "message": "Copy Note"
+   },
+   "copyNumber": {
+      "message": "คัดลอกหมายเลข"
+   },
+   "copyPassword": {
+      "message": "คัดลอกรหัสผ่าน"
+   },
+   "copySecurityCode": {
+      "message": "คัดลอกรหัสรักษาความปลอดภัย"
+   },
+   "copySendLink": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Copy Send link"
+   },
+   "copyUri": {
+      "message": "คัดลอก URI"
+   },
+   "copyUsername": {
+      "message": "คัดลอกชื่อผู้ใช้"
+   },
+   "copyValue": {
+      "message": "Copy Value"
+   },
+   "copyVerificationCode": {
+      "message": "Copy Verification Code"
+   },
+   "country": {
+      "message": "ประเทศ"
+   },
+   "createAccount": {
+      "message": "สร้างบัญชี"
+   },
+   "createSend": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Create New Send"
+   },
+   "createdSend": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Created Send"
+   },
+   "currentAccessCount": {
+      "message": "Current Access Count"
+   },
+   "currentTab": {
+      "message": "แท็บปัจจุบัน"
+   },
+   "currentUri": {
+      "description": "The URI of one of the current open tabs in the browser.",
+      "message": "URI ปัจจุบัน"
+   },
+   "custom": {
+      "message": "Custom"
+   },
+   "customEnvironment": {
+      "message": "Custom Environment"
+   },
+   "customEnvironmentFooter": {
+      "message": "For advanced users. You can specify the base URL of each service independently."
+   },
+   "customFields": {
+      "message": "Custom Fields"
+   },
+   "dark": {
+      "description": "Dark color",
+      "message": "มืด"
+   },
+   "dateParsingError": {
+      "message": "There was an error saving your deletion and expiration dates."
+   },
+   "datePasswordUpdated": {
+      "description": "ex. Date this password was updated",
+      "message": "อัปเดต Password แล้ว"
+   },
+   "dateUpdated": {
+      "description": "ex. Date this item was updated",
+      "message": "อัปเดตแล้ว"
+   },
+   "days": {
+      "message": "$DAYS$ วัน",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "december": {
+      "message": "ธันวาคม"
+   },
+   "default": {
+      "message": "Default"
+   },
+   "defaultAutoFillOnPageLoad": {
+      "message": "Default autofill setting for login items"
+   },
+   "defaultAutoFillOnPageLoadDesc": {
+      "message": "You can turn off auto-fill on page load for individual login items from the item's Edit view."
+   },
+   "defaultMatchDetection": {
+      "description": "Default URI match detection for auto-fill.",
+      "message": "Default match detection"
+   },
+   "defaultUriMatchDetection": {
+      "description": "Default URI match detection for auto-fill.",
+      "message": "Default URI match detection"
+   },
+   "defaultUriMatchDetectionDesc": {
+      "message": "Choose the default way that URI match detection is handled for logins when performing actions such as auto-fill."
+   },
+   "delete": {
+      "message": "ลบ"
+   },
+   "deleteAttachment": {
+      "message": "ลบไฟล์แนบ"
+   },
+   "deleteAttachmentConfirmation": {
+      "message": "คุณต้องการลบไฟล์แนบนี้ใช่หรือไม่?"
+   },
+   "deleteFolder": {
+      "message": "ลบโฟลเดอร์"
+   },
+   "deleteFolderConfirmation": {
+      "message": "Are you sure you want to delete this folder?"
+   },
+   "deleteItem": {
+      "message": "ลบรายการ"
+   },
+   "deleteItemConfirmation": {
+      "message": "คุณต้องการส่งไปยังถังขยะใช่หรือไม่?"
+   },
+   "deleteSend": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "ลบ Send"
+   },
+   "deleteSendConfirmation": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "คุณต้องการลบ Send นี้ใช่หรือไม่?"
+   },
+   "deletedAttachment": {
+      "message": "ลบไฟล์แนบแล้ว"
+   },
+   "deletedFolder": {
+      "message": "ลบโฟลเดอร์แล้ว"
+   },
+   "deletedItem": {
+      "message": "ส่งรายการไปยังถังขยะแล้ว"
+   },
+   "deletedSend": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Send ถูกลบแล้ว"
+   },
+   "deletionDate": {
+      "message": "Deletion Date"
+   },
+   "deletionDateAndTimeRequired": {
+      "message": "A deletion date and time are required."
+   },
+   "deletionDateDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "The Send will be permanently deleted on the specified date and time."
+   },
+   "deletionDateIsInvalid": {
+      "message": "The deletion date provided is not valid."
+   },
+   "desktopIntegrationDisabledDesc": {
+      "message": "Browser integration is not enabled in the Bitwarden Desktop application. Please enable it in the settings within the desktop application."
+   },
+   "desktopIntegrationDisabledTitle": {
+      "message": "Browser integration is not enabled"
+   },
+   "desktopIntegrationVerificationText": {
+      "message": "Please verify that the desktop application shows this fingerprint: "
+   },
+   "desktopSyncVerificationTitle": {
+      "message": "Desktop sync verification"
+   },
+   "disableAutoTotpCopyDesc": {
+      "message": "If a login has an authenticator key, copy the TOTP verification code to your clip-board when you auto-fill the login."
+   },
+   "disabled": {
+      "message": "Disabled"
+   },
+   "disabledOrganizationFilterError": {
+      "message": "Items in disabled Organizations cannot be accessed. Contact your Organization owner for assistance."
+   },
+   "domainName": {
+      "description": "Domain name. Ex. website.com",
+      "message": "Domain name"
+   },
+   "dr": {
+      "message": "ดร."
+   },
+   "dragToSort": {
+      "message": "Drag to sort"
+   },
+   "duoDesc": {
+      "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated.",
+      "message": "Verify with Duo Security using the Duo Mobile app, SMS, phone call, or U2F security key."
+   },
+   "duoOrganizationDesc": {
+      "description": "'Duo Security' and 'Duo Mobile' are product names and should not be translated.",
+      "message": "Verify with Duo Security for your organization using the Duo Mobile app, SMS, phone call, or U2F security key."
+   },
+   "edit": {
+      "message": "แก้ไข"
+   },
+   "editFolder": {
+      "message": "แก้ไขโฟลเดอร์"
+   },
+   "editItem": {
+      "message": "แก้ไขรายการ"
+   },
+   "editSend": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "แก้ไข Send"
+   },
+   "editedFolder": {
+      "message": "Edited Folder"
+   },
+   "editedItem": {
+      "message": "แก้ไขรายการแล้ว"
+   },
+   "editedSend": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Edited Send"
+   },
+   "email": {
+      "message": "อีเมล"
+   },
+   "emailAddress": {
+      "message": "ที่อยู่อีเมล"
+   },
+   "emailDesc": {
+      "message": "Verification codes will be emailed to you."
+   },
+   "emailRequired": {
+      "message": "ต้องระบุอีเมล"
+   },
+   "emailTitle": {
+      "message": "อีเมล"
+   },
+   "emailVerificationRequired": {
+      "message": "Email Verification Required"
+   },
+   "emailVerificationRequiredDesc": {
+      "message": "You must verify your email to use this feature. You can verify your email in the web vault."
+   },
+   "enableAddLoginNotification": {
+      "message": "Ask to add login"
+   },
+   "enableAutoBiometricsPrompt": {
+      "message": "Ask for biometrics on launch"
+   },
+   "enableAutoFillOnPageLoad": {
+      "message": "Enable Auto-fill On Page Load."
+   },
+   "enableAutoFillOnPageLoadDesc": {
+      "message": "If a login form is detected, auto-fill when the web page loads."
+   },
+   "enableAutoTotpCopy": {
+      "message": "Copy TOTP automatically"
+   },
+   "enableBadgeCounter": {
+      "message": "Show badge counter"
+   },
+   "enableChangedPasswordNotification": {
+      "message": "Ask to update existing login"
+   },
+   "enableContextMenuItem": {
+      "message": "Show context menu options"
+   },
+   "enableFavicon": {
+      "message": "Show website icons"
+   },
+   "encExportAccountWarningDesc": {
+      "message": "Account encryption keys are unique to each Bitwarden user account, so you can't import an encrypted export into a different account."
+   },
+   "encExportKeyWarningDesc": {
+      "message": "This export encrypts your data using your account's encryption key. If you ever rotate your account's encryption key you should export again since you will not be able to decrypt this export file."
+   },
+   "enterEmailToGetHint": {
+      "message": "กรอกอีเมลของบัญชีของคุณ เพื่อรับคำใบ้เกี่ยวกับรหัสผ่านหลักของคุณ"
+   },
+   "enterVerificationCodeApp": {
+      "message": "Enter the 6 digit verification code from your authenticator app."
+   },
+   "enterVerificationCodeEmail": {
+      "message": "Enter the 6 digit verification code that was emailed to",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "example@gmail.com"
+         }
+      }
+   },
+   "enterpriseSingleSignOn": {
+      "message": "Enterprise Single Sign-On"
+   },
+   "environmentEditedClick": {
+      "message": "Click here"
+   },
+   "environmentEditedReset": {
+      "message": "to reset to pre-configured settings"
+   },
+   "environmentSaved": {
+      "message": "The environment URLs have been saved."
+   },
+   "error": {
+      "message": "Error"
+   },
+   "errorEnableBiometricDesc": {
+      "message": "Action was canceled by the desktop application"
+   },
+   "errorEnableBiometricTitle": {
+      "message": "Unable to enable biometrics"
+   },
+   "errorOccurred": {
+      "message": "พบข้อผิดพลาด"
+   },
+   "ex": {
+      "message": "ex."
+   },
+   "exact": {
+      "message": "Exact"
+   },
+   "excludedDomains": {
+      "message": "Excluded domains"
+   },
+   "excludedDomainsDesc": {
+      "message": "Bitwarden will not ask to save login details for these domains. You must refresh the page for changes to take effect."
+   },
+   "excludedDomainsInvalidDomain": {
+      "message": "$DOMAIN$ is not a valid domain",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "googlecom"
+         }
+      }
+   },
+   "experimentalFeature": {
+      "message": "This is currently an experimental feature. Use at your own risk."
+   },
+   "expiration": {
+      "message": "วันหมดอายุ"
+   },
+   "expirationDate": {
+      "message": "Expiration Date"
+   },
+   "expirationDateAndTimeRequired": {
+      "message": "An expiration date and time are required."
+   },
+   "expirationDateDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "If set, access to this Send will expire on the specified date and time."
+   },
+   "expirationDateIsInvalid": {
+      "message": "The expiration date provided is not valid."
+   },
+   "expirationMonth": {
+      "message": "Expiration Month"
+   },
+   "expirationYear": {
+      "message": "Expiration Year"
+   },
+   "expired": {
+      "message": "Expired"
+   },
+   "exportMasterPassword": {
+      "message": "Enter your master password to export your vault data."
+   },
+   "exportVault": {
+      "message": "Export Vault"
+   },
+   "exportWarningDesc": {
+      "message": "This export contains your vault data in an unencrypted format. You should not store or send the exported file over unsecure channels (such as email). Delete it immediately after you are done using it."
+   },
+   "exportingPersonalVaultDescription": {
+      "message": "Only the personal vault items associated with $EMAIL$ will be exported. Organization vault items will not be included.",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "name@example.com"
+         }
+      }
+   },
+   "exportingPersonalVaultTitle": {
+      "message": "Exporting Personal Vault"
+   },
+   "extDesc": {
+      "description": "Extension description",
+      "message": "bitwarden is a secure and free password manager for all of your devices."
+   },
+   "extName": {
+      "description": "Extension name, MUST be less than 40 characters (Safari restriction)",
+      "message": "bitwarden - Free Password Manager"
+   },
+   "faviconDesc": {
+      "message": "Show a recognizable image next to each login."
+   },
+   "favorite": {
+      "message": "รายการโปรด"
+   },
+   "favorites": {
+      "message": "รายการโปรด"
+   },
+   "featureUnavailable": {
+      "message": "Feature Unavailable"
+   },
+   "february": {
+      "message": "กุมภาพันธ์"
+   },
+   "fifteenMinutes": {
+      "message": "15 นาที"
+   },
+   "file": {
+      "message": "ไฟล์"
+   },
+   "fileFormat": {
+      "message": "File Format"
+   },
+   "fingerprintPhrase": {
+      "description": "A 'fingerprint phrase' is a unique word phrase (similar to a passphrase) that a user can use to authenticate their public key with another user, for the purposes of sharing.",
+      "message": "Fingerprint Phrase"
+   },
+   "firstName": {
+      "message": "First Name"
+   },
+   "fiveMinutes": {
+      "message": "5 นาที"
+   },
+   "folder": {
+      "message": "โฟลเดอร์"
+   },
+   "folders": {
+      "message": "โฟลเดอร์"
+   },
+   "forwardedEmail": {
+      "message": "Forwarded Email Alias"
+   },
+   "forwardedEmailDesc": {
+      "message": "Generate an email alias with an external forwarding service."
+   },
+   "fourHours": {
+      "message": "4 ชั่วโมง"
+   },
+   "fullName": {
+      "message": "Full Name"
+   },
+   "generatePassword": {
+      "message": "Generate Password"
+   },
+   "generatePasswordCopied": {
+      "message": "Generate Password (copied)"
+   },
+   "generateUsername": {
+      "message": "Generate Username"
+   },
+   "generator": {
+      "description": "Short for 'Password Generator'.",
+      "message": "สุ่มรหัส"
+   },
+   "getMasterPasswordHint": {
+      "message": "รับคำใบ้เกี่ยวกับรหัสผ่านหลักของคุณ"
+   },
+   "gettingStartedTutorial": {
+      "message": "Getting Started Tutorial"
+   },
+   "gettingStartedTutorialVideo": {
+      "message": "Watch our getting started tutorial to learn how to get the most out of the browser extension."
+   },
+   "good": {
+      "description": "ex. A good password. Scale: Weak -> Good -> Strong",
+      "message": "ไม่เลว"
+   },
+   "helpFeedback": {
+      "message": "Help & Feedback"
+   },
+   "hideEmail": {
+      "message": "Hide my email address from recipients."
+   },
+   "hintEqualsPassword": {
+      "message": "Your password hint cannot be the same as your password."
+   },
+   "host": {
+      "description": "A URL's host value. For example, the host of https://sub.domain.com:443 is 'sub.domain.com:443'.",
+      "message": "Host"
+   },
+   "hostname": {
+      "description": "Part of a URL.",
+      "message": "Hostname"
+   },
+   "hours": {
+      "message": "Hours"
+   },
+   "iconsUrl": {
+      "message": "Icons Server URL"
+   },
+   "identities": {
+      "message": "Identities"
+   },
+   "identityName": {
+      "message": "Identity Name"
+   },
+   "identityUrl": {
+      "message": "Identity Server URL"
+   },
+   "immediately": {
+      "message": "ทันที"
+   },
+   "importItems": {
+      "message": "Import Items"
+   },
+   "includeNumber": {
+      "message": "ต่อท้ายด้วยตัวเลข"
+   },
+   "insertU2f": {
+      "message": "Insert your security key into your computer's USB port. If it has a button, touch it."
+   },
+   "insertYubiKey": {
+      "message": "Insert your YubiKey into your computer's USB port, then touch its button."
+   },
+   "invalidEmail": {
+      "message": "ที่อยู่อีเมลไม่ถูกต้อง"
+   },
+   "invalidMasterPassword": {
+      "message": "รหัสผ่านหลักไม่ถูกต้อง"
+   },
+   "invalidPin": {
+      "message": "PIN ไม่ถูกต้อง"
+   },
+   "invalidVerificationCode": {
+      "message": "โค้ดยืนยันไม่ถูกต้อง"
+   },
+   "itemAutoFillOnPageLoad": {
+      "message": "Auto-fill on page load (if enabled in Options)"
+   },
+   "itemInformation": {
+      "message": "Item Information"
+   },
+   "january": {
+      "message": "มกราคม"
+   },
+   "july": {
+      "message": "กรกฎาคม"
+   },
+   "june": {
+      "message": "มิถุนายน"
+   },
+   "lastName": {
+      "message": "Last Name"
+   },
+   "lastSeenOn": {
+      "message": "last seen on $DATE$",
+      "placeholders": {
+         "date": {
+            "content": "$1",
+            "example": "Jun 15, 2015"
+         }
+      }
+   },
+   "lastSync": {
+      "message": "Last Sync:"
+   },
+   "launch": {
+      "message": "เริ่ม"
+   },
+   "learnMore": {
+      "message": "Learn more"
+   },
+   "learnOrg": {
+      "message": "Learn about organizations"
+   },
+   "learnOrgConfirmation": {
+      "message": "Bitwarden allows you to share your vault items with others by using an organization. Would you like to visit the bitwarden.com website to learn more?"
+   },
+   "leaveOrganization": {
+      "message": "Leave Organization"
+   },
+   "leaveOrganizationConfirmation": {
+      "message": "Are you sure you want to leave this organization?"
+   },
+   "leftOrganization": {
+      "message": "You have left the organization."
+   },
+   "length": {
+      "message": "ความยาว"
+   },
+   "licenseNumber": {
+      "message": "หมายเลขใบอนุญาต"
+   },
+   "light": {
+      "description": "Light color",
+      "message": "สว่าง"
+   },
+   "linkedValue": {
+      "description": "This describes a value that is 'linked' (tied) to another value.",
+      "message": "Linked value"
+   },
+   "lock": {
+      "description": "Verb form: to make secure or inaccesible by",
+      "message": "ล็อก"
+   },
+   "lockNow": {
+      "message": "Lock Now"
+   },
+   "lockWithMasterPassOnRestart": {
+      "message": "Lock with master password on browser restart"
+   },
+   "logOut": {
+      "message": "ออกจากระบบ"
+   },
+   "logOutConfirmation": {
+      "message": "คุณต้องการล็อกเอาต์ใช่หรือไม่?"
+   },
+   "loggedInAsOn": {
+      "message": "ล็อกอินด้วย $EMAIL$ บน $HOSTNAME$",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "name@example.com"
+         },
+         "hostname": {
+            "content": "$2",
+            "example": "bitwarden.com"
+         }
+      }
+   },
+   "loggedOut": {
+      "message": "ออกจากระบบ"
+   },
+   "loggingInTo": {
+      "message": "Logging in to $DOMAIN$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "example.com"
+         }
+      }
+   },
+   "login": {
+      "message": "เข้าสู่ระบบ"
+   },
+   "loginExpired": {
+      "message": "เซสชันของคุณหมดอายุแล้ว"
+   },
+   "loginOrCreateNewAccount": {
+      "message": "ล็อกอิน หรือ สร้างบัญชีใหม่ เพื่อใช้งานตู้นิรภัยของคุณ"
+   },
+   "loginToVaultMenu": {
+      "message": "Log in to your vault"
+   },
+   "loginUnavailable": {
+      "message": "Login Unavailable"
+   },
+   "logins": {
+      "message": "Logins"
+   },
+   "lowercase": {
+      "message": "ตัวพิมพ์เล็ก (a-z)"
+   },
+   "manage": {
+      "message": "จัดการ"
+   },
+   "march": {
+      "message": "มีนาคม"
+   },
+   "masterPass": {
+      "message": "Master Password"
+   },
+   "masterPassDesc": {
+      "message": "รหัสผ่านหลัก คือ รหัสผ่านที่ใช้เข้าถึงตู้นิรภัยของคุณ สิ่งสำคัญมาก คือ คุณจะต้องไม่ลืมรหัสผ่านหลักโดยเด็ดขาด เพราะหากคุณลืมแล้วล่ะก็ จะไม่มีวิธีที่สามารถกู้รหัสผ่านของคุณได้เลย"
+   },
+   "masterPassDoesntMatch": {
+      "message": "Master password confirmation does not match."
+   },
+   "masterPassHint": {
+      "message": "Master Password Hint (optional)"
+   },
+   "masterPassHintDesc": {
+      "message": "คำใบ้เกี่ยวกับรหัสผ่านหลักสามารถช่วยให้คุณนึกรหัสผ่านหลักออกได้หากลืม"
+   },
+   "masterPassSent": {
+      "message": "We've sent you an email with your master password hint."
+   },
+   "masterPasswordMinlength": {
+      "message": "Master password must be at least 8 characters long."
+   },
+   "masterPasswordPolicyInEffect": {
+      "message": "One or more organization policies require your master password to meet the following requirements:"
+   },
+   "masterPasswordPolicyRequirementsNotMet": {
+      "message": "Your new master password does not meet the policy requirements."
+   },
+   "masterPasswordRequired": {
+      "message": "Master password is required."
+   },
+   "matchDetection": {
+      "description": "URI match detection for auto-fill.",
+      "message": "Match Detection"
+   },
+   "maxAccessCountReached": {
+      "description": "This text will be displayed after a Send has been accessed the maximum amount of times.",
+      "message": "Max access count reached"
+   },
+   "maxFileSize": {
+      "message": "ขนาดไฟล์สูงสุด คือ 500 MB"
+   },
+   "maximumAccessCount": {
+      "message": "Maximum Access Count"
+   },
+   "maximumAccessCountDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "If set, users will no longer be able to access this Send once the maximum access count is reached."
+   },
+   "may": {
+      "message": "พฤษภาคม"
+   },
+   "middleName": {
+      "message": "Middle Name"
+   },
+   "minNumbers": {
+      "message": "Minimum Numbers"
+   },
+   "minSpecial": {
+      "message": "Minimum Special"
+   },
+   "minutes": {
+      "message": "Minutes"
+   },
+   "move": {
+      "message": "ย้าย"
+   },
+   "moveToOrgDesc": {
+      "message": "Choose an organization that you wish to move this item to. Moving to an organization transfers ownership of the item to that organization. You will no longer be the direct owner of this item once it has been moved."
+   },
+   "moveToOrganization": {
+      "message": "Move to Organization"
+   },
+   "movedItemToOrg": {
+      "message": "ย้าย $ITEMNAME$ ไปยัง $ORGNAME$ แล้ว",
+      "placeholders": {
+         "itemname": {
+            "content": "$1",
+            "example": "Secret Item"
+         },
+         "orgname": {
+            "content": "$2",
+            "example": "Company Name"
+         }
+      }
+   },
+   "mr": {
+      "message": "นาย"
+   },
+   "mrs": {
+      "message": "นาง"
+   },
+   "ms": {
+      "message": "นางสาว"
+   },
+   "myVault": {
+      "message": "My Vault"
+   },
+   "name": {
+      "message": "ชื่อ"
+   },
+   "nameRequired": {
+      "message": "ต้องระบุชื่อ"
+   },
+   "nativeMessaginPermissionErrorDesc": {
+      "message": "Without permission to communicate with the Bitwarden Desktop Application we cannot provide biometrics in the browser extension. Please try again."
+   },
+   "nativeMessaginPermissionErrorTitle": {
+      "message": "Permission not provided"
+   },
+   "nativeMessaginPermissionSidebarDesc": {
+      "message": "This action cannot be done in the sidebar, please retry the action in the popup or popout."
+   },
+   "nativeMessaginPermissionSidebarTitle": {
+      "message": "Permission request error"
+   },
+   "nativeMessagingInvalidEncryptionDesc": {
+      "message": "Desktop application invalidated the secure communication channel. Please retry this operation"
+   },
+   "nativeMessagingInvalidEncryptionTitle": {
+      "message": "Desktop communication interrupted"
+   },
+   "nativeMessagingWrongUserDesc": {
+      "message": "The desktop application is logged into a different account. Please ensure both applications are logged into the same account."
+   },
+   "nativeMessagingWrongUserTitle": {
+      "message": "Account missmatch"
+   },
+   "never": {
+      "message": "ไม่อีกเลย"
+   },
+   "neverLockWarning": {
+      "message": "Are you sure you want to use the \"Never\" option? Setting your lock options to \"Never\" stores your vault's encryption key on your device. If you use this option you should ensure that you keep your device properly protected."
+   },
+   "newAccountCreated": {
+      "message": "Your new account has been created! You may now log in."
+   },
+   "newAttachment": {
+      "message": "Add New Attachment"
+   },
+   "newCustomField": {
+      "message": "New Custom Field"
+   },
+   "newPassword": {
+      "message": "New Password"
+   },
+   "newUri": {
+      "message": "เพิ่ม URI ใหม่"
+   },
+   "no": {
+      "message": "ไม่ใช่"
+   },
+   "noAttachments": {
+      "message": "ไม่มีไฟล์แนบ"
+   },
+   "noCollectionsInList": {
+      "message": "There are no collections to list."
+   },
+   "noFolders": {
+      "message": "ไม่มีโฟลเดอร์"
+   },
+   "noItemsInList": {
+      "message": "ไม่มีรายการ"
+   },
+   "noMatchingLogins": {
+      "message": "ไม่พบข้อมูลล็อกอินที่ตรงกัน"
+   },
+   "noOrganizationsList": {
+      "message": "You do not belong to any organizations. Organizations allow you to securely share items with other users."
+   },
+   "noPasswordsInList": {
+      "message": "There are no passwords to list."
+   },
+   "noTwoStepProviders": {
+      "message": "This account has two-step login enabled, however, none of the configured two-step providers are supported by this web browser."
+   },
+   "noTwoStepProviders2": {
+      "message": "Please use a supported web browser (such as Chrome) and/or add additional providers that are better supported across web browsers (such as an authenticator app)."
+   },
+   "noneFolder": {
+      "description": "This is the folder for uncategorized items",
+      "message": "No Folder"
+   },
+   "note": {
+      "message": "โน้ต"
+   },
+   "notes": {
+      "message": "โน้ต"
+   },
+   "notificationAddDesc": {
+      "message": "Should bitwarden remember this password for you?"
+   },
+   "notificationAddSave": {
+      "message": "Yes, Save Now"
+   },
+   "notificationChangeDesc": {
+      "message": "คุณต้องการอัปเดตรหัสผ่านนี้ใน Bitwarden หรือไม่?"
+   },
+   "notificationChangeSave": {
+      "message": "Yes, Update Now"
+   },
+   "notificationsUrl": {
+      "message": "Notifications Server URL"
+   },
+   "november": {
+      "message": "พฤศจิกายน"
+   },
+   "numWords": {
+      "message": "Number of Words"
+   },
+   "number": {
+      "message": "หมายเลข"
+   },
+   "numbers": {
+      "message": "ตัวเลข (0-9)"
+   },
+   "october": {
+      "message": "ตุลาคม"
+   },
+   "ok": {
+      "message": "ตกลง"
+   },
+   "onLocked": {
+      "message": "On Locked"
+   },
+   "onRestart": {
+      "message": "On Restart"
+   },
+   "oneDay": {
+      "message": "1 วัน"
+   },
+   "oneHour": {
+      "message": "1 ชั่วโมง"
+   },
+   "oneMinute": {
+      "message": "1 นาที"
+   },
+   "options": {
+      "message": "ตัวเลือก"
+   },
+   "organization": {
+      "description": "An entity of multiple related people (ex. a team or business organization).",
+      "message": "องค์กร"
+   },
+   "organizationIsDisabled": {
+      "message": "Organization is disabled."
+   },
+   "other": {
+      "message": "อื่น ๆ"
+   },
+   "overwritePassword": {
+      "message": "Overwrite Password"
+   },
+   "overwritePasswordConfirmation": {
+      "message": "คุณต้องการเขียนทับรหัสผ่านปัจจุบันใช่หรือไม่?"
+   },
+   "overwriteUsername": {
+      "message": "Overwrite Username"
+   },
+   "overwriteUsernameConfirmation": {
+      "message": "Are you sure you want to overwrite the current username?"
+   },
+   "ownership": {
+      "message": "เจ้าของ"
+   },
+   "passGen": {
+      "message": "Password Generator"
+   },
+   "passGenInfo": {
+      "message": "Automatically generate strong, unique passwords for your logins."
+   },
+   "passphrase": {
+      "message": "Passphrase"
+   },
+   "passportNumber": {
+      "message": "หมายเลขหนังสือเดินทาง"
+   },
+   "password": {
+      "message": "รหัสผ่าน"
+   },
+   "passwordConfirmation": {
+      "message": "Master password confirmation"
+   },
+   "passwordConfirmationDesc": {
+      "message": "This action is protected. To continue, please re-enter your master password to verify your identity."
+   },
+   "passwordCopied": {
+      "message": "คัดลอกรหัสผ่านแล้ว"
+   },
+   "passwordExposed": {
+      "message": "This password has been exposed in data breaches. You should change it.",
+      "placeholders": {
+         "value": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "passwordGeneratorPolicyInEffect": {
+      "message": "One or more organization policies are affecting your generator settings."
+   },
+   "passwordHint": {
+      "message": "คำใบ้รหัสผ่าน"
+   },
+   "passwordHistory": {
+      "message": "ประวัติของรหัสผ่าน"
+   },
+   "passwordPrompt": {
+      "message": "Master password re-prompt"
+   },
+   "passwordProtected": {
+      "message": "Password protected"
+   },
+   "passwordSafe": {
+      "message": "This password was not found in any known data breaches. It should be safe to use."
+   },
+   "passwordType": {
+      "message": "Password Type"
+   },
+   "pendingDeletion": {
+      "message": "Pending deletion"
+   },
+   "permanentlyDeleteItem": {
+      "message": "Permanently Delete Item"
+   },
+   "permanentlyDeleteItemConfirmation": {
+      "message": "Are you sure you want to permanently delete this item?"
+   },
+   "permanentlyDeletedItem": {
+      "message": "Permanently Deleted item"
+   },
+   "personalOwnershipPolicyInEffect": {
+      "message": "An organization policy is affecting your ownership options."
+   },
+   "personalOwnershipSubmitError": {
+      "message": "Due to an Enterprise Policy, you are restricted from saving items to your personal vault. Change the Ownership option to an organization and choose from available Collections."
+   },
+   "personalVaultExportPolicyInEffect": {
+      "message": "One or more organization policies prevents you from exporting your personal vault."
+   },
+   "phone": {
+      "message": "โทรศัพท์"
+   },
+   "pin": {
+      "description": "PIN code. Ex. The short code (often numeric) that you use to unlock a device.",
+      "message": "PIN"
+   },
+   "pinRequired": {
+      "message": "ต้องระบุ PIN"
+   },
+   "plusAddressedEmail": {
+      "description": "Username generator option that appends a random sub-address to the username. For example: address+subaddress@email.com",
+      "message": "Plus Addressed Email"
+   },
+   "plusAddressedEmailDesc": {
+      "message": "Use your email provider's sub-addressing capabilities."
+   },
+   "policyInEffectLowercase": {
+      "message": "มีตัวพิมพ์เล็กอย่างน้อย 1 ตัว"
+   },
+   "policyInEffectMinComplexity": {
+      "message": "Minimum complexity score of $SCORE$",
+      "placeholders": {
+         "score": {
+            "content": "$1",
+            "example": "4"
+         }
+      }
+   },
+   "policyInEffectMinLength": {
+      "message": "ความยาวอย่างน้อย $LENGTH$ อักขระ",
+      "placeholders": {
+         "length": {
+            "content": "$1",
+            "example": "14"
+         }
+      }
+   },
+   "policyInEffectNumbers": {
+      "message": "มีตัวเลขอย่างน้อย 1 ตัว"
+   },
+   "policyInEffectSpecial": {
+      "message": "มีอักขระพิเศษต่อไปนี้อย่างน้อย 1 อักขระ: $CHARS$ ",
+      "placeholders": {
+         "chars": {
+            "content": "$1",
+            "example": "!@#$%^&*"
+         }
+      }
+   },
+   "policyInEffectUppercase": {
+      "message": "มีตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว"
+   },
+   "popOutNewWindow": {
+      "message": "Pop out to a new window"
+   },
+   "popup2faCloseMessage": {
+      "message": "Clicking outside the popup window to check your email for your verification code will cause this popup to close. Do you want to open this popup in a new window so that it does not close?"
+   },
+   "popupU2fCloseMessage": {
+      "message": "This browser cannot process U2F requests in this popup window. Do you want to open this popup in a new window so that you can log in using U2F?"
+   },
+   "ppremiumSignUpFuture": {
+      "message": "All future premium features. More coming soon!"
+   },
+   "ppremiumSignUpReports": {
+      "message": "Password hygiene, account health, and data breach reports to keep your vault safe."
+   },
+   "ppremiumSignUpStorage": {
+      "message": "1 GB of encrypted file storage."
+   },
+   "ppremiumSignUpSupport": {
+      "message": "Priority customer support."
+   },
+   "ppremiumSignUpTotp": {
+      "message": "TOTP verification code (2FA) generator for logins in your vault."
+   },
+   "ppremiumSignUpTwoStep": {
+      "message": "Additional two-step login options such as YubiKey, FIDO U2F, and Duo."
+   },
+   "premiumCurrentMember": {
+      "message": "You are a premium member!"
+   },
+   "premiumCurrentMemberThanks": {
+      "message": "Thank you for supporting bitwarden."
+   },
+   "premiumManage": {
+      "message": "Manage Membership"
+   },
+   "premiumManageAlert": {
+      "message": "You can manage your membership on the bitwarden.com web vault. Do you want to visit the website now?"
+   },
+   "premiumMembership": {
+      "message": "Premium Membership"
+   },
+   "premiumNotCurrentMember": {
+      "message": "You are not currently a premium member."
+   },
+   "premiumPrice": {
+      "message": "All for just %price% /year!",
+      "placeholders": {
+         "price": {
+            "content": "$1",
+            "example": "$10"
+         }
+      }
+   },
+   "premiumPurchase": {
+      "message": "Purchase Premium"
+   },
+   "premiumPurchaseAlert": {
+      "message": "You can purchase premium membership on the bitwarden.com web vault. Do you want to visit the website now?"
+   },
+   "premiumRefresh": {
+      "message": "Refresh Membership"
+   },
+   "premiumRequired": {
+      "message": "Premium Required"
+   },
+   "premiumRequiredDesc": {
+      "message": "A premium membership is required to use this feature."
+   },
+   "premiumSignUpAndGet": {
+      "message": "Sign up for a premium membership and get:"
+   },
+   "premiumSubcriptionRequired": {
+      "message": "Premium subscription required"
+   },
+   "privacyPolicy": {
+      "message": "Privacy Policy"
+   },
+   "privateModeWarning": {
+      "message": "Private mode support is experimental and some features are limited."
+   },
+   "random": {
+      "message": "Random"
+   },
+   "randomWord": {
+      "message": "Random Word"
+   },
+   "rateExtension": {
+      "message": "Rate the Extension"
+   },
+   "rateExtensionDesc": {
+      "message": "Please consider helping us out with a good review!"
+   },
+   "reTypeMasterPass": {
+      "message": "Re-type Master Password"
+   },
+   "recoveryCodeDesc": {
+      "message": "Lost access to all of your two-factor providers? Use your recovery code to disable all two-factor providers from your account."
+   },
+   "recoveryCodeTitle": {
+      "message": "Recovery Code"
+   },
+   "refresh": {
+      "message": "Refresh"
+   },
+   "refreshComplete": {
+      "message": "Refresh complete"
+   },
+   "regEx": {
+      "description": "A programming term, also known as 'RegEx'.",
+      "message": "Regular expression"
+   },
+   "regeneratePassword": {
+      "message": "Regenerate Password"
+   },
+   "regenerateUsername": {
+      "message": "Regenerate Username"
+   },
+   "rememberMe": {
+      "message": "Remember me"
+   },
+   "remove": {
+      "message": "ลบ"
+   },
+   "removeMasterPassword": {
+      "message": "Remove Master Password"
+   },
+   "removePassword": {
+      "message": "ลบรหัสผ่าน"
+   },
+   "removePasswordConfirmation": {
+      "message": "คุณต้องการลบรหัสผ่านนี้ใช่หรือไม่"
+   },
+   "removedMasterPassword": {
+      "message": "Master password removed."
+   },
+   "removedPassword": {
+      "message": "รหัสผ่านถูกลบแล้ว"
+   },
+   "resetPasswordAutoEnrollInviteWarning": {
+      "message": "This organization has an enterprise policy that will automatically enroll you in password reset. Enrollment will allow organization administrators to change your master password."
+   },
+   "resetPasswordPolicyAutoEnroll": {
+      "message": "Automatic Enrollment"
+   },
+   "restoreItem": {
+      "message": "Restore Item"
+   },
+   "restoreItemConfirmation": {
+      "message": "Are you sure you want to restore this item?"
+   },
+   "restoredItem": {
+      "message": "Restored Item"
+   },
+   "save": {
+      "message": "บันทึก"
+   },
+   "searchCollection": {
+      "message": "Search collection"
+   },
+   "searchFolder": {
+      "message": "ค้นหาในโพลเดอร์"
+   },
+   "searchSends": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "ค้นหาใน Send"
+   },
+   "searchTrash": {
+      "message": "ค้นหาในถังขยะ"
+   },
+   "searchType": {
+      "message": "Search type"
+   },
+   "searchVault": {
+      "message": "ค้นหาในตู้นิรภัย"
+   },
+   "secureNotes": {
+      "message": "Secure Notes"
+   },
+   "security": {
+      "message": "ความปลอดภัย"
+   },
+   "securityCode": {
+      "message": "Security Code"
+   },
+   "select": {
+      "message": "เลือก"
+   },
+   "selectFile": {
+      "message": "เลือกไฟล์"
+   },
+   "selectFolder": {
+      "message": "Select folder..."
+   },
+   "selectOneCollection": {
+      "message": "You must select at least one collection."
+   },
+   "selfHosted": {
+      "message": "Self-Hosted"
+   },
+   "selfHostedEnvironment": {
+      "message": "Self-hosted Environment"
+   },
+   "selfHostedEnvironmentFooter": {
+      "message": "Specify the base URL of your on-premise hosted bitwarden installation."
+   },
+   "send": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Send"
+   },
+   "sendCode": {
+      "message": "ส่งโค้ด"
+   },
+   "sendDisableDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Disable this Send so that no one can access it."
+   },
+   "sendDisabled": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Send Disabled"
+   },
+   "sendDisabledWarning": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Due to an enterprise policy, you are only able to delete an existing Send."
+   },
+   "sendFileCalloutHeader": {
+      "message": "Before you start"
+   },
+   "sendFileDesc": {
+      "message": "The file you want to send."
+   },
+   "sendFirefoxCustomDatePopoutMessage1": {
+      "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read '**To use a calendar style date picker ** click here to pop out your window.'",
+      "message": "To use a calendar style date picker"
+   },
+   "sendFirefoxCustomDatePopoutMessage2": {
+      "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker **click here** to pop out your window.'",
+      "message": "click here"
+   },
+   "sendFirefoxCustomDatePopoutMessage3": {
+      "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'To use a calendar style date picker click here **to pop out your window.**'",
+      "message": "to pop out your window."
+   },
+   "sendFirefoxFileWarning": {
+      "message": "In order to choose a file using Firefox, open the extension in the sidebar or pop out to a new window by clicking this banner."
+   },
+   "sendHideText": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Hide this Send's text by default."
+   },
+   "sendLink": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "ลิงก์ Send"
+   },
+   "sendLinuxChromiumFileWarning": {
+      "message": "In order to choose a file, open the extension in the sidebar (if possible) or pop out to a new window by clicking this banner."
+   },
+   "sendNameDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "A friendly name to describe this Send."
+   },
+   "sendNotesDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Private notes about this Send."
+   },
+   "sendOptionsPolicyInEffect": {
+      "message": "One or more organization policies are affecting your Send options."
+   },
+   "sendPasswordDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Optionally require a password for users to access this Send."
+   },
+   "sendSafariFileWarning": {
+      "message": "In order to choose a file using Safari, pop out to a new window by clicking this banner."
+   },
+   "sendShareDesc": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "Copy this Send's link to clipboard upon save."
+   },
+   "sendTextDesc": {
+      "message": "ข้อความที่คุณต้องการส่ง"
+   },
+   "sendTypeFile": {
+      "message": "ไฟล์"
+   },
+   "sendTypeHeader": {
+      "description": "'Send' is a noun and the name of a feature called 'Bitwarden Send'. It should not be translated.",
+      "message": "What type of Send is this?"
+   },
+   "sendTypeText": {
+      "message": "ข้อความ"
+   },
+   "sendVerificationCode": {
+      "message": "ส่งโค้ดยืนยันไปยังอีเมลของคุณ"
+   },
+   "sendVerificationCodeEmailAgain": {
+      "message": "ส่งโค้ดยืนยันไปยังอีเมลอีกครั้ง"
+   },
+   "september": {
+      "message": "กันยายน"
+   },
+   "serverVersion": {
+      "message": "Server Version"
+   },
+   "service": {
+      "message": "Service"
+   },
+   "sessionTimeout": {
+      "message": "Your session has timed out. Please go back and try logging in again."
+   },
+   "setMasterPassword": {
+      "message": "ตั้งรหัสผ่านหลัก"
+   },
+   "setYourPinCode": {
+      "message": "ตั้ง PIN เพื่อใช้ปลดล็อก Bitwarden ทั้งนี้ หากคุณล็อกเอาต์ออกจากแอปโดยสมบูรณ์จะเป็นการลบการตั้งค่า PIN ของคุณด้วย"
+   },
+   "settings": {
+      "message": "การตั้งค่า"
+   },
+   "settingsEdited": {
+      "message": "Settings have been edited"
+   },
+   "share": {
+      "message": "แชร์"
+   },
+   "shared": {
+      "message": "แชร์แล้ว"
+   },
+   "showCardsCurrentTab": {
+      "message": "Show cards on Tab page"
+   },
+   "showCardsCurrentTabDesc": {
+      "message": "List card items on the Tab page for easy auto-fill."
+   },
+   "showIdentitiesCurrentTab": {
+      "message": "Show identities on Tab page"
+   },
+   "showIdentitiesCurrentTabDesc": {
+      "message": "List identity items on the Tab page for easy auto-fill."
+   },
+   "solarizedDark": {
+      "description": "'Solarized' is a noun and the name of a color scheme. It should not be translated.",
+      "message": "Solarized Dark"
+   },
+   "specialCharacters": {
+      "message": "อักขระพิเศษ (!@#$%^&*)"
+   },
+   "ssn": {
+      "message": "หมายเลขประกันสังคม"
+   },
+   "ssoCompleteRegistration": {
+      "message": "In order to complete logging in with SSO, please set a master password to access and protect your vault."
+   },
+   "ssoKeyConnectorError": {
+      "message": "Key Connector error: make sure Key Connector is available and working correctly."
+   },
+   "startDesktopDesc": {
+      "message": "The Bitwarden Desktop application needs to be started before unlock with biometrics can be used."
+   },
+   "startDesktopTitle": {
+      "message": "Start the Bitwarden Desktop application"
+   },
+   "startsWith": {
+      "message": "Starts with"
+   },
+   "stateProvince": {
+      "message": "รัฐ / จังหวัด"
+   },
+   "strong": {
+      "description": "ex. A strong password. Scale: Weak -> Good -> Strong",
+      "message": "แข็งแรง"
+   },
+   "submit": {
+      "message": "ส่งข้อมูล"
+   },
+   "sync": {
+      "message": "ซิงค์"
+   },
+   "syncVaultNow": {
+      "message": "Sync Vault Now"
+   },
+   "syncingComplete": {
+      "message": "การซิงก์เสร็จสมบูรณ์"
+   },
+   "syncingFailed": {
+      "message": "การซิงก์ล้มเหลว"
+   },
+   "tab": {
+      "message": "แท็บ"
+   },
+   "tenSeconds": {
+      "message": "10 วินาที"
+   },
+   "termsOfService": {
+      "message": "Terms of Service"
+   },
+   "theme": {
+      "message": "ธีม"
+   },
+   "themeDesc": {
+      "message": "Change the application's color theme."
+   },
+   "thirdParty": {
+      "message": "Third-Party"
+   },
+   "thirdPartyServerMessage": {
+      "message": "Connected to third-party server implementation, $SERVERNAME$. Please verify bugs using the official server, or report them to the third-party server.",
+      "placeholders": {
+         "servername": {
+            "content": "$1",
+            "example": "ThirdPartyServerName"
+         }
+      }
+   },
+   "thirtyMinutes": {
+      "message": "30 นาที"
+   },
+   "thirtySeconds": {
+      "message": "30 วินาที"
+   },
+   "title": {
+      "message": "คำนำหน้า"
+   },
+   "toggleCharacterCount": {
+      "message": "Toggle character count"
+   },
+   "toggleCurrentUris": {
+      "description": "Toggle the display of the URIs of the currently open tabs in the browser.",
+      "message": "Toggle Current URIs"
+   },
+   "toggleOptions": {
+      "message": "Toggle Options"
+   },
+   "toggleVisibility": {
+      "message": "Toggle Visibility"
+   },
+   "tools": {
+      "message": "เครื่องมือ"
+   },
+   "trash": {
+      "description": "Noun: a special folder to hold deleted items",
+      "message": "ถังขยะ"
+   },
+   "twentySeconds": {
+      "message": "20 วินาที"
+   },
+   "twoMinutes": {
+      "message": "2 นาที"
+   },
+   "twoStepLogin": {
+      "message": "Two-step Login"
+   },
+   "twoStepLoginConfirmation": {
+      "message": "Two-step login makes your account more secure by requiring you to enter a security code from an authenticator app whenever you log in. Two-step login can be enabled on the bitwarden.com web vault. Do you want to visit the website now?"
+   },
+   "twoStepOptions": {
+      "message": "Two-step Login Options"
+   },
+   "type": {
+      "message": "Type"
+   },
+   "typeCard": {
+      "message": "บัตรเครดิต"
+   },
+   "typeIdentity": {
+      "message": "ข้อมูลระบุตัวตน"
+   },
+   "typeLogin": {
+      "message": "ล็อกอิน"
+   },
+   "typeLogins": {
+      "message": "ล็อกอิน"
+   },
+   "typeSecureNote": {
+      "message": "Secure Note"
+   },
+   "types": {
+      "message": "Types"
+   },
+   "unexpectedError": {
+      "message": "An unexpected error has occured."
+   },
+   "unlock": {
+      "message": "ปลดล็อค"
+   },
+   "unlockVaultMenu": {
+      "message": "Unlock your vault"
+   },
+   "unlockWithBiometrics": {
+      "message": "Unlock with biometrics"
+   },
+   "unlockWithPin": {
+      "message": "ปลดล็อกด้วย PIN"
+   },
+   "updateKey": {
+      "message": "You cannot use this feature until you update your encryption key."
+   },
+   "updateMasterPassword": {
+      "message": "Update Master Password"
+   },
+   "updateMasterPasswordWarning": {
+      "message": "Your Master Password was recently changed by an administrator in your organization. In order to access the vault, you must update it now. Proceeding will log you out of your current session, requiring you to log back in. Active sessions on other devices may continue to remain active for up to one hour."
+   },
+   "updatedMasterPassword": {
+      "message": "Updated Master Password"
+   },
+   "uppercase": {
+      "message": "ตัวพิมพ์ใหญ่ (A-Z)"
+   },
+   "uri": {
+      "message": "URI"
+   },
+   "uriPosition": {
+      "description": "A listing of URIs. Ex: URI 1, URI 2, URI 3, etc.",
+      "message": "URI $POSITION$",
+      "placeholders": {
+         "position": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "useAnotherTwoStepMethod": {
+      "message": "Use another two-step login method"
+   },
+   "username": {
+      "message": "ชื่อผู้ใช้"
+   },
+   "usernameType": {
+      "message": "Username Type"
+   },
+   "value": {
+      "message": "ค่า"
+   },
+   "valueCopied": {
+      "description": "Value has been copied to the clipboard.",
+      "message": " copied",
+      "placeholders": {
+         "value": {
+            "content": "$1",
+            "example": "Password"
+         }
+      }
+   },
+   "vault": {
+      "message": "Vault"
+   },
+   "vaultExportDisabled": {
+      "message": "Vault Export Disabled"
+   },
+   "vaultTimeout": {
+      "message": "ระยะเวลาล็อกตู้เซฟ"
+   },
+   "vaultTimeoutAction": {
+      "message": "Vault timeout action"
+   },
+   "vaultTimeoutLogOutConfirmation": {
+      "message": "Logging out will remove all access to your vault and requires online authentication after the timeout period. Are you sure you want to use this setting?"
+   },
+   "vaultTimeoutLogOutConfirmationTitle": {
+      "message": "Timeout Action Confirmation"
+   },
+   "vaultTimeoutPolicyInEffect": {
+      "message": "Your organization policies are affecting your vault timeout. Maximum allowed Vault Timeout is $HOURS$ hour(s) and $MINUTES$ minute(s)",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "5"
+         }
+      }
+   },
+   "vaultTimeoutTooLarge": {
+      "message": "Your vault timeout exceeds the restrictions set by your organization."
+   },
+   "verificationCode": {
+      "message": "Verification Code"
+   },
+   "verificationCodeEmailSent": {
+      "message": "ส่งโค้ดยืนยันไปยังอีเมล $EMAIL$ แล้ว",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "example@gmail.com"
+         }
+      }
+   },
+   "verificationCodeRequired": {
+      "message": "ต้องระบุโค้ดยืนยัน"
+   },
+   "verificationCodeTotp": {
+      "message": "Verification Code (TOTP)"
+   },
+   "verifyIdentity": {
+      "message": "ยืนยันตัวตน"
+   },
+   "version": {
+      "message": "เวอร์ชัน"
+   },
+   "view": {
+      "message": "แสดง"
+   },
+   "viewItem": {
+      "message": "ดูรายการ"
+   },
+   "warning": {
+      "description": "WARNING (should stay in capitalized letters if the language permits)",
+      "message": "คำเตือน"
+   },
+   "weak": {
+      "description": "ex. A weak password. Scale: Weak -> Good -> Strong",
+      "message": "ง่ายเกินไป"
+   },
+   "weakMasterPassword": {
+      "message": "Weak Master Password"
+   },
+   "weakMasterPasswordDesc": {
+      "message": "The master password you have chosen is weak. You should use a strong master password (or a passphrase) to properly protect your Bitwarden account. Are you sure you want to use this master password?"
+   },
+   "webAuthnAuthenticate": {
+      "message": "Authenticate WebAuthn"
+   },
+   "webAuthnDesc": {
+      "message": "Use any WebAuthn enabled security key to access your account."
+   },
+   "webAuthnNewTab": {
+      "message": "To start the WebAuthn 2FA verification. Click the button below to open a new tab and follow the instructions provided in the new tab."
+   },
+   "webAuthnNewTabOpen": {
+      "message": "Open new tab"
+   },
+   "webAuthnTitle": {
+      "message": "FIDO2 WebAuthn"
+   },
+   "webVaultUrl": {
+      "message": "Web Vault Server URL"
+   },
+   "website": {
+      "message": "เว็บไซต์"
+   },
+   "websiteName": {
+      "message": "Website Name"
+   },
+   "whatWouldYouLikeToGenerate": {
+      "message": "What would you like to generate?"
+   },
+   "whoOwnsThisItem": {
+      "message": "ใครเป็นเจ้าของรายการนี้?"
+   },
+   "wordSeparator": {
+      "message": "Word Separator"
+   },
+   "yes": {
+      "message": "ใช่"
+   },
+   "yourAccountsFingerprint": {
+      "description": "A 'fingerprint phrase' is a unique word phrase (similar to a passphrase) that a user can use to authenticate their public key with another user, for the purposes of sharing.",
+      "message": "Your account's fingerprint phrase"
+   },
+   "yourVaultIsLocked": {
+      "message": "ตู้เซฟของคุณถูกล็อก ยืนยันตัวตนของคุณเพื่อดำเนินการต่อ"
+   },
+   "yubiKeyDesc": {
+      "message": "Use a YubiKey to access your account. Works with YubiKey 4, 4 Nano, 4C, and NEO devices."
+   },
+   "yubiKeyTitle": {
+      "message": "YubiKey OTP Security Key"
+   },
+   "zipPostalCode": {
+      "message": "รหัสไปรษณีย์"
+   }
+}

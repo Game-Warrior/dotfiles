@@ -1,0 +1,9 @@
+2022/09/19-15:51:14.123 3 Reusing MANIFEST /home/gardner/.config/chromium/Default/Local Storage/leveldb/MANIFEST-000001
+2022/09/19-15:51:14.123 3 Recovering log #3
+2022/09/19-15:51:14.123 3 Reusing old log /home/gardner/.config/chromium/Default/Local Storage/leveldb/000003.log 
+2022/09/19-15:52:16.717 3 Level-0 table #5: started
+2022/09/19-15:52:16.721 3 Level-0 table #5: 25908 bytes OK
+2022/09/19-15:52:16.728 3 Delete type=0 #3
+2022/09/19-20:55:33.012 14 Level-0 table #7: started
+2022/09/19-20:55:33.015 14 Level-0 table #7: 30660 bytes OK
+2022/09/19-20:55:33.018 14 Delete type=0 #4

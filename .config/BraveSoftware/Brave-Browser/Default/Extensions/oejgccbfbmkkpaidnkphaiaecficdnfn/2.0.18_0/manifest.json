@@ -1,0 +1,46 @@
+{
+   "background": {
+      "scripts": [ "scripts/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/inactive-19.png",
+         "38": "images/inactive-38.png"
+      },
+      "default_popup": "html/popup.html",
+      "default_title": "Toggl Time Tracker"
+   },
+   "commands": {
+      "quick-start-stop-entry": {
+         "description": "Quick start/stop current entry",
+         "suggested_key": {
+            "default": "Ctrl+Shift+E"
+         }
+      }
+   },
+   "content_security_policy": "script-src 'self'; object-src 'self';",
+   "description": "Puts a timer into any web tool and allows quick real time productivity tracking with all the data stored on your Toggl account",
+   "externally_connectable": {
+      "matches": [ "*://*.toggl.com/*", "*://toggl.com/*" ]
+   },
+   "icons": {
+      "128": "images/icon-128.png",
+      "16": "images/icon-16.png",
+      "48": "images/icon-48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVidQFi+jT9znvDHSngl7sx6HUrOks4n98+GH89WYooQAlz3Il7b1Gj3b72kysBSZbzq4HwNFEgwd3rht7TxSAOfydvK9E5897aGY/YLIAJ+T9Fen5YZmNUlBeVipx+eALZP4vx8dzQK49LfK9QKSuOSqLDqk+zpDSrZd2VAm8iQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "63",
+   "name": "Toggl Track: Productivity & Time Tracker",
+   "optional_permissions": [ "*://*/" ],
+   "options_ui": {
+      "chrome_style": true,
+      "open_in_tab": true,
+      "page": "html/settings.html"
+   },
+   "permissions": [ "*://*.toggl.com/*", "*://toggl.com/*", "webRequest", "webRequestBlocking", "alarms", "contextMenus", "notifications", "idle", "tabs", "storage" ],
+   "short_name": "Toggl Track",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.0.18",
+   "web_accessible_resources": [ "html/login.html" ]
+}

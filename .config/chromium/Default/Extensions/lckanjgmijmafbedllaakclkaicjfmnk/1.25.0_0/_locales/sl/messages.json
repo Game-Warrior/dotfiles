@@ -1,0 +1,378 @@
+{
+   "badged_color_label": {
+      "description": "Ta niz je uporabljen kot naziv za barvno oznako značke.",
+      "message": "Barva značke"
+   },
+   "blocked_html_body": {
+      "description": "Ta niz se uporablja kot telo na strani blokiranega spletnega mesta.",
+      "message": "To stran je blokirala razširitev \u003Cb>ClearURLs\u003C/b>, ker je bila stran identificirana kot oglaševalska in/ali sledilna storitev. Če želite obiskati to stran, morate začasno onemogočiti razširitev ali izklopiti blokiranje domen v nastavitvah ClearURLs. Za tem lahko pritisnete spodnji gumb, da naložite stran."
+   },
+   "blocked_html_button": {
+      "description": "Ta niz se uporablja kot oznaka gumba na strani blokiranega spletnega mesta.",
+      "message": "Obišči stran"
+   },
+   "blocked_html_title": {
+      "description": "Ta niz je uporabljen kot naslov na strani blokiranega spletnega mesta.",
+      "message": "To stran je blokiral \u003Cb>ClearURLs\u003C/b>"
+   },
+   "check_os_log": {
+      "description": "Ta niz je uporabljen pri zagonu ClearURLs dnevnika.",
+      "message": "[ClearURLs]: Dodan je poslušalec dnevnika"
+   },
+   "cleaning_tool_btn": {
+      "description": "Ta niz se uporablja kot oznaka gumba za čiščenje URL-jev.",
+      "message": "Počisti URL-je"
+   },
+   "cleaning_tool_clean_urls_label": {
+      "description": "Ta niz se uporablja kot naslov strani orodja za čiščenje za očiščene URL-je.",
+      "message": "Tukaj lahko najdete očiščene URL-je:"
+   },
+   "cleaning_tool_description": {
+      "description": "Ta niz se uporablja kot opis orodja za čiščenje.",
+      "message": "S tem orodjem je možno prilepiti URL-je. ClearURLs jih bo počistil po kliku na zelen gumb. Prilepi se lahko več URL-jev naenkrat, ampak mora biti vsak URL v posamezni vrstici."
+   },
+   "cleaning_tool_dirty_urls_label": {
+      "description": "Ta niz je uporabljen kot naslov strani orodja za čiščenje za URL-je s sledilnimi elementi.",
+      "message": "Sem lahko prilepite URL s sledilnimi elementi:"
+   },
+   "cleaning_tool_page_title": {
+      "description": "Ta niz se uporablja kot naslov strani orodja za čiščenje.",
+      "message": "ClearURLs orodje za čiščenje"
+   },
+   "clipboard_copy_link": {
+      "description": "Ta niz je uporabljen v kontekstnen meniju v obliki povezav za kopiranje in čiščenje.",
+      "message": "Kopiraj Počisti Povezava Lokacija"
+   },
+   "configs_switch_statistics": {
+      "description": "Ta niz je uporabljen kot oznaka stikala za statistiko na pojavni strani.",
+      "message": "Statistika"
+   },
+   "configs_switch_statistics_title": {
+      "description": "Ta niz je uporabljen kot naziv stikala za statistiko na pojavni strani.",
+      "message": "Aktiviraj ali deaktiviraj funkcijo statistike"
+   },
+   "context_menu_enabled": {
+      "description": "Ta niz je uporabljen za preklop vnosa kontekstnega menija za kopiranje in čiščenje povezav.",
+      "message": "Prikaži vnos kontekstnega menija"
+   },
+   "context_menu_enabled_title": {
+      "description": "potrebno samo za odpravljanje težav",
+      "message": "Obvestilo"
+   },
+   "core_error": {
+      "description": "Ta niz je uporabljen kot sporočilo uporabniku, da se ClearURLs ni mogel zagnati.",
+      "message": "[ClearURLs]: Razširitev se ni mogla zagnati."
+   },
+   "core_save_on_disk": {
+      "description": "Ta niz je uporabljen kot sporočilo uporabniku, da je ClearURLs shranil nastavitve na disk.",
+      "message": "[ClearURLs]: Shrani na disk."
+   },
+   "domain_blocking_enabled": {
+      "description": "Ta niz je uporabljen kot oznaka stikala za blokiranje domen.",
+      "message": "Dovoli blokiranje domen (lahko vodi do težav na straneh, ki ne dovolijo programov za blokiranje oglasov)"
+   },
+   "domain_blocking_enabled_title": {
+      "description": "Ta niz je uporabljen kot naziv stikala za blokiranje domen.",
+      "message": "Dovoli blokiranje domen (lahko vodi do težav na straneh, ki ne dovolijo programov za blokiranje oglasov)"
+   },
+   "donate_button": {
+      "description": "Ta niz je uporabljen kot povezava na stran za donacije.",
+      "message": "Donacija za ustvarjalca ClearURLs."
+   },
+   "eTag_filtering_enabled": {
+      "description": "Ta niz se uporablja kot oznaka stikala za filtriranje ETag glav.",
+      "message": "Filtrira ETag glave iz zahtev (glej tudi \u003Ca href='https://en.wikipedia.org/wiki/HTTP_ETag#Tracking_using_ETags' target='_blank'>ta članek\u003C/a>)"
+   },
+   "eTag_filtering_enabled_title": {
+      "description": "Ta niz se uporablja kot naziv stikala za filtriranje ETag glav.",
+      "message": "Filtrira ETag glave. Namig: pred prvo uporabo je treba počistiti predpomnilnik."
+   },
+   "eTag_filtering_log": {
+      "description": "Ta niz je uporabljen pri filtriranju ETag glav v ClearURLs dnevniku.",
+      "message": "ETag glava je bila odstranjena iz te zahteve"
+   },
+   "error_report_url": {
+      "description": "Opomba: trenutno ni v uporabi.",
+      "message": "Kaže da je bil ta URL že prijavljen."
+   },
+   "extension_description": {
+      "description": "Opis razširitve (največ 132 znakov).",
+      "message": "Odstrani sledilne elemente iz URL-jev."
+   },
+   "hash_status_code_1": {
+      "description": "Ta status pomeni, da za ClearURLs pravila ni na voljo nobene posodobitve.",
+      "message": "posodobljen"
+   },
+   "hash_status_code_2": {
+      "description": "Ta status pomeni, da so ClearURLs pravila uspešno posodobljena.",
+      "message": "posodobljeno"
+   },
+   "hash_status_code_3": {
+      "description": "Ta status pomeni, da je za ClearURLs na voljo posodobitev.",
+      "message": "na voljo je posodobitev"
+   },
+   "hash_status_code_4": {
+      "description": "Ta status pomeni, da se ClearURLs ni mogel uspešno zagnati.",
+      "message": "napaka"
+   },
+   "hash_status_code_5": {
+      "description": "Ta status pomeni, da je pri posodabljanju ClearURLs pravil prišlo do napake.",
+      "message": "Ups, nekaj je šlo narobe!"
+   },
+   "history_listener_enabled": {
+      "description": "Ta niz se uporablja kot naziv oznake za API poslušalca zgodovine.",
+      "message": "Prepreči vrivanje sledenje preko API-ja zgodovine (glej tudi: \u003Ca href='https://developer.mozilla.org/en-US/docs/Web/API/History_API#The_replaceState()_method' target='_blank'>Metoda replaceState()\u003C/a>)"
+   },
+   "local_hosts_skipping": {
+      "description": "Ta niz se uporablja kot oznaka stikala za preskakovanje lokalnega gostitelja.",
+      "message": "Preskoči URL-je na lokalnih gostiteljih (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 100.64.0.0/10, 169.254.0.0/16, 127.0.0.1, localhost)"
+   },
+   "local_hosts_skipping_title": {
+      "description": "Ta niz se uporablja kot naziv stikala za preskakovanje lokalnega gostitelja.",
+      "message": "Preskoči URL-je na lokalnih gostiteljih"
+   },
+   "log_domain_blocked": {
+      "description": "Ta niz je uporabljen za blokirane domene v ClearURLs dnevniku.",
+      "message": "Ta domena je blokirana"
+   },
+   "log_html_export_button": {
+      "description": "Ta niz se uporablja kot oznaka gumba za izvoz na strani dnevnika.",
+      "message": "Izvozi"
+   },
+   "log_html_export_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za izvoz na strani dnevnika.",
+      "message": "Izvozi globalni dnevnik"
+   },
+   "log_html_import_button": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za uvoz na strani dnevnika.",
+      "message": "Uvozi"
+   },
+   "log_html_import_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za uvoz na strani dnevnika.",
+      "message": "Uvozi globalni dnevnik"
+   },
+   "log_html_page_title": {
+      "description": "Ta niz je uporabljen kot glava na strani dnevnika.",
+      "message": "Dnevnik ClearURLs"
+   },
+   "log_html_reset_button": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za ponastavitev na strani dnevnika.",
+      "message": "Ponastavitev"
+   },
+   "log_html_reset_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za ponastavitev na strani dnevnika.",
+      "message": "Ponastavi globalni dnevnik"
+   },
+   "log_html_table_head_1": {
+      "description": "Ta niz je uporabljen kot naslov tabele na strani dnevnika.",
+      "message": "Pred obdelavo"
+   },
+   "log_html_table_head_2": {
+      "description": "Ta niz je uporabljen kot naslov tabele na strani dnevnika.",
+      "message": "Po obdelavi"
+   },
+   "log_html_table_head_3": {
+      "description": "Ta niz je uporabljen kot naslov tabele na strani dnevnika.",
+      "message": "Pravilo"
+   },
+   "log_html_table_head_4": {
+      "description": "Ta niz je uporabljen kot naslov tabele na strani dnevnika.",
+      "message": "Čas"
+   },
+   "log_ping_blocked": {
+      "description": "Ta niz je uporabljen pri reviziji hiperpovezav v dnevniku ClearURLs.",
+      "message": "Revizija te hiperpovezave je bila blokirana"
+   },
+   "log_redirect": {
+      "description": "Ta niz je uporabljen za preusmeritve v ClearURLs dnevniku.",
+      "message": "Ta URL je preusmerjen"
+   },
+   "ping_blocking_enabled": {
+      "description": "Ta niz je uporabljen kot oznaka stikala za blokiranje revizije hiperpovezav.",
+      "message": "Blokiraj revizijo hiperpovezav (glej tudi \u003Ca href='https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing' target='_blank'>ta članek\u003C/a>)"
+   },
+   "ping_blocking_enabled_title": {
+      "description": "Ta niz je uporabljen kot naziv stikala za blokiranje revizije hiperpovezav.",
+      "message": "Blokiraj revizijo hiperpovezav"
+   },
+   "popup_html_configs_head": {
+      "description": "Ta niz je uporabljen kot naziv za konfiguracije na pojavni strani.",
+      "message": "Konfiguracije"
+   },
+   "popup_html_configs_head_title": {
+      "description": "potrebno samo za odpravljanje težav",
+      "message": "Obvestilo"
+   },
+   "popup_html_configs_switch_badges": {
+      "description": "Ta niz je uporabljen kot oznaka stikala za značke na pojavni strani.",
+      "message": "Značke"
+   },
+   "popup_html_configs_switch_badges_title": {
+      "description": "Ta niz je uporabljen kot naziv stikala za značke na pojavni strani.",
+      "message": "Pokaži številke očiščenih URL-jev"
+   },
+   "popup_html_configs_switch_filter": {
+      "description": "Ta niz je uporabljen kot oznaka stikala za filter na pojavni strani.",
+      "message": "Filter"
+   },
+   "popup_html_configs_switch_filter_title": {
+      "description": "Ta niz je uporabljen kot naziv stikala za filter na pojavni strani.",
+      "message": "Stikalo filtra vklopi funkcijo čiščenja v dodatku ClearURLs. Če to funkcijo izklopite, bo celoten dodatek onemogočen."
+   },
+   "popup_html_configs_switch_log": {
+      "description": "Ta niz je uporabljen kot oznaka stikala za beleženje na pojavni strani.",
+      "message": "Beleženje"
+   },
+   "popup_html_configs_switch_log_title": {
+      "description": "Ta niz je uporabljen kot naziv stikala za beleženje na pojavni strani.",
+      "message": "Zapis je shranjen samo lokalno. Te funkcije vam ne svetujemo, če je ne potrebujete"
+   },
+   "popup_html_log_head": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za dnevnik na pojavni strani.",
+      "message": "Dnevnik"
+   },
+   "popup_html_log_head_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za dnevnik na pojavni strani.",
+      "message": "Odpri dnevnik"
+   },
+   "popup_html_report_button": {
+      "description": "Opomba: trenutno ni v uporabi.",
+      "message": "Prijavi trenutni URL"
+   },
+   "popup_html_report_button_title": {
+      "description": "Trenutno ni v uporabi.",
+      "message": "Prijavi trenutni URL iz tega zavihka."
+   },
+   "popup_html_rules_status_head": {
+      "description": "Ta niz je uporabljen kot naziv odseka za status pravil na pojavni strani.",
+      "message": "Status pravil"
+   },
+   "popup_html_rules_status_head_title": {
+      "description": "potrebno samo za odpravljanje težav",
+      "message": "Obvestilo"
+   },
+   "popup_html_statistics_blocked": {
+      "description": "Ta niz je uporabljen kot naziv za blokirane elemente na pojavni strani.",
+      "message": "Blokirano"
+   },
+   "popup_html_statistics_blocked_title": {
+      "description": "potrebno samo za odpravljanje težav",
+      "message": "Obvestilo"
+   },
+   "popup_html_statistics_elements": {
+      "description": "Ta niz je uporabljen kot naziv za elemente na pojavni strani.",
+      "message": "Elementi"
+   },
+   "popup_html_statistics_elements_title": {
+      "description": "potrebno samo za odpravljanje težav",
+      "message": "Obvestilo"
+   },
+   "popup_html_statistics_head": {
+      "description": "Ta niz je uporabljen kot naziv za statistiko na pojavni strani.",
+      "message": "Statistika"
+   },
+   "popup_html_statistics_head_title": {
+      "description": "potrebno samo za odpravljanje težav",
+      "message": "Obvestilo"
+   },
+   "popup_html_statistics_percentage": {
+      "description": "Ta niz je uporabljen kot naziv za delež blokiranih elementov na pojavni strani.",
+      "message": "Delež"
+   },
+   "popup_html_statistics_percentage_title": {
+      "description": "potrebno samo za odpravljanje težav",
+      "message": "Obvestilo"
+   },
+   "popup_html_statistics_reset_button": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za ponastavitev statistike na pojavni strani.",
+      "message": "Ponastavitev"
+   },
+   "popup_html_statistics_reset_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za ponastavitev statistike na pojavni strani.",
+      "message": "Ponastavi globalno statistiko"
+   },
+   "referral_marketing_enabled": {
+      "description": "Ta niz se uporablja kot oznaka stikala za napotitveno trženje.",
+      "message": "Dovoli napotitveno trženje"
+   },
+   "referral_marketing_enabled_title": {
+      "description": "Ta niz se uporablja kot naziv stikala za napotitveno trženje.",
+      "message": "Dovoli napotitveno trženje"
+   },
+   "setting_hash_url_label": {
+      "description": "Ta niz je uporabljen kot naziv za oznako URL pravila rule.hash.",
+      "message": "URL do datoteke rules.hash (hash)"
+   },
+   "setting_html_export_button": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za izvoz na strani nastavitev.",
+      "message": "Izvozi"
+   },
+   "setting_html_export_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za izvoz na strani nastavitev.",
+      "message": "Izvozi vse"
+   },
+   "setting_html_import_button": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za uvoz na strani nastavitev.",
+      "message": "Uvozi"
+   },
+   "setting_html_import_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za uvoz na strani nastavitev.",
+      "message": "Uvozi vse"
+   },
+   "setting_html_reset_button": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za ponastavitev na strani z nastavitvami.",
+      "message": "Ponastavitev"
+   },
+   "setting_html_reset_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za ponastavitev na strani z nastavitvami.",
+      "message": "Ponastavi vse"
+   },
+   "setting_log_limit_label": {
+      "description": "Ta niz je uporabljen kot naziv za oznako omejitve dnevnika.",
+      "message": "Omejite dnevnik na $LIMIT$ vnosov.",
+      "placeholders": {
+         "limit": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "setting_report_server_label": {
+      "description": "Opomba: trenutno ni v uporabi.",
+      "message": "Prijavi strežnik za URL-je"
+   },
+   "setting_rule_url_label": {
+      "description": "Ta niz je uporabljen kot naziv za oznako URL pravila.",
+      "message": "URL do datoteke data.json (pravila)"
+   },
+   "setting_types_label": {
+      "description": "Ta niz je uporabljen kot naziv za znako tipov.",
+      "message": "\u003Ca href='https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType' target='_blank'>Vrste zahtev\u003C/a> (za strokovnjake)"
+   },
+   "settings_html_page_title": {
+      "description": "Ta niz je uporabljen kot naslov strani za nastavitve.",
+      "message": "ClearURLs nastavitve"
+   },
+   "settings_html_save_button": {
+      "description": "Ta niz je uporabljen kot oznaka gumba za shrambo in osvežitev na strani nastavitev.",
+      "message": "Shrani in osveži razširitev"
+   },
+   "settings_html_save_button_title": {
+      "description": "Ta niz je uporabljen kot naziv gumba za shrambo in osvežitev na strani nastavitev.",
+      "message": "Shrani nastavitve"
+   },
+   "success_report_url": {
+      "description": "Opomba: trenutno ni v uporabi.",
+      "message": "URL je bil uspešno prijavljen. Ta URL bomo kmalu preverili."
+   },
+   "watchdog": {
+      "description": "Ta niz se uporablja kot besedilo za čuvaja.",
+      "message": "[ClearURLs]: Čuvaj je zaznal težavo in je spodletel že $TIMES$-krat.",
+      "placeholders": {
+         "times": {
+            "content": "$1",
+            "example": "3"
+         }
+      }
+   }
+}

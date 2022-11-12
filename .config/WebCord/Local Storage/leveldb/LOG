@@ -1,0 +1,42 @@
+2022/11/11-10:54:03.990 c05 Reusing MANIFEST /home/gardner/.config/WebCord/Local Storage/leveldb/MANIFEST-000001
+2022/11/11-10:54:03.991 c05 Recovering log #69
+2022/11/11-10:54:03.992 c05 Reusing old log /home/gardner/.config/WebCord/Local Storage/leveldb/000069.log 
+2022/11/11-10:56:15.591 c39 Level-0 table #73: started
+2022/11/11-10:56:15.618 c39 Level-0 table #73: 1191403 bytes OK
+2022/11/11-10:56:15.620 c39 Delete type=0 #69
+2022/11/11-12:32:31.938 302f Level-0 table #75: started
+2022/11/11-12:32:31.943 302f Level-0 table #75: 30424 bytes OK
+2022/11/11-12:32:31.945 302f Delete type=0 #72
+2022/11/11-12:53:46.476 1009c Level-0 table #77: started
+2022/11/11-12:53:46.485 1009c Level-0 table #77: 15788 bytes OK
+2022/11/11-12:53:46.487 1009c Delete type=0 #74
+2022/11/11-12:53:46.487 1009c Compacting 4@0 + 1@1 files
+2022/11/11-12:53:46.540 1009c Generated table #78@0: 50 keys, 1210700 bytes
+2022/11/11-12:53:46.540 1009c Compacted 4@0 + 1@1 files => 1210700 bytes
+2022/11/11-12:53:46.544 1009c compacted to: files[ 0 1 1 0 0 0 0 ]
+2022/11/11-12:53:46.544 1009c Delete type=2 #70
+2022/11/11-12:53:46.544 1009c Delete type=2 #75
+2022/11/11-12:53:46.544 1009c Delete type=2 #73
+2022/11/11-12:53:46.544 1009c Delete type=2 #68
+2022/11/11-12:53:46.544 1009c Delete type=2 #77
+2022/11/11-15:26:46.649 27d8d Level-0 table #80: started
+2022/11/11-15:26:46.702 27d8d Level-0 table #80: 1190300 bytes OK
+2022/11/11-15:26:46.704 27d8d Delete type=0 #76
+2022/11/11-19:00:28.936 27d8d Level-0 table #82: started
+2022/11/11-19:00:28.985 27d8d Level-0 table #82: 1192737 bytes OK
+2022/11/11-19:00:28.988 27d8d Delete type=0 #79
+2022/11/11-20:09:56.139 4f652 Level-0 table #84: started
+2022/11/11-20:09:56.143 4f652 Level-0 table #84: 20897 bytes OK
+2022/11/11-20:09:56.145 4f652 Delete type=0 #81
+2022/11/11-20:25:00.316 4f652 Level-0 table #86: started
+2022/11/11-20:25:00.319 4f652 Level-0 table #86: 16789 bytes OK
+2022/11/11-20:25:00.323 4f652 Delete type=0 #83
+2022/11/11-20:25:00.323 4f652 Compacting 4@0 + 1@1 files
+2022/11/11-20:25:00.368 4f652 Generated table #87@0: 50 keys, 1211062 bytes
+2022/11/11-20:25:00.368 4f652 Compacted 4@0 + 1@1 files => 1211062 bytes
+2022/11/11-20:25:00.371 4f652 compacted to: files[ 0 1 1 0 0 0 0 ]
+2022/11/11-20:25:00.371 4f652 Delete type=2 #82
+2022/11/11-20:25:00.371 4f652 Delete type=2 #84
+2022/11/11-20:25:00.371 4f652 Delete type=2 #86
+2022/11/11-20:25:00.371 4f652 Delete type=2 #78
+2022/11/11-20:25:00.371 4f652 Delete type=2 #80

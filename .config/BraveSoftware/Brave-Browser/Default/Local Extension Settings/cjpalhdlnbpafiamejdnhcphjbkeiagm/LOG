@@ -1,0 +1,20 @@
+2022/11/11-10:53:27.114 8df Reusing MANIFEST /home/gardner/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm/MANIFEST-000001
+2022/11/11-10:53:27.114 8df Recovering log #211
+2022/11/11-10:53:27.116 8df Reusing old log /home/gardner/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm/000211.log 
+2022/11/11-14:59:13.781 221e1 Level-0 table #215: started
+2022/11/11-14:59:13.940 221e1 Level-0 table #215: 2770233 bytes OK
+2022/11/11-14:59:13.943 221e1 Delete type=0 #211
+2022/11/11-14:59:13.944 221e1 Compacting 4@0 + 3@1 files
+2022/11/11-14:59:14.059 221e1 Generated table #216@0: 14 keys, 2142793 bytes
+2022/11/11-14:59:14.179 221e1 Generated table #217@0: 10 keys, 2248647 bytes
+2022/11/11-14:59:14.311 221e1 Generated table #218@0: 10 keys, 2168251 bytes
+2022/11/11-14:59:14.326 221e1 Generated table #219@0: 9 keys, 203400 bytes
+2022/11/11-14:59:14.326 221e1 Compacted 4@0 + 3@1 files => 6763091 bytes
+2022/11/11-14:59:14.328 221e1 compacted to: files[ 0 4 1 0 0 0 0 ]
+2022/11/11-14:59:14.328 221e1 Delete type=2 #212
+2022/11/11-14:59:14.328 221e1 Delete type=2 #215
+2022/11/11-14:59:14.328 221e1 Delete type=2 #210
+2022/11/11-14:59:14.328 221e1 Delete type=2 #203
+2022/11/11-14:59:14.328 221e1 Delete type=2 #207
+2022/11/11-14:59:14.328 221e1 Delete type=2 #205
+2022/11/11-14:59:14.328 221e1 Delete type=2 #204

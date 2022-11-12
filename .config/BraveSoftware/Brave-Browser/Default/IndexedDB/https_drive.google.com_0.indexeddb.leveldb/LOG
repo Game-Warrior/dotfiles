@@ -1,0 +1,6 @@
+2022/11/11-19:57:06.734 383aa Reusing MANIFEST /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_drive.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/11/11-19:57:06.734 383aa Recovering log #9
+2022/11/11-19:57:06.742 383aa Reusing old log /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_drive.google.com_0.indexeddb.leveldb/000009.log 
+2022/11/11-19:57:11.173 383aa Level-0 table #14: started
+2022/11/11-19:57:11.253 383aa Level-0 table #14: 4018856 bytes OK
+2022/11/11-19:57:11.255 383aa Delete type=0 #9

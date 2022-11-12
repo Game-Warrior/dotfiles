@@ -1,0 +1,17 @@
+{
+   "action": {
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "description": "Who pays $12 a year for a Chrome extension that just redirects you to another site? Not you!",
+   "icons": {
+      "128": "images/icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm3raTAC8Y0leXsWBwMdhsnhyurmqbi+NSqGeO4ed+yHUNRb32OvufOUbJkGoqjhVP+IVco2+aFWQm6b5ZViJT/fK1rrccoVWfp9pix/czcNG4Ibk6KUpwoFOhQv7CtzdIucwCulwZvb9RHK0cfZMRDzdWOkbbRSQYY+oCpQn6L8DWJPhM99rcSGGE1hLqSW08G191NPXeCf6OYBU6LPvi4YenzgJRTlUWwg4ht9uikuee5iAhcQG/lDlQtip4IndhjbPKfa85FkN4BiwXfTXUNZnspN+YRo8O/+jJnQGOwdnBb7Pk+mVyAxMYdC4PjW5p6tSXk3d1kMQMex1vL4hQwIDAQAB",
+   "manifest_version": 3,
+   "name": "12ft Free",
+   "permissions": [ "activeTab", "scripting", "contextMenus" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.1.0"
+}

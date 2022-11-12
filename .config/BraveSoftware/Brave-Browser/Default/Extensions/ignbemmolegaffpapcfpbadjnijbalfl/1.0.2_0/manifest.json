@@ -1,0 +1,34 @@
+{
+   "action": {
+      "default_popup": "pages/popup/index.html"
+   },
+   "background": {
+      "service_worker": "background.js",
+      "type": "module"
+   },
+   "content_scripts": [ {
+      "js": [ "content/import-index.js" ],
+      "matches": [ "*://*.twitter.com/*" ]
+   } ],
+   "description": "Chrome extension to auto-block NFT profile pictures on Twitter",
+   "host_permissions": [ "*://*.twitter.com/*" ],
+   "icons": {
+      "128": "assets/icon128.png",
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxiCrx6UrYzKnWFyWe/T2HA9zUpzsVJPFlveLcsPLgR/y+aTK0Fm3z30Uta8oBgsMz3uZWfDJvWxEKYJcDntUkvkjt/4nE8LvTDdPhVahuLuyxr1iTxsr5cfPI6NqL+75vhRVzCVYbisqy2ZmHtOS1wcVMpjqtR5m2wujwRYRgyA1XqnT/P7N+fNHpWaCwi7No4W5TMM3OmHFd8GawFV8eGeKntyhCQ68oBWrqx2LXdNk7IS8sl4H2XlHiBTLcGqy5i5NalmUQM0yuumHhoTSBNPZBHcw3t/YnyzcZnpVefbZzkqPIpd2ckaYRfrhCV/Fod2gRSHqduXBga4e2vpbLQIDAQAB",
+   "manifest_version": 3,
+   "name": "NoFT",
+   "options_page": "pages/popup/index.html",
+   "permissions": [ "storage", "alarms", "cookies" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.2",
+   "web_accessible_resources": [ {
+      "matches": [ "*://*.twitter.com/*" ],
+      "resources": [ "content/closeInfoPopup.js", "content/autoBlock.js" ]
+   }, {
+      "matches": [ "*://*.twitter.com/*" ],
+      "resources": [ "chunks/*-*.js", "content/index.js" ]
+   } ]
+}

@@ -1,0 +1,27 @@
+2022/09/19-15:51:14.388 1182 Reusing MANIFEST /home/gardner/.config/chromium/Default/Local Extension Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm/MANIFEST-000001
+2022/09/19-15:51:14.389 1182 Recovering log #12
+2022/09/19-15:51:14.393 1182 Reusing old log /home/gardner/.config/chromium/Default/Local Extension Settings/cjpalhdlnbpafiamejdnhcphjbkeiagm/000012.log 
+2022/09/19-15:53:30.404 1182 Level-0 table #16: started
+2022/09/19-15:53:30.468 1182 Level-0 table #16: 2407527 bytes OK
+2022/09/19-15:53:30.471 1182 Delete type=0 #12
+2022/09/19-15:53:30.471 1182 Compacting 4@0 + 1@1 files
+2022/09/19-15:53:30.532 1182 Generated table #17@0: 13 keys, 2130468 bytes
+2022/09/19-15:53:30.593 1182 Generated table #18@0: 10 keys, 2190934 bytes
+2022/09/19-15:53:30.650 1182 Generated table #19@0: 2 keys, 2110402 bytes
+2022/09/19-15:53:30.702 1182 Generated table #20@0: 16 keys, 1844321 bytes
+2022/09/19-15:53:30.702 1182 Compacted 4@0 + 1@1 files => 8276125 bytes
+2022/09/19-15:53:30.705 1182 compacted to: files[ 0 4 1 0 0 0 0 ]
+2022/09/19-15:53:30.705 1182 Delete type=2 #16
+2022/09/19-15:53:30.705 1182 Delete type=2 #11
+2022/09/19-15:53:30.705 1182 Delete type=2 #13
+2022/09/19-15:53:30.705 1182 Delete type=2 #7
+2022/09/19-15:53:30.705 1182 Delete type=2 #9
+2022/09/19-15:55:01.689 1182 Level-0 table #22: started
+2022/09/19-15:55:01.736 1182 Level-0 table #22: 1637538 bytes OK
+2022/09/19-15:55:01.738 1182 Delete type=0 #15
+2022/09/19-15:58:02.338 11ae Level-0 table #24: started
+2022/09/19-15:58:02.379 11ae Level-0 table #24: 1366951 bytes OK
+2022/09/19-15:58:02.381 11ae Delete type=0 #21
+2022/09/19-16:03:03.685 1182 Level-0 table #26: started
+2022/09/19-16:03:03.761 1182 Level-0 table #26: 2523141 bytes OK
+2022/09/19-16:03:03.764 1182 Delete type=0 #23
