@@ -1,9 +1,0 @@
-2022/11/11-10:53:26.452 3 Reusing MANIFEST /home/gardner/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/MANIFEST-000001
-2022/11/11-10:53:26.453 3 Recovering log #351
-2022/11/11-10:53:26.454 3 Reusing old log /home/gardner/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/000351.log 
-2022/11/11-14:28:05.072 4e Level-0 table #355: started
-2022/11/11-14:28:05.076 4e Level-0 table #355: 19758 bytes OK
-2022/11/11-14:28:05.086 4e Delete type=0 #351
-2022/11/11-19:26:48.344 95 Level-0 table #357: started
-2022/11/11-19:26:48.349 95 Level-0 table #357: 15455 bytes OK
-2022/11/11-19:26:48.352 95 Delete type=0 #354

@@ -1,6 +1,0 @@
-2022/10/28-14:04:21.235 eaae Creating DB /home/gardner/.config/Beeper/IndexedDB/nova_nova-web_0.indexeddb.leveldb since it was missing.
-2022/10/28-14:04:21.240 eaae Reusing MANIFEST /home/gardner/.config/Beeper/IndexedDB/nova_nova-web_0.indexeddb.leveldb/MANIFEST-000001
-2022/10/28-14:04:55.258 eaae Level-0 table #5: started
-2022/10/28-14:04:55.260 eaae Level-0 table #5: 8352 bytes OK
-2022/10/28-14:04:55.262 eaae Delete type=0 #3
-2022/10/28-14:04:55.262 eaae Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)

@@ -1,1 +1,0 @@
-!function(){let e="",n=document.querySelector("#zm_web_domain")||document.querySelector("#zm_domain_url");n&&(e=n.value||""),chrome.runtime.sendMessage({type:"passLoginSession",info:{url:e}},(e=>{}))}();

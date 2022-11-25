@@ -1,6 +1,0 @@
-Release Version: 1.8.0
-Build Version: 1.8.0.70
-Build Time: 2022-08-19 03:08:19Z
-Branch: release
-Commit SHA:
-web/extension: 4041ff2368bc8f3318f35d6dfbe19bf17f7570fb

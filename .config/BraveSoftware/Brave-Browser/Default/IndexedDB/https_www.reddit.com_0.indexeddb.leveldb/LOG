@@ -1,6 +1,0 @@
-2022/08/22-14:41:30.459 4b1 Creating DB /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb since it was missing.
-2022/08/22-14:41:30.464 4b1 Reusing MANIFEST /home/gardner/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/MANIFEST-000001
-2022/08/22-14:42:34.300 27f2 Level-0 table #5: started
-2022/08/22-14:42:34.306 27f2 Level-0 table #5: 1940 bytes OK
-2022/08/22-14:42:34.308 27f2 Delete type=0 #3
-2022/08/22-14:42:34.308 27f2 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

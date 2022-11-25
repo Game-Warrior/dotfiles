@@ -1,6 +1,0 @@
-2022/11/04-17:27:25.352 54e8 Creating DB /home/gardner/.config/WebCord/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb since it was missing.
-2022/11/04-17:27:25.357 54e8 Reusing MANIFEST /home/gardner/.config/WebCord/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2022/11/04-18:05:07.601 104b8 Level-0 table #5: started
-2022/11/04-18:05:07.604 104b8 Level-0 table #5: 12756 bytes OK
-2022/11/04-18:05:07.606 104b8 Delete type=0 #3
-2022/11/04-18:05:07.606 104b8 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
