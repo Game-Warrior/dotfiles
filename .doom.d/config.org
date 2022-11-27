@@ -1,6 +1,7 @@
 #+title: GW's Doom Emacs Config
 #+description: My personal Doom Emacs Configuration
 #+startup: showeverything
+#+options: num:nil
 
 * TABLE OF CONTENTS :toc:
 - [[#about-this-config][ABOUT THIS CONFIG]]
@@ -29,8 +30,15 @@
   - [[#org-auto-tangle][Org-auto-tangle]]
   - [[#org-roam][Org-Roam]]
   - [[#org-tree-slides][Org-tree-slides]]
+  - [[#org-re-reveal][Org-Re-Reveal]]
+- [[#emacs-reveal][EMACS-REVEAL]]
 - [[#rainbow-mode][RAINBOW MODE]]
 - [[#switching-windows][SWITCHING WINDOWS]]
+- [[#yasnippet][YASnippet]]
+- [[#palimpsest-mode][PALIMPSEST-MODE]]
+- [[#web-mode][WEB-MODE]]
+- [[#erc][ERC]]
+- [[#elfeed][ELFEED]]
 
 * ABOUT THIS CONFIG
 
@@ -59,7 +67,7 @@ Setting the theme to doom-one.  To try out new themes, I set a keybinding for co
 #+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-solarized-dark)
 (map! :leader
-      :desc "Load new theme" "h t" #'counsel-load-theme)
+      :desc "Load new theme" "h t" #'load-theme)
 #+END_SRC
 * SETTING THE DEFAULT LINK OPENER
 Setting in which browser EMACS will open links
@@ -196,13 +204,13 @@ Some custom functions to insert the date.  The function 'insert-todays-date' can
 
 | COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
 |-----------------------+---------------------------+-----------------------|
-| dt/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
-| dt/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
-| dt/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
-| dt/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
+| gw/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
+| gw/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
+| gw/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
+| gw/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
 
 #+begin_src emacs-lisp
-(defun GW/insert-todays-date (prefix)
+(defun gw/insert-todays-date (prefix)
   (interactive "P")
   (let ((format (cond
                  ((not prefix) "%A, %B %d, %Y")
@@ -211,7 +219,7 @@ Some custom functions to insert the date.  The function 'insert-todays-date' can
     (insert (format-time-string format))))
 
 (require 'calendar)
-(defun GW/insert-any-date (date)
+(defun gw/insert-any-date (date)
   "Insert DATE using the current locale."
   (interactive (list (calendar-read-date)))
   (insert (calendar-date-string date)))
@@ -312,24 +320,26 @@ The modeline is the bottom status bar that appears in Emacs windows.  For more i
 https://github.com/seagle0128/doom-modeline
 
 #+begin_src emacs-lisp
-(set-face-attribute 'mode-line nil :font "Ubuntu Mono-13")
-(setq doom-modeline-height 30     ;; sets modeline height
+(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
+(setq doom-modeline-height 50     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t) ;; adds folder icon next to persp name
+;; Count words
+(setq doom-modeline-enable-word-count '(markdow-mode gfm-mode org-mode))
+;; Display battery
+(setq doom-modeline-enable-battery t)
 #+end_src
 
 * ORG MODE
 I wrapped most of this block in (after! org).  Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults.  I have also enabled org-journal, org-superstar and org-roam by adding (+journal +pretty +roam2) to the org section of my Doom Emacs init.el.
 
-=NOTE:= I have the location of my Org directory and Roam directory in $HOME/nc/ which is a Nextcloud folder that allows me to instantly sync all of my Org work between my home computer and my office computer.
-
 #+BEGIN_SRC emacs-lisp
 (map! :leader
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
-  (setq org-directory "~/nc/Org/"
-        org-agenda-files '("~/nc/Org/agenda.org")
+  (setq org-directory "~/Documents/"
+        org-agenda-files '("~/Documents/agenda.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
@@ -358,7 +368,7 @@ I wrapped most of this block in (after! org).  Without this, my settings might b
 #+END_SRC
 
 ** Org fonts
-I have created an interactive function for each color scheme (M-x dt/org-colors-*).  These functions will set appropriate colors and font attributes for org-level fonts and the org-table font.
+I have created an interactive function for each color scheme (M-x gw/org-colors-*).  These functions will set appropriate colors and font attributes for org-level fonts and the org-table font.
 #+begin_src emacs-lisp
 
 (defun gw/org-colors-doom-one ()
@@ -533,6 +543,7 @@ We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting
 
 #+BEGIN_SRC emacs-lisp
 (use-package ox-twbs)
+(use-package ox-re-reveal)
 #+END_SRC
 
 ** Org-journal
@@ -678,8 +689,26 @@ We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting
 #+end_src
 
 ** Org-Roam
+Org-Roam is a plain-text personal knowledge management system.
+#+begin_src emacs-lisp
+(use-package org-roam
+:ensure t
+:init
+(setq org-roam-v2-ack t)
+:custom
+(org-roam-directory "~/Notes")
+(org-roam-completion-everywhere t)
+:bind (("C-c n l" . org-roam-buffer-toggle)
+       ("C-c n f" . org-roam-node-find)
+       ("C-c n i" . org-roam-node-insert)
+       :map org-mode-map
+       ("C-M-i" . completion-at-point))
+:config
+(org-roam-setup))
+#+end_src
+
 ** Org-tree-slides
-Customizations for Org-tree-slides.
+Customization for Org-tree-slides.
 #+begin_src emacs-lisp
 
 (use-package hide-mode-line)
@@ -722,6 +751,33 @@ Customizations for Org-tree-slides.
   (org-image-actual-width nil))
 #+end_src
 
+** Org-Re-Reveal
+Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations.
+#+begin_src emacs-lisp
+(setq org-re-reveal-root "file:///Users/gb/Developer/git-repos/org-reveal-config/reveal.js/js/reveal.js")
+(setq org-re-reveal-hlevel 2)
+#+end_src
+
+* EMACS-REVEAL
+This repository provides emacs-reveal, which is
+free/libre and open source software (FLOSS)
+to create Open Educational Resources (OER)
+in the form of reveal.js presentations (HTML
+slides with audio).  As the name suggests, emacs-reveal is based on
+the text editor GNU Emacs.
+More specifically, authors write their OER in a lightweight markup
+language called Org mode, which is native to
+GNU Emacs but can be edited everywhere (as text file; also with
+“real” support in other editors)
+and which allows authors (a) to
+collaborate on source documents via version control systems such as
+Git and (b) to focus on contents, while layout information is
+maintained separately.  Org files can then be exported to various
+target formats (e.g., reveal.js presentations or PDF documents).
+#+begin_src emacs-lisp
+;; (add-to-list 'load-path "Users/gb/Documents/emacs-stuff/emacs-reveal")
+;; (require 'emacs-reveal)
+#+end_src
 * RAINBOW MODE
 Rainbox mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
 
@@ -739,3 +795,90 @@ Here is where I set my keybindings for switching between windows.
 #+begin_src emacs-lisp
 (global-set-key (kbd "M-b") 'ace-window)
 #+end_src
+
+* YASnippet
+YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
+#+begin_src emacs-lisp
+(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+(yas-global-mode 1)
+#+end_src
+
+* PALIMPSEST-MODE
+This minor mode for Emacs provides several strategies to remove text without permanently deleting it. Namely, it provides the following capabilities:
+
+    Send selected text to the bottom of the buffer
+    Send selected text to the top of the buffer
+    Send selected text to a trash file
+
+Much like code, the process of writing text is a progression of revisions where content gets transformed and refined. During these iterations, it is often desirable to move text instead of deleting it: you may have written a sentence that doesn't belong in the paragraph you're editing right now, but it might fit somewhere else. Since you don't know where exactly, you'd like to put it out of the way, not discard it entirely. Palimpsest saves you from the traveling back and forth between your current position and the bottom of your document (or another draft or trash document).
+
+Next time you're writing fiction, non-fiction, a journalistic piece or a blog post using Emacs, give palimpsest-mode a try. You might even try it while coding in a functional language, moving stuff around sprightly, aided by an abstraction reminiscent of the Read-Eval-Print loop, yet completely orthogonal.
+#+begin_src emacs-lisp
+;;This is where I will change the keybindings to Palemcest-mode if I remember.
+#+end_src
+
+* WEB-MODE
+These are my hooks for web-mode.
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.html\\'" .web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+#+end_src
+
+* ERC
+ERC is a built-in Emacs IRC client.
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("e". "evaluate/ERC/EWW")
+       :desc "Launch ERC with TLS connection" "E" #'erc-tls))
+
+(setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
+      erc-server "irc.libera.chat"
+      erc-nick "Game-Warrior"
+      erc-user-full-name "Gardner Berry"
+      erc-track-shorten-start 24
+      erc-autojoin-channels-alist '(("irc.libera.chat" "#archlinux" "#linux" "#emacs #emacsconf #emacsconf-gen"))
+      erc-kill-buffer-on-part t
+      erc-fill-column 100
+      erc-fill-function 'erc-fill-static
+      erc-fill-static-center 20
+      ;; erc-auto-query 'bury
+      )
+
+#+end_src
+
+* ELFEED
+A RSS feed reader for Emacs.
+#+BEGIN_SRC emacs-lisp
+(use-package! elfeed-goodies)
+(elfeed-goodies/setup)
+(setq elfeed-goodies/entry-pane-size 0.5)
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(setq elfeed-feeds (quote
+                     ("https://www.reddit.com/r/emacs.rss" reddit emacs)
+                     ("https://hackaday.com/blog/feed/" hackaday linux)
+                     ("https://opensource.com/feed" opensource linux)
+                     ("https://linux.softpedia.com/backend.xml" softpedia linux)
+                     ("https://itsfoss.com/feed/" itsfoss linux)
+                     ("https://www.zdnet.com/topic/linux/rss.xml" zdnet linux)
+                     ("https://www.phoronix.com/rss.php" phoronix linux)
+                     ("http://feeds.feedburner.com/d0od" omgubuntu linux)
+                     ("https://www.computerworld.com/index.rss" computerworld linux)
+                     ("https://www.networkworld.com/category/linux/index.rss" networkworld linux)
+                     ("https://www.techrepublic.com/rssfeeds/topic/open-source/" techrepublic linux)
+                     ("https://betanews.com/feed" betanews linux)
+                     ("http://lxer.com/module/newswire/headlines.rss" lxer linux)
+                     ("https://distrowatch.com/news/dwd.xml" distrowatch linux)
+                     ("https://fourms.frontier.co.uk/forums/elite-dangerous-news" Elite Dangerous News Fourm)))
+##+end_src

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name:title
+# key:>t
+# --
+
+#+description: ${1:description}
+#+author: Gardner Berry
+#+options: num:nil toc:nil
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-NAME.setup
+
+$0

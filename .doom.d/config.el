@@ -7,7 +7,7 @@
 
 (setq doom-theme 'doom-solarized-dark)
 (map! :leader
-      :desc "Load new theme" "h t" #'counsel-load-theme)
+      :desc "Load new theme" "h t" #'load-theme)
 
 (setq browse-url-browser-function 'browse-url-default-browser)
 
@@ -70,7 +70,7 @@
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
 
-(defun GW/insert-todays-date (prefix)
+(defun gw/insert-todays-date (prefix)
   (interactive "P")
   (let ((format (cond
                  ((not prefix) "%A, %B %d, %Y")
@@ -79,7 +79,7 @@
     (insert (format-time-string format))))
 
 (require 'calendar)
-(defun GW/insert-any-date (date)
+(defun gw/insert-any-date (date)
   "Insert DATE using the current locale."
   (interactive (list (calendar-read-date)))
   (insert (calendar-date-string date)))
@@ -130,17 +130,21 @@
  '(markdown-header-face-5 ((t (:inherit markdown-header-face :height 1.3))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.2)))))
 
-(set-face-attribute 'mode-line nil :font "Ubuntu Mono-13")
-(setq doom-modeline-height 30     ;; sets modeline height
+(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
+(setq doom-modeline-height 50     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t) ;; adds folder icon next to persp name
+;; Count words
+(setq doom-modeline-enable-word-count '(markdow-mode gfm-mode org-mode))
+;; Display battery
+(setq doom-modeline-enable-battery t)
 
 (map! :leader
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
-  (setq org-directory "~/nc/Org/"
-        org-agenda-files '("~/nc/Org/agenda.org")
+  (setq org-directory "~/Documents/"
+        org-agenda-files '("~/Documents/agenda.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
@@ -331,6 +335,7 @@
 (gw/org-colors-doom-one)
 
 (use-package ox-twbs)
+(use-package ox-re-reveal)
 
 (setq org-journal-dir "~/nc/Org/journal/"
       org-journal-date-prefix "* "
@@ -462,6 +467,21 @@
   :config
   (setq org-auto-tangle-default t))
 
+(use-package org-roam
+:ensure t
+:init
+(setq org-roam-v2-ack t)
+:custom
+(org-roam-directory "~/Notes")
+(org-roam-completion-everywhere t)
+:bind (("C-c n l" . org-roam-buffer-toggle)
+       ("C-c n f" . org-roam-node-find)
+       ("C-c n i" . org-roam-node-insert)
+       :map org-mode-map
+       ("C-M-i" . completion-at-point))
+:config
+(org-roam-setup))
+
 (use-package hide-mode-line)
 
 (defun efs/presentation-setup ()
@@ -501,6 +521,12 @@
   (org-tree-slide-breadcrumbs " > ")
   (org-image-actual-width nil))
 
+(setq org-re-reveal-root "file:///Users/gb/Developer/git-repos/org-reveal-config/reveal.js/js/reveal.js")
+(setq org-re-reveal-hlevel 2)
+
+;; (add-to-list 'load-path "Users/gb/Documents/emacs-stuff/emacs-reveal")
+;; (require 'emacs-reveal)
+
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda ()
     (when (not (memq major-mode
@@ -509,3 +535,34 @@
 (global-rainbow-mode 1 )
 
 (global-set-key (kbd "M-b") 'ace-window)
+
+(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+(yas-global-mode 1)
+
+;;This is where I will change the keybindings to Palemcest-mode if I remember.
+
+(add-to-list 'auto-mode-alist '("\\.html\\'" .web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+(map! :leader
+      (:prefix ("e". "evaluate/ERC/EWW")
+       :desc "Launch ERC with TLS connection" "E" #'erc-tls))
+
+(setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
+      erc-server "irc.libera.chat"
+      erc-nick "Game-Warrior"
+      erc-user-full-name "Gardner Berry"
+      erc-track-shorten-start 24
+      erc-autojoin-channels-alist '(("irc.libera.chat" "#archlinux" "#linux" "#emacs #emacsconf #emacsconf-gen"))
+      erc-kill-buffer-on-part t
+      erc-fill-column 100
+      erc-fill-function 'erc-fill-static
+      erc-fill-static-center 20
+      ;; erc-auto-query 'bury
+      )
