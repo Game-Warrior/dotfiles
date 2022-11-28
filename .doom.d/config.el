@@ -171,6 +171,7 @@
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" )))) ; Task has been cancelled
 
+(after! org
 (defun gw/org-colors-doom-one ()
   "Enable Doom One colors for Org headers."
   (interactive)
@@ -209,9 +210,9 @@
   (dolist
       (face
        '((org-level-1 1.7 "#458588" ultra-bold)
-         (org-level-2 1.6 "#b16286" extra-bold)
+         (org-level-2 1.6 "#fb4934" extra-bold)
          (org-level-3 1.5 "#98971a" bold)
-         (org-level-4 1.4 "#fb4934" semi-bold)
+         (org-level-4 1.4 "#b16286" semi-bold)
          (org-level-5 1.3 "#83a598" normal)
          (org-level-6 1.2 "#d3869b" normal)
          (org-level-7 1.1 "#d79921" normal)
@@ -289,10 +290,10 @@
   (dolist
       (face
        '((org-level-1 1.7 "#268bd2" ultra-bold)
-         (org-level-2 1.6 "#d33682" extra-bold)
+         (org-level-2 1.6 "#cb4b16" extra-bold)
          (org-level-3 1.5 "#859900" bold)
          (org-level-4 1.4 "#b58900" semi-bold)
-         (org-level-5 1.3 "#cb4b16" normal)
+         (org-level-5 1.3 "#d33682" normal)
          (org-level-6 1.2 "#6c71c4" normal)
          (org-level-7 1.1 "#2aa198" normal)
          (org-level-8 1.0 "#657b83" normal)))
@@ -305,10 +306,10 @@
   (dolist
       (face
        '((org-level-1 1.7 "#268bd2" ultra-bold)
-         (org-level-2 1.6 "#d33682" extra-bold)
+         (org-level-2 1.6 "#cb4b16" extra-bold)
          (org-level-3 1.5 "#859900" bold)
          (org-level-4 1.4 "#b58900" semi-bold)
-         (org-level-5 1.3 "#cb4b16" normal)
+         (org-level-5 1.3 "#d33682" normal)
          (org-level-6 1.2 "#6c71c4" normal)
          (org-level-7 1.1 "#2aa198" normal)
          (org-level-8 1.0 "#657b83" normal)))
@@ -332,134 +333,16 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
 ;; Load our desired dt/org-colors-* theme on startup
-(gw/org-colors-doom-one)
+(gw/org-colors-solarized-dark))
 
-(use-package ox-twbs)
-(use-package ox-re-reveal)
+(use-package! ox-twbs)
+(use-package! ox-reveal)
 
 (setq org-journal-dir "~/nc/Org/journal/"
       org-journal-date-prefix "* "
       org-journal-time-prefix "** "
       org-journal-date-format "%B %d, %Y (%A) "
       org-journal-file-format "%Y-%m-%d.org")
-
-(setq org-publish-use-timestamps-flag nil)
-(setq org-export-with-broken-links t)
-(setq org-publish-project-alist
-      '(("distro.tube without manpages"
-         :base-directory "~/nc/gitlab-repos/distro.tube/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/"
-         :recursive t
-         :exclude "org-html-themes/.*\\|man-org/man*"
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man0p"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man0p/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man0p/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man1"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man1/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man1/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man1p"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man1p/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man1p/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man2"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man2/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man2/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man3"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man3/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man3/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man3p"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man3p/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man3p/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man4"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man4/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man4/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man5"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man5/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man5/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man6"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man6/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man6/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man7"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man7/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man7/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("man8"
-         :base-directory "~/nc/gitlab-repos/distro.tube/man-org/man8/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/distro.tube/html/man-org/man8/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-         ("org-static"
-         :base-directory "~/Org/website"
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :publishing-directory "~/public_html/"
-         :recursive t
-         :exclude ".*/org-html-themes/.*"
-         :publishing-function org-publish-attachment)
-         ("dtos.dev"
-         :base-directory "~/nc/gitlab-repos/dtos.dev/"
-         :base-extension "org"
-         :publishing-directory "~/nc/gitlab-repos/dtos.dev/html/"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4             ; Just the default for this project.
-         :auto-preamble t)
-
-      ))
 
 (use-package! org-auto-tangle
   :defer t
@@ -521,8 +404,12 @@
   (org-tree-slide-breadcrumbs " > ")
   (org-image-actual-width nil))
 
-(setq org-re-reveal-root "file:///Users/gb/Developer/git-repos/org-reveal-config/reveal.js/js/reveal.js")
-(setq org-re-reveal-hlevel 2)
+;; (setq org-re-reveal-root "file:///Users/gb/Developer/git-repos/org-reveal-config/reveal.js/js/reveal.js")
+;; (setq org-re-reveal-hlevel 2)
+;; Reveal.js + Org mode
+(require 'ox-reveal)
+(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+(setq org-reveal-title-slide nil)
 
 ;; (add-to-list 'load-path "Users/gb/Documents/emacs-stuff/emacs-reveal")
 ;; (require 'emacs-reveal)

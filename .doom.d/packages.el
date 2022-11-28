@@ -54,7 +54,7 @@
 (package! org-roam)
 (package! org-tree-slide)
 (package! org-auto-tangle)
-(package! org-re-reveal)
+(package! org-reveal)
 (package! ox-twbs)
 (package! flycheck-aspell)
 (package! calfw)
@@ -80,3 +80,4 @@
 (package! org-ref)
 (package! org-re-reveal-citeproc)
 (package! org-re-reveal-ref)
+(package! org-re-reveal)
