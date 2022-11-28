@@ -343,7 +343,7 @@ I wrapped most of this block in (after! org).  Without this, my settings might b
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
-        org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?✦)) ; changes +/- symbols in item lists
+        org-superstar-item-bullet-alist '((?+ . ?➤) (?- . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -408,14 +408,14 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.7 "#458588" ultra-bold)
-         (org-level-2 1.6 "#fb4934" extra-bold)
-         (org-level-3 1.5 "#98971a" bold)
-         (org-level-4 1.4 "#b16286" semi-bold)
+       '((org-level-1 1.7 "#fb4934" ultra-bold)
+         (org-level-2 1.6 "#d79921" extra-bold)
+         (org-level-3 1.5 "#8ec07c" bold)
+         (org-level-4 1.4 "#98971a" semi-bold)
          (org-level-5 1.3 "#83a598" normal)
-         (org-level-6 1.2 "#d3869b" normal)
-         (org-level-7 1.1 "#d79921" normal)
-         (org-level-8 1.0 "#8ec07c" normal)))
+         (org-level-6 1.2 "#458588" normal)
+         (org-level-7 1.1 "#d3869b" normal)
+         (org-level-8 1.0 "#b16286" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -488,14 +488,15 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.7 "#268bd2" ultra-bold)
-         (org-level-2 1.6 "#cb4b16" extra-bold)
-         (org-level-3 1.5 "#859900" bold)
-         (org-level-4 1.4 "#b58900" semi-bold)
-         (org-level-5 1.3 "#d33682" normal)
-         (org-level-6 1.2 "#6c71c4" normal)
-         (org-level-7 1.1 "#2aa198" normal)
-         (org-level-8 1.0 "#657b83" normal)))
+       '((org-level-1 1.7 "#dc322f" ultra-bold)
+         (org-level-2 1.6 "#859900" extra-bold)
+         (org-level-3 1.5 "#cb4b16" bold)
+         (org-level-4 1.4 "#2aa198" semi-bold)
+         (org-level-5 1.3 "#b58900" normal)
+         (org-level-6 1.2 "#6c71c4;" normal)
+         (org-level-7 1.1 "#d33682" normal)
+         (org-level-8 1.0 "#859900" normal)))
+
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -504,14 +505,14 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.7 "#268bd2" ultra-bold)
-         (org-level-2 1.6 "#cb4b16" extra-bold)
-         (org-level-3 1.5 "#859900" bold)
-         (org-level-4 1.4 "#b58900" semi-bold)
-         (org-level-5 1.3 "#d33682" normal)
+       '((org-level-1 1.7 "#dc322f" ultra-bold)
+         (org-level-2 1.6 "#b58900" extra-bold)
+         (org-level-3 1.5 "#cb4b16" bold)
+         (org-level-4 1.4 "#2aa198" semi-bold)
+         (org-level-5 1.3 "#268bd2" normal)
          (org-level-6 1.2 "#6c71c4" normal)
-         (org-level-7 1.1 "#2aa198" normal)
-         (org-level-8 1.0 "#657b83" normal)))
+         (org-level-7 1.1 "#657b83" normal)
+         (org-level-8 1.0 "#859900" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
