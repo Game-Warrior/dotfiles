@@ -26,6 +26,7 @@
   - [[#org-fonts][Org fonts]]
   - [[#org-export][Org-export]]
   - [[#org-journal][Org-journal]]
+  - [[#org-gcal][Org-gcal]]
   - [[#org-publish][Org-publish]]
   - [[#org-auto-tangle][Org-auto-tangle]]
   - [[#org-roam][Org-Roam]]
@@ -39,6 +40,7 @@
 - [[#web-mode][WEB-MODE]]
 - [[#erc][ERC]]
 - [[#elfeed][ELFEED]]
+- [[#mastodon][Mastodon]]
 
 * ABOUT THIS CONFIG
 
@@ -65,7 +67,7 @@ Change the title bar format
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-solarized-dark-high-contrast)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 #+END_SRC
@@ -343,7 +345,7 @@ I wrapped most of this block in (after! org).  Without this, my settings might b
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
-        org-superstar-item-bullet-alist '((?+ . ?➤) (?- . ?✦)) ; changes +/- symbols in item lists
+        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -556,6 +558,15 @@ We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting
       org-journal-file-format "%Y-%m-%d.org")
 #+end_src
 
+** Org-gcal
+Enable syncing between Emacs and Gcal
+#+begin_src emacs-lisp
+(require 'org-gcal)
+(setq org-gcal-client-id "your-id-foo.apps.googleusercontent.com"
+      org-gcal-client-secret "your-secret"
+      org-gcal-file-alist '(("berrygw06@gmail.com" .  "~/Documents/schedule.org")))
+#+end_src
+
 ** Org-publish
 ##+begin_src emacs-lisp
 (setq org-publish-use-timestamps-flag nil)
@@ -752,9 +763,6 @@ Customization for Org-tree-slides.
   (org-image-actual-width nil))
 #+end_src
 
-#+RESULTS:
-| efs/presentation-end |
-
 ** Org-Reveal
 Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations.
 #+begin_src emacs-lisp
@@ -890,3 +898,10 @@ A RSS feed reader for Emacs.
                      ("https://distrowatch.com/news/dwd.xml" distrowatch linux)
                      ("https://fourms.frontier.co.uk/forums/elite-dangerous-news" Elite Dangerous News Fourm)))
 ##+end_src
+
+* Mastodon
+mastodon.el is an Emacs client for the AcitivityPub social networks that implement the Mastodon API.
+#+begin_src emacs-lisp
+    (setq mastodon-instance-url "https://social.linux.pizza"
+          mastodon-active-user "Gamewarrior010")
+#+end_src

@@ -5,7 +5,7 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-solarized-dark-high-contrast)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -148,7 +148,7 @@
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
-        org-superstar-item-bullet-alist '((?+ . ?➤) (?- . ?✦)) ; changes +/- symbols in item lists
+        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -345,6 +345,11 @@
       org-journal-date-format "%B %d, %Y (%A) "
       org-journal-file-format "%Y-%m-%d.org")
 
+(require 'org-gcal)
+(setq org-gcal-client-id "your-id-foo.apps.googleusercontent.com"
+      org-gcal-client-secret "your-secret"
+      org-gcal-file-alist '(("berrygw06@gmail.com" .  "~/Documents/schedule.org")))
+
 (use-package! org-auto-tangle
   :defer t
   :hook (org-mode . org-auto-tangle-mode)
@@ -454,3 +459,6 @@
       erc-fill-static-center 20
       ;; erc-auto-query 'bury
       )
+
+(setq mastodon-instance-url "https://social.linux.pizza"
+      mastodon-active-user "Gamewarrior010")
