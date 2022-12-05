@@ -1,0 +1,78 @@
+#+title: My Awesome WM config
+#+description: My configuraton for the Awesome window manager
+#+author: Gardner Berry
+#+options: num:nil
+
+* Table of Contents :toc:
+- [[#about-this-config][ABOUT THIS CONFIG]]
+- [[#luarocks][LUAROCKS]]
+- [[#awesome-libraries][AWESOME LIBRARIES]]
+  - [[#standard-libraries][Standard Libraries]]
+  - [[#widget-and-layout-library][Widget and Layout Library]]
+  - [[#theme-handling-library][Theme Handling Library]]
+  - [[#notification-library][Notification Library]]
+  - [[#hot-keys-library][Hot Keys Library]]
+- [[#error-handling][ERROR HANDLING]]
+  - [[#errors-after-startup][Errors After Startup]]
+
+* ABOUT THIS CONFIG
+
+* LUAROCKS
+If LuaRocks is installed, make sure that packages installed through it are found (e.g. lgi). If LuaRocks is not installed, do nothing.
+#+begin_src lua
+pcall(require, "luarocks.loader")
+#+end_src
+
+* AWESOME LIBRARIES
+** Standard Libraries
+#+begin_src lua
+local gears = require("gears")
+local awful = require("awful")
+require("awful.autofocus")
+#+end_src
+** Widget and Layout Library
+#+begin_src lua
+local wibox = require("wibox")
+#+end_src
+** Theme Handling Library
+#+begin_src lua
+local beautiful = require("beautiful")
+#+end_src
+** Notification Library
+#+begin_src lua
+local naughty = require("naughty")
+local menubar = require("menubar")
+local hotkeys_popup = require("awful.hotkeys_popup")
+#+end_src
+** Hot Keys Library
+Enable hotkeys help widget for VIM and other apps when client with a matching name is opened:
+#+begin_src lua
+require("awful.hotkeys_popup.keys")
+#+end_src
+
+* ERROR HANDLING
+Check if awesome encountered an error during startup and fell back to another config (This code will only ever execute for the fallback config)
+#+begin_src lua
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
+#+end_src
+
+** Errors After Startup
+#+begin_src lua
+do
+    local in_error = false
+    awesome.connect_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
+
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "Oops, an error happened!",
+                         text = tostring(err) })
+        in_error = false
+    end)
+end
+#+end_src
