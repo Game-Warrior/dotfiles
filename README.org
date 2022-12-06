@@ -1,4 +1,10 @@
 #+title: README
+#+description: The README for the collection of my dotfiles
+#+author: Gardner Berry
+#+options: num:nil toc:nil
 
 * Outline
-- This Repository is a collection of my various configuration files.
+- This Repository is a collection of my various configuration files to make setting up a new computer easier.
+
+* Warp Theme
+I have also ported The Henna theme from VScode to Warp.
