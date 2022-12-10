@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 echo "Welcome to my Post Installation Script for MacOS"
