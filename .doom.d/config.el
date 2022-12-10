@@ -5,7 +5,7 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-solarized-dark-high-contrast)
+(setq doom-theme 'doom-henna)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -56,6 +56,9 @@
                               ("png" . "sxiv")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
+
+(straight-use-package 'dirvish)
+(dirvish-override-dired-mode)
 
 (use-package emojify
   :hook (after-init . global-emojify-mode))
@@ -163,7 +166,7 @@
           '((sequence
              "TODO(t)"           ; A task that is ready to be tackled
              "BLOG(b)"           ; Blog writing assignments
-             "GYM(g)"            ; Things to accomplish at the gym
+             "SCHOOL(s)"            ; Things to accomplish at the gym
              "PROJ(p)"           ; A project that contains other tasks
              "VIDEO(v)"          ; Video assignments
              "WAIT(w)"           ; Something is holding up this task
@@ -333,13 +336,46 @@
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
-;; Load our desired dt/org-colors-* theme on startup
-(gw/org-colors-solarized-dark))
+(defun gw/org-colors-henna ()
+  "Enable Tomorrow Night colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#e74c3c" ultra-bold)
+         (org-level-2 1.6 "#1abc9c" extra-bold)
+         (org-level-3 1.5 "#53df83" bold)
+         (org-level-4 1.4 "#ff6655" semi-bold)
+         (org-level-5 1.3 "#99bb66" normal)
+         (org-level-6 1.2 "#56b6c2" normal)
+         (org-level-7 1.1 "#51afef" normal)
+         (org-level-8 1.0 "#ff6655" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+
+(defun gw/org-colors-doom-one-alt ()
+  "Enable an alternitive set of Doom One colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#ff6c6b" ultra-bold)
+         (org-level-2 1.6 "#da8548" extra-bold)
+         (org-level-3 1.5 "#a9a1e1" bold)
+         (org-level-4 1.4 "#51afef " semi-bold)
+         (org-level-5 1.3 "#5699af" normal)
+         (org-level-6 1.2 "#98be65" normal)
+         (org-level-7 1.1 "#46d9ff" normal)
+         (org-level-8 1.0 "#ff6c6b" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+
+;; Load our desired gw/org-colors-* theme on startup
+ (gw/org-colors-henna))
 
 (use-package! ox-twbs)
 (use-package! ox-reveal)
+(use-package! ox-pandoc)
 
-(setq org-journal-dir "~/nc/Org/journal/"
+(setq org-journal-dir "~/Documents/Personal/journal/"
       org-journal-date-prefix "* "
       org-journal-time-prefix "** "
       org-journal-date-format "%B %d, %Y (%A) "

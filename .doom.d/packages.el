@@ -83,3 +83,11 @@
 (package! org-re-reveal-ref)
 (package! org-re-reveal)
 (package! mastodon)
+(package! ox-pandoc)
+(package! pandoc)
+(package! org-pandoc-import
+  :recipe (:host github
+           :repo "tecosaur/org-pandoc-import"
+           :files ("*.el" "filters" "preprocessors")))
+(package! dirvish)
+(package! lsp-mode)

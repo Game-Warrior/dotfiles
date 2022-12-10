@@ -323,7 +323,7 @@ globalkeys = gears.table.join(
               {description = "launch Brave", group = "applications"}),
 
  -- Emacs
-    awful.key({ modkey },            "e",     function () awful.util.spawn("emacs") end,
+    awful.key({ modkey },            "e",     function () awful.util.spawn("emacsclient -c") end,
               {description = "launch Emacs", group = "applications"}),
 
 -- Nemo

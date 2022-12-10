@@ -3,8 +3,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-safe-remote-resources
+   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-NAME\\.setup\\'"))
  '(package-selected-packages
-   '(org-roam yasnippet wc-mode ox-reveal org-ref ivy-posframe emmet-mode elfeed-org elfeed-goodies beacon ace-window)))
+   '(lsp-mode dirvish org-roam yasnippet wc-mode ox-reveal org-ref ivy-posframe emmet-mode elfeed-org elfeed-goodies beacon ace-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
