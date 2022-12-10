@@ -20,6 +20,8 @@ echo "Copying my btop config"
 cp -r ~/dotfiles/btop ~/.config/
 echo "Copying my Neofetch config"
 cp -r ~/dotfiles/neofetch/ ~/.config/
+echo "Copying my GIT config"
+cp -r ~/dotfiles/.gitconfig ~/
 
 #echo "updating"
 #sudo pacman -Syu
@@ -85,18 +87,6 @@ sudo systemctl enable libvirtd
 echo "adding user to libvirt&kvm group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
-
-read -p "Do you want me to configure git (y/N)" yn
-case $yn in
-    y ) echo "Configuring git"
-        git config --global user.name "Gardner Berry"
-        git config --global user.email "berrygw06@gmail.com"
-        exit;;
-    n ) echo "Exiting"
-        exit;;
-    * ) echo "invailid response"
-        exit 1;;
-esac
 
 echo "Changing the Uer Shell to Fish"
 chsh -s /bin/fish

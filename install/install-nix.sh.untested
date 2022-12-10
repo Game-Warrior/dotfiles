@@ -33,10 +33,6 @@ echo "Installing Doom Emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emac.d/bin/doom install
 
-echo "Installing Space VIM"
-curl -sLf https://spacevim.org/install.sh | bash
-cd ~/.SpaceVim
-
 echo "Enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
