@@ -29,5 +29,5 @@ Just Run the install-deb script to install.
 #+end_src
 
 
-* Warp Theme
+* Warp Themes
 I have also ported The Henna theme from VScode to Warp.
