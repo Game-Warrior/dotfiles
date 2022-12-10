@@ -3,8 +3,31 @@
 #+author: Gardner Berry
 #+options: num:nil toc:nil
 
-* Outline
-- This Repository is a collection of my various configuration files to make setting up a new computer easier.
+* Install
+** MacOS
+I have written a script that should get all of my applications and configurations on MacOS. To Run the script just run the command below.
+#+begin_src bash
+./dotfiles/install/install-mac.sh
+#+end_src
+
+** Arch Linux
+This script should quickly install my configuration for Arch Linux.
+#+begin_src bash
+./dotfiles/install/install-arch.sh
+#+end_src
+
+** NixOS
+This script has not been tested but it should work. To run the install-nix script just run the command below.
+#+begin_src bash
+./dotfiles/install/install-nix.sh
+#+end_src
+
+** Debian/Ubuntu
+Just Run the install-deb script to install.
+#+begin_src bash
+./dotfiles/install/install-deb.sh
+#+end_src
+
 
 * Warp Theme
 I have also ported The Henna theme from VScode to Warp.
