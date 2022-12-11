@@ -17,7 +17,7 @@ terminal_colors:
     black: "#8e8e8e"
     yellow: "#fefdd5"
     blue: "#c1e3fe"
-foreground: "#181A1F"
+foreground: "#bfbfbf"
 details: "darker"
 background: "#10151a"
 accent: "#ff6655"

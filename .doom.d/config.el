@@ -5,7 +5,7 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-henna)
+(setq doom-theme 'doom-old-hope)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -350,7 +350,7 @@
          (org-level-7 1.1 "#51afef" normal)
          (org-level-8 1.0 "#ff6655" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
 (defun gw/org-colors-doom-one-alt ()
   "Enable an alternitive set of Doom One colors for Org headers."
@@ -368,8 +368,23 @@
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
+(defun gw/org-colors-doom-old-hope ()
+  "Enable Doom One colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#4fb3d8" ultra-bold)
+         (org-level-2 1.6 "#ee7b29" extra-bold)
+         (org-level-3 1.5 "#78bd65" bold)
+         (org-level-4 1.4 "#b978ab" semi-bold)
+         (org-level-5 1.3 "#4fb3d8" normal)
+         (org-level-6 1.2 "#ee7b29" normal)
+         (org-level-7 1.1 "#78bd65" normal)
+         (org-level-8 1.0 "#b978ab" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 ;; Load our desired gw/org-colors-* theme on startup
- (gw/org-colors-henna))
+ (gw/org-colors-doom-old-hope))
 
 (use-package! ox-twbs)
 (use-package! ox-reveal)
@@ -478,23 +493,6 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
-(map! :leader
-      (:prefix ("e". "evaluate/ERC/EWW")
-       :desc "Launch ERC with TLS connection" "E" #'erc-tls))
-
-(setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
-      erc-server "irc.libera.chat"
-      erc-nick "Game-Warrior"
-      erc-user-full-name "Gardner Berry"
-      erc-track-shorten-start 24
-      erc-autojoin-channels-alist '(("irc.libera.chat" "#archlinux" "#linux" "#emacs #emacsconf #emacsconf-gen"))
-      erc-kill-buffer-on-part t
-      erc-fill-column 100
-      erc-fill-function 'erc-fill-static
-      erc-fill-static-center 20
-      ;; erc-auto-query 'bury
-      )
 
 (setq mastodon-instance-url "https://social.linux.pizza"
       mastodon-active-user "Gamewarrior010")
