@@ -30,4 +30,9 @@ echo "Installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
 
+echo "Making Developer folder"
+mkdir ~/Developer/
+mkdir ~/Developer/Git-Repos
+mkdir ~/Developer/Projects
+
 echo "Done!"
