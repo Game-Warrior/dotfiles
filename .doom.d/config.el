@@ -511,7 +511,7 @@
 ;; Enable abbreviation mode
 (abbrev-mode 1)
 
-(setq openai-api-key "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")
+(setq openai-api-key "example")
 (require 'request)
 
 (defgroup aide nil
