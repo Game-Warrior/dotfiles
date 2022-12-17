@@ -6,7 +6,7 @@
 * TABLE OF CONTENTS :toc:
 - [[#about-this-config][ABOUT THIS CONFIG]]
 - [[#beacon][BEACON]]
-- [[#setting-username-and-email][Setting Username and Email]]
+- [[#setting-username-and-email][SETTING USERNAME and EMAIL]]
 - [[#title-bar][TITLE BAR]]
 - [[#doom-theme][DOOM THEME]]
 - [[#setting-the-default-link-opener][SETTING THE DEFAULT LINK OPENER]]
@@ -33,13 +33,14 @@
   - [[#org-roam][Org-Roam]]
   - [[#org-tree-slides][Org-tree-slides]]
   - [[#org-reveal][Org-Reveal]]
-- [[#emacs-reveal][EMACS-REVEAL]]
 - [[#rainbow-mode][RAINBOW MODE]]
 - [[#switching-windows][SWITCHING WINDOWS]]
 - [[#yasnippet][YASnippet]]
 - [[#palimpsest-mode][PALIMPSEST-MODE]]
 - [[#web-mode][WEB-MODE]]
-- [[#mastodon][Mastodon]]
+- [[#mastodon][MASTODON]]
+- [[#abbrev-mode][ABBREV-MODE]]
+- [[#aide][AIDE]]
 
 * ABOUT THIS CONFIG
 
@@ -50,10 +51,10 @@ Never lose your cursor.  When you scroll, your cursor will shine!  This is a glo
 (beacon-mode 1)
 #+end_src
 
-* Setting Username and Email
+* SETTING USERNAME and EMAIL
 #+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
-    user-mail-address "berrygw06@gmail.com")
+    user-mail-address "gardner@gamewarrior.xyz")
 #+end_src
 
 * TITLE BAR
@@ -66,13 +67,10 @@ Change the title bar format
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-old-hope)
+(setq doom-theme 'doom-one)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 #+END_SRC
-
-#+RESULTS:
-: load-theme
 
 * SETTING THE DEFAULT LINK OPENER
 Setting in which browser EMACS will open links
@@ -182,8 +180,6 @@ Dirvish is an improved version of the Emacs inbuilt package Dired. It not only g
 (straight-use-package 'dirvish)
 (dirvish-override-dired-mode)
 #+end_src
-
-
 * EMOJIS
 Emojify is an Emacs extension to display emojis. It can display github style emojis like :smile: or plain ascii ones like :).
 
@@ -339,8 +335,6 @@ https://github.com/seagle0128/doom-modeline
       doom-modeline-persp-icon t) ;; adds folder icon next to persp name
 ;; Count words
 (setq doom-modeline-enable-word-count '(markdow-mode gfm-mode org-mode))
-;; Display battery
-(setq doom-modeline-enable-battery t)
 #+end_src
 
 * ORG MODE
@@ -471,11 +465,11 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
        '((org-level-1 1.7 "#EC5f67" ultra-bold)
          (org-level-2 1.6 "#99C794" extra-bold)
          (org-level-3 1.5 "#F99157" bold)
-         (org-level-4 1.4 "#fac863 " semi-bold)
-         (org-level-5 1.3 "#5fb3b3 " normal)
-         (org-level-6 1.2 "#ec5f67 " normal)
-         (org-level-7 1.1 "#6699cc " normal)
-         (org-level-8 1.0 "#c594c5 " normal)))
+         (org-level-4 1.4 "#fac863" semi-bold)
+         (org-level-5 1.3 "#5fb3b3" normal)
+         (org-level-6 1.2 "#ec5f67" normal)
+         (org-level-7 1.1 "#6699cc" normal)
+         (org-level-8 1.0 "#c594c5" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -545,7 +539,7 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
 (defun gw/org-colors-henna ()
-  "Enable Tomorrow Night colors for Org headers."
+  "Enable Henna colors for Org headers."
   (interactive)
   (dolist
       (face
@@ -577,7 +571,23 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
 (defun gw/org-colors-doom-old-hope ()
-  "Enable Doom One colors for Org headers."
+  "Enable Doom Old Hope colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#4fb3d8" ultra-bold)
+         (org-level-2 1.6 "#ee7b29" extra-bold)
+         (org-level-3 1.5 "#78bd65" bold)
+         (org-level-4 1.4 "#b978ab" semi-bold)
+         (org-level-5 1.3 "#4fb3d8" normal)
+         (org-level-6 1.2 "#ee7b29" normal)
+         (org-level-7 1.1 "#78bd65" normal)
+         (org-level-8 1.0 "#b978ab" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+
+(defun gw/org-colors-peacock ()
+  "Enable Doom Peacock colors for Org headers."
   (interactive)
   (dolist
       (face
@@ -592,15 +602,17 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 ;; Load our desired gw/org-colors-* theme on startup
- (gw/org-colors-doom-old-hope))
+    (gw/org-colors-doom-one-alt))
+;; )
 #+end_src
+
 ** Org-export
 We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting to gemtext (for the gemini protocol).
 =NOTE=: I also enable ox-publish for converting an Org site into an HTML site, but that is done in init.el (org +publish).
 
 #+BEGIN_SRC emacs-lisp
 (use-package! ox-twbs)
-(use-package! ox-reveal)
+(use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 #+END_SRC
 
@@ -632,7 +644,6 @@ Enable syncing between Emacs and Gcal
   :hook (org-mode . org-auto-tangle-mode)
   :config
   (setq org-auto-tangle-default t))
-
 #+end_src
 
 ** Org-Roam
@@ -701,36 +712,15 @@ Customization for Org-tree-slides.
 ** Org-Reveal
 Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations.
 #+begin_src emacs-lisp
-;; (setq org-re-reveal-root "file:///Users/gb/Developer/git-repos/org-reveal-config/reveal.js/js/reveal.js")
-;; (setq org-re-reveal-hlevel 2)
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
-(setq org-reveal-title-slide nil)
+(setq org-reveal-plugins t)
+(setq org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>@Gamewarrior@mastodon.world</h3>")
 #+end_src
 
-* EMACS-REVEAL
-This repository provides emacs-reveal, which is
-free/libre and open source software (FLOSS)
-to create Open Educational Resources (OER)
-in the form of reveal.js presentations (HTML
-slides with audio).  As the name suggests, emacs-reveal is based on
-the text editor GNU Emacs.
-More specifically, authors write their OER in a lightweight markup
-language called Org mode, which is native to
-GNU Emacs but can be edited everywhere (as text file; also with
-“real” support in other editors)
-and which allows authors (a) to
-collaborate on source documents via version control systems such as
-Git and (b) to focus on contents, while layout information is
-maintained separately.  Org files can then be exported to various
-target formats (e.g., reveal.js presentations or PDF documents).
-#+begin_src emacs-lisp
-;; (add-to-list 'load-path "Users/gb/Documents/emacs-stuff/emacs-reveal")
-;; (require 'emacs-reveal)
-#+end_src
 * RAINBOW MODE
-Rainbox mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
+Rainbow mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
 
 #+begin_src emacs-lisp
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
@@ -781,9 +771,206 @@ These are my hooks for web-mode.
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 #+end_src
 
-* Mastodon
+* MASTODON
 mastodon.el is an Emacs client for the AcitivityPub social networks that implement the Mastodon API.
 #+begin_src emacs-lisp
     (setq mastodon-instance-url "https://social.linux.pizza"
           mastodon-active-user "Gamewarrior010")
+#+end_src
+* ABBREV-MODE
+Auto expansion for Abbrev-mode.
+#+begin_src emacs-lisp
+;; Enable abbreviation mode
+(abbrev-mode 1)
+#+end_src
+
+* AIDE
+An Emacs front end for GPT APIs like OpenAI.
+#+begin_src emacs-lisp
+(setq openai-api-key "example")
+(require 'request)
+
+(defgroup aide nil
+  "aide.el custom settings"
+  :group 'external
+  :prefix "aide-")
+
+(defcustom aide-max-tokens 100
+  "The max-tokens paramater that aide.el sends to OpenAI API."
+  :type 'integer
+  :group 'aide)
+
+(defcustom aide-temperature 0
+  "The temperature paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-top-p 0.1
+  "The top-p paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-frequency-penalty 0
+  "The frequency_penalty paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-presence-penalty 0
+  "The presence_penalty paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-completions-model "davinci"
+  "Name of the model used for completions. aide sends requests to
+the OpenAI API endpoint of this model."
+  :type 'string
+  :group 'aide
+  :options '("davinci", "text-davinci-002", "text-curie-001", "text-babbage-001", "text-ada-001"))
+
+(defun aide-openai-complete (api-key prompt)
+  "Return the prompt answer from OpenAI API.
+API-KEY is the OpenAI API key.
+
+PROMPT is the prompt string we send to the API."
+  (let ((result nil)
+        (auth-value (format "Bearer %s" api-key)))
+    (request
+      (format "https://api.openai.com/v1/engines/%s/completions" aide-completions-model)
+      :type "POST"
+      :data (json-encode `(("prompt" . ,prompt)
+                           ("max_tokens" . ,aide-max-tokens)
+                           ("temperature" . ,aide-temperature)
+                           ("frequency_penalty" . ,aide-frequency-penalty)
+                           ("presence_penalty" . ,aide-presence-penalty)
+                           ("top_p" . ,aide-top-p)))
+      :headers `(("Authorization" . ,auth-value) ("Content-Type" . "application/json"))
+      :sync t
+      :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
+    result))
+
+(defun aide-openai-complete-region (start end)
+  "Send the region to OpenAI autocomplete engine and get the result.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string region)))
+    (message "%s" result)))
+
+(defun aide-openai-complete-region-insert (start end)
+  "Send the region to OpenAI and insert the result to the end of buffer.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string region))
+        original-point)
+    (goto-char (point-max))
+    (setq original-point (point))
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay original-point (point-max))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-complete-buffer-insert ()
+  "Send the ENTIRE buffer to OpenAI and insert the result to the end of buffer."
+  (interactive)
+  (let (region
+        result
+        original-point)
+    (setq region (buffer-substring-no-properties (point-min) (point-max)))
+    (setq result (aide--openai-complete-string region))
+    (goto-char (point-max))
+    (setq original-point (point))
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay original-point (point-max))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-tldr-region (start end)
+  "Send the region to OpenAI autocomplete engine and get the TLDR result.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string (concat region "\n\n tl;dr:"))))
+    (message "%s" result)))
+
+(defun aide-openai-edits (api-key instruction input)
+  "Return the edits answer from OpenAI API.
+API-KEY is the OpenAI API key.
+
+INSTRUCTION and INPUT are the two params we send to the API."
+  (let ((result nil)
+        (auth-value (format "Bearer %s" api-key)))
+    (request
+      "https://api.openai.com/v1/engines/text-davinci-edit-001/edits"
+      :type "POST"
+      :data (json-encode `(("input" . ,input)
+                           ("instruction" . ,instruction)
+                           ("temperature" . 0.9)))
+      :headers `(("Authorization" . ,auth-value)
+                 ("Content-Type" . "application/json"))
+      :sync t
+      :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
+    result))
+
+(defun aide-openai-edits-region-insert (start end)
+  "Send the region to OpenAI edits and insert the result to the end of region.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
+    (goto-char end)
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay end (point))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-edits-region-replace (start end)
+  "Send the region to OpenAI edits and replace the region.
+
+START and END are selected region boundaries.
+
+The original content will be stored in the kill ring."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
+    (goto-char end)
+    (if result
+        (progn
+          (kill-region start end)
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay end (point))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+;; private
+
+(defun aide--openai-complete-string (string)
+  (aide-openai-complete openai-api-key string))
+
+(provide 'aide)
+;;; aide.el ends here
 #+end_src

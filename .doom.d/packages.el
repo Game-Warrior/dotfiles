@@ -91,3 +91,5 @@
            :files ("*.el" "filters" "preprocessors")))
 (package! dirvish)
 (package! lsp-mode)
+;; (package! aide)
+(package! request)

@@ -1,11 +1,11 @@
 (beacon-mode 1)
 
 (setq user-full-name "Gardner Berry"
-    user-mail-address "berrygw06@gmail.com")
+    user-mail-address "gardner@gamewarrior.xyz")
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-old-hope)
+(setq doom-theme 'doom-one)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -140,8 +140,6 @@
       doom-modeline-persp-icon t) ;; adds folder icon next to persp name
 ;; Count words
 (setq doom-modeline-enable-word-count '(markdow-mode gfm-mode org-mode))
-;; Display battery
-(setq doom-modeline-enable-battery t)
 
 (map! :leader
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
@@ -263,11 +261,11 @@
        '((org-level-1 1.7 "#EC5f67" ultra-bold)
          (org-level-2 1.6 "#99C794" extra-bold)
          (org-level-3 1.5 "#F99157" bold)
-         (org-level-4 1.4 "#fac863 " semi-bold)
-         (org-level-5 1.3 "#5fb3b3 " normal)
-         (org-level-6 1.2 "#ec5f67 " normal)
-         (org-level-7 1.1 "#6699cc " normal)
-         (org-level-8 1.0 "#c594c5 " normal)))
+         (org-level-4 1.4 "#fac863" semi-bold)
+         (org-level-5 1.3 "#5fb3b3" normal)
+         (org-level-6 1.2 "#ec5f67" normal)
+         (org-level-7 1.1 "#6699cc" normal)
+         (org-level-8 1.0 "#c594c5" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -337,7 +335,7 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
 (defun gw/org-colors-henna ()
-  "Enable Tomorrow Night colors for Org headers."
+  "Enable Henna colors for Org headers."
   (interactive)
   (dolist
       (face
@@ -369,7 +367,23 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
 (defun gw/org-colors-doom-old-hope ()
-  "Enable Doom One colors for Org headers."
+  "Enable Doom Old Hope colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#4fb3d8" ultra-bold)
+         (org-level-2 1.6 "#ee7b29" extra-bold)
+         (org-level-3 1.5 "#78bd65" bold)
+         (org-level-4 1.4 "#b978ab" semi-bold)
+         (org-level-5 1.3 "#4fb3d8" normal)
+         (org-level-6 1.2 "#ee7b29" normal)
+         (org-level-7 1.1 "#78bd65" normal)
+         (org-level-8 1.0 "#b978ab" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+
+(defun gw/org-colors-peacock ()
+  "Enable Doom Peacock colors for Org headers."
   (interactive)
   (dolist
       (face
@@ -384,10 +398,11 @@
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 ;; Load our desired gw/org-colors-* theme on startup
- (gw/org-colors-doom-old-hope))
+    (gw/org-colors-doom-one-alt))
+;; )
 
 (use-package! ox-twbs)
-(use-package! ox-reveal)
+(use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 
 (setq org-journal-dir "~/Documents/Personal/journal/"
@@ -461,15 +476,11 @@
   (org-tree-slide-breadcrumbs " > ")
   (org-image-actual-width nil))
 
-;; (setq org-re-reveal-root "file:///Users/gb/Developer/git-repos/org-reveal-config/reveal.js/js/reveal.js")
-;; (setq org-re-reveal-hlevel 2)
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
-(setq org-reveal-title-slide nil)
-
-;; (add-to-list 'load-path "Users/gb/Documents/emacs-stuff/emacs-reveal")
-;; (require 'emacs-reveal)
+(setq org-reveal-plugins t)
+(setq org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>@Gamewarrior@mastodon.world</h3>")
 
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda ()
@@ -496,3 +507,193 @@
 
 (setq mastodon-instance-url "https://social.linux.pizza"
       mastodon-active-user "Gamewarrior010")
+
+;; Enable abbreviation mode
+(abbrev-mode 1)
+
+(setq openai-api-key "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")
+(require 'request)
+
+(defgroup aide nil
+  "aide.el custom settings"
+  :group 'external
+  :prefix "aide-")
+
+(defcustom aide-max-tokens 100
+  "The max-tokens paramater that aide.el sends to OpenAI API."
+  :type 'integer
+  :group 'aide)
+
+(defcustom aide-temperature 0
+  "The temperature paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-top-p 0.1
+  "The top-p paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-frequency-penalty 0
+  "The frequency_penalty paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-presence-penalty 0
+  "The presence_penalty paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-completions-model "davinci"
+  "Name of the model used for completions. aide sends requests to
+the OpenAI API endpoint of this model."
+  :type 'string
+  :group 'aide
+  :options '("davinci", "text-davinci-002", "text-curie-001", "text-babbage-001", "text-ada-001"))
+
+(defun aide-openai-complete (api-key prompt)
+  "Return the prompt answer from OpenAI API.
+API-KEY is the OpenAI API key.
+
+PROMPT is the prompt string we send to the API."
+  (let ((result nil)
+        (auth-value (format "Bearer %s" api-key)))
+    (request
+      (format "https://api.openai.com/v1/engines/%s/completions" aide-completions-model)
+      :type "POST"
+      :data (json-encode `(("prompt" . ,prompt)
+                           ("max_tokens" . ,aide-max-tokens)
+                           ("temperature" . ,aide-temperature)
+                           ("frequency_penalty" . ,aide-frequency-penalty)
+                           ("presence_penalty" . ,aide-presence-penalty)
+                           ("top_p" . ,aide-top-p)))
+      :headers `(("Authorization" . ,auth-value) ("Content-Type" . "application/json"))
+      :sync t
+      :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
+    result))
+
+(defun aide-openai-complete-region (start end)
+  "Send the region to OpenAI autocomplete engine and get the result.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string region)))
+    (message "%s" result)))
+
+(defun aide-openai-complete-region-insert (start end)
+  "Send the region to OpenAI and insert the result to the end of buffer.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string region))
+        original-point)
+    (goto-char (point-max))
+    (setq original-point (point))
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay original-point (point-max))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-complete-buffer-insert ()
+  "Send the ENTIRE buffer to OpenAI and insert the result to the end of buffer."
+  (interactive)
+  (let (region
+        result
+        original-point)
+    (setq region (buffer-substring-no-properties (point-min) (point-max)))
+    (setq result (aide--openai-complete-string region))
+    (goto-char (point-max))
+    (setq original-point (point))
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay original-point (point-max))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-tldr-region (start end)
+  "Send the region to OpenAI autocomplete engine and get the TLDR result.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string (concat region "\n\n tl;dr:"))))
+    (message "%s" result)))
+
+(defun aide-openai-edits (api-key instruction input)
+  "Return the edits answer from OpenAI API.
+API-KEY is the OpenAI API key.
+
+INSTRUCTION and INPUT are the two params we send to the API."
+  (let ((result nil)
+        (auth-value (format "Bearer %s" api-key)))
+    (request
+      "https://api.openai.com/v1/engines/text-davinci-edit-001/edits"
+      :type "POST"
+      :data (json-encode `(("input" . ,input)
+                           ("instruction" . ,instruction)
+                           ("temperature" . 0.9)))
+      :headers `(("Authorization" . ,auth-value)
+                 ("Content-Type" . "application/json"))
+      :sync t
+      :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
+    result))
+
+(defun aide-openai-edits-region-insert (start end)
+  "Send the region to OpenAI edits and insert the result to the end of region.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
+    (goto-char end)
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay end (point))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-edits-region-replace (start end)
+  "Send the region to OpenAI edits and replace the region.
+
+START and END are selected region boundaries.
+
+The original content will be stored in the kill ring."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
+    (goto-char end)
+    (if result
+        (progn
+          (kill-region start end)
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay end (point))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+;; private
+
+(defun aide--openai-complete-string (string)
+  (aide-openai-complete openai-api-key string))
+
+(provide 'aide)
+;;; aide.el ends here
