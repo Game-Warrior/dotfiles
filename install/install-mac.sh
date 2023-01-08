@@ -4,12 +4,13 @@ echo "Welcome to my Post Installation Script for MacOS"
 
 cd ~/
 
+echo "Copying my Configuration files"
 echo "Copying my Doom Emacs config"
 cp -r ~/dotfiles/.doom.d ~/
+echo "Copying my BASH config"
+cp -r ~/dotfiles/bash/.bashrc ~/
 echo "Copying my .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
-echo "Copying my .bashrc"
-cp -r ~/dotfiles/bash/.bashrc ~/
 echo "Copying my GIT config"
 cp -r ~/dotfiles/.gitconfig ~/
 echo "Copying my .config folder"

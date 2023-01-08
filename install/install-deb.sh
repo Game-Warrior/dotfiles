@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-#source $HOME/git-repos/bashsimplecurses/simple_curses.sh
-
 echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
 
 sleep 2

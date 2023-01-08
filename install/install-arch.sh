@@ -4,37 +4,20 @@ echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based
 
 cd ~/
 
-echo "Copying my awesomewm config"
-cp -r ~/dotfiles/awesome ~/.config
-echo "Copying my .bashrc"
+echo "Copying my Configs"
+echo "Copying .bashrc"
 cp -r ~/dotfiles/bash/.bashrc ~/
-echo "Copying my FISH config"
-cp -r ~/dotfiles/fish ~/.config
-echo "Copying my Alacritty config"
-cp -r ~/dotfiles/alacritty ~/.config
-echo "Copying my Doom Emacs config" 
-cp -r ~/dotfiles/.doom.d ~/
+echo "Copying my Doom Emacs config"
+cp -r ~/dotfiles/.doom.d/ ~/
 echo "Copying my .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
-echo "Copying my btop config"
-cp -r ~/dotfiles/btop ~/.config/
-echo "Copying my Neofetch config"
-cp -r ~/dotfiles/neofetch/ ~/.config/
-echo "Copying my GIT config"
-cp -r ~/dotfiles/.gitconfig ~/
-
-#echo "updating"
-#sudo pacman -Syu
+echo "Copying .config"
+cp -r ~/dotfiles/.config ~/
 
 sleep 2
 
-#Check if yay is installed 
-#echo "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
-#If it is than
-
-#yay -S awesome dmenu picom brave-bin librewolf-bin starship exa btop pfetch pokemon-colorscripts-git emacs nemo alacritty zsh alacritty-themes lxappearance nitrogen fish neovim ripgrep fd chromium
 echo "Installing Packages from the Core Repos"
-sudo pacman -S awesome dmenu picom starship arandr exa btop lxappearance emacs alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli hunspell-en_us aspell-en
+sudo pacman -S awesome dmenu picom starship arandr exa btop lxappearance emacs-nativecomp alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli hunspell-en_us aspell-en
 sudo pacman -Rs gnu-free-fonts
 
 read -p "If you are installing this on Arch Linux you will need to build paru but if you are using a derivitave e.g. EndavourOS it will be in your standard repos y to build n to install (y/n)" yn
@@ -53,7 +36,6 @@ exit;;
 #        exit 1 ;;
 esac
 
-#try to install aur packages
 echo "Trying to Install AUR Packages"
 paru -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes mint-themes mint-y-icons
 
@@ -67,17 +49,13 @@ echo "Downloading Distrotube's Wallpapers"
 cd ~/Wallpapers/
 git clone https://gitlab.com/dwt1/wallpapers
 
-#echo "setting wallpaper with nitrogen"
-#nitrogen --set-scaled ~/Wallpapers/wallpapers/ArchWp.png
-#nitrogen --save
+echo "Making the Developer and the Git-Repos folders"
+mkdir Developer
+mkdir Git-Repos
 
 echo "Installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
-
-echo "Installing space vim"
-curl -sLf https://spacevim.org/install.sh | bash
-cd ~/.SpaceVim
 
 echo "Installing vm stuff"
 sudo pacman -S qemu-full virt-manager bridge-utils dnsmasq
@@ -90,9 +68,3 @@ sudo usermod -aG kvm $USER
 
 echo "Changing the Uer Shell to Fish"
 chsh -s /bin/fish
-
-#sleep 1
-
-#echo "Rebooting Now"
-#sleep 2
-#reboot
