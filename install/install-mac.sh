@@ -17,7 +17,7 @@ echo "Copying my .config folder"
 cp -r ~/dotfiles/.config ~/
 
 echo "Installing Everything"
-brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us only-office alfred alt-tab istat-menus background-music exa starship fish bash neofetch pfetch
+brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us libreoffice alfred alt-tab istat-menus background-music exa starship fish bash neofetch pfetch
 
 echo "Installing Emacs-plus"
 brew tap d12frosted/emacs-plus
