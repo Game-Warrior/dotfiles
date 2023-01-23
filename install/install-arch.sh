@@ -57,6 +57,13 @@ echo "Installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
 
+read -p "Do you want to make the Caps Lock key a Contol key?"
+case $yn in
+    y ) echo "Making the Caps Lock Key the Contorl Key"
+        setxkbmap -option ctrl:nocaps;;
+    n ) echo "Moving to on"
+esac
+
 echo "Installing vm stuff"
 sudo pacman -S qemu-full virt-manager bridge-utils dnsmasq
 echo "Enableing libvirtd"
@@ -66,5 +73,5 @@ echo "adding user to libvirt&kvm group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
 
-echo "Changing the Uer Shell to Fish"
+echo "Changing the User Shell to Fish"
 chsh -s /bin/fish
