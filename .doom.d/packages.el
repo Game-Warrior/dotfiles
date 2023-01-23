@@ -51,7 +51,6 @@
 
 (package! evil-tutor)
 (package! tldr)
-(package! org-roam)
 (package! org-tree-slide)
 (package! org-auto-tangle)
 (package! org-reveal)
@@ -79,9 +78,6 @@
 (package! writeroom-mode)
 (package! olivetti)
 (package! org-ref)
-(package! org-re-reveal-citeproc)
-(package! org-re-reveal-ref)
-(package! org-re-reveal)
 (package! mastodon)
 (package! ox-pandoc)
 (package! pandoc)
@@ -89,10 +85,10 @@
   :recipe (:host github
            :repo "tecosaur/org-pandoc-import"
            :files ("*.el" "filters" "preprocessors")))
-(package! dirvish)
 (package! lsp-mode)
 ;; (package! aide)
 (package! request)
 (package! 2048-game)
 (package! poetry)
 (package! pretty-symbols)
+(package! magit-todos)

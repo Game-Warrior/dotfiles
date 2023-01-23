@@ -54,14 +54,11 @@
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 ;; With dired-open plugin, you can launch external programs for certain extensions
 ;; For example, I set all .png files to open in 'sxiv' and all .mp4 files to open in 'mpv'
-(setq dired-open-extensions '(("gif" . "sxiv")
-                              ("jpg" . "sxiv")
-                              ("png" . "sxiv")
+(setq dired-open-extensions '(("gif" . "Preview")
+                              ("jpg" . "Preview")
+                              ("png" . "Preview")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
-
-(straight-use-package 'dirvish)
-(dirvish-override-dired-mode 1)
 
 (use-package emojify
   :hook (after-init . global-emojify-mode))
@@ -148,7 +145,7 @@
              "SCHOOL(s)"         ; School Tasks
              "PROJ(p)"           ; A project that contains other tasks
              "VIDEO(v)"          ; Video assignments
-             "CLASS(l)"          ; Agenda assinmet for class
+             "CLASS(l)"          ; Agenda assignment for class
              "WAIT(w)"           ; Something is holding up this task
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
@@ -369,14 +366,14 @@
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.7 "#ff6655" ultra-bold)
-         (org-level-2 1.6 "#dd8844" extra-bold)
-         (org-level-3 1.5 "#51afef" bold)
-         (org-level-4 1.4 "#c678dd" semi-bold)
+       '((org-level-1 1.7 "#ff5d38" ultra-bold)
+         (org-level-2 1.6 "#cb4b16" extra-bold)
+         (org-level-3 1.5 "#bcd42a" bold)
+         (org-level-4 1.4 "#98be65" semi-bold)
          (org-level-5 1.3 "#4fb3d8" normal)
-         (org-level-6 1.2 "#99bb66" normal)
-         (org-level-7 1.1 "#78bd65" normal)
-         (org-level-8 1.0 "#b978ab" normal)))
+         (org-level-6 1.2 "#2257A0" normal)
+         (org-level-7 1.1 "#c678dd" normal)
+         (org-level-8 1.0 "#a9a1e1" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
@@ -432,7 +429,7 @@
 
 (use-package hide-mode-line)
 
-(defun efs/presentation-setup ()
+(defun gw/presentation-setup ()
   ;; Hide the mode line
   (hide-mode-line-mode 1)
 
@@ -448,7 +445,7 @@
   ;;                                    (org-verbatim (:height 1.75) org-verbatim)
   ;;                                    (org-block (:height 1.25) org-block))))
 
-(defun efs/presentation-end ()
+(defun gw/presentation-end ()
   ;; Show the mode line again
   (hide-mode-line-mode 0)
 
@@ -472,8 +469,23 @@
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
-(setq org-reveal-plugins t)
-(setq org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>")
+(setq org-reveal-plugins 1)
+(setq org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>")
+
+(defun gw/writing-mode ()
+  "Acctivate my writing environment"
+  (interactive)
+  (writeroom-mode 1)
+  (abbrev-mode 1)
+  (message "Get writing!"))
+
+(defun gw/normal-writing ()
+  "Deacctivate my writing environment"
+  (interactive)
+  (writeroom-mode 0)
+  (message "You're done! Go touch some grass!"))
+
+(setq ispell-program-name "aspell")
 
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda ()
@@ -487,7 +499,6 @@
 (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
 (yas-global-mode 1)
 
-;;This is where I will change the keybindings to Palemcest-mode if I remember.
 (add-hook 'text-mode-hook 'palimpsest-mode)
 
 (add-to-list 'auto-mode-alist '("\\.html\\'" .web-mode))
@@ -506,3 +517,5 @@
 
 ;; Enable abbreviation mode
 (add-hook 'text-mode-hook 'abbrev-mode)
+
+;; (projectile-project-search-path '("~/Documents/School"))
