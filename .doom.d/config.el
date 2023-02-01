@@ -1,8 +1,7 @@
 (beacon-mode 1)
 
 (setq user-full-name "Gardner Berry"
-    user-mail-address "gardner@gamewarrior.xyz"
-    user-mail-address "gardner@bluehillharborschool.org")
+    user-mail-address "gardner@gamewarrior.xyz")
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -16,7 +15,7 @@
 
 (map! :leader
       (:prefix ("d" . "dired")
-       :desc "Open dired" "d" #'dirvish
+       :desc "Open dired" "d" #'dired
        :desc "Dired jump to current" "j" #'dired-jump)
       (:after dired
        (:map dired-mode-map
@@ -60,8 +59,8 @@
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
 
-(use-package emojify
-  :hook (after-init . global-emojify-mode))
+;; (use-package emojify
+  ;; :hook (after-init . global-emojify-mode))
 
 (setq doom-font (font-spec :family "JetBrains Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
@@ -392,6 +391,23 @@
          (org-level-8 1.0 "#C586C0" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+
+(defun gw/org-colors-oksolar-dark ()
+  "Enable OKSolar Dark Colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#F23749" ultra-bold)
+         (org-level-2 1.6 "#D56500" extra-bold)
+         (org-level-3 1.5 "#AC8300" bold)
+         (org-level-4 1.4 "#819500" semi-bold)
+         (org-level-5 1.3 "#35A69C" normal)
+         (org-level-6 1.2 "#2B90D8" normal)
+         (org-level-7 1.1 "#3F88AD" normal)
+         (org-level-8 1.0 "#DD459D" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+
 ;; Load our desired gw/org-colors-* theme on startup
     (gw/org-colors-solarized-dark))
 ;; )
@@ -399,6 +415,7 @@
 (use-package! ox-twbs)
 ;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
+(use-package! ox-gfm)
 
 (setq org-journal-dir "~/Documents/Personal/journal/"
       org-journal-date-prefix "* "
@@ -456,8 +473,8 @@
   (setq-local face-remapping-alist '((default variable-pitch default))))
 
 (use-package org-tree-slide
-  :hook ((org-tree-slide-play . efs/presentation-setup)
-         (org-tree-slide-stop . efs/presentation-end))
+  :hook ((org-tree-slide-play . gw/presentation-setup)
+         (org-tree-slide-stop . gw/presentation-end))
   :custom
   (org-tree-slide-slide-in-effect t)
   (org-tree-slide-activate-message "Presentation started!")

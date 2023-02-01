@@ -2,7 +2,6 @@
 
 echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
 
-sleep 2
 
 echo "Copying my Configs"
 echo "Copying .bashrc"
@@ -13,8 +12,6 @@ echo "Copying my .zshrc"
 cp -r ~/dotfiles/zsh/.zshrc ~/
 echo "Copying .config"
 cp -r ~/dotfiles/.config ~/
-
-sleep 3
 
 echo "Adding Emacs PPA"
 sudo add-apt-repository ppa:kelleyk/emacs

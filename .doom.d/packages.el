@@ -60,7 +60,6 @@
 (package! calfw-org)
 (package! dired-open)
 (package! dired-subtree)
-(package! dirvish)
 (package! peep-dired)
 (package! emojify)
 (package! beacon)
@@ -85,10 +84,13 @@
   :recipe (:host github
            :repo "tecosaur/org-pandoc-import"
            :files ("*.el" "filters" "preprocessors")))
-(package! lsp-mode)
 ;; (package! aide)
 (package! request)
 (package! 2048-game)
 (package! poetry)
 (package! pretty-symbols)
 (package! magit-todos)
+;; (package! mastodon-alt)
+(package! org-anki)
+(package! anki-connect)
+(package! ox-gfm)

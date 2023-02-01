@@ -53,8 +53,7 @@ Never lose your cursor.  When you scroll, your cursor will shine!  This is a glo
 * SETTING USERNAME AND EMAIL
 #+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
-    user-mail-address "gardner@gamewarrior.xyz"
-    user-mail-address "gardner@bluehillharborschool.org")
+    user-mail-address "gardner@gamewarrior.xyz")
 #+end_src
 
 * TITLE BAR
@@ -66,11 +65,11 @@ Change the title bar format
 * DOOM THEME
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (setq doom-theme 'doom-solarized-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
-#+END_SRC
+#+end_src
 
 * SETTING THE DEFAULT LINK OPENER
 Setting in which browser EMACS will open links
@@ -136,7 +135,7 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
 #+begin_src emacs-lisp
 (map! :leader
       (:prefix ("d" . "dired")
-       :desc "Open dired" "d" #'dirvish
+       :desc "Open dired" "d" #'dired
        :desc "Dired jump to current" "j" #'dired-jump)
       (:after dired
        (:map dired-mode-map
@@ -185,8 +184,8 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
 Emojify is an Emacs extension to display emojis. It can display github style emojis like :smile: or plain ascii ones like :).
 
 #+begin_src emacs-lisp
-(use-package emojify
-  :hook (after-init . global-emojify-mode))
+;; (use-package emojify
+  ;; :hook (after-init . global-emojify-mode))
 #+end_src
 
 * FONTS
@@ -292,7 +291,7 @@ https://github.com/seagle0128/doom-modeline
 #+end_src
 
 * ORG MODE
-I wrapped most of this block in (after! org).  Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults.  I have also enabled org-journal, org-superstar by adding (+journal +pretty) to the org section of my Doom Emacs init.el.
+I wrapped most of this block in (after! org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal, org-superstar by adding (+journal +pretty) to the org section of my Doom Emacs init.el.
 
 #+BEGIN_SRC emacs-lisp
 (map! :leader
@@ -572,6 +571,23 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
          (org-level-8 1.0 "#C586C0" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+
+(defun gw/org-colors-oksolar-dark ()
+  "Enable OKSolar Dark Colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#F23749" ultra-bold)
+         (org-level-2 1.6 "#D56500" extra-bold)
+         (org-level-3 1.5 "#AC8300" bold)
+         (org-level-4 1.4 "#819500" semi-bold)
+         (org-level-5 1.3 "#35A69C" normal)
+         (org-level-6 1.2 "#2B90D8" normal)
+         (org-level-7 1.1 "#3F88AD" normal)
+         (org-level-8 1.0 "#DD459D" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+
 ;; Load our desired gw/org-colors-* theme on startup
     (gw/org-colors-solarized-dark))
 ;; )
@@ -585,6 +601,7 @@ We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting
 (use-package! ox-twbs)
 ;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
+(use-package! ox-gfm)
 #+END_SRC
 
 ** Org-journal
@@ -661,8 +678,8 @@ Customization for Org-tree-slides.
   (setq-local face-remapping-alist '((default variable-pitch default))))
 
 (use-package org-tree-slide
-  :hook ((org-tree-slide-play . efs/presentation-setup)
-         (org-tree-slide-stop . efs/presentation-end))
+  :hook ((org-tree-slide-play . gw/presentation-setup)
+         (org-tree-slide-stop . gw/presentation-end))
   :custom
   (org-tree-slide-slide-in-effect t)
   (org-tree-slide-activate-message "Presentation started!")
