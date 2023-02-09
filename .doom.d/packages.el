@@ -94,3 +94,6 @@
 (package! org-anki)
 (package! anki-connect)
 (package! ox-gfm)
+(package! ivy-bibtex)
+(package! anki-mode)
+(package! go-translate)

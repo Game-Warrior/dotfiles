@@ -5,7 +5,7 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-spacegrey)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -62,9 +62,9 @@
 ;; (use-package emojify
   ;; :hook (after-init . global-emojify-mode))
 
-(setq doom-font (font-spec :family "JetBrains Mono" :size 15)
+(setq doom-font (font-spec :family "SF Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 24))
+      doom-big-font (font-spec :family "SF Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -125,7 +125,7 @@
         org-agenda-files '("~/Documents/Schedule.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
-        org-superstar-headline-bullets-list '("◉" "●" "✿" "✸" "○" "◆" "○")
+        org-superstar-headline-bullets-list '("◉" "●" "○" "✸" "✿" "◆" "○")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
         org-hide-emphasis-markers t
@@ -398,9 +398,9 @@
   (dolist
       (face
        '((org-level-1 1.7 "#F23749" ultra-bold)
-         (org-level-2 1.6 "#D56500" extra-bold)
-         (org-level-3 1.5 "#AC8300" bold)
-         (org-level-4 1.4 "#819500" semi-bold)
+         (org-level-2 1.6 "#819500" extra-bold)
+         (org-level-3 1.5 "#D56500" bold)
+         (org-level-4 1.4 "#AC8300" semi-bold)
          (org-level-5 1.3 "#35A69C" normal)
          (org-level-6 1.2 "#2B90D8" normal)
          (org-level-7 1.1 "#3F88AD" normal)
@@ -408,16 +408,53 @@
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
+(defun gw/org-colors-spacegrey ()
+  "Enable OKSolar Dark Colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#BF616A" ultra-bold)
+         (org-level-2 1.6 "#D08770" extra-bold)
+         (org-level-3 1.5 "#ECBE7B" bold)
+         (org-level-4 1.4 "#A3BE8C" semi-bold)
+         (org-level-5 1.3 "#4db5bd" normal)
+         (org-level-6 1.2 "#2B90D8" normal)
+         (org-level-7 1.1 "#2257A0" normal)
+         (org-level-8 1.0 "#c678dd" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-solarized-dark))
+    (gw/org-colors-spacegrey))
 ;; )
+
+;; (defun agenda-mark-done-and-archive ()
+   ;; (interactive)
+   ;; (org-agenda-todo 'done)
+   ;; (org-agenda-archive))
+ ;; (define-key org-agenda-mode-map "<prefix>v" 'agenda-mark-done-and-archive)
 
 (use-package! ox-twbs)
 ;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
 
-(setq org-journal-dir "~/Documents/Personal/journal/"
+;; Reveal.js + Org mode
+(require 'ox-reveal)
+(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+(setq org-reveal-plugins 1)
+(setq org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>")
+
+     (defun set-ignored-headlines-tags (backend)
+     "Remove all headlines with tag ignore_heading in the current buffer.
+        BACKEND is the export back-end being used, as a symbol."
+     (cond ((org-export-derived-backend-p backend 'md) (setq  org-export-exclude-tags '("noexport" "mdignore")))
+           ((org-export-derived-backend-p backend 'reveal) (setq  org-export-exclude-tags '("noexport" "revealignore")))
+           (t (setq  org-export-exclude-tags '("noexport")))
+       )
+    )
+
+(setq org-journal-dir "~/Documents/Personal/Journal/"
       org-journal-date-prefix "* "
       org-journal-time-prefix "** "
       org-journal-date-format "%B %d, %Y (%A) "
@@ -483,12 +520,6 @@
   (org-tree-slide-breadcrumbs " > ")
   (org-image-actual-width nil))
 
-;; Reveal.js + Org mode
-(require 'ox-reveal)
-(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
-(setq org-reveal-plugins 1)
-(setq org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>")
-
 (defun gw/writing-mode ()
   "Acctivate my writing environment"
   (interactive)
@@ -501,6 +532,85 @@
   (interactive)
   (writeroom-mode 0)
   (message "You're done! Go touch some grass!"))
+
+(use-package ivy-bibtex
+  :init
+  (setq bibtex-completion-bibliography '("~/Documents/emacs-stuff/bibliography/references.bib"
+					 "~/Documents/emacs-stuff/bibliography/dei.bib"
+					 "~/Documents/emacs-stuff/bibliography/main.bib"
+					 "~/Documents/emacs-stuff/bibliography/archive.bib")
+	bibtex-completion-library-path '("~/Documents/emacs-stuff/bibliography/bibtex-pdfs/")
+	bibtex-completion-notes-path "~/Documents/emacs-stuff/bibliography/notes/"
+	bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+
+	bibtex-completion-additional-search-fields '(keywords)
+	bibtex-completion-display-formats
+	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
+	bibtex-completion-pdf-open-function
+	(lambda (fpath)
+	  (call-process "open" nil 0 nil fpath))))
+
+(use-package org-ref
+  :ensure nil
+  :init
+  (require 'bibtex)
+  (setq bibtex-autokey-year-length 4
+	bibtex-autokey-name-year-separator "-"
+	bibtex-autokey-year-title-separator "-"
+	bibtex-autokey-titleword-separator "-"
+	bibtex-autokey-titlewords 2
+	bibtex-autokey-titlewords-stretch 1
+	bibtex-autokey-titleword-length 5)
+  (define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
+  (define-key org-mode-map (kbd "C-c ]") 'org-ref-insert-link)
+  (define-key org-mode-map (kbd "s-[") 'org-ref-insert-link-hydra/body)
+  (require 'org-ref-ivy)
+  (require 'org-ref-arxiv)
+  (require 'org-ref-scopus)
+  (require 'org-ref-wos))
+
+
+(use-package org-ref-ivy
+  :ensure nil
+  :init (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+	      org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+	      org-ref-insert-label-function 'org-ref-insert-label-link
+	      org-ref-insert-ref-function 'org-ref-insert-ref-link
+	      org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body))))
+
+(require 'bibtex)
+
+(setq bibtex-autokey-year-length 4
+      bibtex-autokey-name-year-separator "-"
+      bibtex-autokey-year-title-separator "-"
+      bibtex-autokey-titleword-separator "-"
+      bibtex-autokey-titlewords 2
+      bibtex-autokey-titlewords-stretch 1
+      bibtex-autokey-titleword-length 5)
+
+(define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
+
+(setq global-hl-todo-mode 1)
+
+(defun gw/todo-hl-oksolar-dark ()
+  "Set TODO Colors to the OKSOLAR colors"
+  (interactive)
+ (setq hl-todo-keyword-faces
+       '(("TODO"   . "#35A69C")
+         ("FIXME"  . "#F23749")
+         ("WAIT"   . "#7D80D1"))))
+(defun gw/todo-hl-henna ()
+  (interactive)
+  (setq hl-todo-keyword-faces
+        '(("TODO"  . "#1abc9c")
+          ("FIXME" . "#e74c3c")
+          ("WAIT"  . "#C5A3FF"))))
+
+(gw/todo-hl-oksolar-dark)
 
 (setq ispell-program-name "aspell")
 
@@ -536,3 +646,15 @@
 (add-hook 'text-mode-hook 'abbrev-mode)
 
 ;; (projectile-project-search-path '("~/Documents/School"))
+
+(require 'go-translate)
+
+(setq gts-translate-list '(("en" "zh")))
+
+;; (setq gts-default-translator (gts-translator :engines (gts-bing-engine)))
+
+(setq gts-default-translator
+      (gts-translator
+       :picker (gts-prompt-picker)
+       :engines (list (gts-bing-engine) (gts-google-engine))
+       :render (gts-buffer-render)))
