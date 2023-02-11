@@ -1,3 +1,10 @@
+--   _____  __          __
+--  / ____| \ \        / /
+-- | |  __   \ \  /\  / / GameWarrior
+-- | | |_ |   \ \/  \/ /  https://github.com/game-warrior
+-- | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+--  \_____|     \/  \/
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")

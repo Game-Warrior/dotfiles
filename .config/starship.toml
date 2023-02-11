@@ -1,7 +1,14 @@
+#   _____  __          __
+#  / ____| \ \        / /
+# | |  __   \ \  /\  / / GameWarrior
+# | | |_ |   \ \/  \/ /  https://github.com/game-warrior
+# | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+#  \_____|     \/  \/
+
 #format = """
 #[╭─user───❯](bold blue) $username
 #[┣─system─❯](bold yellow) $hostname
-#[┣─project❯](bold red) $directory$rust$git_branch$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
+#[┣─project❯](bold red) $directory$rust$git_branch$git_state$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
 #[╰─cmd────❯](bold green)
 #"""
 [username]
@@ -21,6 +28,7 @@ disabled = false
 [character]                            # The name of the module we are configuring is "character"
 success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 error_symbol = "[✗](bold red)"
+
 #  
 # configure directory
 [directory]
@@ -64,6 +72,28 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+stashed = "[${count}*](green)"
+modified = "[${count}+](yellow)"
+deleted =  "[${count}-](red)"
+conflicted =  "[${count}~](red)"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+untracked = "[${count}?](blue)"
+staged = "[${count}+](green)"
+
+[git_state]
+style =	"bold red"
+format = "[$state( $progress_current/$progress_total) ]($style)"
+rebase = "rebase"
+merge = "merge"
+revert = "revert"
+cherry_pick = "cherry"
+bisect = "bisect"
+am = "am"
+am_or_rebase = "am/rebase"
 
 [golang]
 symbol = " "
