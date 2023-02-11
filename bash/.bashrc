@@ -1,7 +1,13 @@
+#   _____  __          __
+#  / ____| \ \        / /
+# | |  __   \ \  /\  / / GameWarrior
+# | | |_ |   \ \/  \/ /  https://github.com/game-warrior
+# | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+#  \_____|     \/  \/
+#
+#Fairly normal .bashrc
 #
 # ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -9,6 +15,9 @@
 
 #Cargo
 export  PATH="$HOME/.cargo/bin:$PATH"
+
+# Vi mode
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 #Doom Emacs
 export  PATH="$HOME/.emacs.d/bin:$PATH"
