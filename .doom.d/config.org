@@ -14,6 +14,7 @@
 - [[#dired][DIRED]]
   - [[#keybindings-to-open-dired][Keybindings To Open Dired]]
   - [[#keybindings-within-dired][Keybindings Within Dired]]
+- [[#start-page][START PAGE]]
 - [[#emojis][EMOJIS]]
 - [[#fonts][FONTS]]
 - [[#insert-date][INSERT DATE]]
@@ -41,6 +42,7 @@
 - [[#abbrev-mode][ABBREV-MODE]]
 - [[#projectile][PROJECTILE]]
 - [[#go-translate][GO-TRANSLATE]]
+- [[#shells][SHELLS]]
 
 * ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -68,7 +70,7 @@ Change the title bar format
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-spacegrey)
+(setq doom-theme 'doom-solarized-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 #+end_src
@@ -180,6 +182,39 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
                               ("png" . "Preview")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
+#+end_src
+
+* START PAGE
+This is where I customize the DOOM emacs Dashboard. I have a custom banner set. I have also disabled most of the short cuts on the default start page.
+#+begin_src emacs-lisp
+;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
+(assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
+(add-hook! '+doom-dashboard-functions :append
+  (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
+(defun gw/doom-art ()
+  (let* ((banner'("______ _____ ____ ___ ___"
+                  "`  _  V  _  V  _ \\|  V  ´"
+                  "| | | | | | | | | |     |"
+                  "| | | | | | | | | | . . |"
+                  "| |/ / \\ \\| | |/ /\\ |V| |"
+                  "|   /   \\__/ \\__/  \\| | |"
+                  "|  /                ' | |"
+                  "| /     E M A C S     \\ |"
+                  "´´                     ``"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+
+(setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
+
+
 #+end_src
 
 * EMOJIS
@@ -517,12 +552,12 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
       (face
        '((org-level-1 1.7 "#ff6c6b" ultra-bold)
          (org-level-2 1.6 "#da8548" extra-bold)
-         (org-level-3 1.5 "#a9a1e1" bold)
-         (org-level-4 1.4 "#51afef" semi-bold)
-         (org-level-5 1.3 "#5699af" normal)
-         (org-level-6 1.2 "#98be65" normal)
-         (org-level-7 1.1 "#46d9ff" normal)
-         (org-level-8 1.0 "#ff6c6b" normal)))
+         (org-level-3 1.5 "#46d9ff" bold)
+         (org-level-4 1.4 "#98be65" semi-bold)
+         (org-level-5 1.3 "#51afef" normal)
+         (org-level-6 1.2 "#2257A0" normal)
+         (org-level-7 1.1 "#c678dd" normal)
+         (org-level-8 1.0 "#a9a1e1" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -607,7 +642,7 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-spacegrey))
+    (gw/org-colors-solarized-dark))
 ;; )
 #+end_src
 
@@ -618,9 +653,8 @@ This is a way for me to archive my TODOs from my Schedule.org.
    ;; (interactive)
    ;; (org-agenda-todo 'done)
    ;; (org-agenda-archive))
- ;; (define-key org-agenda-mode-map "<prefix>v" 'agenda-mark-done-and-archive)
+ ;; (define-key org-agenda-mode-map "\C-c\C-x\C-s" 'agenda-mark-done-and-archive)
 #+end_src
-
 
 ** Org-export
 We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting to gemtext (for the gemini protocol).
@@ -631,6 +665,7 @@ We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting
 ;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
+(use-package! ox-reveal)
 #+END_SRC
 
 *** Org-Reveal
@@ -641,6 +676,7 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
 (setq org-reveal-plugins 1)
 (setq org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>")
+(setq org-reveal-theme "Moon")
 
      (defun set-ignored-headlines-tags (backend)
      "Remove all headlines with tag ignore_heading in the current buffer.
@@ -942,3 +978,30 @@ This is a translation framework for emacs, and is flexible and powerful.
        :engines (list (gts-bing-engine) (gts-google-engine))
        :render (gts-buffer-render)))
 #+end_src
+* SHELLS
+Settings for the various shells and terminal emulators within Emacs.
+
+| COMMAND             | DESCRIPTION                | KEYBINDING |
+|---------------------+----------------------------+------------|
+| eshell              | /Launch the eshell/          | SPC e s    |
+| +eshell/toggle      | /Toggle eshell popup window/ | SPC e t    |
+| counsel-esh-history | /Browse the eshell history/  | SPC e h    |
+| +vterm/toggle       | /Toggle vterm popup window/  | SPC v t    |
+
+#+BEGIN_SRC emacs-lisp
+(setq shell-file-name "/bin/fish"
+      vterm-max-scrollback 5000)
+(setq eshell-rc-script "~/.config/doom/eshell/profile"
+      eshell-aliases-file "~/.config/doom/eshell/aliases"
+      eshell-history-size 5000
+      eshell-buffer-maximum-lines 5000
+      eshell-hist-ignoredups t
+      eshell-scroll-to-bottom-on-input t
+      eshell-destroy-buffer-when-process-dies t
+      eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
+(map! :leader
+      :desc "Eshell"                 "e s" #'eshell
+      :desc "Eshell popup toggle"    "e t" #'+eshell/toggle
+      :desc "Counsel eshell history" "e h" #'counsel-esh-history
+      :desc "Vterm popup toggle"     "v t" #'+vterm/toggle)
+#+END_SRC

@@ -5,7 +5,7 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-spacegrey)
+(setq doom-theme 'doom-solarized-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -58,6 +58,33 @@
                               ("png" . "Preview")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
+
+;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
+(assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
+(add-hook! '+doom-dashboard-functions :append
+  (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
+(defun gw/doom-art ()
+  (let* ((banner'("______ _____ ____ ___ ___"
+                  "`  _  V  _  V  _ \\|  V  ´"
+                  "| | | | | | | | | |     |"
+                  "| | | | | | | | | | . . |"
+                  "| |/ / \\ \\| | |/ /\\ |V| |"
+                  "|   /   \\__/ \\__/  \\| | |"
+                  "|  /                ' | |"
+                  "| /     E M A C S     \\ |"
+                  "´´                     ``"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+
+(setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
 
 ;; (use-package emojify
   ;; :hook (after-init . global-emojify-mode))
@@ -335,12 +362,12 @@
       (face
        '((org-level-1 1.7 "#ff6c6b" ultra-bold)
          (org-level-2 1.6 "#da8548" extra-bold)
-         (org-level-3 1.5 "#a9a1e1" bold)
-         (org-level-4 1.4 "#51afef" semi-bold)
-         (org-level-5 1.3 "#5699af" normal)
-         (org-level-6 1.2 "#98be65" normal)
-         (org-level-7 1.1 "#46d9ff" normal)
-         (org-level-8 1.0 "#ff6c6b" normal)))
+         (org-level-3 1.5 "#46d9ff" bold)
+         (org-level-4 1.4 "#98be65" semi-bold)
+         (org-level-5 1.3 "#51afef" normal)
+         (org-level-6 1.2 "#2257A0" normal)
+         (org-level-7 1.1 "#c678dd" normal)
+         (org-level-8 1.0 "#a9a1e1" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -425,25 +452,27 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-spacegrey))
+    (gw/org-colors-solarized-dark))
 ;; )
 
 ;; (defun agenda-mark-done-and-archive ()
    ;; (interactive)
    ;; (org-agenda-todo 'done)
    ;; (org-agenda-archive))
- ;; (define-key org-agenda-mode-map "<prefix>v" 'agenda-mark-done-and-archive)
+ ;; (define-key org-agenda-mode-map "\C-c\C-x\C-s" 'agenda-mark-done-and-archive)
 
 (use-package! ox-twbs)
 ;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
+(use-package! ox-reveal)
 
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
 (setq org-reveal-plugins 1)
 (setq org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>")
+(setq org-reveal-theme "Moon")
 
      (defun set-ignored-headlines-tags (backend)
      "Remove all headlines with tag ignore_heading in the current buffer.
@@ -658,3 +687,19 @@
        :picker (gts-prompt-picker)
        :engines (list (gts-bing-engine) (gts-google-engine))
        :render (gts-buffer-render)))
+
+(setq shell-file-name "/bin/fish"
+      vterm-max-scrollback 5000)
+(setq eshell-rc-script "~/.config/doom/eshell/profile"
+      eshell-aliases-file "~/.config/doom/eshell/aliases"
+      eshell-history-size 5000
+      eshell-buffer-maximum-lines 5000
+      eshell-hist-ignoredups t
+      eshell-scroll-to-bottom-on-input t
+      eshell-destroy-buffer-when-process-dies t
+      eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
+(map! :leader
+      :desc "Eshell"                 "e s" #'eshell
+      :desc "Eshell popup toggle"    "e t" #'+eshell/toggle
+      :desc "Counsel eshell history" "e h" #'counsel-esh-history
+      :desc "Vterm popup toggle"     "v t" #'+vterm/toggle)
