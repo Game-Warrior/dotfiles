@@ -59,11 +59,22 @@
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
 
-;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
-(add-hook! '+doom-dashboard-functions :append
-  (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
+
+;; (add-hook! '+doom-dashboard-functions :append
+  ;; (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
+
+(cond ((eq system-type 'darwin)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the walled garden!"))))
+      ((eq system-type 'gnu/linux)
+        (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Oxen and Penguins!"))))
+      ((eq system-type 'windows-nt)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
+
 (defun gw/doom-art ()
   (let* ((banner'("______ _____ ____ ___ ___"
                   "`  _  V  _  V  _ \\|  V  ´"
@@ -687,19 +698,3 @@
        :picker (gts-prompt-picker)
        :engines (list (gts-bing-engine) (gts-google-engine))
        :render (gts-buffer-render)))
-
-(setq shell-file-name "/bin/fish"
-      vterm-max-scrollback 5000)
-(setq eshell-rc-script "~/.config/doom/eshell/profile"
-      eshell-aliases-file "~/.config/doom/eshell/aliases"
-      eshell-history-size 5000
-      eshell-buffer-maximum-lines 5000
-      eshell-hist-ignoredups t
-      eshell-scroll-to-bottom-on-input t
-      eshell-destroy-buffer-when-process-dies t
-      eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
-(map! :leader
-      :desc "Eshell"                 "e s" #'eshell
-      :desc "Eshell popup toggle"    "e t" #'+eshell/toggle
-      :desc "Counsel eshell history" "e h" #'counsel-esh-history
-      :desc "Vterm popup toggle"     "v t" #'+vterm/toggle)

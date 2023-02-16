@@ -42,7 +42,6 @@
 - [[#abbrev-mode][ABBREV-MODE]]
 - [[#projectile][PROJECTILE]]
 - [[#go-translate][GO-TRANSLATE]]
-- [[#shells][SHELLS]]
 
 * ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -185,13 +184,24 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
 #+end_src
 
 * START PAGE
-This is where I customize the DOOM emacs Dashboard. I have a custom banner set. I have also disabled most of the short cuts on the default start page.
+This is where I customize the DOOM emacs Dashboard. I have a custom banner set. I have also disabled some of the short cuts on the default start page. It will alsow show you a different message based on what OS you are running.
 #+begin_src emacs-lisp
-;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
-(add-hook! '+doom-dashboard-functions :append
-  (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
+
+;; (add-hook! '+doom-dashboard-functions :append
+  ;; (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
+
+(cond ((eq system-type 'darwin)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the walled garden!"))))
+      ((eq system-type 'gnu/linux)
+        (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Oxen and Penguins!"))))
+      ((eq system-type 'windows-nt)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
+
 (defun gw/doom-art ()
   (let* ((banner'("______ _____ ____ ___ ___"
                   "`  _  V  _  V  _ \\|  V  ´"
@@ -978,30 +988,3 @@ This is a translation framework for emacs, and is flexible and powerful.
        :engines (list (gts-bing-engine) (gts-google-engine))
        :render (gts-buffer-render)))
 #+end_src
-* SHELLS
-Settings for the various shells and terminal emulators within Emacs.
-
-| COMMAND             | DESCRIPTION                | KEYBINDING |
-|---------------------+----------------------------+------------|
-| eshell              | /Launch the eshell/          | SPC e s    |
-| +eshell/toggle      | /Toggle eshell popup window/ | SPC e t    |
-| counsel-esh-history | /Browse the eshell history/  | SPC e h    |
-| +vterm/toggle       | /Toggle vterm popup window/  | SPC v t    |
-
-#+BEGIN_SRC emacs-lisp
-(setq shell-file-name "/bin/fish"
-      vterm-max-scrollback 5000)
-(setq eshell-rc-script "~/.config/doom/eshell/profile"
-      eshell-aliases-file "~/.config/doom/eshell/aliases"
-      eshell-history-size 5000
-      eshell-buffer-maximum-lines 5000
-      eshell-hist-ignoredups t
-      eshell-scroll-to-bottom-on-input t
-      eshell-destroy-buffer-when-process-dies t
-      eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
-(map! :leader
-      :desc "Eshell"                 "e s" #'eshell
-      :desc "Eshell popup toggle"    "e t" #'+eshell/toggle
-      :desc "Counsel eshell history" "e h" #'counsel-esh-history
-      :desc "Vterm popup toggle"     "v t" #'+vterm/toggle)
-#+END_SRC
