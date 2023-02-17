@@ -2,6 +2,13 @@
 
 echo "Welcome to my Post Installation Script for MacOS"
 
+echo  "       _____  __          __
+      / ____| \ \        / /
+      | |  __   \ \  /\  / / GameWarrior
+      | | |_ |   \ \/  \/ /  https://github.com/game-warrior
+      | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+       \_____|     \/  \/"
+
 cd ~/
 
 echo "Copying my Configuration files"

@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+echo  "       _____  __          __
+      / ____| \ \        / /
+      | |  __   \ \  /\  / / GameWarrior
+      | | |_ |   \ \/  \/ /  https://github.com/game-warrior
+      | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+       \_____|     \/  \/"
+
+
 echo "Welcome to my Post Installation Script for Arch Linux and Arch Linux based distros"
 
 cd ~/

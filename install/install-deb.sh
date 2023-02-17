@@ -1,4 +1,11 @@
 #!/usr/bin/env sh
+echo  "       _____  __          __
+      / ____| \ \        / /
+      | |  __   \ \  /\  / / GameWarrior
+      | | |_ |   \ \/  \/ /  https://github.com/game-warrior
+      | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+       \_____|     \/  \/"
+
 
 echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
 
