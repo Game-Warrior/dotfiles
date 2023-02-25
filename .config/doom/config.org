@@ -1350,7 +1350,7 @@ The original content will be stored in the kill ring."
 
 
 #+begin_src emacs-lisp
-(setq openai-api-key "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")
+(setq openai-api-key "")
 #+end_src
 
 * DISPLAY-TIME
