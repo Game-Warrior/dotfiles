@@ -2,7 +2,6 @@
 #+description: The README for the collection of my dotfiles
 #+author: Gardner Berry
 #+options: num:nil toc:nil
-#+startup: inlineimages
 
 * Install
 Just FYI I wrote these scripts with the assumption that the dotfiles repository would be in your ~/ or Home folder.
@@ -13,7 +12,7 @@ I have written a script that should get all of my applications and configuration
 #+end_src
 
 ** Arch Linux
-This script should quickly install my configuration for Arch Linux.
+This script should quickly install my configuration for Arch Linux and derived distros.
 #+begin_src bash
 ./dotfiles/install/install-arch.sh
 #+end_src
@@ -32,7 +31,7 @@ Just Run the install-deb script to install.
 
 
 * Warp Themes
-I have ported several themes from DOOM Emacs themes to Warp.
+Warp is a blazingly fast, rust-based terminal reimagined from the ground up to work like a modern app. I have ported several themes from DOOM Emacs themes to Warp. Warp at the momment is a MacOS only terminal but plans on making it available for Linux and Windows as well. [[https://www.warp.dev/][Warp.dev]]
 
 ** 1337
 #+attr_html: :width=200px
