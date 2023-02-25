@@ -1,3 +1,10 @@
+;;    _____ __          __
+;;  / ____| \ \        / / GameWarrior
+;; | |  __   \ \  /\  / /  https://github.com/game-warrior
+;; | | |_ |   \ \/  \/ /   @gamewarrior010@social.linux.pizza
+;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
+;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
+;;
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 

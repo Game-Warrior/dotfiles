@@ -1,3 +1,10 @@
+;;    _____ __          __
+;;  / ____| \ \        / / GameWarrior
+;; | |  __   \ \  /\  / /  https://github.com/game-warrior
+;; | | |_ |   \ \/  \/ /   @gamewarrior010@social.linux.pizza
+;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
+;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
+;;
 ;;; init.el -*- lexical-binding: t; -*-
 
 ;; This file controls what Doom modules are enabled and what order they load
@@ -74,7 +81,7 @@
        vc                  ; version-control and Emacs, sitting in a tree
 
        :term
-       eshell           ; the elisp shell that works everywhere
+       ;; eshell           ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        term                ; basic terminal emulator for Emacs
        vterm               ; the best terminal emulation in Emacs

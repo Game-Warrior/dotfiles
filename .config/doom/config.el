@@ -1,144 +1,32 @@
-#+title: GW's Doom Emacs Config
-#+description: My personal Doom Emacs Configuration
-#+startup: showeverything
-#+options: num:nil
+;;    _____ __          __
+;;  / ____| \ \        / / GameWarrior
+;; | |  __   \ \  /\  / /  https://github.com/game-warrior
+;; | | |_ |   \ \/  \/ /   @gamewarrior010@social.linux.pizza
+;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
+;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
 
-* TABLE OF CONTENTS :toc:
-- [[#about-this-config][ABOUT THIS CONFIG]]
-- [[#beacon][BEACON]]
-- [[#setting-username-and-email][SETTING USERNAME AND EMAIL]]
-- [[#title-bar][TITLE BAR]]
-- [[#doom-theme][DOOM THEME]]
-- [[#setting-the-default-link-opener][SETTING THE DEFAULT LINK OPENER]]
-- [[#menu-bar][MENU BAR]]
-- [[#dired][DIRED]]
-  - [[#keybindings-to-open-dired][Keybindings To Open Dired]]
-  - [[#keybindings-within-dired][Keybindings Within Dired]]
-- [[#start-page][START PAGE]]
-- [[#emojis][EMOJIS]]
-- [[#fonts][FONTS]]
-- [[#insert-date][INSERT DATE]]
-- [[#line-settings][LINE SETTINGS]]
-- [[#markdown][MARKDOWN]]
-- [[#modeline][MODELINE]]
-- [[#org-mode][ORG MODE]]
-  - [[#org-fonts][Org fonts]]
-  - [[#org-todos][Org todos]]
-  - [[#org-export][Org-export]]
-  - [[#org-journal][Org-journal]]
-  - [[#org-publish][Org-publish]]
-  - [[#org-auto-tangle][Org-auto-tangle]]
-  - [[#org-roam][Org-Roam]]
-  - [[#org-tree-slides][Org-tree-slides]]
-  - [[#writing-functions][Writing-Functions]]
-  - [[#org-ref][Org-ref]]
-  - [[#todo-hl][TODO-hl]]
-- [[#spell-checker][SPELL CHECKER]]
-- [[#rainbow-mode][RAINBOW MODE]]
-- [[#switching-windows][SWITCHING WINDOWS]]
-- [[#yasnippet][YASNIPPET]]
-- [[#palimpsest-mode][PALIMPSEST-MODE]]
-- [[#web-mode][WEB-MODE]]
-- [[#mastodon][MASTODON]]
-- [[#abbrev-mode][ABBREV-MODE]]
-- [[#projectile][PROJECTILE]]
-- [[#go-translate][GO-TRANSLATE]]
-- [[#codeium][CODEIUM]]
-- [[#aideel][AIDE.el]]
-
-* ABOUT THIS CONFIG
-This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
-
-* BEACON
-Never lose your cursor.  When you scroll, your cursor will shine!  This is a global minor-mode. Turn it on everywhere with:
-
-#+begin_src emacs-lisp
 (beacon-mode 1)
-#+end_src
 
-* SETTING USERNAME AND EMAIL
-#+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gamewarrior.xyz")
-#+end_src
 
-* TITLE BAR
-Change the title bar format
-#+begin_src emacs-lisp
-    (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
-#+end_src
+(setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-* DOOM THEME
-Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
-
-#+begin_src emacs-lisp
 (setq doom-theme 'doom-solarized-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
-#+end_src
 
-* SETTING THE DEFAULT LINK OPENER
-Setting in which browser EMACS will open links
-#+begin_src emacs-lisp
 (setq browse-url-browser-function 'browse-url-default-browser)
-#+end_src
 
-* MENU BAR
-Setting menu-bar-mode to be disabled.
-#+begin_src emacs-lisp
-(menu-bar-mode -1)
-#+end_src
+;; (menu-bar-mode -1)
+(define-key global-map [menu-bar options] nil)
+(define-key global-map [menu-bar file] nil)
+(define-key global-map [menu-bar File] nil)
+(define-key global-map [menu-bar edit] nil)
+(define-key global-map [menu-bar tools] nil)
+(define-key global-map [menu-bar buffer] nil)
+(define-key global-map [menu-bar help-menu] nil)
 
-
-* DIRED
-Dired is the file manager within Emacs.  Below, I setup keybindings for image previews (peep-dired).  Doom Emacs does not use 'SPC d' for any of its keybindings, so I've chosen the format of 'SPC d' plus 'key'.
-
-** Keybindings To Open Dired
-
-| COMMAND    | DESCRIPTION                        | KEYBINDING |
-|------------+------------------------------------+------------|
-| dired      | /Open dired file manager/            | SPC d d    |
-| dired-jump | /Jump to current directory in dired/ | SPC d j    |
-
-** Keybindings Within Dired
-*** Basic dired commands
-
-| COMMAND                 | DESCRIPTION                                 | KEYBINDING |
-|-------------------------+---------------------------------------------+------------|
-| dired-view-file         | /View file in dired/                          | SPC d v    |
-| dired-up-directory      | /Go up in directory tree/                     | h          |
-| dired-find-file         | /Go down in directory tree (or open if file)/ | l          |
-| dired-next-line         | Move down to next line                      | j          |
-| dired-previous-line     | Move up to previous line                    | k          |
-| dired-mark              | Mark file at point                          | m          |
-| dired-unmark            | Unmark file at point                        | u          |
-| dired-do-copy           | Copy current file or marked files           | C          |
-| dired-do-rename         | Rename current file or marked files         | R          |
-| dired-hide-details      | Toggle detailed listings on/off             | (          |
-| dired-git-info-mode     | Toggle git information on/off               | )          |
-| dired-create-directory  | Create new empty directory                  | +          |
-| dired-diff              | Compare file at point with another          | =          |
-| dired-subtree-toggle    | Toggle viewing subtree at point             | TAB        |
-
-*** Dired commands using regex
-
-| COMMAND                 | DESCRIPTION                | KEYBINDING |
-|-------------------------+----------------------------+------------|
-| dired-mark-files-regexp | Mark files using regex     | % m        |
-| dired-do-copy-regexp    | Copy files using regex     | % C        |
-| dired-do-rename-regexp  | Rename files using regex   | % R        |
-| dired-mark-files-regexp | Mark all files using regex | * %        |
-
-*** File permissions and ownership
-
-| COMMAND         | DESCRIPTION                      | KEYBINDING |
-|-----------------+----------------------------------+------------|
-| dired-do-chgrp  | Change the group of marked files | g G        |
-| dired-do-chmod  | Change the mode of marked files  | M          |
-| dired-do-chown  | Change the owner of marked files | O          |
-| dired-do-rename | Rename file or all marked files  | R          |
-
-#+begin_src emacs-lisp
 (map! :leader
       (:prefix ("d" . "dired")
        :desc "Open dired" "d" #'dired
@@ -184,11 +72,7 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
                               ("png" . "Preview")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
-#+end_src
 
-* START PAGE
-This is where I customize the DOOM emacs Dashboard. I have a custom banner set. I have also disabled some of the short cuts on the default start page. It will alsow show you a different message based on what OS you are running.
-#+begin_src emacs-lisp
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
 
@@ -227,26 +111,9 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
 
 (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
 
-
-#+end_src
-
-* EMOJIS
-Emojify is an Emacs extension to display emojis. It can display github style emojis like :smile: or plain ascii ones like :).
-
-#+begin_src emacs-lisp
 (use-package emojify
   :hook (after-init . global-emojify-mode))
-#+end_src
 
-* FONTS
-Settings related to fonts within Doom Emacs:
-+ 'doom-font' -- standard monospace font that is used for most things in Emacs.
-+ 'doom-variable-pitch-font' -- variable font which is useful in some Emacs plugins.
-+ 'doom-big-font' -- used in doom-big-font-mode; useful for presentations.
-+ 'font-lock-comment-face' -- for comments.
-+ 'font-lock-keyword-face' -- for keywords with special significance like 'setq' in elisp.
-
-#+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family "SF Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "SF Mono" :size 24))
@@ -256,19 +123,7 @@ Settings related to fonts within Doom Emacs:
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
-#+END_SRC
 
-* INSERT DATE
-Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
-
-| COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
-|-----------------------+---------------------------+-----------------------|
-| gw/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
-| gw/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
-| gw/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
-| gw/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
-
-#+begin_src emacs-lisp
 (defun gw/insert-todays-date (prefix)
   (interactive "P")
   (let ((format (cond
@@ -287,20 +142,7 @@ Some custom functions to insert the date.  The function 'insert-todays-date' can
       (:prefix ("i d" . "Insert date")
         :desc "Insert any date" "a" #'gw/insert-any-date
         :desc "Insert todays date" "t" #'gw/insert-todays-date))
-#+end_src
 
-* LINE SETTINGS
-I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for me. The standard Emacs keybinding for comment-line is 'C-x C-;'.  The other keybindings are for commands that toggle on/off various line-related settings.  Doom Emacs uses 'SPC t' for "toggle" commands, so I choose 'SPC t' plus 'key' for those bindings.
-
-| COMMAND                  | DESCRIPTION                               | KEYBINDING  |
-|--------------------------+-------------------------------------------+-------------|
-| comment-line             | /Comment or uncomment lines/                | SPC TAB TAB |
-| hl-line-mode             | /Toggle line highlighting in current frame/ | SPC t h     |
-| global-hl-line-mode      | /Toggle line highlighting globally/         | SPC t H     |
-| doom/toggle-line-numbers | /Toggle line numbers/                       | SPC t l     |
-| toggle-truncate-lines    | /Toggle truncate lines/                     | SPC t t     |
-
-#+BEGIN_SRC emacs-lisp
 (setq display-line-numbers-type t)
 (map! :leader
       :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
@@ -309,11 +151,7 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
        :desc "Toggle line highlight in frame" "h" #'hl-line-mode
        :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
        :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
-#+END_SRC
 
-* MARKDOWN
-
-#+begin_src emacs-lisp
 (custom-set-faces
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "variable-pitch"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
@@ -323,32 +161,21 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
  '(markdown-header-face-5 ((t (:inherit markdown-header-face :height 1.3))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.2)))))
 
-#+end_src
-
-* MODELINE
-The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
-https://github.com/seagle0128/doom-modeline
-
-#+begin_src emacs-lisp
 (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-(setq doom-modeline-height 50     ;; sets modeline height
+(setq doom-modeline-height 40     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
-      doom-modeline-persp-name t  ;; adds perspective name to modeline
-      doom-modeline-persp-icon t) ;; adds folder icon next to persp name
-;; Count words
-(setq doom-modeline-enable-word-count '(markdow-mode gfm-mode org-mode) )
-(setq doom-modeline-lsp t)
-#+end_src
+      doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
+      doom-modeline-persp-icon t ;; adds folder icon next to persp name
+      doom-modeline-time t ;; Shows the time
+      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode) ;; Show word count
+      doom-modeline-lsp t ;; Show LSP status
+      )
 
-* ORG MODE
-I wrapped most of this block in (after! org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal, org-superstar by adding (+journal +pretty) to the org section of my Doom Emacs init.el.
-
-#+BEGIN_SRC emacs-lisp
 (map! :leader
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Org/Schedule.org")
+        org-agenda-files '("~/Documents/Schedule.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
@@ -375,11 +202,7 @@ I wrapped most of this block in (after! org). Without this, my settings might be
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" )))) ; Task has been cancelled
-#+END_SRC
 
-** Org fonts
-I have created an interactive function for each color scheme (M-x gw/org-colors-*).  These functions will set appropriate colors and font attributes for org-level fonts and the org-table font.
-#+begin_src emacs-lisp
 (after! org
 (defun gw/org-colors-doom-one ()
   "Enable Doom One colors for Org headers."
@@ -574,16 +397,16 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
-(defun gw/org-colors-doom-old-hope ()
+(defun gw/org-colors-old-hope ()
   "Enable Doom Old Hope colors for Org headers."
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.7 "#4fb3d8" ultra-bold)
+       '((org-level-1 1.7 "#ea3d54" ultra-bold)
          (org-level-2 1.6 "#ee7b29" extra-bold)
          (org-level-3 1.5 "#78bd65" bold)
-         (org-level-4 1.4 "#b978ab" semi-bold)
-         (org-level-5 1.3 "#4fb3d8" normal)
+         (org-level-4 1.4 "#4fb3d8" semi-bold)
+         (org-level-5 1.3 "#fedd38" normal)
          (org-level-6 1.2 "#ee7b29" normal)
          (org-level-7 1.1 "#78bd65" normal)
          (org-level-8 1.0 "#b978ab" normal)))
@@ -596,8 +419,8 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
   (dolist
       (face
        '((org-level-1 1.7 "#ff5d38" ultra-bold)
-         (org-level-2 1.6 "#cb4b16" extra-bold)
-         (org-level-3 1.5 "#bcd42a" bold)
+         (org-level-2 1.6 "#26a6a6" extra-bold)
+         (org-level-3 1.5 "#cb4b16" bold)
          (org-level-4 1.4 "#98be65" semi-bold)
          (org-level-5 1.3 "#4fb3d8" normal)
          (org-level-6 1.2 "#2257A0" normal)
@@ -639,7 +462,7 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
 (defun gw/org-colors-spacegrey ()
-  "Enable OKSolar Dark Colors for Org headers."
+  "Enable Spacegrey Colors for Org headers."
   (interactive)
   (dolist
       (face
@@ -657,33 +480,54 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
 ;; Load our desired gw/org-colors-* theme on startup
     (gw/org-colors-solarized-dark))
 ;; )
-#+end_src
 
-** Org todos
-This is a way for me to archive my TODOs from my Schedule.org.
-#+begin_src emacs-lisp
-;; (defun agenda-mark-done-and-archive ()
-   ;; (interactive)
-   ;; (org-agenda-todo 'done)
-   ;; (org-agenda-archive))
- ;; (define-key org-agenda-mode-map "\C-c\C-x\C-s" 'agenda-mark-done-and-archive)
-#+end_src
+(setq org-refile-targets
+      '((org-agenda-files . (:tag . "refile"))))
 
-** Org-export
-We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting to gemtext (for the gemini protocol).
-=NOTE=: I also enable ox-publish for converting an Org site into an HTML site, but that is done in init.el (org +publish).
+(require 'cl-lib)
 
-#+BEGIN_SRC emacs-lisp
+(defun org-sparse-tree-from-list (headlines)
+  "Show a sparse tree of headlines matching strings in HEADLINES.
+Only select them from the current subtree.  This is not optimal -
+for example, if one of the strings in HEADLINES matches
+a substring of a headline, it is still shown."
+  (save-restriction
+    (org-narrow-to-subtree)
+    (org-occur (regexp-opt headlines))
+    (org-remove-occur-highlights nil nil t)))
+
+(defun org-show-first-random-last (first random last)
+  "Show FIRST first headlines, RANDOM random and LAST last ones.
+For simplicity, the random ones are chosen from all of them,
+including the first/last ones.  Also, headlines on all levels are
+considered, effectively flattening the current subtree for the
+purpose of finding the ones to show."
+  (interactive (let ((arg (prefix-numeric-value current-prefix-arg)))
+                 (list arg arg arg)))
+  (let* ((headlines (cdr (org-map-entries
+                          (lambda ()
+                            (org-element-property
+                             :title
+                             (org-element-at-point)))
+                          nil
+                          'tree
+                          'archive 'comment)))
+         (length (length headlines))
+         (head (seq-take headlines first))
+         (tail (seq-drop headlines (- length last)))
+         (belly (cl-loop repeat random
+                         collect (seq-random-elt headlines))))
+    (org-sparse-tree-from-list
+     (seq-concatenate 'list head belly tail))))
+
 (use-package! ox-twbs)
 ;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
 (use-package! ox-reveal)
-#+END_SRC
+;; Make it so that org-export wont use numbered headings
+(setq org-export-with-section-number -1)
 
-*** Org-Reveal
-Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations. I also have a macro to allow me no hide content.
-#+begin_src emacs-lisp
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
@@ -699,38 +543,22 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
            (t (setq  org-export-exclude-tags '("noexport")))
        )
     )
-#+end_src
 
-** Org-journal
-#+begin_src emacs-lisp
 (setq org-journal-dir "~/Documents/Personal/Journal/"
       org-journal-date-prefix "* "
       org-journal-time-prefix "** "
       org-journal-date-format "%B %d, %Y (%A) "
       org-journal-file-format "%Y-%m-%d.org")
-#+end_src
 
-** Org-publish
-#+begin_src emacs-lisp
 (setq org-publish-use-timestamps-flag nil)
 (setq org-export-with-broken-links t)
-#+end_src
 
-
-** Org-auto-tangle
-=org-auto-tangle= allows you to add the option =#+auto_tangle: t= in your Org file so that it automatically tangles when you save the document.
-
-#+begin_src emacs-lisp
 (use-package! org-auto-tangle
   :defer t
   :hook (org-mode . org-auto-tangle-mode)
   :config
   (setq org-auto-tangle-default t))
-#+end_src
 
-** Org-Roam
-Org-Roam is a plain-text personal knowledge management system.
-#+begin_src emacs-lisp
 (use-package org-roam
 :ensure t
 :init
@@ -745,15 +573,11 @@ Org-Roam is a plain-text personal knowledge management system.
        ("C-M-i" . completion-at-point))
 :config
 (org-roam-setup))
-#+end_src
-
-** Org-tree-slides
-Customization for Org-tree-slides.
-#+begin_src emacs-lisp
 
 (use-package hide-mode-line)
 
 (defun gw/presentation-setup ()
+  (interactive)
   ;; Hide the mode line
   (hide-mode-line-mode 1)
 
@@ -770,6 +594,7 @@ Customization for Org-tree-slides.
   ;;                                    (org-block (:height 1.25) org-block))))
 
 (defun gw/presentation-end ()
+  (interactive)
   ;; Show the mode line again
   (hide-mode-line-mode 0)
 
@@ -789,10 +614,7 @@ Customization for Org-tree-slides.
   (org-tree-slide-header t)
   (org-tree-slide-breadcrumbs " > ")
   (org-image-actual-width nil))
-#+end_src
 
-** Writing-Functions
-#+begin_src emacs-lisp
 (defun gw/writing-mode ()
   "Acctivate my writing environment"
   (interactive)
@@ -805,11 +627,6 @@ Customization for Org-tree-slides.
   (interactive)
   (writeroom-mode 0)
   (message "You're done! Go touch some grass!"))
-#+end_src
-
-** Org-ref
-Org-ref makes it easy to insert citations, cross-references, indexes and glossaries as hyper-functional links into org files. The links are fontified so you can tell them apart from other links, and each link is clickable to access functions like opening a pdf, notes or url associated with the link. Each link also can be exported to LaTeX to build a PDF. For citations, export to other formats is supported by citeproc for high quality export to HTML, markdown, plain text, or stand-alone (i.e. independent of a bibtex file) LaTeX. For a full explanation of the features in org-ref see ./org-ref.org.
-#+begin_src emacs-lisp
 
 (use-package ivy-bibtex
   :init
@@ -860,10 +677,6 @@ Org-ref makes it easy to insert citations, cross-references, indexes and glossar
 	      org-ref-insert-ref-function 'org-ref-insert-ref-link
 	      org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body))))
 
-#+end_src
-
-*** Bibtex
-#+begin_src emacs-lisp
 (require 'bibtex)
 
 (setq bibtex-autokey-year-length 4
@@ -875,11 +688,7 @@ Org-ref makes it easy to insert citations, cross-references, indexes and glossar
       bibtex-autokey-titleword-length 5)
 
 (define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
-#+end_src
 
-** TODO-hl
-Highlight TODO and similar keywords in comments and strings. Here I have set a TODO to be turquoise, FIXME to be red and, DONE to be green.
-#+begin_src emacs-lisp
 (setq global-hl-todo-mode 1)
 
 (defun gw/todo-hl-oksolar-dark ()
@@ -897,94 +706,44 @@ Highlight TODO and similar keywords in comments and strings. Here I have set a T
           ("WAIT"  . "#C5A3FF"))))
 
 (gw/todo-hl-oksolar-dark)
-#+end_src
 
-
-* SPELL CHECKER
-This is where I set GNU Aspell as my default spell checker.
-#+begin_src emacs-lisp
 (setq ispell-program-name "aspell")
-#+end_src
 
-
-* RAINBOW MODE
-Rainbow mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
-
-#+begin_src emacs-lisp
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda ()
     (when (not (memq major-mode
                 (list 'org-agenda-mode)))
      (rainbow-mode 1))))
 (global-rainbow-mode 1 )
-#+end_src
 
-* SWITCHING WINDOWS
-Here is where I set my keybindings for switching between windows.
-#+begin_src emacs-lisp
 (global-set-key (kbd "M-b") 'ace-window)
-#+end_src
 
-* YASNIPPET
-YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
-#+begin_src emacs-lisp
 (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
 (yas-global-mode 1)
-#+end_src
 
-* PALIMPSEST-MODE
-This minor mode for Emacs provides several strategies to remove text without permanently deleting it. Namely, it provides the following capabilities:
-| Keybindings | Action                                         |
-|-------------+------------------------------------------------|
-| C-c C-r     | Send selected text to the bottom of the buffer |
-| C-c C-s     | Send selected text to the top of the buffer    |
-| C-c C-q     | Send selected text to a trash file             |
-
-Much like code, the process of writing text is a progression of revisions where content gets transformed and refined. During these iterations, it is often desirable to move text instead of deleting it: you may have written a sentence that doesn't belong in the paragraph you're editing right now, but it might fit somewhere else. Since you don't know where exactly, you'd like to put it out of the way, not discard it entirely. Palimpsest saves you from the traveling back and forth between your current position and the bottom of your document (or another draft or trash document).
-
-Next time you're writing fiction, non-fiction, a journalistic piece or a blog post using Emacs, give palimpsest-mode a try. You might even try it while coding in a functional language, moving stuff around sprightly, aided by an abstraction reminiscent of the Read-Eval-Print loop, yet completely orthogonal.
-#+begin_src emacs-lisp
 (add-hook 'text-mode-hook 'palimpsest-mode)
-#+end_src
 
-* WEB-MODE
-These are my hooks for web-mode.
-#+begin_src emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.html\\'" .web-mode))
+(require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-#+end_src
 
-* MASTODON
-mastodon.el is an Emacs client for the AcitivityPub social networks that implement the Mastodon API.
-#+begin_src emacs-lisp
 ;; (require 'mastodon-alt)
 ;; (mastodon-alt-tl-activate)
     (setq mastodon-instance-url "https://social.linux.pizza"
           mastodon-active-user "Gamewarrior010")
-#+end_src
 
-* ABBREV-MODE
-Auto expansion for Abbrev-mode.
-#+begin_src emacs-lisp
 ;; Enable abbreviation mode
 (add-hook 'text-mode-hook 'abbrev-mode)
-#+end_src
 
-* PROJECTILE
-Manage Projects
-#+begin_src emacs-lisp
 ;; (projectile-project-search-path '("~/Documents/School"))
-#+end_src
 
-* GO-TRANSLATE
-This is a translation framework for emacs, and is flexible and powerful.
-#+begin_src emacs-lisp
 (require 'go-translate)
 
 (setq gts-translate-list '(("en" "zh")))
@@ -996,12 +755,7 @@ This is a translation framework for emacs, and is flexible and powerful.
        :picker (gts-prompt-picker)
        :engines (list (gts-bing-engine) (gts-google-engine))
        :render (gts-buffer-render)))
-#+end_src
 
-* CODEIUM
-/Free, ultrafast, extensible AI code completion tool for Emacs/
-codeium.el is an open source client and (mostly) written by Alan Chen. It uses a proprietary language server binary, currently downloaded (automatically, with confirmation) from [[https://github.com/Exafunction/codeium/releases/][here]]. Use M-x codeium-diagnose to see apis/fields that would be sent to the local language server, and the command used to run the local language server. Customize codeium-api-enabled, codeium-fields-regexps and codeium-command to change them.
-#+begin_src emacs-lisp
 (straight-use-package '(codeium :type git :host github :repo "Exafunction/codeium.el"))
 ;; we recommend using use-package to organize your init.el
 (use-package codeium
@@ -1064,11 +818,225 @@ codeium.el is an open source client and (mostly) written by Alan Chen. It uses a
             (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
     (setq codeium/document/text 'my-codeium/document/text)
     (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
-#+end_src
 
-* AIDE.el
-An Emacs front end for GPT APIs like OpenAI.
-Note: This is still alpha software. Use with caution.
-#+begin_src emacs-lisp
-(setq openai-api-key "<api-key>")
-#+end_src
+;;; aide.el --- An Emacs front end for GPT APIs like OpenAI  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2021  Junji Zhi
+
+;; Author: Junji Zhi
+;; Keywords: gpt-3 openai
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Simple wrapper to call GPT APIs
+;;
+;; For details, please see http://github.com/junjizhi/aide.el
+
+;;; Code:
+
+(require 'request)
+
+(defgroup aide nil
+  "aide.el custom settings"
+  :group 'external
+  :prefix "aide-")
+
+(defcustom aide-max-tokens 100
+  "The max-tokens paramater that aide.el sends to OpenAI API."
+  :type 'integer
+  :group 'aide)
+
+(defcustom aide-temperature 0
+  "The temperature paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-top-p 0.1
+  "The top-p paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-frequency-penalty 0
+  "The frequency_penalty paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-presence-penalty 0
+  "The presence_penalty paramater that aide.el sends to OpenAI API."
+  :type 'float
+  :group 'aide)
+
+(defcustom aide-completions-model "davinci"
+  "Name of the model used for completions. aide sends requests to
+the OpenAI API endpoint of this model."
+  :type 'string
+  :group 'aide
+  :options '("davinci", "text-davinci-002", "text-curie-001", "text-babbage-001", "text-ada-001"))
+
+(defun aide-openai-complete (api-key prompt)
+  "Return the prompt answer from OpenAI API.
+API-KEY is the OpenAI API key.
+
+PROMPT is the prompt string we send to the API."
+  (let ((result nil)
+        (auth-value (format "Bearer %s" api-key)))
+    (request
+      (format "https://api.openai.com/v1/engines/%s/completions" aide-completions-model)
+      :type "POST"
+      :data (json-encode `(("prompt" . ,prompt)
+                           ("max_tokens" . ,aide-max-tokens)
+                           ("temperature" . ,aide-temperature)
+                           ("frequency_penalty" . ,aide-frequency-penalty)
+                           ("presence_penalty" . ,aide-presence-penalty)
+                           ("top_p" . ,aide-top-p)))
+      :headers `(("Authorization" . ,auth-value) ("Content-Type" . "application/json"))
+      :sync t
+      :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
+    result))
+
+(defun aide-openai-complete-region (start end)
+  "Send the region to OpenAI autocomplete engine and get the result.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string region)))
+    (message "%s" result)))
+
+(defun aide-openai-complete-region-insert (start end)
+  "Send the region to OpenAI and insert the result to the end of buffer.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string region))
+        original-point)
+    (goto-char (point-max))
+    (setq original-point (point))
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay original-point (point-max))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-complete-buffer-insert ()
+  "Send the ENTIRE buffer to OpenAI and insert the result to the end of buffer."
+  (interactive)
+  (let (region
+        result
+        original-point)
+    (setq region (buffer-substring-no-properties (point-min) (point-max)))
+    (setq result (aide--openai-complete-string region))
+    (goto-char (point-max))
+    (setq original-point (point))
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay original-point (point-max))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-tldr-region (start end)
+  "Send the region to OpenAI autocomplete engine and get the TLDR result.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide--openai-complete-string (concat region "\n\n tl;dr:"))))
+    (message "%s" result)))
+
+(defun aide-openai-edits (api-key instruction input)
+  "Return the edits answer from OpenAI API.
+API-KEY is the OpenAI API key.
+
+INSTRUCTION and INPUT are the two params we send to the API."
+  (let ((result nil)
+        (auth-value (format "Bearer %s" api-key)))
+    (request
+      "https://api.openai.com/v1/engines/text-davinci-edit-001/edits"
+      :type "POST"
+      :data (json-encode `(("input" . ,input)
+                           ("instruction" . ,instruction)
+                           ("temperature" . 0.9)))
+      :headers `(("Authorization" . ,auth-value)
+                 ("Content-Type" . "application/json"))
+      :sync t
+      :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
+    result))
+
+(defun aide-openai-edits-region-insert (start end)
+  "Send the region to OpenAI edits and insert the result to the end of region.
+
+START and END are selected region boundaries."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
+    (goto-char end)
+    (if result
+        (progn
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay end (point))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+(defun aide-openai-edits-region-replace (start end)
+  "Send the region to OpenAI edits and replace the region.
+
+START and END are selected region boundaries.
+
+The original content will be stored in the kill ring."
+  (interactive "r")
+  (let* ((region (buffer-substring-no-properties start end))
+         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
+    (goto-char end)
+    (if result
+        (progn
+          (kill-region start end)
+          (insert "\n" result)
+          (fill-paragraph)
+          (let ((x (make-overlay end (point))))
+            (overlay-put x 'face '(:foreground "orange red")))
+          result)
+      (message "Empty result"))))
+
+;; private
+
+(defun aide--openai-complete-string (string)
+  (aide-openai-complete openai-api-key string))
+
+(provide 'aide)
+;;; aide.el ends here
+
+(setq openai-api-key "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")
+
+(setq display-time-day-and-date t)
+
+(map! :after ibuffer
+      :map ibuffer-mode-map
+      :n "l" #'ibuffer-visit-buffer)
