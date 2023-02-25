@@ -33,7 +33,20 @@ Just Run the install-deb script to install.
 
 * Warp Themes
 I have ported several themes from DOOM Emacs themes to Warp.
+
+** 1337
 #+attr_html: :width=200px
 #+caption: 1337 Theme
 [[file:images/warp-1327.png]]
-
+** Henna
+#+attr_html: :width=200px
+[[file:images/warp-henna.png]]
+** Oceanic Next
+#+attr_html: :width=200px
+[[file:images/warp-oceanic_next.png]]
+** Old Hope
+#+attr_html: :width=200px
+[[file:images/warp-old_hope.png]]
+** One
+#+attr_html: :width=200px
+[[file:images/warp-one.png]]
