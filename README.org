@@ -34,4 +34,6 @@ Just Run the install-deb script to install.
 * Warp Themes
 I have ported several themes from DOOM Emacs themes to Warp.
 #+attr_html: :width=200px
+#+caption: 1337 Theme
 [[file:images/warp-1327.png]]
+
