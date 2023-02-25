@@ -23,6 +23,7 @@ export  PATH="$HOME/.cargo/bin:$PATH"
 
 # Vi mode
 # source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+set -o vi
 
 #Doom Emacs
 export  PATH="$HOME/.emacs.d/bin:$PATH"
