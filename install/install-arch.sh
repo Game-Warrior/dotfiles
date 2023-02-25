@@ -14,11 +14,9 @@ cd ~/
 
 echo "Copying my Configs"
 echo "Copying .bashrc"
-cp -r ~/dotfiles/bash/.bashrc ~/
-echo "Copying my Doom Emacs config"
-cp -r ~/dotfiles/.doom.d/ ~/
+cp -r ~/dotfiles/.bashrc ~/
 echo "Copying my .zshrc"
-cp -r ~/dotfiles/zsh/.zshrc ~/
+cp -r ~/dotfiles/.zshrc ~/
 echo "Copying .config"
 cp -r ~/dotfiles/.config ~/
 
@@ -81,5 +79,5 @@ echo "adding user to libvirt&kvm group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
 
-echo "Changing the User Shell to Fish"
-chsh -s /bin/fish
+# echo "Changing the User Shell to Fish"
+# chsh -s /bin/fish

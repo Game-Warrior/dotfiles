@@ -12,12 +12,10 @@ echo  "       _____  __          __
 cd ~/
 
 echo "Copying my Configuration files"
-echo "Copying my Doom Emacs config"
-cp -r ~/dotfiles/.doom.d ~/
 echo "Copying my BASH config"
-cp -r ~/dotfiles/bash/.bashrc ~/
+cp -r ~/dotfiles/.bashrc ~/
 echo "Copying my .zshrc"
-cp -r ~/dotfiles/zsh/.zshrc ~/
+cp -r ~/dotfiles/.zshrc ~/
 echo "Copying my GIT config"
 cp -r ~/dotfiles/.gitconfig ~/
 echo "Copying my .config folder"

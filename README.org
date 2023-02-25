@@ -2,6 +2,7 @@
 #+description: The README for the collection of my dotfiles
 #+author: Gardner Berry
 #+options: num:nil toc:nil
+#+startup: inlineimages
 
 * Install
 Just FYI I wrote these scripts with the assumption that the dotfiles repository would be in your ~/ or Home folder.
@@ -31,4 +32,6 @@ Just Run the install-deb script to install.
 
 
 * Warp Themes
-I have also ported The Henna theme from VScode to Warp.
+I have ported several themes from DOOM Emacs themes to Warp.
+#+attr_html: :width=200px
+[[file:images/warp-1327.png]]

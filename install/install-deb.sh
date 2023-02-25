@@ -12,11 +12,9 @@ echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
 
 echo "Copying my Configs"
 echo "Copying .bashrc"
-cp -r ~/dotfiles/bash/.bashrc ~/
-echo "Copying my Doom Emacs config"
-cp -r ~/dotfiles/.doom.d/ ~/
+cp -r ~/dotfiles/.bashrc ~/
 echo "Copying my .zshrc"
-cp -r ~/dotfiles/zsh/.zshrc ~/
+cp -r ~/dotfiles/.zshrc ~/
 echo "Copying .config"
 cp -r ~/dotfiles/.config ~/
 

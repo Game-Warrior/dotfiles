@@ -14,11 +14,9 @@ sleep 2
 
 echo "Copying my Configs"
 echo "Copying .bashrc"
-cp -r ~/dotfiles/bash/.bashrc ~/
-echo "Copying my Doom Emacs config"
-cp -r ~/dotfiles/.doom.d/ ~/
+cp -r ~/dotfiles/.bashrc ~/
 echo "Copying my .zshrc"
-cp -r ~/dotfiles/zsh/.zshrc ~/
+cp -r ~/dotfiles/.zshrc ~/
 echo "Copying my .config folder"
 cp -rf ~/dotfiles/.config ~/
 
