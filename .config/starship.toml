@@ -11,8 +11,9 @@
 #[┣─project❯](bold red) $directory$rust$git_branch$git_state$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
 #[╰─cmd────❯](bold green)
 #"""
+
 [username]
-style_user = "green bold"
+style_user = "bright-red bold"
 style_root = "red bold"
 format = "[$user]($style) "
 disabled = false
@@ -20,7 +21,7 @@ show_always = true
 
 [hostname]
 ssh_only = false
-format = 'on [$hostname](bold purple) '
+format = 'on [$hostname](bold red) '
 trim_at = "."
 disabled = false
 
@@ -41,7 +42,7 @@ style = "bold italic blue"
 min_time = 4
 show_milliseconds = false
 disabled = false
-style = "bold italic red"
+style = "bold italic bright-red"
 
 [aws]
 symbol = "  "
@@ -157,3 +158,4 @@ symbol = "ﯣ "
 format = "via [ Node.js $version](bold green) "
 detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
+

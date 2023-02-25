@@ -13,11 +13,16 @@
 
 [[ -f ~/.welcome_screen ]] && . ~/.welcome_screen
 
+# PS1 Prompt
+# export PS1="\w \u@\h "
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)"
+
+
 #Cargo
 export  PATH="$HOME/.cargo/bin:$PATH"
 
 # Vi mode
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 #Doom Emacs
 export  PATH="$HOME/.emacs.d/bin:$PATH"
@@ -90,6 +95,4 @@ neofetch
 
 # ~/.bashrc
 
-eval "$(starship init bash)"
-
-
+# eval "$(starship init bash)"
