@@ -245,7 +245,11 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
 
 (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
 
-
+(add-hook 'after-change-major-mode-hook
+          (lambda ()
+            (if (equal (buffer-name) "*doom-dashboard*")
+                (emojify-mode 1)
+              (emojify-mode -1))))
 #+end_src
 
 * EMOJIS
@@ -254,6 +258,7 @@ Emojify is an Emacs extension to display emojis. It can display github style emo
 #+begin_src emacs-lisp
 (use-package emojify
   :hook (after-init . global-emojify-mode))
+
 #+end_src
 
 * FONTS
@@ -265,9 +270,9 @@ Settings related to fonts within Doom Emacs:
 + 'font-lock-keyword-face' -- for keywords with special significance like 'setq' in elisp.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "SF Mono" :size 15)
+(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "SF Mono" :size 24))
+      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -349,7 +354,7 @@ https://github.com/seagle0128/doom-modeline
 
 #+begin_src emacs-lisp
 (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-(setq doom-modeline-height 40     ;; sets modeline height
+(setq doom-modeline-height 35     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t ;; adds folder icon next to persp name
@@ -368,9 +373,10 @@ I wrapped most of this block in (after! org). Without this, my settings might be
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/Schedule.org")
+        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/School/S-todo.org" "~/Documents/Personal/P-todo.org" "~/Documents/To-Research.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        org-ellipsis " ▼ "
+        ;; org-ellipsis " ▼ "
+        org-ellipsis "↴"
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
@@ -392,6 +398,7 @@ I wrapped most of this block in (after! org). Without this, my settings might be
              "VIDEO(v)"          ; Video assignments
              "CLASS(l)"          ; Agenda assignment for class
              "WAIT(w)"           ; Something is holding up this task
+             "RESEARCH(r)"       ; Something I want to research
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" )))) ; Task has been cancelled
@@ -1350,7 +1357,7 @@ The original content will be stored in the kill ring."
 
 
 #+begin_src emacs-lisp
-(setq openai-api-key "")
+(setq openai-api-key "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")
 #+end_src
 
 * DISPLAY-TIME

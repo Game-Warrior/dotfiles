@@ -111,12 +111,18 @@
 
 (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
 
+(add-hook 'after-change-major-mode-hook
+          (lambda ()
+            (if (equal (buffer-name) "*doom-dashboard*")
+                (emojify-mode 1)
+              (emojify-mode -1))))
+
 (use-package emojify
   :hook (after-init . global-emojify-mode))
 
-(setq doom-font (font-spec :family "SF Mono" :size 15)
+(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "SF Mono" :size 24))
+      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -162,7 +168,7 @@
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.2)))))
 
 (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-(setq doom-modeline-height 40     ;; sets modeline height
+(setq doom-modeline-height 35     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t ;; adds folder icon next to persp name
@@ -175,9 +181,10 @@
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/Schedule.org")
+        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/School/S-todo.org" "~/Documents/Personal/P-todo.org" "~/Documents/To-Research.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        org-ellipsis " ▼ "
+        ;; org-ellipsis " ▼ "
+        org-ellipsis "↴"
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
@@ -199,6 +206,7 @@
              "VIDEO(v)"          ; Video assignments
              "CLASS(l)"          ; Agenda assignment for class
              "WAIT(w)"           ; Something is holding up this task
+             "RESEARCH(r)"       ; Something I want to research
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" )))) ; Task has been cancelled
