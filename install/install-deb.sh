@@ -6,7 +6,6 @@ echo  "       _____  __          __
       | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
        \_____|     \/  \/"
 
-
 echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
 
 
@@ -59,8 +58,6 @@ sudo systemctl enable libvirtd
 echo "Adding user to libvirt&kvm group"
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
-
-sleep 2
 
 #echo "Changing the User Shell to FISH"
 #chsh -s /usr/bin/fish
