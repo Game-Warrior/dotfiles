@@ -34,6 +34,10 @@ sudo apt update&&sudo apt upgrade
 echo "Installing packages"
 sudo apt install awesome alacritty dmenu picom exa emacs28-nativecomp btop lxappearance zsh nitrogen fish neovim ripgrep neofetch speedtest-cli shellcheck npm gopls cmake tidy kotlin xdotool pandoc github-desktop
 
+echo "Making Directorys"
+mkdir ~/Developer
+mkdir ~/Developer/Git-Repos
+mkdir ~/Developer/Projects
 echo "Making Wallpapers Directory"
 mkdir ~/Wallpapers
 echo "Adding my Wallpapers"
