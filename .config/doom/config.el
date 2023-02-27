@@ -1048,3 +1048,7 @@ The original content will be stored in the kill ring."
 (map! :after ibuffer
       :map ibuffer-mode-map
       :n "l" #'ibuffer-visit-buffer)
+
+(map! :after ibuffer
+      :map ibuffer-mode-map
+      :n "h" #'kill-current-buffer)
