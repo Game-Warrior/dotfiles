@@ -1,0 +1,300 @@
+#+title: NixOS Configuration
+#+description: My configuration file for NixOS
+#+author: Gardner Berry
+#+options: num:nil
+#+property: header-args :tagle configuration.nix
+
+* Table Of Contents :toc:
+- [[#about-this-config][About This Config]]
+- [[#hardware-configuration][Hardware Configuration]]
+- [[#bootloader][Bootloader]]
+- [[#hostname][Hostname]]
+- [[#networking-proxy][Networking proxy]]
+- [[#networking-manager][Networking Manager]]
+- [[#local-time-zone][Local Time Zone]]
+- [[#internationalization-properties][Internationalization Properties]]
+- [[#enable-the-x11-windowing-system][Enable The X11 Windowing System]]
+- [[#display-manger][Display Manger]]
+- [[#desktop-environments][Desktop Environments]]
+  - [[#cinnamon][Cinnamon]]
+  - [[#awesome][Awesome]]
+- [[#configuring-keymap-in-x11][Configuring Keymap in X11]]
+- [[#cups-printing-service][Cups Printing Service]]
+- [[#pipewire][Pipewire]]
+  - [[#jack-applications][JACK applications]]
+  - [[#media-session-manager][Media Session Manager]]
+- [[#touchpad-support][Touchpad Support]]
+- [[#default-user-shell][Default User Shell]]
+- [[#user-account][User Account]]
+- [[#automatic-login][Automatic Login]]
+- [[#unfree-packages][Unfree Packages]]
+- [[#building-emacs-from-source][Building Emacs From Source]]
+- [[#system-packages][System Packages]]
+  - [[#command-line-stuff][Command Line Stuff]]
+  - [[#shells][Shells]]
+  - [[#terminal-emulators][Terminal Emulators]]
+  - [[#text-editors][Text Editors]]
+  - [[#internet][Internet]]
+  - [[#productivity][Productivity]]
+  - [[#gaming][Gaming]]
+  - [[#window-manger-stuff][Window Manger Stuff]]
+  - [[#utils][Utils]]
+- [[#suid-wrappers][SUID Wrappers]]
+- [[#enabled-services][Enabled Services]]
+  - [[#ssh-daemon][SSH Daemon]]
+- [[#firewall-settings][Firewall Settings]]
+- [[#nixos-version][NixOS Version]]
+
+* About This Config
+
+* Hardware Configuration
+#+begin_src nix
+{ config, pkgs, ... }:
+
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
+
+#+end_src
+
+* Bootloader
+#+begin_src nix
+  # Bootloader.
+  boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "/dev/vda";
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
+
+#+end_src
+* Hostname
+#+begin_src nix
+  networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+#+end_src
+* Networking proxy
+#+begin_src nix
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+#+end_src
+* Networking Manager
+#+begin_src nix
+  networking.networkmanager.enable = true;
+#+end_src
+* Local Time Zone
+#+begin_src nix
+  time.timeZone = "America/New_York";
+#+end_src
+* Internationalization Properties
+#+begin_src nix
+  i18n.defaultLocale = "en_US.utf8";
+#+end_src
+* Enable The X11 Windowing System
+#+begin_src nix
+  services.xserver.enable = true;
+#+end_src
+* Display Manger
+#+begin_src nix
+  services.xserver.displayManager.lightdm.enable = true;
+#+end_src
+* Desktop Environments
+** Cinnamon
+#+begin_src nix
+  services.xserver.desktopManager.cinnamon.enable = true;
+#+end_src
+** Awesome
+#+begin_src nix
+  services.xserver.windowManager.awesome.enable = true;
+#+end_src
+* Configuring Keymap in X11
+#+begin_src nix
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
+#+end_src
+* Cups Printing Service
+#+begin_src nix
+  services.printing.enable = true;
+#+end_src
+* Pipewire
+#+begin_src nix
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+#+end_src
+** JACK applications
+#+begin_src nix
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+#+end_src
+** Media Session Manager
+#+begin_src nix
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+#+end_src
+* Touchpad Support
+Enable touchpad support (enabled default in most desktopManager).
+#+begin_src nix
+# services.xserver.libinput.enable = true;
+#+end_src
+* Default User Shell
+#+begin_src nix
+users.defaultUserShell - pkgs.fish;
+#+end_src
+* User Account
+Define a user account. Don't forget to set a password with ‘passwd’.
+#+begin_src nix
+  users.users.gb = {
+    isNormalUser = true;
+    description = "gb";
+    extraGroups = [ "networkmanager" "wheel" "kvm" "libvirt"];
+    packages = with pkgs; [
+      firefox
+    #  thunderbird
+    ];
+  };
+#+end_src
+* Automatic Login
+Enable Automatic login for the user
+#+begin_src nix
+  #services.xserver.displayManager.autoLogin.enable = true;
+  #services.xserver.displayManager.autoLogin.user = "gb";
+#+end_src
+* Unfree Packages
+Enabling Nonfree software.
+#+begin_src nix
+  nixpkgs.config.allowUnfree = true;
+#+end_src
+* Building Emacs From Source
+#+begin_src nix
+  nixpkgs.overlays = [
+  (import (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
+];
+#+end_src
+
+* System Packages
+List packages installed in system profile. To search, run:
+$ nix search wget
+#+begin_src nix
+  environment.systemPackages = with pkgs; [
+#+end_src
+** Command Line Stuff
+#+begin_src nix
+    #command line stuff
+    wget
+    git
+    btop
+    neofetch
+    exa
+    starship
+    fd
+    ripgrep
+    clang
+#+end_src
+** Shells
+#+begin_src nix
+    #shells
+    home-manager
+    fish
+    oh-my-fish
+#+end_src
+** Terminal Emulators
+#+begin_src nix
+    #Terminal Emulators
+    kitty
+    kitty-themes
+    alacritty
+#+end_src
+** Text Editors
+#+begin_src nix
+    #Text Editors
+    neovim
+    emacsGcc
+    micro
+#+end_src
+** Internet
+#+begin_src nix
+    #Internet
+    brave
+    firefox
+    zoom-us
+#+end_src
+** Productivity
+#+begin_src nix
+    #Productivity
+    mpv
+    libreoffice
+    cura
+    #rustdesk
+#+end_src
+** Gaming
+#+begin_src nix
+    #Gaming
+    steam
+    discord
+    element-desktop
+#+end_src
+** Window Manger Stuff
+#+begin_src nix
+    #Window Manager stuff
+    awesome
+    dmenu
+    nitrogen
+    cinnamon.nemo
+    arandr
+    lxappearance
+#+end_src
+** Utils
+#+begin_src nix
+    #Utils
+    cmake
+    hunspell
+  ];
+#+end_src
+
+* SUID Wrappers
+#+begin_src nix
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+#+end_src
+* Enabled Services
+** SSH Daemon
+#+begin_src nix
+  # services.openssh.enable = true;
+#+end_src
+* Firewall Settings
+#+begin_src nix
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+#+end_src
+* NixOS Version
+This value determines the NixOS release from which the default
+settings for stateful data, like file locations and database versions
+on your system were taken. It‘s perfectly fine and recommended to leave
+this value at the release version of the first install of this system.
+Before changing this value read the documentation for this option
+(e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+#+begin_src nix
+system.stateVersion = "22.05"; # Did you read the comment?
+
+}
+#+end_src
