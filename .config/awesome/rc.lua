@@ -48,7 +48,6 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
--- Local Settings
 local modkey      = "Mod4"
 local altkey      = "Mod1"
 local ctrlkey     = "Control"
@@ -59,7 +58,6 @@ local emacs       = "emacsclient -c -a 'emacs' "
 local mediaplayer = "mpv"
 local soundplayer = "ffplay -nodisp -autoexit " -- The program that will play system sounds
 
--- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
 --    awful.layout.suit.floating,
     awful.layout.suit.tile,
@@ -82,7 +80,6 @@ awful.layout.layouts = {
 -- }}}
 
 -- {{{ Menu
--- Create a launcher widget and a main menu
 myawesomemenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "manual", terminal .. " -e man awesome" },
@@ -175,7 +172,6 @@ awful.screen.connect_for_each_screen(function(s)
       awful.tag({ "SYS", "WWW", "DEV", "VIRT", "GAMES", "CHAT", "SCH", "MEET" }, s, awful.layout.layouts[1])
 --      awful.tag({ "SYS", "WWW", "VIDEOS", "DEV", "VIRT", "GAMES", "CHAT", "SCH", "MEET" }, s, awful.layout.layouts[1])
 
-    -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -414,9 +410,6 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"})
 )
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
