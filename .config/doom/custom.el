@@ -22,3 +22,4 @@
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.4))))
  '(markdown-header-face-5 ((t (:inherit markdown-header-face :height 1.3))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.2)))))
+(put 'customize-face 'disabled nil)

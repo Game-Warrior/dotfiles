@@ -181,7 +181,7 @@
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/School/S-todo.org" "~/Documents/Personal/P-todo.org" "~/Documents/To-Research.org")
+        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/S-todo.org" "~/Documents/P-todo.org" "~/Documents/To-Research.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
         org-ellipsis "↴"
@@ -534,7 +534,7 @@ purpose of finding the ones to show."
 (use-package! ox-gfm)
 (use-package! ox-reveal)
 ;; Make it so that org-export wont use numbered headings
-(setq org-export-with-section-number -1)
+(setq org-export-with-section-numbers nil)
 
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
@@ -1052,3 +1052,5 @@ The original content will be stored in the kill ring."
 (map! :after ibuffer
       :map ibuffer-mode-map
       :n "h" #'kill-current-buffer)
+
+(setq olivetti-style 'fringes-and-margins)

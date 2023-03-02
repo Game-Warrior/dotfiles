@@ -47,6 +47,7 @@
 - [[#aideel][AIDE.el]]
 - [[#display-time][DISPLAY-TIME]]
 - [[#ibuffer][IBUFFER]]
+- [[#olivetti][OLIVETTI]]
 
 * ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -373,7 +374,7 @@ I wrapped most of this block in (after! org). Without this, my settings might be
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/School/S-todo.org" "~/Documents/Personal/P-todo.org" "~/Documents/To-Research.org")
+        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/S-todo.org" "~/Documents/P-todo.org" "~/Documents/To-Research.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
         org-ellipsis "↴"
@@ -733,7 +734,7 @@ purpose of finding the ones to show."
 
 
 ** Org-export
-We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting to gemtext (for the gemini protocol).
+I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, Reveal.js allows to export org to a HTML presentation, Github Flavored Markdown to export to Joplin, and finaly Pandoc for exporting to other formats like .docx and .pptx and manny manny others.
 =NOTE=: I also enable ox-publish for converting an Org site into an HTML site, but that is done in init.el (org +publish).
 
 #+BEGIN_SRC emacs-lisp
@@ -743,7 +744,7 @@ We need ox-man for "Org eXporting" to manpage format and ox-gemini for exporting
 (use-package! ox-gfm)
 (use-package! ox-reveal)
 ;; Make it so that org-export wont use numbered headings
-(setq org-export-with-section-number -1)
+(setq org-export-with-section-numbers nil)
 #+END_SRC
 
 *** Org-Reveal
@@ -1376,4 +1377,8 @@ Ibuffer is an advanced replacement for BufferMenu, which lets you operate on buf
 (map! :after ibuffer
       :map ibuffer-mode-map
       :n "h" #'kill-current-buffer)
+#+end_src
+* OLIVETTI
+#+begin_src emacs-lisp
+(setq olivetti-style 'fringes-and-margins)
 #+end_src
