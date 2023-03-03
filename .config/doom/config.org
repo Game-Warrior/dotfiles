@@ -4,27 +4,29 @@
 #+options: num:nil
 
 * TABLE OF CONTENTS :toc:
-- [[#about-this-config][ABOUT THIS CONFIG]]
-- [[#beacon][BEACON]]
-- [[#setting-username-and-email][SETTING USERNAME AND EMAIL]]
-- [[#title-bar][TITLE BAR]]
-- [[#doom-theme][DOOM THEME]]
-- [[#setting-the-default-link-opener][SETTING THE DEFAULT LINK OPENER]]
-- [[#menu-bar][MENU BAR]]
-- [[#dired][DIRED]]
+- [[#about-this-config][About This Config]]
+  - [[#why-emacs][Why Emacs]]
+- [[#beacon][Beacon]]
+- [[#setting-username-and-e-mail][Setting Username and E-Mail]]
+- [[#title-bar][Title Bar]]
+- [[#doom-theme][Doom Theme]]
+- [[#setting-the-default-link-opener][Setting the Default Link Opener]]
+- [[#menu-bar][Menu Bar]]
+- [[#dired][Dired]]
   - [[#keybindings-to-open-dired][Keybindings To Open Dired]]
   - [[#keybindings-within-dired][Keybindings Within Dired]]
-- [[#doom-dashboard][DOOM-DASHBOARD]]
-- [[#emojis][EMOJIS]]
-- [[#fonts][FONTS]]
-- [[#insert-date][INSERT DATE]]
-- [[#line-settings][LINE SETTINGS]]
-- [[#markdown][MARKDOWN]]
-- [[#modeline][MODELINE]]
-- [[#org-mode][ORG MODE]]
+- [[#doom-dashboard][Doom-Dashboard]]
+- [[#emojis][Emojis]]
+- [[#fonts][Fonts]]
+- [[#insert-date][Insert Date]]
+- [[#line-settings][Line Settings]]
+- [[#markdown][Markdown]]
+- [[#modeline][Modeline]]
+- [[#org-mode][Org-Mode]]
   - [[#org-fonts][Org fonts]]
   - [[#org-todos][Org todos]]
   - [[#org-export][Org-export]]
+  - [[#org-reveal][Org-Reveal]]
   - [[#org-journal][Org-journal]]
   - [[#org-publish][Org-publish]]
   - [[#org-auto-tangle][Org-auto-tangle]]
@@ -33,23 +35,23 @@
   - [[#writing-functions][Writing-Functions]]
   - [[#org-ref][Org-ref]]
   - [[#todo-hl][TODO-hl]]
-- [[#spell-checker][SPELL CHECKER]]
-- [[#rainbow-mode][RAINBOW MODE]]
-- [[#switching-windows][SWITCHING WINDOWS]]
-- [[#yasnippet][YASNIPPET]]
-- [[#palimpsest-mode][PALIMPSEST-MODE]]
-- [[#web-mode][WEB-MODE]]
-- [[#mastodon][MASTODON]]
-- [[#abbrev-mode][ABBREV-MODE]]
-- [[#projectile][PROJECTILE]]
-- [[#go-translate][GO-TRANSLATE]]
-- [[#codeium][CODEIUM]]
-- [[#aideel][AIDE.el]]
-- [[#display-time][DISPLAY-TIME]]
-- [[#ibuffer][IBUFFER]]
-- [[#olivetti][OLIVETTI]]
+- [[#spell-checker][Spell Checker]]
+- [[#rainbow-mode][Rainbow Mode]]
+- [[#switching-windows][Switching Windows]]
+- [[#yasnippet][YAsnippet]]
+- [[#palimpsest-mode][Palimpsest-Mode]]
+- [[#web-mode][Web-Mode]]
+- [[#mastodon][Mastodon]]
+- [[#abbrev-mode][Abbrev-Mode]]
+- [[#projectile][Projectile]]
+- [[#go-translate][Go-Translate]]
+- [[#codeiumel][Codeium.el]]
+- [[#display-time][Display-Time]]
+- [[#ibuffer][Ibuffer]]
+- [[#olivetti][Olivetti]]
+- [[#writeroom][Writeroom]]
 
-* ABOUT THIS CONFIG
+* About This Config
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
 #+begin_src emacs-lisp
 ;;    _____ __          __
@@ -60,27 +62,44 @@ This is my Doom Emacs Config. I have built this over the last couple of months m
 ;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
 #+end_src
 
+** Why Emacs
+I highly recommend that you checkout this [[https://tecosaur.github.io/emacs-config/config.html][this blog post/config by Tecosaur]] it covers way more about Doom Emacs that I want to here but to quote an excerpt from it.
+#+begin_quote
+Emacs is not a text editor, this is a common misnomer. It is far more apt to describe Emacs as a Lisp machine providing a generic user-centric text manipulation environment. That’s quite a mouthful. In simpler terms one can think of Emacs as a platform for text-related applications. It’s a vague and generic definition because Emacs itself is generic.
 
-* BEACON
+Good with text. How far does that go? A lot further than one initially thinks:
+
+Task planning
+File management
+Terminal emulation
+Email client
+Remote server tool
+Git frontend
+Web client/server
+and more…
+Ideally, one may use Emacs as the interface to perform input → transform → output cycles, i.e. form a bridge between the human mind and information manipulation.
+#+end_quote
+
+* Beacon
 Never lose your cursor.  When you scroll, your cursor will shine!  This is a global minor-mode. Turn it on everywhere with:
 
 #+begin_src emacs-lisp
 (beacon-mode 1)
 #+end_src
 
-* SETTING USERNAME AND EMAIL
+* Setting Username and E-Mail
 #+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gamewarrior.xyz")
 #+end_src
 
-* TITLE BAR
+* Title Bar
 Change the title bar format
 #+begin_src emacs-lisp
     (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 #+end_src
 
-* DOOM THEME
+* Doom Theme
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+begin_src emacs-lisp
@@ -89,13 +108,13 @@ Setting the theme to doom-one.  To try out new themes, I set a keybinding for co
       :desc "Load new theme" "h t" #'load-theme)
 #+end_src
 
-* SETTING THE DEFAULT LINK OPENER
+* Setting the Default Link Opener
 Setting in which browser EMACS will open links
 #+begin_src emacs-lisp
 (setq browse-url-browser-function 'browse-url-default-browser)
 #+end_src
 
-* MENU BAR
+* Menu Bar
 Setting menu-bar-mode to be disabled.
 #+begin_src emacs-lisp
 ;; (menu-bar-mode -1)
@@ -109,7 +128,7 @@ Setting menu-bar-mode to be disabled.
 #+end_src
 
 
-* DIRED
+* Dired
 Dired is the file manager within Emacs.  Below, I setup keybindings for image previews (peep-dired).  Doom Emacs does not use 'SPC d' for any of its keybindings, so I've chosen the format of 'SPC d' plus 'key'.
 
 ** Keybindings To Open Dired
@@ -205,7 +224,7 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
                               ("mp4" . "mpv")))
 #+end_src
 
-* DOOM-DASHBOARD
+* Doom-Dashboard
 This is where I customize the DOOM emacs Dashboard. I have a custom banner set. I have also disabled some of the short cuts on the default start page. It will alsow show you a different message based on what OS you are running.
 #+begin_src emacs-lisp
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
@@ -253,7 +272,7 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
               (emojify-mode -1))))
 #+end_src
 
-* EMOJIS
+* Emojis
 Emojify is an Emacs extension to display emojis. It can display github style emojis like :smile: or plain ascii ones like :).
 
 #+begin_src emacs-lisp
@@ -262,7 +281,7 @@ Emojify is an Emacs extension to display emojis. It can display github style emo
 
 #+end_src
 
-* FONTS
+* Fonts
 Settings related to fonts within Doom Emacs:
 + 'doom-font' -- standard monospace font that is used for most things in Emacs.
 + 'doom-variable-pitch-font' -- variable font which is useful in some Emacs plugins.
@@ -278,11 +297,11 @@ Settings related to fonts within Doom Emacs:
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 (custom-set-faces!
-  '(font-lock-comment-face :slant italic)
+  ;; '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
 #+END_SRC
 
-* INSERT DATE
+* Insert Date
 Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
 
 | COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
@@ -313,7 +332,7 @@ Some custom functions to insert the date.  The function 'insert-todays-date' can
         :desc "Insert todays date" "t" #'gw/insert-todays-date))
 #+end_src
 
-* LINE SETTINGS
+* Line Settings
 I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for me. The standard Emacs keybinding for comment-line is 'C-x C-;'.  The other keybindings are for commands that toggle on/off various line-related settings.  Doom Emacs uses 'SPC t' for "toggle" commands, so I choose 'SPC t' plus 'key' for those bindings.
 
 | COMMAND                  | DESCRIPTION                               | KEYBINDING  |
@@ -335,7 +354,7 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
        :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
 #+END_SRC
 
-* MARKDOWN
+* Markdown
 
 #+begin_src emacs-lisp
 (custom-set-faces
@@ -349,7 +368,7 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
 
 #+end_src
 
-* MODELINE
+* Modeline
 The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
 https://github.com/seagle0128/doom-modeline
 
@@ -365,8 +384,7 @@ https://github.com/seagle0128/doom-modeline
       )
 #+end_src
 
-
-* ORG MODE
+* Org-Mode
 I wrapped most of this block in (after! org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal, org-superstar by adding (+journal +pretty) to the org section of my Doom Emacs init.el.
 
 #+BEGIN_SRC emacs-lisp
@@ -747,17 +765,19 @@ I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, 
 (setq org-export-with-section-numbers nil)
 #+END_SRC
 
-*** Org-Reveal
+** Org-Reveal
 Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations. I also have a macro to allow me no hide content.
 #+begin_src emacs-lisp
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
-(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
-(setq org-reveal-plugins 1)
-(setq org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>")
-(setq org-reveal-theme "Moon")
+(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
+      org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      org-reveal-theme "moon"
+      ;; org-re-reveal-theme "blood"
+      org-re-reveal-transition "slide"
+      org-reveal-plugins '(markdown notes math search zoom))
 
-     (defun set-ignored-headlines-tags (backend)
+(defun set-ignored-headlines-tags (backend)
      "Remove all headlines with tag ignore_heading in the current buffer.
         BACKEND is the export back-end being used, as a symbol."
      (cond ((org-export-derived-backend-p backend 'md) (setq  org-export-exclude-tags '("noexport" "mdignore")))
@@ -877,7 +897,7 @@ Customization for Org-tree-slides.
 
 ** Org-ref
 Org-ref makes it easy to insert citations, cross-references, indexes and glossaries as hyper-functional links into org files. The links are fontified so you can tell them apart from other links, and each link is clickable to access functions like opening a pdf, notes or url associated with the link. Each link also can be exported to LaTeX to build a PDF. For citations, export to other formats is supported by citeproc for high quality export to HTML, markdown, plain text, or stand-alone (i.e. independent of a bibtex file) LaTeX. For a full explanation of the features in org-ref see ./org-ref.org.
-#+begin_src emacs-lisp
++begin_src emacs-lisp
 
 (use-package ivy-bibtex
   :init
@@ -928,10 +948,10 @@ Org-ref makes it easy to insert citations, cross-references, indexes and glossar
 	      org-ref-insert-ref-function 'org-ref-insert-ref-link
 	      org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body))))
 
-#+end_src
++end_src
 
 *** Bibtex
-#+begin_src emacs-lisp
++begin_src emacs-lisp
 (require 'bibtex)
 
 (setq bibtex-autokey-year-length 4
@@ -943,7 +963,7 @@ Org-ref makes it easy to insert citations, cross-references, indexes and glossar
       bibtex-autokey-titleword-length 5)
 
 (define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
-#+end_src
++end_src
 
 ** TODO-hl
 Highlight TODO and similar keywords in comments and strings. Here I have set a TODO to be turquoise, FIXME to be red and, DONE to be green.
@@ -968,14 +988,14 @@ Highlight TODO and similar keywords in comments and strings. Here I have set a T
 #+end_src
 
 
-* SPELL CHECKER
+* Spell Checker
 This is where I set GNU Aspell as my default spell checker.
 #+begin_src emacs-lisp
 (setq ispell-program-name "aspell")
 #+end_src
 
 
-* RAINBOW MODE
+* Rainbow Mode
 Rainbow mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
 
 #+begin_src emacs-lisp
@@ -987,20 +1007,20 @@ Rainbow mode displays the actual color for any hex value color.  It's such a nic
 (global-rainbow-mode 1 )
 #+end_src
 
-* SWITCHING WINDOWS
+* Switching Windows
 Here is where I set my keybindings for switching between windows.
 #+begin_src emacs-lisp
 (global-set-key (kbd "M-b") 'ace-window)
 #+end_src
 
-* YASNIPPET
+* YAsnippet
 YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
 #+begin_src emacs-lisp
 (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
 (yas-global-mode 1)
 #+end_src
 
-* PALIMPSEST-MODE
+* Palimpsest-Mode
 This minor mode for Emacs provides several strategies to remove text without permanently deleting it. Namely, it provides the following capabilities:
 | Keybindings | Action                                         |
 |-------------+------------------------------------------------|
@@ -1015,7 +1035,7 @@ Next time you're writing fiction, non-fiction, a journalistic piece or a blog po
 (add-hook 'text-mode-hook 'palimpsest-mode)
 #+end_src
 
-* WEB-MODE
+* Web-Mode
 These are my hooks for web-mode.
 #+begin_src emacs-lisp
 (require 'web-mode)
@@ -1030,7 +1050,7 @@ These are my hooks for web-mode.
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 #+end_src
 
-* MASTODON
+* Mastodon
 mastodon.el is an Emacs client for the AcitivityPub social networks that implement the Mastodon API.
 #+begin_src emacs-lisp
 ;; (require 'mastodon-alt)
@@ -1039,20 +1059,20 @@ mastodon.el is an Emacs client for the AcitivityPub social networks that impleme
           mastodon-active-user "Gamewarrior010")
 #+end_src
 
-* ABBREV-MODE
+* Abbrev-Mode
 Auto expansion for Abbrev-mode.
 #+begin_src emacs-lisp
 ;; Enable abbreviation mode
 (add-hook 'text-mode-hook 'abbrev-mode)
 #+end_src
 
-* PROJECTILE
+* Projectile
 Manage Projects
 #+begin_src emacs-lisp
 ;; (projectile-project-search-path '("~/Documents/School"))
 #+end_src
 
-* GO-TRANSLATE
+* Go-Translate
 This is a translation framework for emacs, and is flexible and powerful.
 #+begin_src emacs-lisp
 (require 'go-translate)
@@ -1068,7 +1088,7 @@ This is a translation framework for emacs, and is flexible and powerful.
        :render (gts-buffer-render)))
 #+end_src
 
-* CODEIUM
+* Codeium.el
 /Free, ultrafast, extensible AI code completion tool for Emacs/
 codeium.el is an open source client and (mostly) written by Alan Chen. It uses a proprietary language server binary, currently downloaded (automatically, with confirmation) from [[https://github.com/Exafunction/codeium/releases/][here]]. Use M-x codeium-diagnose to see apis/fields that would be sent to the local language server, and the command used to run the local language server. Customize codeium-api-enabled, codeium-fields-regexps and codeium-command to change them.
 #+begin_src emacs-lisp
@@ -1136,238 +1156,13 @@ codeium.el is an open source client and (mostly) written by Alan Chen. It uses a
     (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
 #+end_src
 
-* AIDE.el
-An Emacs front end for GPT APIs like OpenAI.
-Note: This is still alpha software. Use with caution.
-#+begin_src emacs-lisp
-;;; aide.el --- An Emacs front end for GPT APIs like OpenAI  -*- lexical-binding: t; -*-
-
-;; Copyright (C) 2021  Junji Zhi
-
-;; Author: Junji Zhi
-;; Keywords: gpt-3 openai
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-;;; Commentary:
-
-;; Simple wrapper to call GPT APIs
-;;
-;; For details, please see http://github.com/junjizhi/aide.el
-
-;;; Code:
-
-(require 'request)
-
-(defgroup aide nil
-  "aide.el custom settings"
-  :group 'external
-  :prefix "aide-")
-
-(defcustom aide-max-tokens 100
-  "The max-tokens paramater that aide.el sends to OpenAI API."
-  :type 'integer
-  :group 'aide)
-
-(defcustom aide-temperature 0
-  "The temperature paramater that aide.el sends to OpenAI API."
-  :type 'float
-  :group 'aide)
-
-(defcustom aide-top-p 0.1
-  "The top-p paramater that aide.el sends to OpenAI API."
-  :type 'float
-  :group 'aide)
-
-(defcustom aide-frequency-penalty 0
-  "The frequency_penalty paramater that aide.el sends to OpenAI API."
-  :type 'float
-  :group 'aide)
-
-(defcustom aide-presence-penalty 0
-  "The presence_penalty paramater that aide.el sends to OpenAI API."
-  :type 'float
-  :group 'aide)
-
-(defcustom aide-completions-model "davinci"
-  "Name of the model used for completions. aide sends requests to
-the OpenAI API endpoint of this model."
-  :type 'string
-  :group 'aide
-  :options '("davinci", "text-davinci-002", "text-curie-001", "text-babbage-001", "text-ada-001"))
-
-(defun aide-openai-complete (api-key prompt)
-  "Return the prompt answer from OpenAI API.
-API-KEY is the OpenAI API key.
-
-PROMPT is the prompt string we send to the API."
-  (let ((result nil)
-        (auth-value (format "Bearer %s" api-key)))
-    (request
-      (format "https://api.openai.com/v1/engines/%s/completions" aide-completions-model)
-      :type "POST"
-      :data (json-encode `(("prompt" . ,prompt)
-                           ("max_tokens" . ,aide-max-tokens)
-                           ("temperature" . ,aide-temperature)
-                           ("frequency_penalty" . ,aide-frequency-penalty)
-                           ("presence_penalty" . ,aide-presence-penalty)
-                           ("top_p" . ,aide-top-p)))
-      :headers `(("Authorization" . ,auth-value) ("Content-Type" . "application/json"))
-      :sync t
-      :parser 'json-read
-      :success (cl-function
-                (lambda (&key data &allow-other-keys)
-                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
-    result))
-
-(defun aide-openai-complete-region (start end)
-  "Send the region to OpenAI autocomplete engine and get the result.
-
-START and END are selected region boundaries."
-  (interactive "r")
-  (let* ((region (buffer-substring-no-properties start end))
-         (result (aide--openai-complete-string region)))
-    (message "%s" result)))
-
-(defun aide-openai-complete-region-insert (start end)
-  "Send the region to OpenAI and insert the result to the end of buffer.
-
-START and END are selected region boundaries."
-  (interactive "r")
-  (let* ((region (buffer-substring-no-properties start end))
-         (result (aide--openai-complete-string region))
-        original-point)
-    (goto-char (point-max))
-    (setq original-point (point))
-    (if result
-        (progn
-          (insert "\n" result)
-          (fill-paragraph)
-          (let ((x (make-overlay original-point (point-max))))
-            (overlay-put x 'face '(:foreground "orange red")))
-          result)
-      (message "Empty result"))))
-
-(defun aide-openai-complete-buffer-insert ()
-  "Send the ENTIRE buffer to OpenAI and insert the result to the end of buffer."
-  (interactive)
-  (let (region
-        result
-        original-point)
-    (setq region (buffer-substring-no-properties (point-min) (point-max)))
-    (setq result (aide--openai-complete-string region))
-    (goto-char (point-max))
-    (setq original-point (point))
-    (if result
-        (progn
-          (insert "\n" result)
-          (fill-paragraph)
-          (let ((x (make-overlay original-point (point-max))))
-            (overlay-put x 'face '(:foreground "orange red")))
-          result)
-      (message "Empty result"))))
-
-(defun aide-openai-tldr-region (start end)
-  "Send the region to OpenAI autocomplete engine and get the TLDR result.
-
-START and END are selected region boundaries."
-  (interactive "r")
-  (let* ((region (buffer-substring-no-properties start end))
-         (result (aide--openai-complete-string (concat region "\n\n tl;dr:"))))
-    (message "%s" result)))
-
-(defun aide-openai-edits (api-key instruction input)
-  "Return the edits answer from OpenAI API.
-API-KEY is the OpenAI API key.
-
-INSTRUCTION and INPUT are the two params we send to the API."
-  (let ((result nil)
-        (auth-value (format "Bearer %s" api-key)))
-    (request
-      "https://api.openai.com/v1/engines/text-davinci-edit-001/edits"
-      :type "POST"
-      :data (json-encode `(("input" . ,input)
-                           ("instruction" . ,instruction)
-                           ("temperature" . 0.9)))
-      :headers `(("Authorization" . ,auth-value)
-                 ("Content-Type" . "application/json"))
-      :sync t
-      :parser 'json-read
-      :success (cl-function
-                (lambda (&key data &allow-other-keys)
-                  (setq result (alist-get 'text (elt (alist-get 'choices data) 0))))))
-    result))
-
-(defun aide-openai-edits-region-insert (start end)
-  "Send the region to OpenAI edits and insert the result to the end of region.
-
-START and END are selected region boundaries."
-  (interactive "r")
-  (let* ((region (buffer-substring-no-properties start end))
-         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
-    (goto-char end)
-    (if result
-        (progn
-          (insert "\n" result)
-          (fill-paragraph)
-          (let ((x (make-overlay end (point))))
-            (overlay-put x 'face '(:foreground "orange red")))
-          result)
-      (message "Empty result"))))
-
-(defun aide-openai-edits-region-replace (start end)
-  "Send the region to OpenAI edits and replace the region.
-
-START and END are selected region boundaries.
-
-The original content will be stored in the kill ring."
-  (interactive "r")
-  (let* ((region (buffer-substring-no-properties start end))
-         (result (aide-openai-edits openai-api-key "Rephrase the text" region)))
-    (goto-char end)
-    (if result
-        (progn
-          (kill-region start end)
-          (insert "\n" result)
-          (fill-paragraph)
-          (let ((x (make-overlay end (point))))
-            (overlay-put x 'face '(:foreground "orange red")))
-          result)
-      (message "Empty result"))))
-
-;; private
-
-(defun aide--openai-complete-string (string)
-  (aide-openai-complete openai-api-key string))
-
-(provide 'aide)
-;;; aide.el ends here
-
-#+end_src
-
-
-#+begin_src emacs-lisp
-(setq openai-api-key "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")
-#+end_src
-
-* DISPLAY-TIME
+* Display-Time
 Enabling display-time-mode so it will show a clock in the modeline
 #+begin_src emacs-lisp
 (setq display-time-day-and-date t)
 #+end_src
 
-* IBUFFER
+* Ibuffer
 Ibuffer is an advanced replacement for BufferMenu, which lets you operate on buffers much in the same manner as Dired. The most important Ibuffer features are highlighting and various alternate layouts. Ibuffer is part of Emacs since version 22.
 #+begin_src emacs-lisp
 (map! :after ibuffer
@@ -1378,7 +1173,68 @@ Ibuffer is an advanced replacement for BufferMenu, which lets you operate on buf
       :map ibuffer-mode-map
       :n "h" #'kill-current-buffer)
 #+end_src
-* OLIVETTI
+* Olivetti
 #+begin_src emacs-lisp
 (setq olivetti-style 'fringes-and-margins)
 #+end_src
+* Writeroom
+For starters, I think Doom is a bit over-zealous when zooming in
+#+begin_src emacs-lisp
+(setq +zen-text-scale 0.8)
+#+end_src
+
+- Use a serifed variable-pitch font
+- Hiding headline leading stars
+- Using fleurons as headline bullets
+- Hiding line numbers
+- Removing outline indentation
+- Centring the text
+  #+begin_src emacs-lisp
+(defvar +zen-serif-p t
+  "Whether to use a serifed font with `mixed-pitch-mode'.")
+(defvar +zen-org-starhide t
+  "The value `org-modern-hide-stars' is set to.")
+
+(after! writeroom-mode
+  (defvar-local +zen--original-org-indent-mode-p nil)
+  (defvar-local +zen--original-mixed-pitch-mode-p nil)
+  (defun +zen-enable-mixed-pitch-mode-h ()
+    "Enable `mixed-pitch-mode' when in `+zen-mixed-pitch-modes'."
+    (when (apply #'derived-mode-p +zen-mixed-pitch-modes)
+      (if writeroom-mode
+          (progn
+            (setq +zen--original-mixed-pitch-mode-p mixed-pitch-mode)
+            (funcall (if +zen-serif-p #'mixed-pitch-serif-mode #'mixed-pitch-mode) 1))
+        (funcall #'mixed-pitch-mode (if +zen--original-mixed-pitch-mode-p 1 -1)))))
+  (defun +zen-prose-org-h ()
+    "Reformat the current Org buffer appearance for prose."
+    (when (eq major-mode 'org-mode)
+      (setq display-line-numbers nil
+            visual-fill-column-width 60
+            org-adapt-indentation nil)
+      (when (featurep 'org-modern)
+        (setq-local org-modern-star '("🙘" "🙙" "🙚" "🙛")
+                    ;; org-modern-star '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
+                    org-modern-hide-stars +zen-org-starhide)
+        (org-modern-mode -1)
+        (org-modern-mode 1))
+      (setq
+       +zen--original-org-indent-mode-p org-indent-mode)
+      (org-indent-mode -1)))
+  (defun +zen-nonprose-org-h ()
+    "Reverse the effect of `+zen-prose-org'."
+    (when (eq major-mode 'org-mode)
+      (when (bound-and-true-p org-modern-mode)
+        (org-modern-mode -1)
+        (org-modern-mode 1))
+      (when +zen--original-org-indent-mode-p (org-indent-mode 1))))
+  (pushnew! writeroom--local-variables
+            'display-line-numbers
+            'visual-fill-column-width
+            'org-adapt-indentation
+            'org-modern-mode
+            'org-modern-star
+            'org-modern-hide-stars)
+  (add-hook 'writeroom-mode-enable-hook #'+zen-prose-org-h)
+  (add-hook 'writeroom-mode-disable-hook #'+zen-nonprose-org-h))
+  #+end_src
