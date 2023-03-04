@@ -12,13 +12,13 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-oksolar-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
 (setq browse-url-browser-function 'browse-url-default-browser)
 
-;; (menu-bar-mode -1)
+;; (setq menu-bar-mode -1)
 (define-key global-map [menu-bar options] nil)
 (define-key global-map [menu-bar file] nil)
 (define-key global-map [menu-bar File] nil)
@@ -127,7 +127,7 @@
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 (custom-set-faces!
-  ;; '(font-lock-comment-face :slant italic)
+;;  '(font-lock-comment-face :slant normal :inherit font-lock-comment-face))
   '(font-lock-keyword-face :slant italic))
 
 (defun gw/insert-todays-date (prefix)
@@ -467,7 +467,7 @@
          (org-level-7 1.1 "#3F88AD" normal)
          (org-level-8 1.0 "#DD459D" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#BBBBBB"))
 
 (defun gw/org-colors-spacegrey ()
   "Enable Spacegrey Colors for Org headers."
@@ -486,8 +486,8 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-solarized-dark))
-;; )
+    ;; (gw/org-colors-oksolar-dark))
+)
 
 (setq org-refile-targets
       '((org-agenda-files . (:tag . "refile"))))
