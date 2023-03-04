@@ -41,7 +41,7 @@ do
         1 )
             echo "Installing Emacs-Mac"
             brew tap railwaycat/emacsmacport
-            brew install emacs-mac --native-comp --with-emacs-big-sur-icon
+            brew install emacs-mac --with-native-comp --with-emacs-big-sur-icon
             valid_response=true
             ;;
         * )
