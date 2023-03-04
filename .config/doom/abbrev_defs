@@ -1,0 +1,21 @@
+;;-*-coding: utf-8;-*-
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("adn" "and" nil :count 1)
+    ("bc" "because" nil :count 7)
+    ("dont" "don't" nil :count 1)
+    ("fo" "of" nil :count 4)
+    ("fro" "for" nil :count 1)
+    ("fx" "for example" nil :count 1)
+    ("i" "I" nil :count 14)
+    ("k" "the" nil :count 98)
+    ("kk" "The" nil :count 11)
+    ("ot" "to" nil :count 3)
+    ("si" "is" nil :count 2)
+    ("taht" "that" nil :count 1)
+    ("tf" "the Fediverse" nil :count 2)
+    ("thsi" "this" nil :count 1)
+    ("waht" "what" nil :count 1)
+    ("wiht" "with" nil :count 1)
+   ))
+
