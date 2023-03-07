@@ -1,3 +1,15 @@
+#+title: MacOS Post Installation Script
+#+description: The literate version of this script written in org-mode.
+#+date: <2023-03-07 Tue 09:48>
+#+property: header-args :tangle install-mac.sh
+#+author: Gardner Berry
+#+options: toc:nil num:nil timestamp:nil
+
+* What this script does
+This Script installs my configuration files for UNIX like operating systems.
+
+* Welcome Message
+#+begin_src shell
 #!/usr/bin/env bash
 
 echo "Welcome to my Post Installation Script for MacOS"
@@ -10,24 +22,44 @@ echo  "       _____  __          __
        \_____|     \/  \/"
 
 cd ~/
+#+end_src
 
+* Copying Configuration Files
+#+begin_src shell
 echo "Copying my Configuration files"
+#+end_src
 
+** Copying .bashrc
+#+begin_src shell
 echo "Copying my .bashrc"
 cp -r ~/dotfiles/.bashrc ~/
-
+#+end_src
+** Copying my .zshrc
+#+begin_src shell
 echo "Copying my .zshrc"
 cp -r ~/dotfiles/.zshrc ~/
+#+end_src
 
+** Copying my gitconfig
+#+begin_src shell
 echo "Copying my GIT config"
 cp -r ~/dotfiles/.gitconfig ~/
+#+end_src
 
+** Copying the rest of my configs
+#+begin_src shell
 echo "Copying my .config folder"
 cp -r ~/dotfiles/.config ~/
+#+end_src
 
+* Installing things with Homebrew
+#+begin_src shell
 echo "Installing Everything"
 brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us libreoffice alfred alt-tab istat-menus background-music exa starship fish bash neofetch pfetch zsh-syntax-highlighting font-overpass-nerd-font font-source-sans-pro
+#+end_src
 
+** Installing Emacs
+#+begin_src shell
 valid_response=false
 
 while [ "$valid_response" = false ]
@@ -55,15 +87,28 @@ do
             ;;
     esac
 done
+#+end_src
 
+* Installing Doom Emacs
+#+begin_src shell
 echo "Installing doom emacs"
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
+#+end_src
 
+* New Directories
+** Developer
+#+begin_src shell
 echo "Making Developer folder"
 mkdir ~/Developer/
 mkdir ~/Developer/Git-Repos
 mkdir ~/Developer/Projects
+#+end_src
 
+** Org
+#+begin_src shell
 echo "Making Org folder"
 mkdir ~/Org
+#+end_src
+
+* Parking Lot :noexport:
