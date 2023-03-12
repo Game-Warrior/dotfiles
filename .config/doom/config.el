@@ -121,7 +121,7 @@
   :hook (after-init . global-emojify-mode))
 
 (setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
+      doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 15)
       doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -181,10 +181,11 @@
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/S-todo.org" "~/Documents/P-todo.org" "~/Documents/To-Research.org")
+        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/S-tasklist.org" "~/Documents/P-task-list.org" "~/Documents/To-Research.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
         org-ellipsis "↴"
+
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
@@ -486,8 +487,8 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
 ;; Load our desired gw/org-colors-* theme on startup
-    ;; (gw/org-colors-oksolar-dark))
-)
+    (gw/org-colors-oksolar-dark))
+;; )
 
 (setq org-refile-targets
       '((org-agenda-files . (:tag . "refile"))))
@@ -705,69 +706,6 @@ purpose of finding the ones to show."
        :engines (list (gts-bing-engine) (gts-google-engine))
        :render (gts-buffer-render)))
 
-(straight-use-package '(codeium :type git :host github :repo "Exafunction/codeium.el"))
-;; we recommend using use-package to organize your init.el
-(use-package codeium
-    ;; if you use straight
-    ;; :straight '(:type git :host github :repo "Exafunction/codeium.el")
-    ;; otherwise, make sure that the codeium.el file is on load-path
-
-    :init
-    ;; use globally
-    (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-    ;; or on a hook
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local completion-at-point-functions '(codeium-completion-at-point))))
-
-    ;; if you want multiple completion backends, use cape (https://github.com/minad/cape):
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local completion-at-point-functions
-    ;;             (list (cape-super-capf #'codeium-completion-at-point #'lsp-completion-at-point)))))
-    ;; an async company-backend is coming soon!
-
-    ;; codeium-completion-at-point is autoloaded, but you can
-    ;; optionally set a timer, which might speed up things as the
-    ;; codeium local language server takes ~0.2s to start up
-    ;; (add-hook 'emacs-startup-hook
-    ;;  (lambda () (run-with-timer 0.1 nil #'codeium-init)))
-
-    :defer t
-    :config
-    (setq use-dialog-box nil) ;; do not use popup boxes
-
-    ;; if you don't want to use customize to save the api-key
-    ;; (setq codeium/metadata/api_key "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-
-    ;; get codeium status in the modeline
-    (setq codeium-mode-line-enable
-        (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
-    (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
-    ;; alternatively for a more extensive mode-line
-    ;; (add-to-list 'mode-line-format '(-50 "" codeium-mode-line) t)
-
-    ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
-    (setq codeium-api-enabled
-        (lambda (api)
-            (memq api '(GetCompletions Heartbeat CancelRequest GetAuthToken RegisterUser auth-redirect AcceptCompletion))))
-    ;; you can also set a config for a single buffer like this:
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local codeium/editor_options/tab_size 4)))
-
-    ;; You can overwrite all the codeium configs!
-    ;; for example, we recommend limiting the string sent to codeium for better performance
-    (defun my-codeium/document/text ()
-        (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
-    ;; if you change the text, you should also change the cursor_offset
-    ;; warning: this is measured by UTF-8 encoded bytes
-    (defun my-codeium/document/cursor_offset ()
-        (codeium-utf8-byte-length
-            (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
-    (setq codeium/document/text 'my-codeium/document/text)
-    (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
-
 (setq display-time-day-and-date t)
 
 (map! :after ibuffer
@@ -781,51 +719,3 @@ purpose of finding the ones to show."
 (setq olivetti-style 'fringes-and-margins)
 
 (setq +zen-text-scale 0.8)
-
-(defvar +zen-serif-p t
-  "Whether to use a serifed font with `mixed-pitch-mode'.")
-(defvar +zen-org-starhide t
-  "The value `org-modern-hide-stars' is set to.")
-
-(after! writeroom-mode
-  (defvar-local +zen--original-org-indent-mode-p nil)
-  (defvar-local +zen--original-mixed-pitch-mode-p nil)
-  (defun +zen-enable-mixed-pitch-mode-h ()
-    "Enable `mixed-pitch-mode' when in `+zen-mixed-pitch-modes'."
-    (when (apply #'derived-mode-p +zen-mixed-pitch-modes)
-      (if writeroom-mode
-          (progn
-            (setq +zen--original-mixed-pitch-mode-p mixed-pitch-mode)
-            (funcall (if +zen-serif-p #'mixed-pitch-serif-mode #'mixed-pitch-mode) 1))
-        (funcall #'mixed-pitch-mode (if +zen--original-mixed-pitch-mode-p 1 -1)))))
-  (defun +zen-prose-org-h ()
-    "Reformat the current Org buffer appearance for prose."
-    (when (eq major-mode 'org-mode)
-      (setq display-line-numbers nil
-            visual-fill-column-width 60
-            org-adapt-indentation nil)
-      (when (featurep 'org-modern)
-        (setq-local org-modern-star '("🙘" "🙙" "🙚" "🙛")
-                    ;; org-modern-star '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
-                    org-modern-hide-stars +zen-org-starhide)
-        (org-modern-mode -1)
-        (org-modern-mode 1))
-      (setq
-       +zen--original-org-indent-mode-p org-indent-mode)
-      (org-indent-mode -1)))
-  (defun +zen-nonprose-org-h ()
-    "Reverse the effect of `+zen-prose-org'."
-    (when (eq major-mode 'org-mode)
-      (when (bound-and-true-p org-modern-mode)
-        (org-modern-mode -1)
-        (org-modern-mode 1))
-      (when +zen--original-org-indent-mode-p (org-indent-mode 1))))
-  (pushnew! writeroom--local-variables
-            'display-line-numbers
-            'visual-fill-column-width
-            'org-adapt-indentation
-            'org-modern-mode
-            'org-modern-star
-            'org-modern-hide-stars)
-  (add-hook 'writeroom-mode-enable-hook #'+zen-prose-org-h)
-  (add-hook 'writeroom-mode-disable-hook #'+zen-nonprose-org-h))
