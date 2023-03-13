@@ -492,6 +492,8 @@
 
 (setq org-refile-targets
       '((org-agenda-files . (:tag . "refile"))))
+(map! :leader
+               (:desc "Archive Org-Todos" "v" org-archive-default-command))
 
 (require 'cl-lib)
 

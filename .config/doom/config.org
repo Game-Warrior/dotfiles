@@ -711,6 +711,8 @@ This is a way for me to archive my TODOs from my Schedule.org. As well as put TO
 #+begin_src emacs-lisp
 (setq org-refile-targets
       '((org-agenda-files . (:tag . "refile"))))
+(map! :leader
+               (:desc "Archive Org-Todos" "v" org-archive-default-command))
 #+end_src
 
 #+begin_src emacs-lisp
