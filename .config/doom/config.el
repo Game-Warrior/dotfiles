@@ -121,7 +121,7 @@
   :hook (after-init . global-emojify-mode))
 
 (setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -181,7 +181,7 @@
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/S-tasklist.org" "~/Documents/P-task-list.org" "~/Documents/To-Research.org")
+        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
         org-ellipsis "↴"
@@ -490,46 +490,10 @@
     (gw/org-colors-oksolar-dark))
 ;; )
 
-(setq org-refile-targets
-      '((org-agenda-files . (:tag . "refile"))))
+(setq org-archive-default-command 'org-archive-subtree)
+
 (map! :leader
-               (:desc "Archive Org-Todos" "v" org-archive-default-command))
-
-(require 'cl-lib)
-
-(defun org-sparse-tree-from-list (headlines)
-  "Show a sparse tree of headlines matching strings in HEADLINES.
-Only select them from the current subtree.  This is not optimal -
-for example, if one of the strings in HEADLINES matches
-a substring of a headline, it is still shown."
-  (save-restriction
-    (org-narrow-to-subtree)
-    (org-occur (regexp-opt headlines))
-    (org-remove-occur-highlights nil nil t)))
-
-(defun org-show-first-random-last (first random last)
-  "Show FIRST first headlines, RANDOM random and LAST last ones.
-For simplicity, the random ones are chosen from all of them,
-including the first/last ones.  Also, headlines on all levels are
-considered, effectively flattening the current subtree for the
-purpose of finding the ones to show."
-  (interactive (let ((arg (prefix-numeric-value current-prefix-arg)))
-                 (list arg arg arg)))
-  (let* ((headlines (cdr (org-map-entries
-                          (lambda ()
-                            (org-element-property
-                             :title
-                             (org-element-at-point)))
-                          nil
-                          'tree
-                          'archive 'comment)))
-         (length (length headlines))
-         (head (seq-take headlines first))
-         (tail (seq-drop headlines (- length last)))
-         (belly (cl-loop repeat random
-                         collect (seq-random-elt headlines))))
-    (org-sparse-tree-from-list
-     (seq-concatenate 'list head belly tail))))
+      (:desc "Archive Org-Todos" "v" org-archive-default-command))
 
 (use-package! ox-twbs)
 ;; (use-package! ox-re-reveal)
@@ -543,7 +507,9 @@ purpose of finding the ones to show."
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
       org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
       org-reveal-theme "moon"
+      org-re-reveal-theme "moon"
       ;; org-re-reveal-theme "blood"
       org-re-reveal-transition "slide"
       org-reveal-plugins '(markdown notes math search zoom))
@@ -674,6 +640,9 @@ purpose of finding the ones to show."
 (yas-global-mode 1)
 
 (add-hook 'text-mode-hook 'palimpsest-mode)
+
+;; (map! :leader
+      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))

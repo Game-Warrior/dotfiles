@@ -24,7 +24,7 @@
 - [[#modeline][Modeline]]
 - [[#org-mode][Org-Mode]]
   - [[#org-fonts][Org fonts]]
-  - [[#org-todos][Org todos]]
+  - [[#org-agenda][Org-agenda]]
   - [[#org-export][Org-export]]
   - [[#org-reveal][Org-Reveal]]
   - [[#org-journal][Org-journal]]
@@ -47,7 +47,7 @@
 - [[#go-translate][Go-Translate]]
 - [[#codeiumel][Codeium.el]]
 - [[#display-time][Display-Time]]
-- [[#ibuffer][Ibuffer]]
+- [[#ibuffer][iBuffer]]
 - [[#olivetti][Olivetti]]
 - [[#writeroom][Writeroom]]
 
@@ -291,7 +291,7 @@ Settings related to fonts within Doom Emacs:
 
 #+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -392,7 +392,7 @@ I wrapped most of this block in (after! org). Without this, my settings might be
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/Schedule.org" "~/Documents/S-tasklist.org" "~/Documents/P-task-list.org" "~/Documents/To-Research.org")
+        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
         org-ellipsis "↴"
@@ -706,53 +706,14 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
 ;; )
 #+end_src
 
-** Org todos
+** Org-agenda
 This is a way for me to archive my TODOs from my Schedule.org. As well as put TODO's into file for mildly interesting things that I want to look at someday.
 #+begin_src emacs-lisp
-(setq org-refile-targets
-      '((org-agenda-files . (:tag . "refile"))))
+(setq org-archive-default-command 'org-archive-subtree)
+
 (map! :leader
-               (:desc "Archive Org-Todos" "v" org-archive-default-command))
+      (:desc "Archive Org-Todos" "v" org-archive-default-command))
 #+end_src
-
-#+begin_src emacs-lisp
-(require 'cl-lib)
-
-(defun org-sparse-tree-from-list (headlines)
-  "Show a sparse tree of headlines matching strings in HEADLINES.
-Only select them from the current subtree.  This is not optimal -
-for example, if one of the strings in HEADLINES matches
-a substring of a headline, it is still shown."
-  (save-restriction
-    (org-narrow-to-subtree)
-    (org-occur (regexp-opt headlines))
-    (org-remove-occur-highlights nil nil t)))
-
-(defun org-show-first-random-last (first random last)
-  "Show FIRST first headlines, RANDOM random and LAST last ones.
-For simplicity, the random ones are chosen from all of them,
-including the first/last ones.  Also, headlines on all levels are
-considered, effectively flattening the current subtree for the
-purpose of finding the ones to show."
-  (interactive (let ((arg (prefix-numeric-value current-prefix-arg)))
-                 (list arg arg arg)))
-  (let* ((headlines (cdr (org-map-entries
-                          (lambda ()
-                            (org-element-property
-                             :title
-                             (org-element-at-point)))
-                          nil
-                          'tree
-                          'archive 'comment)))
-         (length (length headlines))
-         (head (seq-take headlines first))
-         (tail (seq-drop headlines (- length last)))
-         (belly (cl-loop repeat random
-                         collect (seq-random-elt headlines))))
-    (org-sparse-tree-from-list
-     (seq-concatenate 'list head belly tail))))
-#+end_src
-
 
 ** Org-export
 I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, Reveal.js allows to export org to a HTML presentation, Github Flavored Markdown to export to Joplin, and finaly Pandoc for exporting to other formats like .docx and .pptx and manny manny others.
@@ -769,13 +730,15 @@ I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, 
 #+END_SRC
 
 ** Org-Reveal
-Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations. I also have a macro to allow me no hide content.
+Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations. I also have a macro to allow me no hide content from said presentations.
 #+begin_src emacs-lisp
 ;; Reveal.js + Org mode
 (require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
       org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
       org-reveal-theme "moon"
+      org-re-reveal-theme "moon"
       ;; org-re-reveal-theme "blood"
       org-re-reveal-transition "slide"
       org-reveal-plugins '(markdown notes math search zoom))
@@ -1036,6 +999,9 @@ Much like code, the process of writing text is a progression of revisions where 
 Next time you're writing fiction, non-fiction, a journalistic piece or a blog post using Emacs, give palimpsest-mode a try. You might even try it while coding in a functional language, moving stuff around sprightly, aided by an abstraction reminiscent of the Read-Eval-Print loop, yet completely orthogonal.
 #+begin_src emacs-lisp
 (add-hook 'text-mode-hook 'palimpsest-mode)
+
+;; (map! :leader
+      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
 #+end_src
 
 * Web-Mode
@@ -1094,79 +1060,14 @@ This is a translation framework for emacs, and is flexible and powerful.
 * Codeium.el
 /Free, ultrafast, extensible AI code completion tool for Emacs/
 codeium.el is an open source client and (mostly) written by Alan Chen. It uses a proprietary language server binary, currently downloaded (automatically, with confirmation) from [[https://github.com/Exafunction/codeium/releases/][here]]. Use M-x codeium-diagnose to see apis/fields that would be sent to the local language server, and the command used to run the local language server. Customize codeium-api-enabled, codeium-fields-regexps and codeium-command to change them.
-##+begin_src emacs-lisp
-(straight-use-package '(codeium :type git :host github :repo "Exafunction/codeium.el"))
-;; we recommend using use-package to organize your init.el
-(use-package codeium
-    ;; if you use straight
-    ;; :straight '(:type git :host github :repo "Exafunction/codeium.el")
-    ;; otherwise, make sure that the codeium.el file is on load-path
-
-    :init
-    ;; use globally
-    (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-    ;; or on a hook
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local completion-at-point-functions '(codeium-completion-at-point))))
-
-    ;; if you want multiple completion backends, use cape (https://github.com/minad/cape):
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local completion-at-point-functions
-    ;;             (list (cape-super-capf #'codeium-completion-at-point #'lsp-completion-at-point)))))
-    ;; an async company-backend is coming soon!
-
-    ;; codeium-completion-at-point is autoloaded, but you can
-    ;; optionally set a timer, which might speed up things as the
-    ;; codeium local language server takes ~0.2s to start up
-    ;; (add-hook 'emacs-startup-hook
-    ;;  (lambda () (run-with-timer 0.1 nil #'codeium-init)))
-
-    :defer t
-    :config
-    (setq use-dialog-box nil) ;; do not use popup boxes
-
-    ;; if you don't want to use customize to save the api-key
-    ;; (setq codeium/metadata/api_key "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-
-    ;; get codeium status in the modeline
-    (setq codeium-mode-line-enable
-        (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
-    (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
-    ;; alternatively for a more extensive mode-line
-    ;; (add-to-list 'mode-line-format '(-50 "" codeium-mode-line) t)
-
-    ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
-    (setq codeium-api-enabled
-        (lambda (api)
-            (memq api '(GetCompletions Heartbeat CancelRequest GetAuthToken RegisterUser auth-redirect AcceptCompletion))))
-    ;; you can also set a config for a single buffer like this:
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local codeium/editor_options/tab_size 4)))
-
-    ;; You can overwrite all the codeium configs!
-    ;; for example, we recommend limiting the string sent to codeium for better performance
-    (defun my-codeium/document/text ()
-        (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
-    ;; if you change the text, you should also change the cursor_offset
-    ;; warning: this is measured by UTF-8 encoded bytes
-    (defun my-codeium/document/cursor_offset ()
-        (codeium-utf8-byte-length
-            (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
-    (setq codeium/document/text 'my-codeium/document/text)
-    (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
-##+end_src
-
 * Display-Time
 Enabling display-time-mode so it will show a clock in the modeline
 #+begin_src emacs-lisp
 (setq display-time-day-and-date t)
 #+end_src
 
-* Ibuffer
-Ibuffer is an advanced replacement for BufferMenu, which lets you operate on buffers much in the same manner as Dired. The most important Ibuffer features are highlighting and various alternate layouts. Ibuffer is part of Emacs since version 22.
+* iBuffer
+I changed some of the default keybindings in iBuffer so that "h" will close the current buffer and "l" will open the currently selected buffer.
 #+begin_src emacs-lisp
 (map! :after ibuffer
       :map ibuffer-mode-map
