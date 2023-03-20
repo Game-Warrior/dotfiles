@@ -1,0 +1,16 @@
+#+title: dotfiles TODOs
+#+description: Here is a list of TODOs for my dotfiles
+#+author: Gardner Berry
+#+options: toc:nil num:nil timestamp:nil
+
+* TODO Annotate My Awesome WM config
+
+* TODO Annotate My Nixos Config
+
+* TODO Annotate My Install Scripts [0/4]
+- [ ] Debian/Ubuntu Script
+- [ ] Arch Script
+- [ ] MacOS Script
+- [ ] NixOS Script
+
+* Parking Lot :noexport:
