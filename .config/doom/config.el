@@ -181,7 +181,7 @@
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org")
+        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
         org-ellipsis "↴"
@@ -495,6 +495,29 @@
 (map! :leader
       (:desc "Archive Org-Todos" "v" org-archive-default-command))
 
+(after! org
+  (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
+      org-deadline-warning-days 0
+      org-agenda-span 7
+      org-agenda-start-day "-0d"
+      org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
+      org-log-done 'time
+      )
+)
+
+(after! org-capture
+  (setq org-capture-templates
+      '(("t" "todo" entry (file+headline "~/agenda.org")
+         "* TODO %?")
+        ("T" "todo today" entry (file+headline "~/agenda.org")
+         "* TODO %?\nDEADLINE: %t")
+       ("i" "inbox" entry (file "~/inbox.org")
+         "* %?")
+       ("v" "clip to inbox" entry (file "~/inbox.org")
+         "* %x%?"))
+  )
+)
+
 (use-package! ox-twbs)
 ;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
@@ -641,8 +664,9 @@
 
 (add-hook 'text-mode-hook 'palimpsest-mode)
 
-;; (map! :leader
-      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
+(map!
+       :leader
+      (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -690,3 +714,32 @@
 (setq olivetti-style 'fringes-and-margins)
 
 (setq +zen-text-scale 0.8)
+
+(map! :leader
+      (:desc "Open Magit" "g m" #'magit))
+
+(add-hook 'text-mode-hook 'writegood-mode)
+
+(setq gw/weasel-words
+      '("actually"
+        "basically"
+        "easily"
+        "easy"
+        "simple"
+        "simply"))
+(setq writegood-weasel-words
+      (-concat writegood-weasel-words gw/weasel-words))
+
+(use-package blamer
+  :bind (("s-i" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))
