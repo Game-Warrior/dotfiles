@@ -185,7 +185,7 @@
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
         org-ellipsis "↴"
-
+        ;; org-ellipsis"⤷"
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
@@ -201,13 +201,7 @@
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
           '((sequence
              "TODO(t)"           ; A task that is ready to be tackled
-             "BLOG(b)"           ; Blog writing assignments
-             "SCHOOL(s)"         ; School Tasks
-             "PROJ(p)"           ; A project that contains other tasks
-             "VIDEO(v)"          ; Video assignments
-             "CLASS(l)"          ; Agenda assignment for class
              "WAIT(w)"           ; Something is holding up this task
-             "RESEARCH(r)"       ; Something I want to research
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" )))) ; Task has been cancelled
@@ -664,9 +658,9 @@
 
 (add-hook 'text-mode-hook 'palimpsest-mode)
 
-(map!
-       :leader
-      (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
+;; (map!
+       ;; :leader
+      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -727,8 +721,11 @@
         "easy"
         "simple"
         "simply"))
-(setq writegood-weasel-words
-      (-concat writegood-weasel-words gw/weasel-words))
+;; (setq writegood-weasel-words
+      ;; (-concat writegood-weasel-words gw/weasel-words))
+;; (map!
+        ;; :leader
+        ;; (:desc ""))
 
 (use-package blamer
   :bind (("s-i" . blamer-show-commit-info))

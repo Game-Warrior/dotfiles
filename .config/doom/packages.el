@@ -113,3 +113,4 @@
           :recipe (:host github :repo "magit/with-editor"))
 (package! org-super-agenda)
 (package! blamer)
+(package! org-noter)
