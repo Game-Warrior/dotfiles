@@ -38,9 +38,9 @@ do
         2 )
             echo "Installing Emacs-Plus"
             brew tap d12frosted/emacs-plus
-            brew install emacs-plus --with-native-comp --with-elrumo2-icon
-            osascript -e 'tell application "Finder" to make alias file to POSIX file "/opt/homebrew/opt/emacs-plus/Emacs.app" at POSIX file "/Applications"'
-            ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+            brew install emacs-plus --with-native-comp --with-xwidgets --with-imagemagick --with-savchenkovaleriy-big-sur-icon
+            osascript -e 'tell application "Finder" to make alias file to POSIX file "/opt/homebrew/opt/emacs-plus@28/Emacs.app" at POSIX file "/Applications"'
+            ln -s /usr/local/opt/emacs-plus@28/Emacs.app /Applications/Emacs.app
             valid_response=true
             ;;
         1 )

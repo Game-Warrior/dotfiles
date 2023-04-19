@@ -8,6 +8,21 @@
 * What this script does
 This Script installs my configuration files for UNIX like operating systems.
 
+* Table of Contents :toc:
+- [[#what-this-script-does][What this script does]]
+- [[#welcome-message][Welcome Message]]
+- [[#copying-configuration-files][Copying Configuration Files]]
+  - [[#copying-bashrc][Copying .bashrc]]
+  - [[#copying-my-zshrc][Copying my .zshrc]]
+  - [[#copying-my-gitconfig][Copying my gitconfig]]
+  - [[#copying-the-rest-of-my-configs][Copying the rest of my configs]]
+- [[#installing-things-with-homebrew][Installing things with Homebrew]]
+  - [[#installing-emacs][Installing Emacs]]
+- [[#installing-doom-emacs][Installing Doom Emacs]]
+- [[#new-directories][New Directories]]
+  - [[#developer][Developer]]
+  - [[#org][Org]]
+
 * Welcome Message
 #+begin_src shell
 #!/usr/bin/env bash
@@ -70,9 +85,9 @@ do
         2 )
             echo "Installing Emacs-Plus"
             brew tap d12frosted/emacs-plus
-            brew install emacs-plus --with-native-comp --with-elrumo2-icon
-            osascript -e 'tell application "Finder" to make alias file to POSIX file "/opt/homebrew/opt/emacs-plus/Emacs.app" at POSIX file "/Applications"'
-            ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+            brew install emacs-plus --with-native-comp --with-xwidgets --with-imagemagick --with-savchenkovaleriy-big-sur-icon
+            osascript -e 'tell application "Finder" to make alias file to POSIX file "/opt/homebrew/opt/emacs-plus@28/Emacs.app" at POSIX file "/Applications"'
+            ln -s /usr/local/opt/emacs-plus@28/Emacs.app /Applications/Emacs.app
             valid_response=true
             ;;
         1 )
@@ -82,7 +97,7 @@ do
             osascript -e 'tell application "Finder" to make alias file to POSIX file "/opt/homebrew/opt/emacs-mac/Emacs.app" at POSIX file "/Applications"'
             valid_response=true
             ;;
-        * )
+        ,* )
             echo "Invalid Response. Please enter 'y' or 'n'."
             ;;
     esac
