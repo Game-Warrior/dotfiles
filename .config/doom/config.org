@@ -17,7 +17,12 @@
   - [[#keybindings-within-dired][Keybindings Within Dired]]
 - [[#doom-dashboard][Doom-Dashboard]]
 - [[#emojis][Emojis]]
+- [[#elfeed][Elfeed]]
 - [[#fonts][Fonts]]
+- [[#mu4e][mu4e]]
+  - [[#context][context]]
+  - [[#sending][sending]]
+  - [[#optional][optional]]
 - [[#insert-date][Insert Date]]
 - [[#line-settings][Line Settings]]
 - [[#markdown][Markdown]]
@@ -25,7 +30,7 @@
 - [[#org-mode][Org-Mode]]
   - [[#org-fonts][Org fonts]]
   - [[#org-agenda][Org-agenda]]
-  - [[#org-capture][Org-Capture]]
+  - [[#org-capture][Org-capture]]
   - [[#org-export][Org-export]]
   - [[#org-reveal][Org-Reveal]]
   - [[#org-journal][Org-journal]]
@@ -33,9 +38,8 @@
   - [[#org-auto-tangle][Org-auto-tangle]]
   - [[#org-roam][Org-Roam]]
   - [[#org-tree-slides][Org-tree-slides]]
-  - [[#writing-functions][Writing-Functions]]
-  - [[#org-ref][Org-ref]]
   - [[#todo-hl][TODO-hl]]
+  - [[#custom-functions][Custom Functions]]
 - [[#spell-checker][Spell Checker]]
 - [[#rainbow-mode][Rainbow Mode]]
 - [[#switching-windows][Switching Windows]]
@@ -44,16 +48,17 @@
 - [[#web-mode][Web-Mode]]
 - [[#mastodon][Mastodon]]
 - [[#abbrev-mode][Abbrev-Mode]]
-- [[#projectile][Projectile]]
 - [[#go-translate][Go-Translate]]
 - [[#codeiumel][Codeium.el]]
 - [[#display-time][Display-Time]]
-- [[#ibuffer][iBuffer]]
+- [[#ibuffer][IBuffer]]
 - [[#olivetti][Olivetti]]
 - [[#writeroom][Writeroom]]
 - [[#magit][Magit]]
 - [[#writegood-mode][Writegood-Mode]]
 - [[#blamer][Blamer]]
+- [[#novel][Nov.el]]
+- [[#xwidgets-browser][xWidgets-Browser]]
 
 * About This Config
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -107,7 +112,7 @@ Change the title bar format
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-oksolar-dark)
+(setq doom-theme 'doom-one)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 #+end_src
@@ -119,16 +124,16 @@ Setting in which browser EMACS will open links
 #+end_src
 
 * Menu Bar
-Setting menu-bar-mode to be disabled.
+Setting menu-bar-mode to be disabled because I think it takes up to much screen real estate in the top bar.
 #+begin_src emacs-lisp
-;; (setq menu-bar-mode -1)
-(define-key global-map [menu-bar options] nil)
-(define-key global-map [menu-bar file] nil)
-(define-key global-map [menu-bar File] nil)
-(define-key global-map [menu-bar edit] nil)
-(define-key global-map [menu-bar tools] nil)
-(define-key global-map [menu-bar buffer] nil)
-(define-key global-map [menu-bar help-menu] nil)
+(menu-bar-mode -1)
+;; (define-key global-map [menu-bar options] nil)
+;; (define-key global-map [menu-bar file] nil)
+;; (define-key global-map [menu-bar File] nil)
+;; (define-key global-map [menu-bar edit] nil)
+;; (define-key global-map [menu-bar tools] nil)
+;; (define-key global-map [menu-bar buffer] nil)
+;; (define-key global-map [menu-bar help-menu] nil)
 #+end_src
 
 
@@ -188,7 +193,7 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
       (:after dired
        (:map dired-mode-map
         :desc "Peep-dired image previews" "d p" #'peep-dired
-        :desc "Dired view file" "d v" #'dirvish-view-file)))
+        :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
   (kbd "M-RET") 'dired-display-file
@@ -233,9 +238,6 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
 #+begin_src emacs-lisp
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
-
-;; (add-hook! '+doom-dashboard-functions :append
-  ;; (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
 
 (cond ((eq system-type 'darwin)
        (add-hook! '+doom-dashboard-functions :append
@@ -285,6 +287,35 @@ Emojify is an Emacs extension to display emojis. It can display github style emo
 
 #+end_src
 
+* Elfeed
+An RSS newsfeed reader for Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(use-package elfeed-goodies
+  :init
+  (elfeed-goodies/setup)
+  :config
+  (setq elfeed-goodies/entry-pane-size 0.5))
+
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+;; (map! :after elfeed
+      ;; :map elfeed-show-mode-map
+      ;; :n "j" 'elfeed-next
+      ;; :n "k" 'elfeed-prev)
+
+(setq elfeed-feeds (quote
+                    (("https://www.reddit.com/r/linux.rss" reddit linux)
+                     ("https://www.reddit.com/r/emacs.rss" reddit emacs)
+                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
+                     ("http://lxer.com/module/newswire/headlines.rss" lxer linux))))
+#+END_SRC
+
 * Fonts
 Settings related to fonts within Doom Emacs:
 + 'doom-font' -- standard monospace font that is used for most things in Emacs.
@@ -298,12 +329,151 @@ Settings related to fonts within Doom Emacs:
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t))
-(custom-set-faces!
-;;  '(font-lock-comment-face :slant normal :inherit font-lock-comment-face))
-  '(font-lock-keyword-face :slant italic))
+  (setq doom-themes-enable-bold t))
 #+END_SRC
+
+* mu4e
+[[https://macowners.club/posts/email-emacs-mu4e-macos/][Email setup in Emacs with Mu4e on macOS | macOS & (open-source) Software]]
+#+begin_src emacs-lisp
+;; for sending mails
+(require 'smtpmail)
+
+;; we installed this with homebrew
+(setq mu4e-mu-binary (executable-find "mu"))
+
+;; this is the directory we created before:
+(setq mu4e-maildir "~/.maildir")
+
+;; this command is called to sync imap servers:
+(setq mu4e-get-mail-command (concat (executable-find "mbsync") " -a"))
+
+;; how often to call it in seconds:
+(setq mu4e-update-interval 300)
+
+;; save attachment to desktop by default
+;; or another choice of yours:
+(setq mu4e-attachment-dir "~/Desktop")
+
+;; rename files when moving - needed for mbsync:
+(setq mu4e-change-filenames-when-moving t)
+
+;; list of your email adresses:
+(setq mu4e-user-mail-address-list '("berrygw06@gmail.com"))
+#+end_src
+** context
+This controls the account context one is in. Helpful for instance, when composing an email. You can then select the context, which sets at the same time the sender.
++begin_src emacs-lisp
+(setq mu4e-contexts
+      `(,(make-mu4e-context
+          :name "gmail"
+          :enter-func
+          (lambda () (mu4e-message "Enter berrygw@gmail.com context"))
+          :leave-func
+          (lambda () (mu4e-message "Leave berrygw06@gmail.com context"))
+          :match-func
+          (lambda (msg)
+            (when msg
+              (mu4e-message-contact-field-matches msg
+                                                  :to "berrygw06@gmail.com")))
+          :vars '((user-mail-address . "berrygw06@gmail.com")
+                  (user-full-name . "Gardner Berry")
+                  (mu4e-drafts-folder . "/gmail/Drafts")
+                  (mu4e-refile-folder . "/gmail/Archive")
+                  (mu4e-sent-folder . "/gmail/Sent")
+                  (mu4e-trash-folder . "/gmail/Trash")))))
+
+(setq mu4e-context-policy 'pick-first) ;; start with the first (default) context;
+(setq mu4e-compose-context-policy 'ask) ;; ask for context if no context matches;
++end_src
+** sending
+#+begin_src emacs-lisp
+;; gpg encryptiom & decryption:
+
+;; this can be left alone
+
+(require 'epa-file)
+
+(epa-file-enable)
+
+(setq epa-pinentry-mode 'loopback)
+
+(auth-source-forget-all-cached)
+
+;; don't keep message compose buffers around after sending:
+(setq message-kill-buffer-on-exit t)
+
+;; send function:
+(setq send-mail-function 'sendmail-send-it
+      message-send-mail-function 'sendmail-send-it)
+
+;; send program:
+;; this is exeranal. remember we installed it before.
+(setq sendmail-program (executable-find "msmtp"))
+
+;; select the right sender email from the context.
+(setq message-sendmail-envelope-from 'header)
+
+;; chose from account before sending
+;; this is a custom function that works for me.
+;; well I stole it somewhere long ago.
+;; I suggest using it to make matters easy
+;; of course adjust the email adresses and account descriptions
+(defun timu/set-msmtp-account ()
+  (if (message-mail-p)
+      (save-excursion
+        (let*
+            ((from (save-restriction
+                     (message-narrow-to-headers)
+                     (message-fetch-field "from")))
+             (account
+              (cond
+               ((string-match "berrygw06@gmail.com" from) "personal"))))
+          (setq message-sendmail-extra-arguments (list '"-a" account))))))
+
+(add-hook 'message-send-mail-hook 'timu/set-msmtp-account)
+
+;; mu4e cc & bcc
+;; this is custom as well
+(add-hook 'mu4e-compose-mode-hook
+          (defun timu/add-cc-and-bcc ()
+            "My Function to automatically add Cc & Bcc: headers.
+    This is in the mu4e compose mode."
+            (save-excursion (message-add-header "Cc:\n"))
+            (save-excursion (message-add-header "Bcc:\n"))))
+
+;; mu4e address completion
+(add-hook 'mu4e-compose-mode-hook 'company-mode)
+#+end_src
+** optional
+Here are some sane defaults for mu4e.
+#+begin_src emacs-lisp
+;; store link to message if in header view, not to header query:
+(setq org-mu4e-link-query-in-headers-mode nil)
+
+;; don't have to confirm when quitting:
+(setq mu4e-confirm-quit nil)
+
+;; number of visible headers in horizontal split view:
+(setq mu4e-headers-visible-lines 20)
+
+;; don't show threading by default:
+(setq mu4e-headers-show-threads nil)
+
+;; hide annoying "mu4e Retrieving mail..." msg in mini buffer:
+(setq mu4e-hide-index-messages t)
+
+;; customize the reply-quote-string:
+(setq message-citation-line-format "%N @ %Y-%m-%d %H:%M :\n")
+
+;; M-x find-function RET message-citation-line-format for docs:
+(setq message-citation-line-function 'message-insert-formatted-citation-line)
+
+;; by default do not show related emails:
+(setq mu4e-headers-include-related nil)
+
+;; by default do not show threads:
+(setq mu4e-headers-show-threads nil)
+#+end_src
 
 * Insert Date
 Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
@@ -383,7 +553,7 @@ https://github.com/seagle0128/doom-modeline
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t ;; adds folder icon next to persp name
       doom-modeline-time t ;; Shows the time
-      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode) ;; Show word count
+      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
       doom-modeline-lsp t ;; Show LSP status
       )
 #+end_src
@@ -399,10 +569,11 @@ I wrapped most of this block in (after! org). Without this, my settings might be
         org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
-        org-ellipsis "↴"
-        ;; org-ellipsis"⤷"
+        org-ellipsis " ↴ "
+        ;; org-ellipsis" ⤷ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+        ;; org-list-demote-modify-bullet '(("+" . "*") ("*" . "-") ("-" . "+"))
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -439,22 +610,6 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
          (org-level-6 1.2 "#a9a1e1" normal)
          (org-level-7 1.1 "#46d9ff" normal)
          (org-level-8 1.0 "#ff6c6b" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-dracula ()
-  "Enable Dracula colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#8be9fd" ultra-bold)
-         (org-level-2 1.6 "#bd93f9" extra-bold)
-         (org-level-3 1.5 "#50fa7b" bold)
-         (org-level-4 1.4 "#ff79c6" semi-bold)
-         (org-level-5 1.3 "#9aedfe" normal)
-         (org-level-6 1.2 "#caa9fa" normal)
-         (org-level-7 1.1 "#5af78e" normal)
-         (org-level-8 1.0 "#ff92d0" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -610,14 +765,14 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
       (face
        '((org-level-1 1.7 "#ff6c6b" ultra-bold)
          (org-level-2 1.6 "#da8548" extra-bold)
-         (org-level-3 1.5 "#46d9ff" bold)
+         (org-level-3 1.5 "#ECBE7B" bold)
          (org-level-4 1.4 "#98be65" semi-bold)
          (org-level-5 1.3 "#51afef" normal)
          (org-level-6 1.2 "#2257A0" normal)
          (org-level-7 1.1 "#c678dd" normal)
          (org-level-8 1.0 "#a9a1e1" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bbc2cf"))
 
 (defun gw/org-colors-old-hope ()
   "Enable Doom Old Hope colors for Org headers."
@@ -633,7 +788,9 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
          (org-level-7 1.1 "#78bd65" normal)
          (org-level-8 1.0 "#b978ab" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1")
+    (when (eq (car-safe custom-enabled-themes) 'doom-old-hope)
+    (gw/org-colors-old-hope)))
 
 (defun gw/org-colors-peacock ()
   "Enable Doom Peacock colors for Org headers."
@@ -699,8 +856,24 @@ I have created an interactive function for each color scheme (M-x gw/org-colors-
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
+(defun gw/org-colors-ayu-mirrage ()
+  "Enable Spacegrey Colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#ff3333" ultra-bold)
+         (org-level-2 1.6 "#ffa759" extra-bold)
+         (org-level-3 1.5 "#ffd580" bold)
+         (org-level-4 1.4 "#bae67e" semi-bold)
+         (org-level-5 1.3 "#95e6cb" normal)
+         (org-level-6 1.2 "#5ccfe6" normal)
+         (org-level-7 1.1 "#73d0ff" normal)
+         (org-level-8 1.0 "#d4bfff" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
+
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-oksolar-dark))
+    (gw/org-colors-doom-one-alt))
 ;; )
 #+end_src
 
@@ -723,23 +896,25 @@ This is a way for me to archive my TODOs from my Schedule.org. As well as put TO
 )
 #+end_src
 
-** Org-Capture
+** Org-capture
 I copy and pasted most of this from a very interesting blog post by [[https://karelvo.com/orgmode/][KarelVO]] on how they manage their TODO's. The Org-agenda simplification above is also taken from there.
 #+begin_src emacs-lisp
 (after! org-capture
   (setq org-capture-templates
-      '(("t" "todo" entry (file+headline "~/agenda.org")
-         "* TODO %?")
-        ("T" "todo today" entry (file+headline "~/agenda.org")
-         "* TODO %?\nDEADLINE: %t")
-       ("i" "inbox" entry (file "~/inbox.org")
-         "* %?")
-       ("v" "clip to inbox" entry (file "~/inbox.org")
-         "* %x%?"))
-  )
-)
+        '(("t" "todo" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+           "* TODO %?\n  %i\n  %a")
+          ("T" "todo today" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+           "* TODO %?\n  %i\nDEADLINE: %t\n  %a")
+          ("i" "inbox" entry (file "~/Documents/inbox.org")
+           "* %?")
+          ("v" "clip to inbox" entry (file "~/Documents/inbox.org")
+           "* %x%?")
+          ("c" "call someone" entry (file "~/Documents/inbox.org")
+           "* TODO Call %?\n %U")
+          ("p" "phone call" entry (file "~/Documents/inbox.org")
+           "* Call from %^{Caller name}\n %U\n %i\n")
+          )))
 #+end_src
-
 
 ** Org-export
 I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, Reveal.js allows to export org to a HTML presentation, Github Flavored Markdown to export to Joplin, and finaly Pandoc for exporting to other formats like .docx and .pptx and manny manny others.
@@ -747,10 +922,10 @@ I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, 
 
 #+BEGIN_SRC emacs-lisp
 (use-package! ox-twbs)
-;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
 (use-package! ox-reveal)
+(use-package! ox-epub)
 ;; Make it so that org-export wont use numbered headings
 (setq org-export-with-section-numbers nil)
 #+END_SRC
@@ -759,7 +934,6 @@ I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, 
 Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations. I also have a macro to allow me no hide content from said presentations.
 #+begin_src emacs-lisp
 ;; Reveal.js + Org mode
-(require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
       org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
       org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
@@ -778,6 +952,7 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
        )
     )
 #+end_src
+
 
 ** Org-journal
 #+begin_src emacs-lisp
@@ -871,92 +1046,6 @@ Customization for Org-tree-slides.
   (org-image-actual-width nil))
 #+end_src
 
-** Writing-Functions
-#+begin_src emacs-lisp
-(defun gw/writing-mode ()
-  "Acctivate my writing environment"
-  (interactive)
-  (writeroom-mode 1)
-  (abbrev-mode 1)
-  (message "Get writing!"))
-
-(defun gw/normal-writing ()
-  "Deacctivate my writing environment"
-  (interactive)
-  (writeroom-mode 0)
-  (message "You're done! Go touch some grass!"))
-#+end_src
-
-** Org-ref
-Org-ref makes it easy to insert citations, cross-references, indexes and glossaries as hyper-functional links into org files. The links are fontified so you can tell them apart from other links, and each link is clickable to access functions like opening a pdf, notes or url associated with the link. Each link also can be exported to LaTeX to build a PDF. For citations, export to other formats is supported by citeproc for high quality export to HTML, markdown, plain text, or stand-alone (i.e. independent of a bibtex file) LaTeX. For a full explanation of the features in org-ref see ./org-ref.org.
-+begin_src emacs-lisp
-
-(use-package ivy-bibtex
-  :init
-  (setq bibtex-completion-bibliography '("~/Documents/emacs-stuff/bibliography/references.bib"
-					 "~/Documents/emacs-stuff/bibliography/dei.bib"
-					 "~/Documents/emacs-stuff/bibliography/main.bib"
-					 "~/Documents/emacs-stuff/bibliography/archive.bib")
-	bibtex-completion-library-path '("~/Documents/emacs-stuff/bibliography/bibtex-pdfs/")
-	bibtex-completion-notes-path "~/Documents/emacs-stuff/bibliography/notes/"
-	bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
-
-	bibtex-completion-additional-search-fields '(keywords)
-	bibtex-completion-display-formats
-	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
-	bibtex-completion-pdf-open-function
-	(lambda (fpath)
-	  (call-process "open" nil 0 nil fpath))))
-
-(use-package org-ref
-  :ensure nil
-  :init
-  (require 'bibtex)
-  (setq bibtex-autokey-year-length 4
-	bibtex-autokey-name-year-separator "-"
-	bibtex-autokey-year-title-separator "-"
-	bibtex-autokey-titleword-separator "-"
-	bibtex-autokey-titlewords 2
-	bibtex-autokey-titlewords-stretch 1
-	bibtex-autokey-titleword-length 5)
-  (define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
-  (define-key org-mode-map (kbd "C-c ]") 'org-ref-insert-link)
-  (define-key org-mode-map (kbd "s-[") 'org-ref-insert-link-hydra/body)
-  (require 'org-ref-ivy)
-  (require 'org-ref-arxiv)
-  (require 'org-ref-scopus)
-  (require 'org-ref-wos))
-
-
-(use-package org-ref-ivy
-  :ensure nil
-  :init (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
-	      org-ref-insert-cite-function 'org-ref-cite-insert-ivy
-	      org-ref-insert-label-function 'org-ref-insert-label-link
-	      org-ref-insert-ref-function 'org-ref-insert-ref-link
-	      org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body))))
-
-+end_src
-
-*** Bibtex
-+begin_src emacs-lisp
-(require 'bibtex)
-
-(setq bibtex-autokey-year-length 4
-      bibtex-autokey-name-year-separator "-"
-      bibtex-autokey-year-title-separator "-"
-      bibtex-autokey-titleword-separator "-"
-      bibtex-autokey-titlewords 2
-      bibtex-autokey-titlewords-stretch 1
-      bibtex-autokey-titleword-length 5)
-
-(define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
-+end_src
-
 ** TODO-hl
 Highlight TODO and similar keywords in comments and strings. Here I have set a TODO to be turquoise, FIXME to be red and, DONE to be green.
 #+begin_src emacs-lisp
@@ -977,6 +1066,20 @@ Highlight TODO and similar keywords in comments and strings. Here I have set a T
           ("WAIT"  . "#C5A3FF"))))
 
 (gw/todo-hl-oksolar-dark)
+#+end_src
+
+** Custom Functions
+#+begin_src emacs-lisp
+(defun gw/writing ()
+  "Toggle between writing environment modes."
+  (interactive)
+  (if olivetti-mode
+      (progn
+        (olivetti-mode -1)
+        (doom-big-font-mode -1))
+    (progn
+      (olivetti-mode)
+      (doom-big-font-mode))))
 #+end_src
 
 
@@ -1051,8 +1154,8 @@ mastodon.el is an Emacs client for the AcitivityPub social networks that impleme
 #+begin_src emacs-lisp
 ;; (require 'mastodon-alt)
 ;; (mastodon-alt-tl-activate)
-    (setq mastodon-instance-url "https://social.linux.pizza"
-          mastodon-active-user "Gamewarrior010")
+(setq mastodon-instance-url "https://social.linux.pizza"
+      mastodon-active-user "Gamewarrior010")
 #+end_src
 
 * Abbrev-Mode
@@ -1060,12 +1163,6 @@ Auto expansion for Abbrev-mode.
 #+begin_src emacs-lisp
 ;; Enable abbreviation mode
 (add-hook 'text-mode-hook 'abbrev-mode)
-#+end_src
-
-* Projectile
-Manage Projects
-#+begin_src emacs-lisp
-;; (projectile-project-search-path '("~/Documents/School"))
 #+end_src
 
 * Go-Translate
@@ -1093,15 +1190,12 @@ Enabling display-time-mode so it will show a clock in the modeline
 (setq display-time-day-and-date t)
 #+end_src
 
-* iBuffer
-I changed some of the default keybindings in iBuffer so that "h" will close the current buffer and "l" will open the currently selected buffer.
+* IBuffer
+I changed some of the default keybindings in IBuffer so that "h" will close the current buffer and "l" will open the currently selected buffer.
 #+begin_src emacs-lisp
 (map! :after ibuffer
       :map ibuffer-mode-map
-      :n "l" #'ibuffer-visit-buffer)
-
-(map! :after ibuffer
-      :map ibuffer-mode-map
+      :n "l" #'ibuffer-visit-buffer
       :n "h" #'kill-current-buffer)
 #+end_src
 * Olivetti
@@ -1152,7 +1246,22 @@ A git blame plugin for emacs inspired by [[https://marketplace.visualstudio.com/
   (blamer-face ((t :foreground "#7a88cf"
                     :background nil
                     :height 140
-                    :italic t)))
-  :config
-  (global-blamer-mode 1))
+                    :italic t))))
+  ;; :config
+  ;; (global-blamer-mode 1))
+#+end_src
+
+* Nov.el
+nov.el provides a major mode for reading EPUB documents
+#+begin_src emacs-lisp
+(setq nov-unzip-program (executable-find "bsdtar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+#+end_src
+
+* xWidgets-Browser
+#+begin_src emacs-lisp
+(map!
+ :leader
+ (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
 #+end_src

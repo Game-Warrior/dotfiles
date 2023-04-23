@@ -7,7 +7,7 @@
  '(org-safe-remote-resources
    '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-NAME\\.setup\\'"))
  '(package-selected-packages
-   '(blamer org-super-agenda calfw go-translate ivy-bibtex ox-gfm pretty-symbols poetry 2048-game @ request lsp-mode dirvish org-roam yasnippet wc-mode ox-reveal org-ref ivy-posframe emmet-mode elfeed-org elfeed-goodies beacon ace-window)))
+   '(evil-mu4e ox-epub nov org-tag-beautify blamer org-super-agenda calfw go-translate ivy-bibtex ox-gfm pretty-symbols poetry 2048-game @ request lsp-mode dirvish org-roam yasnippet wc-mode ox-reveal org-ref ivy-posframe emmet-mode elfeed-org elfeed-goodies beacon ace-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -12,20 +12,20 @@
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-oksolar-dark)
+(setq doom-theme 'doom-one)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
 (setq browse-url-browser-function 'browse-url-default-browser)
 
-;; (setq menu-bar-mode -1)
-(define-key global-map [menu-bar options] nil)
-(define-key global-map [menu-bar file] nil)
-(define-key global-map [menu-bar File] nil)
-(define-key global-map [menu-bar edit] nil)
-(define-key global-map [menu-bar tools] nil)
-(define-key global-map [menu-bar buffer] nil)
-(define-key global-map [menu-bar help-menu] nil)
+(menu-bar-mode -1)
+;; (define-key global-map [menu-bar options] nil)
+;; (define-key global-map [menu-bar file] nil)
+;; (define-key global-map [menu-bar File] nil)
+;; (define-key global-map [menu-bar edit] nil)
+;; (define-key global-map [menu-bar tools] nil)
+;; (define-key global-map [menu-bar buffer] nil)
+;; (define-key global-map [menu-bar help-menu] nil)
 
 (map! :leader
       (:prefix ("d" . "dired")
@@ -34,7 +34,7 @@
       (:after dired
        (:map dired-mode-map
         :desc "Peep-dired image previews" "d p" #'peep-dired
-        :desc "Dired view file" "d v" #'dirvish-view-file)))
+        :desc "Dired view file" "d v" #'dired-view-file)))
 
 (evil-define-key 'normal dired-mode-map
   (kbd "M-RET") 'dired-display-file
@@ -75,9 +75,6 @@
 
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
-
-;; (add-hook! '+doom-dashboard-functions :append
-  ;; (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Emacs!")))
 
 (cond ((eq system-type 'darwin)
        (add-hook! '+doom-dashboard-functions :append
@@ -120,15 +117,144 @@
 (use-package emojify
   :hook (after-init . global-emojify-mode))
 
+(use-package elfeed-goodies
+  :init
+  (elfeed-goodies/setup)
+  :config
+  (setq elfeed-goodies/entry-pane-size 0.5))
+
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+;; (map! :after elfeed
+      ;; :map elfeed-show-mode-map
+      ;; :n "j" 'elfeed-next
+      ;; :n "k" 'elfeed-prev)
+
+(setq elfeed-feeds (quote
+                    (("https://www.reddit.com/r/linux.rss" reddit linux)
+                     ("https://www.reddit.com/r/emacs.rss" reddit emacs)
+                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
+                     ("http://lxer.com/module/newswire/headlines.rss" lxer linux))))
+
 (setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t))
-(custom-set-faces!
-;;  '(font-lock-comment-face :slant normal :inherit font-lock-comment-face))
-  '(font-lock-keyword-face :slant italic))
+  (setq doom-themes-enable-bold t))
+
+;; for sending mails
+(require 'smtpmail)
+
+;; we installed this with homebrew
+(setq mu4e-mu-binary (executable-find "mu"))
+
+;; this is the directory we created before:
+(setq mu4e-maildir "~/.maildir")
+
+;; this command is called to sync imap servers:
+(setq mu4e-get-mail-command (concat (executable-find "mbsync") " -a"))
+
+;; how often to call it in seconds:
+(setq mu4e-update-interval 300)
+
+;; save attachment to desktop by default
+;; or another choice of yours:
+(setq mu4e-attachment-dir "~/Desktop")
+
+;; rename files when moving - needed for mbsync:
+(setq mu4e-change-filenames-when-moving t)
+
+;; list of your email adresses:
+(setq mu4e-user-mail-address-list '("berrygw06@gmail.com"))
+
+;; gpg encryptiom & decryption:
+
+;; this can be left alone
+
+(require 'epa-file)
+
+(epa-file-enable)
+
+(setq epa-pinentry-mode 'loopback)
+
+(auth-source-forget-all-cached)
+
+;; don't keep message compose buffers around after sending:
+(setq message-kill-buffer-on-exit t)
+
+;; send function:
+(setq send-mail-function 'sendmail-send-it
+      message-send-mail-function 'sendmail-send-it)
+
+;; send program:
+;; this is exeranal. remember we installed it before.
+(setq sendmail-program (executable-find "msmtp"))
+
+;; select the right sender email from the context.
+(setq message-sendmail-envelope-from 'header)
+
+;; chose from account before sending
+;; this is a custom function that works for me.
+;; well I stole it somewhere long ago.
+;; I suggest using it to make matters easy
+;; of course adjust the email adresses and account descriptions
+(defun timu/set-msmtp-account ()
+  (if (message-mail-p)
+      (save-excursion
+        (let*
+            ((from (save-restriction
+                     (message-narrow-to-headers)
+                     (message-fetch-field "from")))
+             (account
+              (cond
+               ((string-match "berrygw06@gmail.com" from) "personal"))))
+          (setq message-sendmail-extra-arguments (list '"-a" account))))))
+
+(add-hook 'message-send-mail-hook 'timu/set-msmtp-account)
+
+;; mu4e cc & bcc
+;; this is custom as well
+(add-hook 'mu4e-compose-mode-hook
+          (defun timu/add-cc-and-bcc ()
+            "My Function to automatically add Cc & Bcc: headers.
+    This is in the mu4e compose mode."
+            (save-excursion (message-add-header "Cc:\n"))
+            (save-excursion (message-add-header "Bcc:\n"))))
+
+;; mu4e address completion
+(add-hook 'mu4e-compose-mode-hook 'company-mode)
+
+;; store link to message if in header view, not to header query:
+(setq org-mu4e-link-query-in-headers-mode nil)
+
+;; don't have to confirm when quitting:
+(setq mu4e-confirm-quit nil)
+
+;; number of visible headers in horizontal split view:
+(setq mu4e-headers-visible-lines 20)
+
+;; don't show threading by default:
+(setq mu4e-headers-show-threads nil)
+
+;; hide annoying "mu4e Retrieving mail..." msg in mini buffer:
+(setq mu4e-hide-index-messages t)
+
+;; customize the reply-quote-string:
+(setq message-citation-line-format "%N @ %Y-%m-%d %H:%M :\n")
+
+;; M-x find-function RET message-citation-line-format for docs:
+(setq message-citation-line-function 'message-insert-formatted-citation-line)
+
+;; by default do not show related emails:
+(setq mu4e-headers-include-related nil)
+
+;; by default do not show threads:
+(setq mu4e-headers-show-threads nil)
 
 (defun gw/insert-todays-date (prefix)
   (interactive "P")
@@ -173,7 +299,7 @@
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t ;; adds folder icon next to persp name
       doom-modeline-time t ;; Shows the time
-      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode) ;; Show word count
+      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
       doom-modeline-lsp t ;; Show LSP status
       )
 
@@ -184,10 +310,11 @@
         org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
-        org-ellipsis "↴"
-        ;; org-ellipsis"⤷"
+        org-ellipsis " ↴ "
+        ;; org-ellipsis" ⤷ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+        ;; org-list-demote-modify-bullet '(("+" . "*") ("*" . "-") ("-" . "+"))
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -220,22 +347,6 @@
          (org-level-6 1.2 "#a9a1e1" normal)
          (org-level-7 1.1 "#46d9ff" normal)
          (org-level-8 1.0 "#ff6c6b" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-dracula ()
-  "Enable Dracula colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#8be9fd" ultra-bold)
-         (org-level-2 1.6 "#bd93f9" extra-bold)
-         (org-level-3 1.5 "#50fa7b" bold)
-         (org-level-4 1.4 "#ff79c6" semi-bold)
-         (org-level-5 1.3 "#9aedfe" normal)
-         (org-level-6 1.2 "#caa9fa" normal)
-         (org-level-7 1.1 "#5af78e" normal)
-         (org-level-8 1.0 "#ff92d0" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -391,14 +502,14 @@
       (face
        '((org-level-1 1.7 "#ff6c6b" ultra-bold)
          (org-level-2 1.6 "#da8548" extra-bold)
-         (org-level-3 1.5 "#46d9ff" bold)
+         (org-level-3 1.5 "#ECBE7B" bold)
          (org-level-4 1.4 "#98be65" semi-bold)
          (org-level-5 1.3 "#51afef" normal)
          (org-level-6 1.2 "#2257A0" normal)
          (org-level-7 1.1 "#c678dd" normal)
          (org-level-8 1.0 "#a9a1e1" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bbc2cf"))
 
 (defun gw/org-colors-old-hope ()
   "Enable Doom Old Hope colors for Org headers."
@@ -414,7 +525,9 @@
          (org-level-7 1.1 "#78bd65" normal)
          (org-level-8 1.0 "#b978ab" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1")
+    (when (eq (car-safe custom-enabled-themes) 'doom-old-hope)
+    (gw/org-colors-old-hope)))
 
 (defun gw/org-colors-peacock ()
   "Enable Doom Peacock colors for Org headers."
@@ -480,8 +593,24 @@
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
 
+(defun gw/org-colors-ayu-mirrage ()
+  "Enable Spacegrey Colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#ff3333" ultra-bold)
+         (org-level-2 1.6 "#ffa759" extra-bold)
+         (org-level-3 1.5 "#ffd580" bold)
+         (org-level-4 1.4 "#bae67e" semi-bold)
+         (org-level-5 1.3 "#95e6cb" normal)
+         (org-level-6 1.2 "#5ccfe6" normal)
+         (org-level-7 1.1 "#73d0ff" normal)
+         (org-level-8 1.0 "#d4bfff" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
+
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-oksolar-dark))
+    (gw/org-colors-doom-one-alt))
 ;; )
 
 (setq org-archive-default-command 'org-archive-subtree)
@@ -501,27 +630,29 @@
 
 (after! org-capture
   (setq org-capture-templates
-      '(("t" "todo" entry (file+headline "~/agenda.org")
-         "* TODO %?")
-        ("T" "todo today" entry (file+headline "~/agenda.org")
-         "* TODO %?\nDEADLINE: %t")
-       ("i" "inbox" entry (file "~/inbox.org")
-         "* %?")
-       ("v" "clip to inbox" entry (file "~/inbox.org")
-         "* %x%?"))
-  )
-)
+        '(("t" "todo" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+           "* TODO %?\n  %i\n  %a")
+          ("T" "todo today" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+           "* TODO %?\n  %i\nDEADLINE: %t\n  %a")
+          ("i" "inbox" entry (file "~/Documents/inbox.org")
+           "* %?")
+          ("v" "clip to inbox" entry (file "~/Documents/inbox.org")
+           "* %x%?")
+          ("c" "call someone" entry (file "~/Documents/inbox.org")
+           "* TODO Call %?\n %U")
+          ("p" "phone call" entry (file "~/Documents/inbox.org")
+           "* Call from %^{Caller name}\n %U\n %i\n")
+          )))
 
 (use-package! ox-twbs)
-;; (use-package! ox-re-reveal)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
 (use-package! ox-reveal)
+(use-package! ox-epub)
 ;; Make it so that org-export wont use numbered headings
 (setq org-export-with-section-numbers nil)
 
 ;; Reveal.js + Org mode
-(require 'ox-reveal)
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
       org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
       org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
@@ -611,19 +742,6 @@
   (org-tree-slide-breadcrumbs " > ")
   (org-image-actual-width nil))
 
-(defun gw/writing-mode ()
-  "Acctivate my writing environment"
-  (interactive)
-  (writeroom-mode 1)
-  (abbrev-mode 1)
-  (message "Get writing!"))
-
-(defun gw/normal-writing ()
-  "Deacctivate my writing environment"
-  (interactive)
-  (writeroom-mode 0)
-  (message "You're done! Go touch some grass!"))
-
 (setq global-hl-todo-mode 1)
 
 (defun gw/todo-hl-oksolar-dark ()
@@ -641,6 +759,17 @@
           ("WAIT"  . "#C5A3FF"))))
 
 (gw/todo-hl-oksolar-dark)
+
+(defun gw/writing ()
+  "Toggle between writing environment modes."
+  (interactive)
+  (if olivetti-mode
+      (progn
+        (olivetti-mode -1)
+        (doom-big-font-mode -1))
+    (progn
+      (olivetti-mode)
+      (doom-big-font-mode))))
 
 (setq ispell-program-name "aspell")
 
@@ -675,13 +804,11 @@
 
 ;; (require 'mastodon-alt)
 ;; (mastodon-alt-tl-activate)
-    (setq mastodon-instance-url "https://social.linux.pizza"
-          mastodon-active-user "Gamewarrior010")
+(setq mastodon-instance-url "https://social.linux.pizza"
+      mastodon-active-user "Gamewarrior010")
 
 ;; Enable abbreviation mode
 (add-hook 'text-mode-hook 'abbrev-mode)
-
-;; (projectile-project-search-path '("~/Documents/School"))
 
 (require 'go-translate)
 
@@ -699,10 +826,7 @@
 
 (map! :after ibuffer
       :map ibuffer-mode-map
-      :n "l" #'ibuffer-visit-buffer)
-
-(map! :after ibuffer
-      :map ibuffer-mode-map
+      :n "l" #'ibuffer-visit-buffer
       :n "h" #'kill-current-buffer)
 
 (setq olivetti-style 'fringes-and-margins)
@@ -737,6 +861,14 @@
   (blamer-face ((t :foreground "#7a88cf"
                     :background nil
                     :height 140
-                    :italic t)))
-  :config
-  (global-blamer-mode 1))
+                    :italic t))))
+  ;; :config
+  ;; (global-blamer-mode 1))
+
+(setq nov-unzip-program (executable-find "bsdtar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(map!
+ :leader
+ (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
