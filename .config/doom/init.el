@@ -38,7 +38,7 @@
        ;;deft              ; notational velocity for Emacs
        doom                ; what makes DOOM look the way it does
        doom-dashboard      ; a nifty splash screen for Emacs
-       doom-quit           ; DOOM quit-message prompts when you quit Emacs
+       ;; doom-quit           ; DOOM quit-message prompts when you quit Emacs
        ;;(emoji +unicode)  ; 🙂
        hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
@@ -191,7 +191,7 @@
        ;;zig               ; C, but simpler
 
        :email
-       (mu4e +org +gmail)
+       (mu4e +org +gmail +evil)
        ;;notmuch
        ;;(wanderlust +gmail)
 
@@ -200,7 +200,7 @@
        ;;emms
        everywhere          ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
-       (rss +org)          ; emacs as an RSS reader
+       rss                 ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config

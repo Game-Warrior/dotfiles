@@ -7,12 +7,16 @@
 
 (beacon-mode 1)
 
+(setq chatgpt-shell-openai-key "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")
+
+(setq dall-e-shell-openai-key "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")
+
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gamewarrior.xyz")
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-oceanic-next)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -50,7 +54,7 @@
   (kbd "O") 'dired-do-chown
   (kbd "P") 'dired-do-print
   (kbd "R") 'dired-do-rename
-  (kbd "T") 'dired-do-touch
+  (kbd "T") 'dired-create-empty-file
   (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill ; copies filename to kill ring.
   (kbd "Z") 'dired-do-compress
   (kbd "+") 'dired-create-directory
@@ -108,12 +112,6 @@
 
 (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
 
-(add-hook 'after-change-major-mode-hook
-          (lambda ()
-            (if (equal (buffer-name) "*doom-dashboard*")
-                (emojify-mode 1)
-              (emojify-mode -1))))
-
 (use-package emojify
   :hook (after-init . global-emojify-mode))
 
@@ -130,20 +128,28 @@
 (evil-define-key 'normal elfeed-search-mode-map
   (kbd "J") 'elfeed-goodies/split-show-next
   (kbd "K") 'elfeed-goodies/split-show-prev)
-;; (map! :after elfeed
-      ;; :map elfeed-show-mode-map
-      ;; :n "j" 'elfeed-next
-      ;; :n "k" 'elfeed-prev)
 
 (setq elfeed-feeds (quote
-                    (("https://www.reddit.com/r/linux.rss" reddit linux)
-                     ("https://www.reddit.com/r/emacs.rss" reddit emacs)
+                     (
+                     ;; General
+                     ("https://frame.work/blog.rss" Framework)
+                     ;; Linux
+                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
+                     ("https://archlinux.org/news/" linux Arch)
+                     ("https://fedoramagazine.org/feed/" linux Fedora)
+                     ("https://endeavouros.com/news/" linux EndeavourOS)
+                     ;; Boat Stuff
+                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
+                     ("https://mobius.world/feed/" Mobius boat)
+                     ;; Emacs
+                     ("http://xenodium.com/rss.xml" emacs Xenodium)
+                     ("https://cmdln.org/post/" emacs Commandline)
                      ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
-                     ("http://lxer.com/module/newswire/headlines.rss" lxer linux))))
+                     )))
 
-(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
+(setq doom-font (font-spec :family "Ubuntu Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
+      doom-big-font (font-spec :family "Ubuntu Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t))
 
@@ -275,7 +281,7 @@
         :desc "Insert any date" "a" #'gw/insert-any-date
         :desc "Insert todays date" "t" #'gw/insert-todays-date))
 
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 (map! :leader
       :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
       (:prefix ("t" . "toggle")
@@ -294,7 +300,7 @@
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.2)))))
 
 (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-(setq doom-modeline-height 35     ;; sets modeline height
+(setq doom-modeline-height 25     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t ;; adds folder icon next to persp name
@@ -331,7 +337,8 @@
              "WAIT(w)"           ; Something is holding up this task
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
-             "CANCELLED(c)" )))) ; Task has been cancelled
+             "CANCELLED(c)" ))) ; Task has been cancelled
+  (org-superstar-mode 1))
 
 (after! org
 (defun gw/org-colors-doom-one ()
@@ -371,14 +378,14 @@
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.7 "#78dce8" ultra-bold)
-         (org-level-2 1.6 "#ab9df2" extra-bold)
-         (org-level-3 1.5 "#a9dc76" bold)
-         (org-level-4 1.4 "#fc9867" semi-bold)
-         (org-level-5 1.3 "#ff6188" normal)
-         (org-level-6 1.2 "#ffd866" normal)
-         (org-level-7 1.1 "#78dce8" normal)
-         (org-level-8 1.0 "#ab9df2" normal)))
+       '((org-level-1 1.7 "#ff6188" ultra-bold)
+         (org-level-2 1.6 "#fc9867" extra-bold)
+         (org-level-3 1.5 "#ffd866" bold)
+         (org-level-4 1.4 "#A9DC76" semi-bold)
+         (org-level-5 1.3 "#78DCE8" normal)
+         (org-level-6 1.2 "#81A2BE" normal)
+         (org-level-7 1.1 "#AB9DF2" normal)
+         (org-level-8 1.0 "#CC6666" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
@@ -491,9 +498,7 @@
          (org-level-5 1.3 "#ECBE7B" normal)
          (org-level-6 1.2 "#C5A3FF" normal)
          (org-level-7 1.1 "#FFB8D1" normal)
-         (org-level-8 1.0 "" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#f8f8f0"))
+         (org-level-8 1.0 "" normal)))))
 
 (defun gw/org-colors-doom-one-alt ()
   "Enable an alternitive set of Doom One colors for Org headers."
@@ -610,7 +615,7 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
 
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-doom-one-alt))
+    (gw/org-colors-oceanic-next))
 ;; )
 
 (setq org-archive-default-command 'org-archive-subtree)
@@ -647,7 +652,7 @@
 (use-package! ox-twbs)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
-(use-package! ox-reveal)
+(use-package! ox-re-reveal)
 (use-package! ox-epub)
 ;; Make it so that org-export wont use numbered headings
 (setq org-export-with-section-numbers nil)
@@ -668,8 +673,7 @@
      (cond ((org-export-derived-backend-p backend 'md) (setq  org-export-exclude-tags '("noexport" "mdignore")))
            ((org-export-derived-backend-p backend 'reveal) (setq  org-export-exclude-tags '("noexport" "revealignore")))
            (t (setq  org-export-exclude-tags '("noexport")))
-       )
-    )
+       ))
 
 (setq org-journal-dir "~/Documents/Personal/Journal/"
       org-journal-date-prefix "* "
@@ -770,6 +774,16 @@
     (progn
       (olivetti-mode)
       (doom-big-font-mode))))
+
+;; (map!
+ ;; :meta
+ ;; (:desc "Cycle through the different bullets" "TAB" #'org-cycle-list-bullets))
+
+(load "~/.config/doom/org-novelist.el")
+    ;; (org-novelist-language-tag "en-US")  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
+    ;; (org-novelist-author "Gardner Berry")  ; The default author name to use when exporting a story. Each story can also override this setting
+    ;; (org-novelist-author-email "mail@johnurquhartferguson.info")  ; The default author contact email to use when exporting a story. Each story can also override this setting
+    ;; (org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
 (setq ispell-program-name "aspell")
 
@@ -872,3 +886,16 @@
 (map!
  :leader
  (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
+
+
+
+(setq eshell-aliases-file "~/.config/doom/eshell/aliases")
+
+(with-eval-after-load "esh-opt"
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda))
+
+(map!
+ :leader
+ (:desc "List Synonyms for word at point" "t n" #'synosaurus-choose-and-insert))
