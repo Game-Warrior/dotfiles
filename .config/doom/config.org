@@ -1,5 +1,6 @@
 #+title: GW's Doom Emacs Config
 #+description: My personal Doom Emacs Configuration
+#+PROPERTY: header-args:emacs-lisp :tangle ./config.el :mkdirp yes
 #+startup: showeverything
 #+options: num:nil
 

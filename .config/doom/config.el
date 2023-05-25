@@ -7,14 +7,14 @@
 
 (beacon-mode 1)
 
-(setq chatgpt-shell-openai-key "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")
+(setq chatgpt-shell-openai-key "Placeholder")
 
-(setq dall-e-shell-openai-key "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")
+(setq dall-e-shell-openai-key "Placeholder")
 
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gamewarrior.xyz")
 
-(setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
+    (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
 (setq doom-theme 'doom-oceanic-next)
 (map! :leader
