@@ -14,7 +14,7 @@
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gamewarrior.xyz")
 
-    (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
+(setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
 (setq doom-theme 'doom-oceanic-next)
 (map! :leader
@@ -316,6 +316,7 @@
         org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         ;; org-ellipsis " ▼ "
+        org-archive-location "~/Documents/archive.org::"
         org-ellipsis " ↴ "
         ;; org-ellipsis" ⤷ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
@@ -614,8 +615,24 @@
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
 
+(defun gw/org-colors-xcode ()
+  "Enable Spacegrey Colors for Org headers."
+  (interactive)
+  (dolist
+      (face
+       '((org-level-1 1.7 "#FC6A5D" ultra-bold)
+         (org-level-2 1.6 "#FD8F3F" extra-bold)
+         (org-level-3 1.5 "#D0BF68" bold)
+         (org-level-4 1.4 "#67B7A4" semi-bold)
+         (org-level-5 1.3 "#95e6cb" normal)
+         (org-level-6 1.2 "#5DD8FF" normal)
+         (org-level-7 1.1 "#59B0CF" normal)
+         (org-level-8 1.0 "#D0A8FF" normal)))
+    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
+
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-oceanic-next))
+    (gw/org-colors-xcode))
 ;; )
 
 (setq org-archive-default-command 'org-archive-subtree)
@@ -899,3 +916,16 @@
 (map!
  :leader
  (:desc "List Synonyms for word at point" "t n" #'synosaurus-choose-and-insert))
+
+(load "~/.config/doom/typing-practice.el")
+
+(defadvice practice-typing (around no-cursor activate)
+  "Do not show cursor at minibuffer during typing practice."
+  (let ((minibuffer-setup-hook
+         (cons (lambda () (setq cursor-type nil))
+               minibuffer-setup-hook)))
+    ad-do-it))
+
+;; set latitude and longitude for noaa.el
+(setq noaa-latitude 45)
+(setq noaa-longitude 120)

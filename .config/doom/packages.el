@@ -123,3 +123,6 @@
 (package! ob-chatgpt-shell)
 (package! synosaurus)
 (package! academic-phrases)
+(package! pacmacs)
+(package! fireplace)
+(package! noaa)
