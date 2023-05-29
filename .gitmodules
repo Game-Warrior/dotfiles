@@ -1,3 +1,6 @@
 [submodule "kitty-themes"]
 	path = .config/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
+[submodule "alacritty-themes"]
+	path = .config/alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme.git
