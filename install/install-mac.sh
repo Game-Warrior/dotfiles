@@ -26,7 +26,7 @@ echo "Copying my .config folder"
 cp -r ~/dotfiles/.config ~/
 
 echo "Installing Everything"
-brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us libreoffice alfred alt-tab istat-menus background-music exa starship fish bash neofetch pfetch zsh-syntax-highlighting font-overpass-nerd-font font-source-sans-pro
+brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us libreoffice alfred alt-tab istat-menus background-music exa starship fish bash neofetch pfetch zsh-syntax-highlighting font-overpass-nerd-font font-source-sans-pro enchant
 
 valid_response=false
 
@@ -46,7 +46,7 @@ do
         1 )
             echo "Installing Emacs-Mac"
             brew tap railwaycat/emacsmacport
-            brew install emacs-mac --with-native-comp --with-xwidgets --with-emacs-big-sur-icon
+            brew install emacs-mac --with-native-comp --with-xwidgets --with-imagemagick --with-emacs-big-sur-icon
             osascript -e 'tell application "Finder" to make alias file to POSIX file "/opt/homebrew/opt/emacs-mac/Emacs.app" at POSIX file "/Applications"'
             valid_response=true
             ;;
@@ -56,9 +56,9 @@ do
     esac
 done
 
-echo "Installing doom emacs"
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
+echo "Installing Doom Emacs"
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
 
 echo "Making Developer folder"
 mkdir ~/Developer/
