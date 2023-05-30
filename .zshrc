@@ -22,35 +22,49 @@ compinit
 set -o vi
 
 # Ps1 Prompt
-# export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)"
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%m %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b"
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%m %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}%b"
 
 #Doom Emacs
-export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
+#Weather API
+export WEATHER_CLI_API=83dda3fa787a576975d5fc6352a7b38f
+
+#Emacs Server
+#function emacs() { /Applications/Emacs.app/Contents/MacOS/Emacs $@ &; }
+#alias emacsnw="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 
 #aliases
 alias gc="git commit -m "something""
 alias ga="git add"
-alias ls="exa -al --color=always --group-directories-first"
-alias weather="curl wttr.in"
-alias nr="nitrogen --restore"
+
+# Changing "ls" to "exa"
+alias ls='exa -lah --color=always --group-directories-first --icons' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias l.='exa -a | egrep "^\."'
+
+alias weather='curl wttr.in'
+alias nr='nitrogen --restore'
 #alias emacs="emacsclient -c"
-# alias chemacs="emacs --with-profile"
-alias cl="clear"
-alias gcm="git commit -m"
+#alias chemacs="emacs --with-profile"
+alias em='emacs -nw'
+alias cl='clear'
+alias gcm='git commit -m'
+alias ytdl='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -S "height:720"'
 
 # eval "$(starship init zsh)"
 
-# Syntax Highlighting
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#Bling
-neofetch
+# Bling
+#neofetch
 #pfetch
 #pokemon-colorscripts -n treecko
 #pokemon-colorscripts -r
+colorscript -e crunchbang
 
 # End of lines added by compinstall
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
-source /Users/gb/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /Users/gb/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
