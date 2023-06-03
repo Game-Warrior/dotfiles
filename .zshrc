@@ -55,14 +55,18 @@ alias cl='clear'
 alias gcm='git commit -m'
 alias ytdl='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -S "height:720"'
 
-# eval "$(starship init zsh)"
+# switch between shells
+# I do not recommend switching default SHELL from bash.
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
 # Bling
 #neofetch
 #pfetch
 #pokemon-colorscripts -n treecko
 #pokemon-colorscripts -r
-colorscript -e crunchbang
+#colorscript -e crunchbang
 
 # End of lines added by compinstall
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
