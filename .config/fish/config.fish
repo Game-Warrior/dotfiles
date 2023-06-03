@@ -73,6 +73,16 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
+# Abbreviate Clear
+abbr cl clear
+
+# switch between shells
+# I do not recommend switching default SHELL from bash.
+# alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+# alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+alias tofish="sudo chsh $USER -s /opt/homebrew/bin/fish && echo 'Now log out.'"
+
 # set -g fish_prompt "%B%(set_color red)[%(set_color yellow)%n%(set_color green)@%(set_color blue)%m %(set_color magenta)%~%(set_color red)]%(set_color normal)%b"
 
 # Function for org-agenda
