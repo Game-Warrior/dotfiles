@@ -1,0 +1,98 @@
+@define-color base00 #002D38;
+@define-color base01 #093946;
+@define-color base02 #00212C;
+@define-color base03 #5B7279;
+@define-color base04 #657377;
+@define-color base05 #98A8A8;
+@define-color base06 #8FAAAB;
+@define-color base07 #f8f8f8;
+@define-color base08 #F23749;
+@define-color base09 #D56500;
+@define-color base0A #AC8300;
+@define-color base0B #819500;
+@define-color base0C #35A69C;
+@define-color base0D #2B90D8;
+@define-color base0E #7D80D1;
+@define-color base0F #a16946;
+
+* {
+  transition: none;
+  box-shadow: none;
+}
+
+#waybar {
+	font-family: 'Jetbrains Mono Nerd', sans-serif;
+	font-size: 1.2em;
+	font-weight: 400;
+  color: @base04;
+  background: @base01;
+}
+
+#workspaces {
+  margin: 0 4px;
+}
+
+#workspaces button {
+  margin: 4px 0;
+  padding: 0 4px;
+  color: @base05;
+}
+
+#workspaces button.visible {
+}
+
+#workspaces button.active {
+  border-radius: 4px;
+  background-color: @base02;
+}
+
+#workspaces button.urgent {
+  color: rgba(238, 46, 36, 1);
+}
+
+#tray {
+  margin: 4px 4px 4px 4px;
+  border-radius: 4px;
+  background-color: @base02;
+}
+
+#tray * {
+  padding: 0 6px;
+  border-left: 1px solid @base00;
+}
+
+#tray *:first-child {
+  border-left: none;
+}
+
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature {
+  margin: 4px 2px;
+  padding: 0 6px;
+  background-color: @base02;
+  border-radius: 4px;
+  min-width: 20px;
+}
+
+#pulseaudio.muted {
+  color: @base0F;
+}
+
+#pulseaudio.bluetooth {
+  color: @base0C;
+}
+
+#clock {
+  margin-left: 0px;
+  margin-right: 4px;
+  background-color: transparent;
+}
+
+#temperature.critical {
+  color: @base0F;
+}
+
+#window {
+  font-size: 0.9em;
+	font-weight: 400;
+	font-family: sans-serif;
+}
