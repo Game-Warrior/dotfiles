@@ -12,11 +12,11 @@
 (setq dall-e-shell-openai-key "Placeholder")
 
 (setq user-full-name "Gardner Berry"
-    user-mail-address "gardner@gamewarrior.xyz")
+    user-mail-address "gardner@gardnerberry.com")
 
-(setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
+    (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq doom-theme 'doom-oceanic-next)
+(setq doom-theme 'doom-one)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -147,9 +147,9 @@
                      ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
                      )))
 
-(setq doom-font (font-spec :family "Ubuntu Mono" :size 15)
+(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "Ubuntu Mono" :size 24))
+      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t))
 
@@ -300,13 +300,10 @@
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.2)))))
 
 (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-(setq doom-modeline-height 25     ;; sets modeline height
+(setq doom-modeline-height 30     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
-      doom-modeline-persp-icon t ;; adds folder icon next to persp name
-      doom-modeline-time t ;; Shows the time
       doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
-      doom-modeline-lsp t ;; Show LSP status
       )
 
 (map! :leader
@@ -339,7 +336,7 @@
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" ))) ; Task has been cancelled
-  (org-superstar-mode 1))
+  )
 
 (after! org
 (defun gw/org-colors-doom-one ()
@@ -444,9 +441,9 @@
   (dolist
       (face
        '((org-level-1 1.7 "#dc322f" ultra-bold)
-         (org-level-2 1.6 "#859900" extra-bold)
-         (org-level-3 1.5 "#cb4b16" bold)
-         (org-level-4 1.4 "#b58900" semi-bold)
+         (org-level-2 1.6 "#cb4b16" extra-bold)
+         (org-level-3 1.5 "#b58900" bold)
+         (org-level-4 1.4 "#859900" semi-bold)
          (org-level-5 1.3 "#35a69c" normal)
          (org-level-6 1.2 "#268bd2;" normal)
          (org-level-7 1.1 "#3F88AD" normal)
@@ -632,7 +629,7 @@
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
 
 ;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-xcode))
+    (gw/org-colors-doom-one-alt))
 ;; )
 
 (setq org-archive-default-command 'org-archive-subtree)
@@ -676,8 +673,8 @@
 
 ;; Reveal.js + Org mode
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
-      org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
-      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
       org-reveal-theme "moon"
       org-re-reveal-theme "moon"
       ;; org-re-reveal-theme "blood"
@@ -691,6 +688,8 @@
            ((org-export-derived-backend-p backend 'reveal) (setq  org-export-exclude-tags '("noexport" "revealignore")))
            (t (setq  org-export-exclude-tags '("noexport")))
        ))
+
+;; (with-eval-after-load 'org (global-org-modern-mode))
 
 (setq org-journal-dir "~/Documents/Personal/Journal/"
       org-journal-date-prefix "* "
@@ -797,12 +796,20 @@
  ;; (:desc "Cycle through the different bullets" "TAB" #'org-cycle-list-bullets))
 
 (load "~/.config/doom/org-novelist.el")
-    ;; (org-novelist-language-tag "en-US")  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
-    ;; (org-novelist-author "Gardner Berry")  ; The default author name to use when exporting a story. Each story can also override this setting
-    ;; (org-novelist-author-email "mail@johnurquhartferguson.info")  ; The default author contact email to use when exporting a story. Each story can also override this setting
-    ;; (org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
+    (setq org-novelist-language-tag "en-US"  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
+          org-novelist-author "Gardner Berry")  ; The default author name to use when exporting a story. Each story can also override this setting
+          ;; org-novelist-author-email "gardner@gamewarrior.xyz"  ; The default author contact email to use when exporting a story. Each story can also override this setting
+          ;; org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
-(setq ispell-program-name "aspell")
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode))
+
+(map! :leader
+      (:desc "Check Word" "s w" #'jinx-correct))
+
+;; (require 'flycheck-vale)
+;; (flycheck-vale-setup)
+(flycheck-mode -1)
 
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda ()
@@ -837,6 +844,9 @@
 ;; (mastodon-alt-tl-activate)
 (setq mastodon-instance-url "https://social.linux.pizza"
       mastodon-active-user "Gamewarrior010")
+
+(load "~/.config/doom/mastodon-alt.el")
+(mastodon-alt-tl-activate)
 
 ;; Enable abbreviation mode
 (add-hook 'text-mode-hook 'abbrev-mode)

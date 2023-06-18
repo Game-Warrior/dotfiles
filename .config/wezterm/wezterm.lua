@@ -8,7 +8,7 @@ local config = {}
 -- help provide clearer error messages
 if wezterm.config_builder then
   config = wezterm.config_builder()
-  config.font = wezterm.font 'OverpassM Nerd Font'
+  config.font = wezterm.font 'Jetbrains Mono'
 
 end
 
