@@ -3,18 +3,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(codeium/metadata/api_key "6ca8f8b9-ed1b-4703-b12b-4f850a022385")
- '(org-safe-remote-resources
-   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-NAME\\.setup\\'"))
- '(package-selected-packages
-   '(wttrin fireplace pacmacs esxml highlight-indent-guides academic-phrases synosaurus transmission ob-chatgpt-shell ob-dall-e-shell dall-e-shell le-thesaurus powerthesaurus chatgpt-shell eshell-prompt-extras burly evil-mu4e ox-epub nov org-tag-beautify blamer org-super-agenda calfw go-translate ivy-bibtex ox-gfm pretty-symbols poetry 2048-game @ request lsp-mode dirvish org-roam yasnippet wc-mode ox-reveal org-ref ivy-posframe emmet-mode elfeed-goodies beacon ace-window)))
+ '(package-selected-packages '(org-modern ob-kotlin lsp-java flycheck-vale)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-comment-face ((t (:slant italic))))
- '(font-lock-keyword-face ((t (:slant italic))))
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "variable-pitch"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.6))))
