@@ -23,7 +23,7 @@ cp -r ~/dotfiles/.config ~/
 sleep 2
 
 echo "Installing Packages from the Core Repos"
-sudo pacman -S awesome dmenu picom starship arandr exa btop lxappearance emacs-nativecomp alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli hunspell-en_us aspell-en syncthing zathura
+sudo pacman -S awesome dmenu picom starship arandr exa btop lxappearance emacs-nativecomp alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli hunspell-en_us aspell-en syncthing zathura lolcat
 sudo pacman -Rs gnu-free-fonts
 
 read -p "If you are installing this on Arch Linux you will need to build paru but if you are using a derivitave e.g. EndavourOS it will be in your standard repos y to build n to install (y/n)" yn
@@ -43,7 +43,7 @@ exit;;
 esac
 
 echo "Trying to Install AUR Packages"
-paru -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes mint-themes mint-y-icons
+paru -S brave-bin librewolf-bin pfetch pokemon-colorscripts-git alacritty-themes mint-themes mint-y-icons spark-bash
 
 sleep 2
 
