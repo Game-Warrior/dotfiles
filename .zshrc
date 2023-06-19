@@ -70,5 +70,6 @@ alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
 # End of lines added by compinstall
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
-source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /Users/gb/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
