@@ -31,35 +31,16 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 #Weather API
 export WEATHER_CLI_API=83dda3fa787a576975d5fc6352a7b38f
 
-#Emacs Server
-#function emacs() { /Applications/Emacs.app/Contents/MacOS/Emacs $@ &; }
-#alias emacsnw="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+# XDG things
+# GO
+export GOPATH="$XDG_DATA_HOME"/go
 
-#aliases
-alias gc="git commit -m "something""
-alias ga="git add"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-# Changing "ls" to "exa"
-alias ls='exa -lah --color=always --group-directories-first --icons' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
-alias l.='exa -a | egrep "^\."'
+if [[ "$OSTYPE" == darwin* ]]; then export PATH="/opt/homebrew/bin:$PATH"; fi
 
-alias weather='curl wttr.in'
-alias nr='nitrogen --restore'
-#alias emacs="emacsclient -c"
-#alias chemacs="emacs --with-profile"
-alias em='emacs -nw'
-alias cl='clear'
-alias gcm='git commit -m'
-alias ytdl='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -S "height:720"'
-
-# switch between shells
-# I do not recommend switching default SHELL from bash.
-alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
-alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
-alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+# Source Aliases
+source ~/.config/zsh/aliases.zsh
 
 # Bling
 #neofetch
@@ -70,6 +51,4 @@ alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
 # End of lines added by compinstall
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /Users/gb/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
