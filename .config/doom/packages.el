@@ -117,6 +117,5 @@
 (package! academic-phrases)
 (package! pacmacs)
 (package! fireplace)
-(package! noaa)
 (package! jinx)
-(package! org-modern)
+(package! org-bullets)

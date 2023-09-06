@@ -4,78 +4,76 @@
 #+startup: showeverything
 #+options: num:nil
 
-* Table of Contents :toc:
-- [[#about-this-config][About This Config]]
+* TABLE OF CONTENTS :toc:
+- [[#about-this-config][ABOUT THIS CONFIG]]
   - [[#why-emacs][Why Emacs]]
-- [[#beacon][Beacon]]
-- [[#chatgpt-shell][Chatgpt-Shell]]
-- [[#dall-e-shell][Dall-E-Shell]]
-- [[#setting-username-and-e-mail][Setting Username and E-Mail]]
-- [[#title-bar][Title Bar]]
-- [[#doom-theme][Doom Theme]]
-- [[#setting-the-default-link-opener][Setting the Default Link Opener]]
-- [[#menu-bar][Menu Bar]]
+- [[#sensible-defaults][SENSIBLE DEFAULTS]]
+  - [[#setting-the-default-link-opener][Setting the Default Link Opener]]
+- [[#gui-changes][GUI CHANGES]]
+  - [[#doom-theme][Doom Theme]]
+  - [[#title-bar][Title Bar]]
+  - [[#pixel-scrolling-mode][Pixel Scrolling Mode]]
+  - [[#beacon][Beacon]]
+  - [[#fonts][Fonts]]
+  - [[#display-time][Display-Time]]
+- [[#personal-settings][PERSONAL SETTINGS]]
+  - [[#chatgpt-shell][Chatgpt-Shell]]
+  - [[#dall-e-shell][Dall-E-Shell]]
+  - [[#setting-username-and-e-mail][Setting Username and E-Mail]]
+  - [[#doom-dashboard][Doom-Dashboard]]
+  - [[#menu-bar][Menu Bar]]
+  - [[#emojis][Emojis]]
+  - [[#line-settings][Line Settings]]
+  - [[#rainbow-mode][Rainbow Mode]]
+  - [[#modeline][Modeline]]
+  - [[#elfeed][Elfeed]]
+  - [[#insert-date][Insert Date]]
+  - [[#ibuffer][IBuffer]]
+  - [[#xwidgets-browser][xWidgets-Browser]]
+- [[#writing-stuff][WRITING STUFF]]
+  - [[#typing-practice][Typing Practice]]
+  - [[#synosaurus][Synosaurus]]
+  - [[#novel][Nov.el]]
+  - [[#writegood-mode][Writegood-Mode]]
+  - [[#writeroom][Writeroom]]
+  - [[#spell-checker][Spell Checker]]
+  - [[#olivetti][Olivetti]]
+  - [[#palimpsest-mode][Palimpsest-Mode]]
+  - [[#grammar-checker][Grammar Checker]]
+  - [[#abbrev-mode][Abbrev-Mode]]
+- [[#programming-stuff][PROGRAMMING STUFF]]
+  - [[#blamer][Blamer]]
+  - [[#magit][Magit]]
+  - [[#yasnippet][YAsnippet]]
+  - [[#web-mode][Web-Mode]]
+  - [[#codeiumel][Codeium.el]]
 - [[#dired][Dired]]
   - [[#keybindings-to-open-dired][Keybindings To Open Dired]]
   - [[#keybindings-within-dired][Keybindings Within Dired]]
-- [[#doom-dashboard][Doom-Dashboard]]
-- [[#emojis][Emojis]]
-- [[#elfeed][Elfeed]]
-- [[#fonts][Fonts]]
 - [[#mu4e][mu4e]]
   - [[#context][context]]
   - [[#sending][sending]]
   - [[#optional][optional]]
-- [[#insert-date][Insert Date]]
-- [[#line-settings][Line Settings]]
 - [[#markdown][Markdown]]
-- [[#modeline][Modeline]]
-- [[#org-mode][Org-Mode]]
-  - [[#org-fonts][Org fonts]]
+- [[#org-mode][ORG-MODE]]
+  - [[#org-settings][Org-Settings]]
+  - [[#org-fonts][Org-fonts]]
   - [[#org-agenda][Org-agenda]]
   - [[#org-capture][Org-capture]]
   - [[#org-export][Org-export]]
-  - [[#org-modern][Org-modern]]
   - [[#org-journal][Org-journal]]
-  - [[#org-publish][Org-publish]]
   - [[#org-auto-tangle][Org-auto-tangle]]
-  - [[#org-roam][Org-Roam]]
-  - [[#org-tree-slides][Org-tree-slides]]
-  - [[#todo-hl][TODO-hl]]
   - [[#custom-functions][Custom Functions]]
-  - [[#cycle-list-bullets][Cycle-list-bullets]]
   - [[#org-novelist][Org-Novelist]]
-- [[#spell-checker][Spell Checker]]
-- [[#grammar-checker][Grammar Checker]]
-- [[#rainbow-mode][Rainbow Mode]]
-- [[#switching-windows][Switching Windows]]
-- [[#yasnippet][YAsnippet]]
-- [[#palimpsest-mode][Palimpsest-Mode]]
-- [[#web-mode][Web-Mode]]
+  - [[#org-bullets][Org-Bullets]]
+  - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
 - [[#mastodon][Mastodon]]
   - [[#mastodon-alt][Mastodon-alt]]
-- [[#abbrev-mode][Abbrev-Mode]]
-- [[#go-translate][Go-Translate]]
-- [[#codeiumel][Codeium.el]]
-- [[#display-time][Display-Time]]
-- [[#ibuffer][IBuffer]]
-- [[#olivetti][Olivetti]]
-- [[#writeroom][Writeroom]]
-- [[#magit][Magit]]
-- [[#writegood-mode][Writegood-Mode]]
-- [[#blamer][Blamer]]
-- [[#novel][Nov.el]]
-- [[#xwidgets-browser][xWidgets-Browser]]
-- [[#burly][Burly]]
 - [[#eshell][Eshell]]
   - [[#aliases][Aliases]]
   - [[#prompt][Prompt]]
-- [[#synosaurus][Synosaurus]]
-- [[#typing-practice][Typing Practice]]
-- [[#weather][Weather]]
-  - [[#noaa][Noaa]]
 
-* About This Config
+* ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
 #+begin_src emacs-lisp
 ;;    _____ __          __
@@ -104,38 +102,15 @@ and more…
 Ideally, one may use Emacs as the interface to perform input → transform → output cycles, i.e. form a bridge between the human mind and information manipulation.
 #+end_quote
 
-* Beacon
-Never lose your cursor.  When you scroll, your cursor will shine!  This is a global minor-mode. Turn it on everywhere with:
-
+* SENSIBLE DEFAULTS
+** Setting the Default Link Opener
+Setting in which browser EMACS will open links
 #+begin_src emacs-lisp
-(beacon-mode 1)
+(setq browse-url-browser-function 'browse-url-default-browser)
 #+end_src
 
-* Chatgpt-Shell
-#+begin_src emacs-lisp
-(setq chatgpt-shell-openai-key "Placeholder")
-#+end_src
-
-* Dall-E-Shell
-#+begin_src emacs-lisp
-(setq dall-e-shell-openai-key "Placeholder")
-
-#+end_src
-
-
-* Setting Username and E-Mail
-#+begin_src emacs-lisp
-(setq user-full-name "Gardner Berry"
-    user-mail-address "gardner@gardnerberry.com")
-#+end_src
-
-* Title Bar
-Change the title bar format
-#+begin_src emacs-lisp
-    (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
-#+end_src
-
-* Doom Theme
+* GUI CHANGES
+** Doom Theme
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+begin_src emacs-lisp
@@ -144,13 +119,105 @@ Setting the theme to doom-one.  To try out new themes, I set a keybinding for co
       :desc "Load new theme" "h t" #'load-theme)
 #+end_src
 
-* Setting the Default Link Opener
-Setting in which browser EMACS will open links
+** Title Bar
+Change the title bar format
 #+begin_src emacs-lisp
-(setq browse-url-browser-function 'browse-url-default-browser)
+    (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 #+end_src
 
-* Menu Bar
+** Pixel Scrolling Mode
+#+begin_src emacs-lisp
+(setq pixel-scroll-precision-mode 1)
+#+end_src
+
+** Beacon
+Never lose your cursor.  When you scroll, your cursor will shine!  This is a global minor-mode. Turn it on everywhere with:
+
+#+begin_src emacs-lisp
+(beacon-mode 1)
+#+end_src
+
+** Fonts
+Settings related to fonts within Doom Emacs:
++ 'doom-font' -- standard monospace font that is used for most things in Emacs.
++ 'doom-variable-pitch-font' -- variable font which is useful in some Emacs plugins.
++ 'doom-big-font' -- used in doom-big-font-mode; useful for presentations.
++ 'font-lock-comment-face' -- for comments.
++ 'font-lock-keyword-face' -- for keywords with special significance like 'setq' in elisp.
+
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
+      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
+(after! doom-themes
+  (setq doom-themes-enable-bold t))
+#+END_SRC
+
+** Display-Time
+Enabling display-time-mode so it will show a clock in the modeline
+#+begin_src emacs-lisp
+(setq display-time-day-and-date t)
+#+end_src
+
+* PERSONAL SETTINGS
+** Chatgpt-Shell
+#+begin_src emacs-lisp
+(setq chatgpt-shell-openai-key "placeholder")
+#+end_src
+
+** Dall-E-Shell
+#+begin_src emacs-lisp
+(setq dall-e-shell-openai-key "placeholder")
+
+#+end_src
+
+
+** Setting Username and E-Mail
+#+begin_src emacs-lisp
+(setq user-full-name "Gardner Berry"
+    user-mail-address "gardner@gardnerberry.com")
+#+end_src
+
+** Doom-Dashboard
+This is where I customize the DOOM emacs Dashboard. I have a custom banner set. I have also disabled some of the short cuts on the default start page. It will alsow show you a different message based on what OS you are running.
+#+begin_src emacs-lisp
+(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
+(assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
+
+(cond ((eq system-type 'darwin)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the 🍎 walled garden!"))))
+      ((eq system-type 'gnu/linux)
+        (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye 🐂 Oxen and 🐧 Penguins!"))))
+      ((eq system-type 'windows-nt)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
+
+(defun gw/doom-art ()
+  (let* ((banner'("______ _____ ____ ___ ___"
+                  "`  _  V  _  V  _ \\|  V  ´"
+                  "| | | | | | | | | |     |"
+                  "| | | | | | | | | | . . |"
+                  "| |/ / \\ \\| | |/ /\\ |V| |"
+                  "|   /   \\__/ \\__/  \\| | |"
+                  "|  /                ' | |"
+                  "| /     E M A C S     \\ |"
+                  "´´                     ``"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+
+(setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
+#+end_src
+
+** Menu Bar
 Setting menu-bar-mode to be disabled because I think it takes up to much screen real estate in the top bar.
 #+begin_src emacs-lisp
 (menu-bar-mode -1)
@@ -163,7 +230,296 @@ Setting menu-bar-mode to be disabled because I think it takes up to much screen 
 ;; (define-key global-map [menu-bar help-menu] nil)
 #+end_src
 
+** Emojis
+Emojify is an Emacs extension to display emojis. It can display github style emojis like :smile: or plain ascii ones like :).
 
+#+begin_src emacs-lisp
+;; (use-package emojify
+  ;; :hook (after-init . global-emojify-mode))
+
+#+end_src
+
+** Line Settings
+I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for me. The standard Emacs keybinding for comment-line is 'C-x C-;'.  The other keybindings are for commands that toggle on/off various line-related settings.  Doom Emacs uses 'SPC t' for "toggle" commands, so I choose 'SPC t' plus 'key' for those bindings.
+
+| COMMAND                  | DESCRIPTION                               | KEYBINDING  |
+|--------------------------+-------------------------------------------+-------------|
+| comment-line             | /Comment or uncomment lines/                | SPC TAB TAB |
+| hl-line-mode             | /Toggle line highlighting in current frame/ | SPC t h     |
+| global-hl-line-mode      | /Toggle line highlighting globally/         | SPC t H     |
+| doom/toggle-line-numbers | /Toggle line numbers/                       | SPC t l     |
+| toggle-truncate-lines    | /Toggle truncate lines/                     | SPC t t     |
+
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type nil)
+(map! :leader
+      :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
+      (:prefix ("t" . "toggle")
+       :desc "Toggle line numbers" "l" #'doom/toggle-line-numbers
+       :desc "Toggle line highlight in frame" "h" #'hl-line-mode
+       :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
+       :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
+#+END_SRC
+
+** Rainbow Mode
+Rainbow mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
+
+#+begin_src emacs-lisp
+(define-globalized-minor-mode global-rainbow-mode rainbow-mode
+  (lambda ()
+    (when (not (memq major-mode
+                (list 'org-agenda-mode)))
+     (rainbow-mode 1))))
+(global-rainbow-mode 1 )
+#+end_src
+
+
+** Modeline
+The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
+https://github.com/seagle0128/doom-modeline
+
+#+begin_src emacs-lisp
+(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
+(setq doom-modeline-height 25     ;; sets modeline height
+      doom-modeline-bar-width 5   ;; sets right bar width
+      doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
+      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
+      )
+#+end_src
+
+** Elfeed
+An RSS newsfeed reader for Emacs.
+#+BEGIN_SRC emacs-lisp
+(use-package elfeed-goodies
+  :init
+  (elfeed-goodies/setup)
+  :config
+  (setq elfeed-goodies/entry-pane-size 0.5))
+
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+
+(setq elfeed-feeds (quote
+                     (
+                     ;; General
+                     ("https://frame.work/blog.rss" Framework)
+                     ;; Linux
+                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
+                     ("https://archlinux.org/news/" linux Arch)
+                     ("https://fedoramagazine.org/feed/" linux Fedora)
+                     ("https://endeavouros.com/news/" linux EndeavourOS)
+                     ;; Boat Stuff
+                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
+                     ("https://mobius.world/feed/" Mobius boat)
+                     ;; Emacs
+                     ("http://xenodium.com/rss.xml" emacs Xenodium)
+                     ("https://cmdln.org/post/" emacs Commandline)
+                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
+                     ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
+                     )))
+#+END_SRC
+
+** Insert Date
+Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
+
+| COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
+|-----------------------+---------------------------+-----------------------|
+| gw/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
+| gw/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
+| gw/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
+| gw/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
+
+#+begin_src emacs-lisp
+(defun gw/insert-todays-date (prefix)
+  (interactive "P")
+  (let ((format (cond
+                 ((not prefix) "%A, %B %d, %Y")
+                 ((equal prefix '(4)) "%m-%d-%Y")
+                 ((equal prefix '(16)) "%Y-%m-%d"))))
+    (insert (format-time-string format))))
+
+(require 'calendar)
+(defun gw/insert-any-date (date)
+  "Insert DATE using the current locale."
+  (interactive (list (calendar-read-date)))
+  (insert (calendar-date-string date)))
+
+(map! :leader
+      (:prefix ("i d" . "Insert date")
+        :desc "Insert any date" "a" #'gw/insert-any-date
+        :desc "Insert todays date" "t" #'gw/insert-todays-date))
+#+end_src
+
+** IBuffer
+I changed some of the default keybindings in IBuffer so that "h" will close the current buffer and "l" will open the currently selected buffer.
+#+begin_src emacs-lisp
+(map! :after ibuffer
+      :map ibuffer-mode-map
+      :n "l" #'ibuffer-visit-buffer
+      :n "h" #'kill-current-buffer)
+#+end_src
+** xWidgets-Browser
+#+begin_src emacs-lisp
+(map!
+ :leader
+ (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
+#+end_src
+
+* WRITING STUFF
+** Typing Practice
+The typing-practice package runs solely in the minibuffer, so your boss thinks you are working 😊. It utilizes a database of the 1000 most commonly used English words, and let’s you customize how easy or difficult a session will be through a couple of variables. Before long, your hand should have a good feel for all of the most common English morphemes, giving you the foundation to quickly build other words with morphemes you’ve already learned. For example, after you have learned to type the word “the” (the most common English word) you will have a building block for quickly typing “there”, “these”, “their”, “father”, “they”, “other”, “together”, etc.
+#+begin_src emacs-lisp
+(load "~/.config/doom/typing-practice.el")
+
+(defadvice practice-typing (around no-cursor activate)
+  "Do not show cursor at minibuffer during typing practice."
+  (let ((minibuffer-setup-hook
+         (cons (lambda () (setq cursor-type nil))
+               minibuffer-setup-hook)))
+    ad-do-it))
+#+end_src
+
+
+** Synosaurus
+Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
+#+begin_src emacs-lisp
+(map!
+ :leader
+ (:desc "List Synonyms for word at point" "t n" #'synosaurus-choose-and-insert))
+#+end_src
+** Nov.el
+nov.el provides a major mode for reading EPUB documents
+#+begin_src emacs-lisp
+(setq nov-unzip-program (executable-find "bsdtar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+#+end_src
+
+** Writegood-Mode
+#+begin_src emacs-lisp
+(add-hook 'text-mode-hook 'writegood-mode)
+
+(setq gw/weasel-words
+      '("actually"
+        "basically"
+        "easily"
+        "easy"
+        "simple"
+        "simply"))
+;; (setq writegood-weasel-words
+      ;; (-concat writegood-weasel-words gw/weasel-words))
+;; (map!
+        ;; :leader
+        ;; (:desc ""))
+#+end_src
+
+** Writeroom
+I think Doom is a bit over-zealous when zooming in.
+#+begin_src emacs-lisp
+(setq +zen-text-scale 0.8)
+#+end_src
+
+** Spell Checker
+This is where I set GNU Aspell as my default spell checker.
+#+begin_src emacs-lisp
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode))
+
+(map! :leader
+      (:desc "Check Word" "s w" #'jinx-correct))
+#+end_src
+
+** Olivetti
+#+begin_src emacs-lisp
+(setq olivetti-style 'fringes-and-margins)
+#+end_src
+** Palimpsest-Mode
+This minor mode for Emacs provides several strategies to remove text without permanently deleting it. Namely, it provides the following capabilities:
+| Keybindings | Action                                         |
+|-------------+------------------------------------------------|
+| C-c C-r     | Send selected text to the bottom of the buffer |
+| C-c C-s     | Send selected text to the top of the buffer    |
+| C-c C-q     | Send selected text to a trash file             |
+
+Much like code, the process of writing text is a progression of revisions where content gets transformed and refined. During these iterations, it is often desirable to move text instead of deleting it: you may have written a sentence that doesn't belong in the paragraph you're editing right now, but it might fit somewhere else. Since you don't know where exactly, you'd like to put it out of the way, not discard it entirely. Palimpsest saves you from the traveling back and forth between your current position and the bottom of your document (or another draft or trash document).
+
+Next time you're writing fiction, non-fiction, a journalistic piece or a blog post using Emacs, give palimpsest-mode a try. You might even try it while coding in a functional language, moving stuff around sprightly, aided by an abstraction reminiscent of the Read-Eval-Print loop, yet completely orthogonal.
+#+begin_src emacs-lisp
+(add-hook 'text-mode-hook 'palimpsest-mode)
+
+;; (map!
+       ;; :leader
+      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
+#+end_src
+
+** Grammar Checker
+#+begin_src emacs-lisp
+;; (require 'flycheck-vale)
+;; (flycheck-vale-setup)
+(flycheck-mode -1)
+#+end_src
+** Abbrev-Mode
+Auto expansion for Abbrev-mode.
+#+begin_src emacs-lisp
+;; Enable abbreviation mode
+(add-hook 'text-mode-hook 'abbrev-mode)
+#+end_src
+* PROGRAMMING STUFF
+** Blamer
+A git blame plugin for emacs inspired by [[https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens][VS Code’s GitLens plugin]] and [[https://github.com/APZelos/blamer.nvim][Vim plugin.]]
+#+begin_src emacs-lisp
+(use-package blamer
+  :bind (("s-i" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t))))
+  ;; :config
+  ;; (global-blamer-mode 1))
+#+end_src
+
+** Magit
+Magit is a complete text-based user interface to Git. It fills the glaring gap between the Git command-line interface and various GUIs, letting you perform trivial as well as elaborate version control tasks with just a couple of mnemonic key presses. Magit looks like a prettified version of what you get after running a few Git commands but in Magit every bit of visible information is also actionable to an extent that goes far beyond what any Git GUI provides and it takes care of automatically refreshing this output when it becomes outdated. In the background Magit just runs Git commands and if you wish you can see what exactly is being run, making it possible for you to learn the git command-line by using Magit. So I added a keybinding to open Magit instead of having to use <M-x> every time.
+#+begin_src emacs-lisp
+(map! :leader
+      (:desc "Open Magit" "g m" #'magit))
+#+end_src
+
+** YAsnippet
+YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
+#+begin_src emacs-lisp
+(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+(yas-global-mode 1)
+#+end_src
+
+** Web-Mode
+These are my hooks for web-mode.
+#+begin_src emacs-lisp
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+#+end_src
+
+** Codeium.el
+/Free, ultrafast, extensible AI code completion tool for Emacs/
+codeium.el is an open source client and (mostly) written by Alan Chen. It uses a proprietary language server binary, currently downloaded (automatically, with confirmation) from [[https://github.com/Exafunction/codeium/releases/][here]]. Use M-x codeium-diagnose to see apis/fields that would be sent to the local language server, and the command used to run the local language server. Customize codeium-api-enabled, codeium-fields-regexps and codeium-command to change them.
 * Dired
 Dired is the file manager within Emacs.  Below, I setup keybindings for image previews (peep-dired).  Doom Emacs does not use 'SPC d' for any of its keybindings, so I've chosen the format of 'SPC d' plus 'key'.
 
@@ -259,106 +615,6 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
 #+end_src
-
-* Doom-Dashboard
-This is where I customize the DOOM emacs Dashboard. I have a custom banner set. I have also disabled some of the short cuts on the default start page. It will alsow show you a different message based on what OS you are running.
-#+begin_src emacs-lisp
-(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
-(assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
-
-(cond ((eq system-type 'darwin)
-       (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the 🍎 walled garden!"))))
-      ((eq system-type 'gnu/linux)
-        (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye 🐂 Oxen and 🐧 Penguins!"))))
-      ((eq system-type 'windows-nt)
-       (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
-
-(defun gw/doom-art ()
-  (let* ((banner'("______ _____ ____ ___ ___"
-                  "`  _  V  _  V  _ \\|  V  ´"
-                  "| | | | | | | | | |     |"
-                  "| | | | | | | | | | . . |"
-                  "| |/ / \\ \\| | |/ /\\ |V| |"
-                  "|   /   \\__/ \\__/  \\| | |"
-                  "|  /                ' | |"
-                  "| /     E M A C S     \\ |"
-                  "´´                     ``"))
-         (longest-line (apply #'max (mapcar #'length banner))))
-    (put-text-property
-     (point)
-     (dolist (line banner (point))
-       (insert (+doom-dashboard--center
-                +doom-dashboard--width
-                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-               "\n"))
-     'face 'doom-dashboard-banner)))
-
-(setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
-#+end_src
-
-* Emojis
-Emojify is an Emacs extension to display emojis. It can display github style emojis like :smile: or plain ascii ones like :).
-
-#+begin_src emacs-lisp
-(use-package emojify
-  :hook (after-init . global-emojify-mode))
-
-#+end_src
-
-* Elfeed
-An RSS newsfeed reader for Emacs.
-#+BEGIN_SRC emacs-lisp
-(use-package elfeed-goodies
-  :init
-  (elfeed-goodies/setup)
-  :config
-  (setq elfeed-goodies/entry-pane-size 0.5))
-
-(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-(evil-define-key 'normal elfeed-show-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-(evil-define-key 'normal elfeed-search-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-
-(setq elfeed-feeds (quote
-                     (
-                     ;; General
-                     ("https://frame.work/blog.rss" Framework)
-                     ;; Linux
-                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
-                     ("https://archlinux.org/news/" linux Arch)
-                     ("https://fedoramagazine.org/feed/" linux Fedora)
-                     ("https://endeavouros.com/news/" linux EndeavourOS)
-                     ;; Boat Stuff
-                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
-                     ("https://mobius.world/feed/" Mobius boat)
-                     ;; Emacs
-                     ("http://xenodium.com/rss.xml" emacs Xenodium)
-                     ("https://cmdln.org/post/" emacs Commandline)
-                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
-                     )))
-#+END_SRC
-
-* Fonts
-Settings related to fonts within Doom Emacs:
-+ 'doom-font' -- standard monospace font that is used for most things in Emacs.
-+ 'doom-variable-pitch-font' -- variable font which is useful in some Emacs plugins.
-+ 'doom-big-font' -- used in doom-big-font-mode; useful for presentations.
-+ 'font-lock-comment-face' -- for comments.
-+ 'font-lock-keyword-face' -- for keywords with special significance like 'setq' in elisp.
-
-#+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
-(after! doom-themes
-  (setq doom-themes-enable-bold t))
-#+END_SRC
 
 * mu4e
 [[https://macowners.club/posts/email-emacs-mu4e-macos/][Email setup in Emacs with Mu4e on macOS | macOS & (open-source) Software]]
@@ -503,59 +759,6 @@ Here are some sane defaults for mu4e.
 (setq mu4e-headers-show-threads nil)
 #+end_src
 
-* Insert Date
-Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
-
-| COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
-|-----------------------+---------------------------+-----------------------|
-| gw/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
-| gw/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
-| gw/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
-| gw/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
-
-#+begin_src emacs-lisp
-(defun gw/insert-todays-date (prefix)
-  (interactive "P")
-  (let ((format (cond
-                 ((not prefix) "%A, %B %d, %Y")
-                 ((equal prefix '(4)) "%m-%d-%Y")
-                 ((equal prefix '(16)) "%Y-%m-%d"))))
-    (insert (format-time-string format))))
-
-(require 'calendar)
-(defun gw/insert-any-date (date)
-  "Insert DATE using the current locale."
-  (interactive (list (calendar-read-date)))
-  (insert (calendar-date-string date)))
-
-(map! :leader
-      (:prefix ("i d" . "Insert date")
-        :desc "Insert any date" "a" #'gw/insert-any-date
-        :desc "Insert todays date" "t" #'gw/insert-todays-date))
-#+end_src
-
-* Line Settings
-I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for me. The standard Emacs keybinding for comment-line is 'C-x C-;'.  The other keybindings are for commands that toggle on/off various line-related settings.  Doom Emacs uses 'SPC t' for "toggle" commands, so I choose 'SPC t' plus 'key' for those bindings.
-
-| COMMAND                  | DESCRIPTION                               | KEYBINDING  |
-|--------------------------+-------------------------------------------+-------------|
-| comment-line             | /Comment or uncomment lines/                | SPC TAB TAB |
-| hl-line-mode             | /Toggle line highlighting in current frame/ | SPC t h     |
-| global-hl-line-mode      | /Toggle line highlighting globally/         | SPC t H     |
-| doom/toggle-line-numbers | /Toggle line numbers/                       | SPC t l     |
-| toggle-truncate-lines    | /Toggle truncate lines/                     | SPC t t     |
-
-#+BEGIN_SRC emacs-lisp
-(setq display-line-numbers-type nil)
-(map! :leader
-      :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
-      (:prefix ("t" . "toggle")
-       :desc "Toggle line numbers" "l" #'doom/toggle-line-numbers
-       :desc "Toggle line highlight in frame" "h" #'hl-line-mode
-       :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
-       :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
-#+END_SRC
-
 * Markdown
 
 #+begin_src emacs-lisp
@@ -570,22 +773,10 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
 
 #+end_src
 
-* Modeline
-The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
-https://github.com/seagle0128/doom-modeline
+* ORG-MODE
+I wrapped most of this block in (after! org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal by adding (+journal) to the org section of my Doom Emacs init.el.
 
-#+begin_src emacs-lisp
-(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-(setq doom-modeline-height 30     ;; sets modeline height
-      doom-modeline-bar-width 5   ;; sets right bar width
-      doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
-      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
-      )
-#+end_src
-
-* Org-Mode
-I wrapped most of this block in (after! org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal, org-superstar by adding (+journal +pretty) to the org section of my Doom Emacs init.el.
-
+** Org-Settings
 #+BEGIN_SRC emacs-lisp
 (map! :leader
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
@@ -593,13 +784,9 @@ I wrapped most of this block in (after! org). Without this, my settings might be
   (setq org-directory "~/Documents/"
         org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        ;; org-ellipsis " ▼ "
         org-archive-location "~/Documents/archive.org::"
         org-ellipsis " ↴ "
         ;; org-ellipsis" ⤷ "
-        org-superstar-headline-bullets-list '("◉" "●" "○" "✿" "✸" "◆" "○")
-        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
-        ;; org-list-demote-modify-bullet '(("+" . "*") ("*" . "-") ("-" . "+"))
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -620,303 +807,19 @@ I wrapped most of this block in (after! org). Without this, my settings might be
   )
 #+END_SRC
 
-** Org fonts
-I have created an interactive function for each color scheme (M-x gw/org-colors-*).  These functions will set appropriate colors and font attributes for org-level fonts and the org-table font.
+** Org-fonts
 #+begin_src emacs-lisp
-(after! org
-(defun gw/org-colors-doom-one ()
-  "Enable Doom One colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#51afef" ultra-bold)
-         (org-level-2 1.6 "#c678dd" extra-bold)
-         (org-level-3 1.5 "#98be65" bold)
-         (org-level-4 1.4 "#da8548" semi-bold)
-         (org-level-5 1.3 "#5699af" normal)
-         (org-level-6 1.2 "#a9a1e1" normal)
-         (org-level-7 1.1 "#46d9ff" normal)
-         (org-level-8 1.0 "#ff6c6b" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-gruvbox-dark ()
-  "Enable Gruvbox Dark colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#fb4934" ultra-bold)
-         (org-level-2 1.6 "#fe8019" extra-bold)
-         (org-level-3 1.5 "#8ec07c" bold)
-         (org-level-4 1.4 "#98971a" semi-bold)
-         (org-level-5 1.3 "#83a598" normal)
-         (org-level-6 1.2 "#458588" normal)
-         (org-level-7 1.1 "#d3869b" normal)
-         (org-level-8 1.0 "#b16286" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-monokai-pro ()
-  "Enable Monokai Pro colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#ff6188" ultra-bold)
-         (org-level-2 1.6 "#fc9867" extra-bold)
-         (org-level-3 1.5 "#ffd866" bold)
-         (org-level-4 1.4 "#A9DC76" semi-bold)
-         (org-level-5 1.3 "#78DCE8" normal)
-         (org-level-6 1.2 "#81A2BE" normal)
-         (org-level-7 1.1 "#AB9DF2" normal)
-         (org-level-8 1.0 "#CC6666" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-nord ()
-  "Enable Nord colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#81a1c1" ultra-bold)
-         (org-level-2 1.6 "#b48ead" extra-bold)
-         (org-level-3 1.5 "#a3be8c" bold)
-         (org-level-4 1.4 "#ebcb8b" semi-bold)
-         (org-level-5 1.3 "#bf616a" normal)
-         (org-level-6 1.2 "#88c0d0" normal)
-         (org-level-7 1.1 "#81a1c1" normal)
-         (org-level-8 1.0 "#b48ead" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-oceanic-next ()
-  "Enable Oceanic Next colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#EC5f67" ultra-bold)
-         (org-level-2 1.6 "#F99157" extra-bold)
-         (org-level-3 1.5 "#fac863" bold)
-         (org-level-4 1.4 "#99C794" semi-bold)
-         (org-level-5 1.3 "#5fb3b3" normal)
-         (org-level-6 1.2 "#ec5f67" normal)
-         (org-level-7 1.1 "#6699cc" normal)
-         (org-level-8 1.0 "#c594c5" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-palenight ()
-  "Enable Palenight colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#82aaff" ultra-bold)
-         (org-level-2 1.6 "#c792ea" extra-bold)
-         (org-level-3 1.5 "#c3e88d" bold)
-         (org-level-4 1.4 "#ffcb6b" semi-bold)
-         (org-level-5 1.3 "#a3f7ff" normal)
-         (org-level-6 1.2 "#e1acff" normal)
-         (org-level-7 1.1 "#f07178" normal)
-         (org-level-8 1.0 "#ddffa7" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-solarized-dark ()
-  "Enable Solarized Dark colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#dc322f" ultra-bold)
-         (org-level-2 1.6 "#cb4b16" extra-bold)
-         (org-level-3 1.5 "#b58900" bold)
-         (org-level-4 1.4 "#859900" semi-bold)
-         (org-level-5 1.3 "#35a69c" normal)
-         (org-level-6 1.2 "#268bd2;" normal)
-         (org-level-7 1.1 "#3F88AD" normal)
-         (org-level-8 1.0 "#6c71c4" normal)))
-
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-solarized-light ()
-  "Enable Solarized Light colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#dc322f" ultra-bold)
-         (org-level-2 1.6 "#b58900" extra-bold)
-         (org-level-3 1.5 "#cb4b16" bold)
-         (org-level-4 1.4 "#2aa198" semi-bold)
-         (org-level-5 1.3 "#268bd2" normal)
-         (org-level-6 1.2 "#6c71c4" normal)
-         (org-level-7 1.1 "#657b83" normal)
-         (org-level-8 1.0 "#859900" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-tomorrow-night ()
-  "Enable Tomorrow Night colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#81a2be" ultra-bold)
-         (org-level-2 1.6 "#b294bb" extra-bold)
-         (org-level-3 1.5 "#b5bd68" bold)
-         (org-level-4 1.4 "#e6c547" semi-bold)
-         (org-level-5 1.3 "#cc6666" normal)
-         (org-level-6 1.2 "#70c0ba" normal)
-         (org-level-7 1.1 "#b77ee0" normal)
-         (org-level-8 1.0 "#9ec400" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
-
-(defun gw/org-colors-henna ()
-  "Enable Henna colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#e74c3c" ultra-bold)
-         (org-level-2 1.6 "#56b5c2" extra-bold)
-         (org-level-3 1.5 "#53df83" bold)
-         (org-level-4 1.4 "#1abc9c" semi-bold)
-         (org-level-5 1.3 "#ECBE7B" normal)
-         (org-level-6 1.2 "#C5A3FF" normal)
-         (org-level-7 1.1 "#FFB8D1" normal)
-         (org-level-8 1.0 "" normal)))))
-
-(defun gw/org-colors-doom-one-alt ()
-  "Enable an alternitive set of Doom One colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#ff6c6b" ultra-bold)
-         (org-level-2 1.6 "#da8548" extra-bold)
-         (org-level-3 1.5 "#ECBE7B" bold)
-         (org-level-4 1.4 "#98be65" semi-bold)
-         (org-level-5 1.3 "#51afef" normal)
-         (org-level-6 1.2 "#2257A0" normal)
-         (org-level-7 1.1 "#c678dd" normal)
-         (org-level-8 1.0 "#a9a1e1" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bbc2cf"))
-
-(defun gw/org-colors-old-hope ()
-  "Enable Doom Old Hope colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#ea3d54" ultra-bold)
-         (org-level-2 1.6 "#ee7b29" extra-bold)
-         (org-level-3 1.5 "#78bd65" bold)
-         (org-level-4 1.4 "#4fb3d8" semi-bold)
-         (org-level-5 1.3 "#fedd38" normal)
-         (org-level-6 1.2 "#ee7b29" normal)
-         (org-level-7 1.1 "#78bd65" normal)
-         (org-level-8 1.0 "#b978ab" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1")
-    (when (eq (car-safe custom-enabled-themes) 'doom-old-hope)
-    (gw/org-colors-old-hope)))
-
-(defun gw/org-colors-peacock ()
-  "Enable Doom Peacock colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#ff5d38" ultra-bold)
-         (org-level-2 1.6 "#26a6a6" extra-bold)
-         (org-level-3 1.5 "#cb4b16" bold)
-         (org-level-4 1.4 "#98be65" semi-bold)
-         (org-level-5 1.3 "#4fb3d8" normal)
-         (org-level-6 1.2 "#2257A0" normal)
-         (org-level-7 1.1 "#c678dd" normal)
-         (org-level-8 1.0 "#a9a1e1" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
-
-(defun gw/org-colors-1337 ()
-  "Enable Doom 1337 colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#FF5E5E" ultra-bold)
-         (org-level-2 1.6 "#FC9354" extra-bold)
-         (org-level-3 1.5 "#E9FDAC" bold)
-         (org-level-4 1.4 "#B5CEA8" semi-bold)
-         (org-level-5 1.3 "#468800" normal)
-         (org-level-6 1.2 "#35CDAF" normal)
-         (org-level-7 1.1 "#8CDAFF" normal)
-         (org-level-8 1.0 "#C586C0" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
-
-(defun gw/org-colors-oksolar-dark ()
-  "Enable OKSolar Dark Colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#F23749" ultra-bold)
-         (org-level-2 1.6 "#819500" extra-bold)
-         (org-level-3 1.5 "#D56500" bold)
-         (org-level-4 1.4 "#AC8300" semi-bold)
-         (org-level-5 1.3 "#35A69C" normal)
-         (org-level-6 1.2 "#2B90D8" normal)
-         (org-level-7 1.1 "#3F88AD" normal)
-         (org-level-8 1.0 "#DD459D" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#BBBBBB"))
-
-(defun gw/org-colors-spacegrey ()
-  "Enable Spacegrey Colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#BF616A" ultra-bold)
-         (org-level-2 1.6 "#D08770" extra-bold)
-         (org-level-3 1.5 "#ECBE7B" bold)
-         (org-level-4 1.4 "#A3BE8C" semi-bold)
-         (org-level-5 1.3 "#4db5bd" normal)
-         (org-level-6 1.2 "#2B90D8" normal)
-         (org-level-7 1.1 "#2257A0" normal)
-         (org-level-8 1.0 "#c678dd" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccd1"))
-
-(defun gw/org-colors-ayu-mirrage ()
-  "Enable Spacegrey Colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#ff3333" ultra-bold)
-         (org-level-2 1.6 "#ffa759" extra-bold)
-         (org-level-3 1.5 "#ffd580" bold)
-         (org-level-4 1.4 "#bae67e" semi-bold)
-         (org-level-5 1.3 "#95e6cb" normal)
-         (org-level-6 1.2 "#5ccfe6" normal)
-         (org-level-7 1.1 "#73d0ff" normal)
-         (org-level-8 1.0 "#d4bfff" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
-
-(defun gw/org-colors-xcode ()
-  "Enable Spacegrey Colors for Org headers."
-  (interactive)
-  (dolist
-      (face
-       '((org-level-1 1.7 "#FC6A5D" ultra-bold)
-         (org-level-2 1.6 "#FD8F3F" extra-bold)
-         (org-level-3 1.5 "#D0BF68" bold)
-         (org-level-4 1.4 "#67B7A4" semi-bold)
-         (org-level-5 1.3 "#95e6cb" normal)
-         (org-level-6 1.2 "#5DD8FF" normal)
-         (org-level-7 1.1 "#59B0CF" normal)
-         (org-level-8 1.0 "#D0A8FF" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#cbccc6"))
-
-;; Load our desired gw/org-colors-* theme on startup
-    (gw/org-colors-doom-one-alt))
-;; )
+  (custom-set-faces
+   '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
+   '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
+   '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
+   '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
+   '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
+   '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
+   '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
 #+end_src
+
+
 ** Org-agenda
 This is a way for me to archive my TODOs from my Schedule.org. As well as put TODO's into file for mildly interesting things that I want to look at someday.
 #+begin_src emacs-lisp
@@ -992,12 +895,6 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
        ))
 #+end_src
 
-** Org-modern
-This package implements a modern style for your Org buffers using font locking and text properties. The package styles headlines, keywords, tables and source blocks. The styling is configurable, you can enable, disable or modify the style of each syntax element individually via the org-modern customization group.
-#+begin_src emacs-lisp
-;; (with-eval-after-load 'org (global-org-modern-mode))
-#+end_src
-
 
 ** Org-journal
 #+begin_src emacs-lisp
@@ -1006,12 +903,6 @@ This package implements a modern style for your Org buffers using font locking a
       org-journal-time-prefix "** "
       org-journal-date-format "%B %d, %Y (%A) "
       org-journal-file-format "%Y-%m-%d.org")
-#+end_src
-
-** Org-publish
-#+begin_src emacs-lisp
-(setq org-publish-use-timestamps-flag nil)
-(setq org-export-with-broken-links t)
 #+end_src
 
 
@@ -1024,93 +915,6 @@ This package implements a modern style for your Org buffers using font locking a
   :hook (org-mode . org-auto-tangle-mode)
   :config
   (setq org-auto-tangle-default t))
-#+end_src
-
-** Org-Roam
-Org-Roam is a plain-text personal knowledge management system.
-#+begin_src emacs-lisp
-(use-package org-roam
-:ensure t
-:init
-(setq org-roam-v2-ack t)
-:custom
-(org-roam-directory "~/Notes")
-(org-roam-completion-everywhere t)
-:bind (("C-c n l" . org-roam-buffer-toggle)
-       ("C-c n f" . org-roam-node-find)
-       ("C-c n i" . org-roam-node-insert)
-       :map org-mode-map
-       ("C-M-i" . completion-at-point))
-:config
-(org-roam-setup))
-#+end_src
-
-** Org-tree-slides
-Customization for Org-tree-slides.
-#+begin_src emacs-lisp
-
-(use-package hide-mode-line)
-
-(defun gw/presentation-setup ()
-  (interactive)
-  ;; Hide the mode line
-  (hide-mode-line-mode 1)
-
-  ;; Display images inline
-  (org-display-inline-images) ;; Can also use org-startup-with-inline-images
-
-  ;; Scale the text.  The next line is for basic scaling:
-  (setq text-scale-mode-amount 3)
-  (text-scale-mode 1))
-
-  ;; This option is more advanced, allows you to scale other faces too
-  ;; (setq-local face-remapping-alist '((default (:height 2.0) variable-pitch)
-  ;;                                    (org-verbatim (:height 1.75) org-verbatim)
-  ;;                                    (org-block (:height 1.25) org-block))))
-
-(defun gw/presentation-end ()
-  (interactive)
-  ;; Show the mode line again
-  (hide-mode-line-mode 0)
-
-  ;; Turn off text scale mode (or use the next line if you didn't use text-scale-mode)
-  ;; (text-scale-mode 0))
-
-  ;; If you use face-remapping-alist, this clears the scaling:
-  (setq-local face-remapping-alist '((default variable-pitch default))))
-
-(use-package org-tree-slide
-  :hook ((org-tree-slide-play . gw/presentation-setup)
-         (org-tree-slide-stop . gw/presentation-end))
-  :custom
-  (org-tree-slide-slide-in-effect t)
-  (org-tree-slide-activate-message "Presentation started!")
-  (org-tree-slide-deactivate-message "Presentation finished!")
-  (org-tree-slide-header t)
-  (org-tree-slide-breadcrumbs " > ")
-  (org-image-actual-width nil))
-#+end_src
-
-** TODO-hl
-Highlight TODO and similar keywords in comments and strings. Here I have set a TODO to be turquoise, FIXME to be red and, DONE to be green.
-#+begin_src emacs-lisp
-(setq global-hl-todo-mode 1)
-
-(defun gw/todo-hl-oksolar-dark ()
-  "Set TODO Colors to the OKSOLAR colors"
-  (interactive)
- (setq hl-todo-keyword-faces
-       '(("TODO"   . "#35A69C")
-         ("FIXME"  . "#F23749")
-         ("WAIT"   . "#7D80D1"))))
-(defun gw/todo-hl-henna ()
-  (interactive)
-  (setq hl-todo-keyword-faces
-        '(("TODO"  . "#1abc9c")
-          ("FIXME" . "#e74c3c")
-          ("WAIT"  . "#C5A3FF"))))
-
-(gw/todo-hl-oksolar-dark)
 #+end_src
 
 ** Custom Functions
@@ -1127,14 +931,6 @@ Highlight TODO and similar keywords in comments and strings. Here I have set a T
       (doom-big-font-mode))))
 #+end_src
 
-** Cycle-list-bullets
-There seems to be no keybindings for this so I want to set it to META TAB.
-#+begin_src emacs-lisp
-;; (map!
- ;; :meta
- ;; (:desc "Cycle through the different bullets" "TAB" #'org-cycle-list-bullets))
-#+end_src
-
 ** Org-Novelist
 #+begin_src emacs-lisp
 (load "~/.config/doom/org-novelist.el")
@@ -1143,84 +939,33 @@ There seems to be no keybindings for this so I want to set it to META TAB.
           ;; org-novelist-author-email "gardner@gamewarrior.xyz"  ; The default author contact email to use when exporting a story. Each story can also override this setting
           ;; org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 #+end_src
-
-
-* Spell Checker
-This is where I set GNU Aspell as my default spell checker.
+** Org-Bullets
 #+begin_src emacs-lisp
-(use-package jinx
-  :hook (emacs-startup . global-jinx-mode))
-
-(map! :leader
-      (:desc "Check Word" "s w" #'jinx-correct))
-#+end_src
-
-* Grammar Checker
-#+begin_src emacs-lisp
-;; (require 'flycheck-vale)
-;; (flycheck-vale-setup)
-(flycheck-mode -1)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 #+end_src
 
 
-* Rainbow Mode
-Rainbow mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
+
+** Source Code Block Tag Expansion
+Org-tempo is not a separate package but a module within org that can be enabled.  Org-tempo allows for '<s' followed by TAB to expand to a begin_src tag.  Other expansions available include:
+
+| Typing the below + TAB | Expands to ...                          |
+|------------------------+-----------------------------------------|
+| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
+| <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
+| <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
+| <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
+| <E                     | '#+BEGIN_EXPORT' … '#+END_EXPORT'       |
+| <h                     | '#+BEGIN_EXPORT html' … '#+END_EXPORT'  |
+| <l                     | '#+BEGIN_EXPORT latex' … '#+END_EXPORT' |
+| <q                     | '#+BEGIN_QUOTE' … '#+END_QUOTE'         |
+| <s                     | '#+BEGIN_SRC' … '#+END_SRC'             |
+| <v                     | '#+BEGIN_VERSE' … '#+END_VERSE'         |
 
 #+begin_src emacs-lisp
-(define-globalized-minor-mode global-rainbow-mode rainbow-mode
-  (lambda ()
-    (when (not (memq major-mode
-                (list 'org-agenda-mode)))
-     (rainbow-mode 1))))
-(global-rainbow-mode 1 )
+(require 'org-tempo)
 #+end_src
 
-* Switching Windows
-Here is where I set my keybindings for switching between windows.
-#+begin_src emacs-lisp
-(global-set-key (kbd "M-b") 'ace-window)
-#+end_src
-
-* YAsnippet
-YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
-#+begin_src emacs-lisp
-(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(yas-global-mode 1)
-#+end_src
-
-* Palimpsest-Mode
-This minor mode for Emacs provides several strategies to remove text without permanently deleting it. Namely, it provides the following capabilities:
-| Keybindings | Action                                         |
-|-------------+------------------------------------------------|
-| C-c C-r     | Send selected text to the bottom of the buffer |
-| C-c C-s     | Send selected text to the top of the buffer    |
-| C-c C-q     | Send selected text to a trash file             |
-
-Much like code, the process of writing text is a progression of revisions where content gets transformed and refined. During these iterations, it is often desirable to move text instead of deleting it: you may have written a sentence that doesn't belong in the paragraph you're editing right now, but it might fit somewhere else. Since you don't know where exactly, you'd like to put it out of the way, not discard it entirely. Palimpsest saves you from the traveling back and forth between your current position and the bottom of your document (or another draft or trash document).
-
-Next time you're writing fiction, non-fiction, a journalistic piece or a blog post using Emacs, give palimpsest-mode a try. You might even try it while coding in a functional language, moving stuff around sprightly, aided by an abstraction reminiscent of the Read-Eval-Print loop, yet completely orthogonal.
-#+begin_src emacs-lisp
-(add-hook 'text-mode-hook 'palimpsest-mode)
-
-;; (map!
-       ;; :leader
-      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
-#+end_src
-
-* Web-Mode
-These are my hooks for web-mode.
-#+begin_src emacs-lisp
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-#+end_src
 
 * Mastodon
 mastodon.el is an Emacs client for the AcitivityPub social networks that implement the Mastodon API.
@@ -1238,119 +983,6 @@ This provides an alternative layout for the mastodon client.
 #+end_src
 
 
-* Abbrev-Mode
-Auto expansion for Abbrev-mode.
-#+begin_src emacs-lisp
-;; Enable abbreviation mode
-(add-hook 'text-mode-hook 'abbrev-mode)
-#+end_src
-
-* Go-Translate
-This is a translation framework for emacs, and is flexible and powerful.
-#+begin_src emacs-lisp
-(require 'go-translate)
-
-(setq gts-translate-list '(("en" "zh")))
-
-;; (setq gts-default-translator (gts-translator :engines (gts-bing-engine)))
-
-(setq gts-default-translator
-      (gts-translator
-       :picker (gts-prompt-picker)
-       :engines (list (gts-bing-engine) (gts-google-engine))
-       :render (gts-buffer-render)))
-#+end_src
-
-* Codeium.el
-/Free, ultrafast, extensible AI code completion tool for Emacs/
-codeium.el is an open source client and (mostly) written by Alan Chen. It uses a proprietary language server binary, currently downloaded (automatically, with confirmation) from [[https://github.com/Exafunction/codeium/releases/][here]]. Use M-x codeium-diagnose to see apis/fields that would be sent to the local language server, and the command used to run the local language server. Customize codeium-api-enabled, codeium-fields-regexps and codeium-command to change them.
-* Display-Time
-Enabling display-time-mode so it will show a clock in the modeline
-#+begin_src emacs-lisp
-(setq display-time-day-and-date t)
-#+end_src
-
-* IBuffer
-I changed some of the default keybindings in IBuffer so that "h" will close the current buffer and "l" will open the currently selected buffer.
-#+begin_src emacs-lisp
-(map! :after ibuffer
-      :map ibuffer-mode-map
-      :n "l" #'ibuffer-visit-buffer
-      :n "h" #'kill-current-buffer)
-#+end_src
-* Olivetti
-#+begin_src emacs-lisp
-(setq olivetti-style 'fringes-and-margins)
-#+end_src
-* Writeroom
-I think Doom is a bit over-zealous when zooming in.
-#+begin_src emacs-lisp
-(setq +zen-text-scale 0.8)
-#+end_src
-
-* Magit
-Magit is a complete text-based user interface to Git. It fills the glaring gap between the Git command-line interface and various GUIs, letting you perform trivial as well as elaborate version control tasks with just a couple of mnemonic key presses. Magit looks like a prettified version of what you get after running a few Git commands but in Magit every bit of visible information is also actionable to an extent that goes far beyond what any Git GUI provides and it takes care of automatically refreshing this output when it becomes outdated. In the background Magit just runs Git commands and if you wish you can see what exactly is being run, making it possible for you to learn the git command-line by using Magit. So I added a keybinding to open Magit instead of having to use <M-x> every time.
-#+begin_src emacs-lisp
-(map! :leader
-      (:desc "Open Magit" "g m" #'magit))
-#+end_src
-
-* Writegood-Mode
-#+begin_src emacs-lisp
-(add-hook 'text-mode-hook 'writegood-mode)
-
-(setq gw/weasel-words
-      '("actually"
-        "basically"
-        "easily"
-        "easy"
-        "simple"
-        "simply"))
-;; (setq writegood-weasel-words
-      ;; (-concat writegood-weasel-words gw/weasel-words))
-;; (map!
-        ;; :leader
-        ;; (:desc ""))
-#+end_src
-
-* Blamer
-A git blame plugin for emacs inspired by [[https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens][VS Code’s GitLens plugin]] and [[https://github.com/APZelos/blamer.nvim][Vim plugin.]]
-#+begin_src emacs-lisp
-(use-package blamer
-  :bind (("s-i" . blamer-show-commit-info))
-  :defer 20
-  :custom
-  (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
-                    :height 140
-                    :italic t))))
-  ;; :config
-  ;; (global-blamer-mode 1))
-#+end_src
-
-* Nov.el
-nov.el provides a major mode for reading EPUB documents
-#+begin_src emacs-lisp
-(setq nov-unzip-program (executable-find "bsdtar")
-      nov-unzip-args '("-xC" directory "-f" filename))
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-#+end_src
-
-* xWidgets-Browser
-#+begin_src emacs-lisp
-(map!
- :leader
- (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
-#+end_src
-
-* Burly
-This package provides tools to save and restore frame and window configurations in Emacs, including buffers that may not be live anymore. In this way, it’s like a lightweight “workspace” manager, allowing you to easily restore one or more frames, including their windows, the windows’ layout, and their buffers.
-#+begin_src emacs-lisp
-#+end_src
-
 * Eshell
 ** Aliases
 #+begin_src emacs-lisp
@@ -1364,30 +996,3 @@ This package provides tools to save and restore frame and window configurations 
         eshell-prompt-function 'epe-theme-lambda))
 #+end_src
 
-* Synosaurus
-Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
-#+begin_src emacs-lisp
-(map!
- :leader
- (:desc "List Synonyms for word at point" "t n" #'synosaurus-choose-and-insert))
-#+end_src
-* Typing Practice
-The typing-practice package runs solely in the minibuffer, so your boss thinks you are working 😊. It utilizes a database of the 1000 most commonly used English words, and let’s you customize how easy or difficult a session will be through a couple of variables. Before long, your hand should have a good feel for all of the most common English morphemes, giving you the foundation to quickly build other words with morphemes you’ve already learned. For example, after you have learned to type the word “the” (the most common English word) you will have a building block for quickly typing “there”, “these”, “their”, “father”, “they”, “other”, “together”, etc.
-#+begin_src emacs-lisp
-(load "~/.config/doom/typing-practice.el")
-
-(defadvice practice-typing (around no-cursor activate)
-  "Do not show cursor at minibuffer during typing practice."
-  (let ((minibuffer-setup-hook
-         (cons (lambda () (setq cursor-type nil))
-               minibuffer-setup-hook)))
-    ad-do-it))
-#+end_src
-
-* Weather
-** Noaa
-#+begin_src emacs-lisp
-;; set latitude and longitude for noaa.el
-(setq noaa-latitude 45)
-(setq noaa-longitude 120)
-#+end_src

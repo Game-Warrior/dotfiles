@@ -88,7 +88,7 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       ;; (spell +aspell)     ; tasing you for misspelling mispelling
+       ;; (spell +aspell)  ; tasing you for misspelling mispelling
        grammar             ; tasing grammar mistake every you make
 
        :tools
@@ -129,9 +129,9 @@
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
        ;;data              ; config/data formats
-       (dart               ; paint ui and not much else
-       +flutter
-       +lsp)
+       ;; (dart            ; paint ui and not much else
+       ;; +flutter
+       ;; +lsp)
        ;;dhall
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
@@ -144,16 +144,16 @@
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       (go +lsp)           ; the hipster dialect
+       ;; (go +lsp)           ; the hipster dialect
        ;;(graphql +lsp)    ; Give queries a REST
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        ;;json              ; At least it ain't XML
-       ;; (java +lsp)       ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       ;; (java +lsp)      ; the poster child for carpal tunnel syndrome
+       ;; javascript          ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
-       (kotlin +lsp)       ; a better, slicker Java(Script)
+       ;; (kotlin +lsp)       ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
@@ -165,7 +165,6 @@
        (org                ; organize your plain life in plain text
         +dragndrop         ; drag & drop files/images into org buffers
         +journal           ; enable org journal
-        +pretty            ; replace asterisks with pretty org bullets
         +present           ; using org-mode for presentations
         +publish)          ; create static websites with org
        ;;php               ; perl's insecure younger brother
@@ -184,7 +183,7 @@
        sh                  ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
-       swift             ; who asked for emoji variables?
+       ;; swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        web                 ; the tubes
        yaml                ; JSON, but readable
