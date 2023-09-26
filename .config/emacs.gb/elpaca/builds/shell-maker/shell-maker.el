@@ -1,0 +1,1 @@
+/Users/gb/.config/emacs/elpaca/repos/chatgpt-shell/shell-maker.el
