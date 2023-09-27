@@ -119,3 +119,4 @@
 (package! fireplace)
 (package! jinx)
 (package! org-bullets)
+(package! mood-line)

@@ -15,20 +15,20 @@
   - [[#pixel-scrolling-mode][Pixel Scrolling Mode]]
   - [[#beacon][Beacon]]
   - [[#fonts][Fonts]]
-  - [[#display-time][Display-Time]]
+  - [[#doom-modeline][Doom-Modeline]]
+  - [[#mood-line][Mood-Line]]
+  - [[#elfeed][Elfeed]]
+  - [[#insert-date][Insert Date]]
+  - [[#ibuffer][IBuffer]]
+  - [[#doom-dashboard][Doom-Dashboard]]
 - [[#personal-settings][PERSONAL SETTINGS]]
   - [[#chatgpt-shell][Chatgpt-Shell]]
   - [[#dall-e-shell][Dall-E-Shell]]
   - [[#setting-username-and-e-mail][Setting Username and E-Mail]]
-  - [[#doom-dashboard][Doom-Dashboard]]
   - [[#menu-bar][Menu Bar]]
   - [[#emojis][Emojis]]
   - [[#line-settings][Line Settings]]
   - [[#rainbow-mode][Rainbow Mode]]
-  - [[#modeline][Modeline]]
-  - [[#elfeed][Elfeed]]
-  - [[#insert-date][Insert Date]]
-  - [[#ibuffer][IBuffer]]
   - [[#xwidgets-browser][xWidgets-Browser]]
 - [[#writing-stuff][WRITING STUFF]]
   - [[#typing-practice][Typing Practice]]
@@ -114,7 +114,7 @@ Setting in which browser EMACS will open links
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-oksolar-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 #+end_src
@@ -127,7 +127,7 @@ Change the title bar format
 
 ** Pixel Scrolling Mode
 #+begin_src emacs-lisp
-(setq pixel-scroll-precision-mode 1)
+(pixel-scroll-precision-mode 1)
 #+end_src
 
 ** Beacon
@@ -142,40 +142,112 @@ Settings related to fonts within Doom Emacs:
 + 'doom-font' -- standard monospace font that is used for most things in Emacs.
 + 'doom-variable-pitch-font' -- variable font which is useful in some Emacs plugins.
 + 'doom-big-font' -- used in doom-big-font-mode; useful for presentations.
-+ 'font-lock-comment-face' -- for comments.
-+ 'font-lock-keyword-face' -- for keywords with special significance like 'setq' in elisp.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
+(setq doom-font (font-spec :family "JuliaMono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
+      doom-big-font (font-spec :family "JuliaMono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t))
 #+END_SRC
 
-** Display-Time
-Enabling display-time-mode so it will show a clock in the modeline
+** Doom-Modeline
+The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
+https://github.com/seagle0128/doom-modeline
+
 #+begin_src emacs-lisp
-(setq display-time-day-and-date t)
+(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
+(setq doom-modeline-height 25     ;; sets modeline height
+      doom-modeline-bar-width 5   ;; sets right bar width
+      doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
+      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
+      )
+#+end_src
+** Mood-Line
+#+begin_src emacs-lisp
+(use-package mood-line
+
+  ;; Enable mood-line
+  :config
+  (mood-line-mode))
 #+end_src
 
-* PERSONAL SETTINGS
-** Chatgpt-Shell
+** Elfeed
+An RSS newsfeed reader for Emacs.
+#+BEGIN_SRC emacs-lisp
+(use-package elfeed-goodies
+  :init
+  (elfeed-goodies/setup)
+  :config
+  (setq elfeed-goodies/entry-pane-size 0.5))
+
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+
+(setq elfeed-feeds (quote
+                     (
+                     ;; General
+                     ("https://frame.work/blog.rss" Framework)
+                     ;; Linux
+                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
+                     ("https://archlinux.org/news/" linux Arch)
+                     ("https://fedoramagazine.org/feed/" linux Fedora)
+                     ("https://endeavouros.com/news/" linux EndeavourOS)
+                     ;; Boat Stuff
+                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
+                     ("https://mobius.world/feed/" Mobius boat)
+                     ;; Emacs
+                     ("http://xenodium.com/rss.xml" emacs Xenodium)
+                     ("https://cmdln.org/post/" emacs Commandline)
+                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
+                     ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
+                     ("https://sachachua.com/blog/feed/ " emacs SachaChua)
+                     )))
+#+END_SRC
+
+** Insert Date
+Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
+
+| COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
+|-----------------------+---------------------------+-----------------------|
+| gw/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
+| gw/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
+| gw/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
+| gw/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
+
 #+begin_src emacs-lisp
-(setq chatgpt-shell-openai-key "placeholder")
+(defun gw/insert-todays-date (prefix)
+  (interactive "P")
+  (let ((format (cond
+                 ((not prefix) "%A, %B %d, %Y")
+                 ((equal prefix '(4)) "%m-%d-%Y")
+                 ((equal prefix '(16)) "%Y-%m-%d"))))
+    (insert (format-time-string format))))
+
+(require 'calendar)
+(defun gw/insert-any-date (date)
+  "Insert DATE using the current locale."
+  (interactive (list (calendar-read-date)))
+  (insert (calendar-date-string date)))
+
+(map! :leader
+      (:prefix ("i d" . "Insert date")
+        :desc "Insert any date" "a" #'gw/insert-any-date
+        :desc "Insert todays date" "t" #'gw/insert-todays-date))
 #+end_src
 
-** Dall-E-Shell
+** IBuffer
+I changed some of the default keybindings in IBuffer so that "h" will close the current buffer and "l" will open the currently selected buffer.
 #+begin_src emacs-lisp
-(setq dall-e-shell-openai-key "placeholder")
-
-#+end_src
-
-
-** Setting Username and E-Mail
-#+begin_src emacs-lisp
-(setq user-full-name "Gardner Berry"
-    user-mail-address "gardner@gardnerberry.com")
+(map! :after ibuffer
+      :map ibuffer-mode-map
+      :n "l" #'ibuffer-visit-buffer
+      :n "h" #'kill-current-buffer)
 #+end_src
 
 ** Doom-Dashboard
@@ -183,18 +255,19 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
 #+begin_src emacs-lisp
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
+;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
 (cond ((eq system-type 'darwin)
        (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the 🍎 walled garden!"))))
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the  walled garden!"))))
       ((eq system-type 'gnu/linux)
         (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye 🐂 Oxen and 🐧 Penguins!"))))
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye  Oxen and 󰻀 Penguins!"))))
       ((eq system-type 'windows-nt)
        (add-hook! '+doom-dashboard-functions :append
          (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
 
-(defun gw/doom-art ()
+(defun gw/doom-art1 ()
   (let* ((banner'("______ _____ ____ ___ ___"
                   "`  _  V  _  V  _ \\|  V  ´"
                   "| | | | | | | | | |     |"
@@ -214,7 +287,27 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
                "\n"))
      'face 'doom-dashboard-banner)))
 
-(setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
+;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
+(setq fancy-splash-image (concat doom-private-dir "images/blackhole-lines.svg"))
+#+end_src
+
+* PERSONAL SETTINGS
+** Chatgpt-Shell
+#+begin_src emacs-lisp
+(setq chatgpt-shell-openai-key "placeholder")
+#+end_src
+
+** Dall-E-Shell
+#+begin_src emacs-lisp
+(setq dall-e-shell-openai-key "placeholder")
+
+#+end_src
+
+
+** Setting Username and E-Mail
+#+begin_src emacs-lisp
+(setq user-full-name "Gardner Berry"
+    user-mail-address "gardner@gardnerberry.com")
 #+end_src
 
 ** Menu Bar
@@ -273,102 +366,13 @@ Rainbow mode displays the actual color for any hex value color.  It's such a nic
 (global-rainbow-mode 1 )
 #+end_src
 
-
-** Modeline
-The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
-https://github.com/seagle0128/doom-modeline
-
-#+begin_src emacs-lisp
-(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-(setq doom-modeline-height 25     ;; sets modeline height
-      doom-modeline-bar-width 5   ;; sets right bar width
-      doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
-      doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
-      )
-#+end_src
-
-** Elfeed
-An RSS newsfeed reader for Emacs.
-#+BEGIN_SRC emacs-lisp
-(use-package elfeed-goodies
-  :init
-  (elfeed-goodies/setup)
-  :config
-  (setq elfeed-goodies/entry-pane-size 0.5))
-
-(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-(evil-define-key 'normal elfeed-show-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-(evil-define-key 'normal elfeed-search-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-
-(setq elfeed-feeds (quote
-                     (
-                     ;; General
-                     ("https://frame.work/blog.rss" Framework)
-                     ;; Linux
-                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
-                     ("https://archlinux.org/news/" linux Arch)
-                     ("https://fedoramagazine.org/feed/" linux Fedora)
-                     ("https://endeavouros.com/news/" linux EndeavourOS)
-                     ;; Boat Stuff
-                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
-                     ("https://mobius.world/feed/" Mobius boat)
-                     ;; Emacs
-                     ("http://xenodium.com/rss.xml" emacs Xenodium)
-                     ("https://cmdln.org/post/" emacs Commandline)
-                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
-                     ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
-                     )))
-#+END_SRC
-
-** Insert Date
-Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
-
-| COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
-|-----------------------+---------------------------+-----------------------|
-| gw/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
-| gw/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
-| gw/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
-| gw/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
-
-#+begin_src emacs-lisp
-(defun gw/insert-todays-date (prefix)
-  (interactive "P")
-  (let ((format (cond
-                 ((not prefix) "%A, %B %d, %Y")
-                 ((equal prefix '(4)) "%m-%d-%Y")
-                 ((equal prefix '(16)) "%Y-%m-%d"))))
-    (insert (format-time-string format))))
-
-(require 'calendar)
-(defun gw/insert-any-date (date)
-  "Insert DATE using the current locale."
-  (interactive (list (calendar-read-date)))
-  (insert (calendar-date-string date)))
-
-(map! :leader
-      (:prefix ("i d" . "Insert date")
-        :desc "Insert any date" "a" #'gw/insert-any-date
-        :desc "Insert todays date" "t" #'gw/insert-todays-date))
-#+end_src
-
-** IBuffer
-I changed some of the default keybindings in IBuffer so that "h" will close the current buffer and "l" will open the currently selected buffer.
-#+begin_src emacs-lisp
-(map! :after ibuffer
-      :map ibuffer-mode-map
-      :n "l" #'ibuffer-visit-buffer
-      :n "h" #'kill-current-buffer)
-#+end_src
 ** xWidgets-Browser
 #+begin_src emacs-lisp
 (map!
  :leader
  (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
 #+end_src
+
 
 * WRITING STUFF
 ** Typing Practice
@@ -605,8 +609,11 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
   (kbd "* /") 'dired-mark-directories
   (kbd "; d") 'epa-dired-do-decrypt
   (kbd "; e") 'epa-dired-do-encrypt)
-;; Get file icons in dired
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+;; File Icons in Dired
+(use-package nerd-icons-dired
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+
 ;; With dired-open plugin, you can launch external programs for certain extensions
 ;; For example, I set all .png files to open in 'sxiv' and all .mp4 files to open in 'mpv'
 (setq dired-open-extensions '(("gif" . "Preview")
@@ -844,9 +851,9 @@ I copy and pasted most of this from a very interesting blog post by [[https://ka
 #+begin_src emacs-lisp
 (after! org-capture
   (setq org-capture-templates
-        '(("t" "todo" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+        '(("t" "todo" entry (file+headline "~/Documents/agenda.org")
            "* TODO %?\n  %i\n  %a")
-          ("T" "todo today" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+          ("T" "todo today" entry (file+headline "~/Documents/agenda.org")
            "* TODO %?\n  %i\nDEADLINE: %t\n  %a")
           ("i" "inbox" entry (file "~/Documents/inbox.org")
            "* %?")

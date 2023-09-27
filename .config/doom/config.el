@@ -7,93 +7,21 @@
 
 (setq browse-url-browser-function 'browse-url-default-browser)
 
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-oksolar-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
     (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(setq pixel-scroll-precision-mode 1)
+(pixel-scroll-precision-mode 1)
 
 (beacon-mode 1)
 
-(setq doom-font (font-spec :family "Jetbrains Mono" :size 15)
+(setq doom-font (font-spec :family "JuliaMono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "Jetbrains Mono" :size 24))
+      doom-big-font (font-spec :family "JuliaMono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t))
-
-(setq display-time-day-and-date t)
-
-(setq chatgpt-shell-openai-key "placeholder")
-
-(setq dall-e-shell-openai-key "placeholder")
-
-(setq user-full-name "Gardner Berry"
-    user-mail-address "gardner@gardnerberry.com")
-
-(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
-(assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
-
-(cond ((eq system-type 'darwin)
-       (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the 🍎 walled garden!"))))
-      ((eq system-type 'gnu/linux)
-        (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye 🐂 Oxen and 🐧 Penguins!"))))
-      ((eq system-type 'windows-nt)
-       (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
-
-(defun gw/doom-art ()
-  (let* ((banner'("______ _____ ____ ___ ___"
-                  "`  _  V  _  V  _ \\|  V  ´"
-                  "| | | | | | | | | |     |"
-                  "| | | | | | | | | | . . |"
-                  "| |/ / \\ \\| | |/ /\\ |V| |"
-                  "|   /   \\__/ \\__/  \\| | |"
-                  "|  /                ' | |"
-                  "| /     E M A C S     \\ |"
-                  "´´                     ``"))
-         (longest-line (apply #'max (mapcar #'length banner))))
-    (put-text-property
-     (point)
-     (dolist (line banner (point))
-       (insert (+doom-dashboard--center
-                +doom-dashboard--width
-                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-               "\n"))
-     'face 'doom-dashboard-banner)))
-
-(setq +doom-dashboard-ascii-banner-fn #'gw/doom-art)
-
-(menu-bar-mode -1)
-;; (define-key global-map [menu-bar options] nil)
-;; (define-key global-map [menu-bar file] nil)
-;; (define-key global-map [menu-bar File] nil)
-;; (define-key global-map [menu-bar edit] nil)
-;; (define-key global-map [menu-bar tools] nil)
-;; (define-key global-map [menu-bar buffer] nil)
-;; (define-key global-map [menu-bar help-menu] nil)
-
-;; (use-package emojify
-  ;; :hook (after-init . global-emojify-mode))
-
-(setq display-line-numbers-type nil)
-(map! :leader
-      :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
-      (:prefix ("t" . "toggle")
-       :desc "Toggle line numbers" "l" #'doom/toggle-line-numbers
-       :desc "Toggle line highlight in frame" "h" #'hl-line-mode
-       :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
-       :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
-
-(define-globalized-minor-mode global-rainbow-mode rainbow-mode
-  (lambda ()
-    (when (not (memq major-mode
-                (list 'org-agenda-mode)))
-     (rainbow-mode 1))))
-(global-rainbow-mode 1 )
 
 (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
 (setq doom-modeline-height 25     ;; sets modeline height
@@ -101,6 +29,12 @@
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
       )
+
+(use-package mood-line
+
+  ;; Enable mood-line
+  :config
+  (mood-line-mode))
 
 (use-package elfeed-goodies
   :init
@@ -133,6 +67,7 @@
                      ("https://cmdln.org/post/" emacs Commandline)
                      ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
                      ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
+                     ("https://sachachua.com/blog/feed/ " emacs SachaChua)
                      )))
 
 (defun gw/insert-todays-date (prefix)
@@ -158,6 +93,78 @@
       :map ibuffer-mode-map
       :n "l" #'ibuffer-visit-buffer
       :n "h" #'kill-current-buffer)
+
+(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
+(assoc-delete-all "Recently opened files" +doom-dashboard-menu-sections)
+;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+
+(cond ((eq system-type 'darwin)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the  walled garden!"))))
+      ((eq system-type 'gnu/linux)
+        (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye  Oxen and 󰻀 Penguins!"))))
+      ((eq system-type 'windows-nt)
+       (add-hook! '+doom-dashboard-functions :append
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
+
+(defun gw/doom-art1 ()
+  (let* ((banner'("______ _____ ____ ___ ___"
+                  "`  _  V  _  V  _ \\|  V  ´"
+                  "| | | | | | | | | |     |"
+                  "| | | | | | | | | | . . |"
+                  "| |/ / \\ \\| | |/ /\\ |V| |"
+                  "|   /   \\__/ \\__/  \\| | |"
+                  "|  /                ' | |"
+                  "| /     E M A C S     \\ |"
+                  "´´                     ``"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+
+;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
+(setq fancy-splash-image (concat doom-private-dir "images/blackhole-lines.svg"))
+
+(setq chatgpt-shell-openai-key "placeholder")
+
+(setq dall-e-shell-openai-key "placeholder")
+
+(setq user-full-name "Gardner Berry"
+    user-mail-address "gardner@gardnerberry.com")
+
+(menu-bar-mode -1)
+;; (define-key global-map [menu-bar options] nil)
+;; (define-key global-map [menu-bar file] nil)
+;; (define-key global-map [menu-bar File] nil)
+;; (define-key global-map [menu-bar edit] nil)
+;; (define-key global-map [menu-bar tools] nil)
+;; (define-key global-map [menu-bar buffer] nil)
+;; (define-key global-map [menu-bar help-menu] nil)
+
+;; (use-package emojify
+  ;; :hook (after-init . global-emojify-mode))
+
+(setq display-line-numbers-type nil)
+(map! :leader
+      :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
+      (:prefix ("t" . "toggle")
+       :desc "Toggle line numbers" "l" #'doom/toggle-line-numbers
+       :desc "Toggle line highlight in frame" "h" #'hl-line-mode
+       :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
+       :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
+
+(define-globalized-minor-mode global-rainbow-mode rainbow-mode
+  (lambda ()
+    (when (not (memq major-mode
+                (list 'org-agenda-mode)))
+     (rainbow-mode 1))))
+(global-rainbow-mode 1 )
 
 (map!
  :leader
@@ -285,8 +292,11 @@
   (kbd "* /") 'dired-mark-directories
   (kbd "; d") 'epa-dired-do-decrypt
   (kbd "; e") 'epa-dired-do-encrypt)
-;; Get file icons in dired
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+;; File Icons in Dired
+(use-package nerd-icons-dired
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+
 ;; With dired-open plugin, you can launch external programs for certain extensions
 ;; For example, I set all .png files to open in 'sxiv' and all .mp4 files to open in 'mpv'
 (setq dired-open-extensions '(("gif" . "Preview")
@@ -467,9 +477,9 @@
 
 (after! org-capture
   (setq org-capture-templates
-        '(("t" "todo" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+        '(("t" "todo" entry (file+headline "~/Documents/agenda.org")
            "* TODO %?\n  %i\n  %a")
-          ("T" "todo today" entry (file+headline "~/Documents/agenda.org" "%^{Headline}")
+          ("T" "todo today" entry (file+headline "~/Documents/agenda.org")
            "* TODO %?\n  %i\nDEADLINE: %t\n  %a")
           ("i" "inbox" entry (file "~/Documents/inbox.org")
            "* %?")
