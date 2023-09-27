@@ -18,6 +18,7 @@ This Script installs my configuration files for UNIX like operating systems.
   - [[#copying-the-rest-of-my-configs][Copying the rest of my configs]]
 - [[#installing-things-with-homebrew][Installing things with Homebrew]]
   - [[#installing-emacs][Installing Emacs]]
+  - [[#installing-things-that-need-to-not-be-quarantined][Installing things that need to not be quarantined]]
 - [[#installing-doom-emacs][Installing Doom Emacs]]
 - [[#new-directories][New Directories]]
   - [[#developer][Developer]]
@@ -103,6 +104,7 @@ do
     esac
 done
 #+end_src
+** Installing things that need to not be quarantined
 
 * Installing Doom Emacs
 #+begin_src shell

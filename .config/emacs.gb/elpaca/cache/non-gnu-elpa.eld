@@ -1,1 +1,0 @@
-((htmlize :source "NonGNU ELPA" :url "https://elpa.nongnu.org/nongnu/htmlize.html" :description "Convert buffer text and decorations to HTML." :recipe (:package "htmlize" :repo "git://git.sv.gnu.org/emacs/nongnu" :local-repo "htmlize" :branch "elpa-release/htmlize" :files ("*" (:exclude ".git" "htmlize.el.html")))))

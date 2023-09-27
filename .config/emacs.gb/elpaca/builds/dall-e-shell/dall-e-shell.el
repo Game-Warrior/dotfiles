@@ -1,1 +1,0 @@
-/Users/gb/.config/emacs/elpaca/repos/chatgpt-shell/dall-e-shell.el
