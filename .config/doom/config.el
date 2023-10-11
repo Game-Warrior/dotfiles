@@ -7,7 +7,7 @@
 
 (setq browse-url-browser-function 'browse-url-default-browser)
 
-(setq doom-theme 'doom-oksolar-dark)
+(setq doom-theme 'doom-one)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -29,12 +29,6 @@
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
       )
-
-(use-package mood-line
-
-  ;; Enable mood-line
-  :config
-  (mood-line-mode))
 
 (use-package elfeed-goodies
   :init
@@ -67,7 +61,7 @@
                      ("https://cmdln.org/post/" emacs Commandline)
                      ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
                      ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
-                     ("https://sachachua.com/blog/feed/ " emacs SachaChua)
+                     ("https://sachachua.com/blog/feed/" emacs SachaChua)
                      )))
 
 (defun gw/insert-todays-date (prefix)
@@ -103,7 +97,7 @@
          (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by the  walled garden!"))))
       ((eq system-type 'gnu/linux)
         (add-hook! '+doom-dashboard-functions :append
-         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye  Oxen and 󰻀 Penguins!"))))
+         (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered bye 󰆚 Oxen and 󰻀 Penguins!"))))
       ((eq system-type 'windows-nt)
        (add-hook! '+doom-dashboard-functions :append
          (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
@@ -129,7 +123,7 @@
      'face 'doom-dashboard-banner)))
 
 ;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
-(setq fancy-splash-image (concat doom-private-dir "images/blackhole-lines.svg"))
+(setq fancy-splash-image (concat doom-private-dir "images/doom-emacs-dash.png"))
 
 (setq chatgpt-shell-openai-key "placeholder")
 
@@ -146,6 +140,9 @@
 ;; (define-key global-map [menu-bar tools] nil)
 ;; (define-key global-map [menu-bar buffer] nil)
 ;; (define-key global-map [menu-bar help-menu] nil)
+;; (define-key global-map [menu-bar Table] nil)
+;; (define-key global-map [menu-bar Org] nil)
+;; (define-key global-map [menu-bar Text] nil)
 
 ;; (use-package emojify
   ;; :hook (after-init . global-emojify-mode))
