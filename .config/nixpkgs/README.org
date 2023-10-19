@@ -38,6 +38,7 @@
   - [[#productivity][Productivity]]
   - [[#gaming][Gaming]]
   - [[#window-manger-stuff][Window Manger Stuff]]
+  - [[#fonts][Fonts]]
   - [[#utils][Utils]]
 - [[#suid-wrappers][SUID Wrappers]]
 - [[#enabled-services][Enabled Services]]
@@ -201,13 +202,14 @@ $ nix search wget
     fd
     ripgrep
     clang
+    zsh-syntax-highlighting
+    vale
 #+end_src
 ** Shells
 #+begin_src nix
     #shells
     home-manager
     fish
-    oh-my-fish
 #+end_src
 ** Terminal Emulators
 #+begin_src nix
@@ -220,7 +222,9 @@ $ nix search wget
 #+begin_src nix
     #Text Editors
     neovim
-    emacsGcc
+{
+emacsWithPackages = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: ([epkgs.vterm]));
+}
     micro
 #+end_src
 ** Internet
@@ -255,11 +259,19 @@ $ nix search wget
     arandr
     lxappearance
 #+end_src
+** Fonts
+#+begin_src nix
+    #Fonts
+    jetbrains-mono
+    overpass
+    source-sans-pro
+    julia-mono
+#+end_src
 ** Utils
 #+begin_src nix
     #Utils
     cmake
-    hunspell
+    enchant
   ];
 #+end_src
 
@@ -294,7 +306,7 @@ this value at the release version of the first install of this system.
 Before changing this value read the documentation for this option
 (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 #+begin_src nix
-system.stateVersion = "22.05"; # Did you read the comment?
+system.stateVersion = "23.05"; # Did you read the comment?
 
 }
 #+end_src
