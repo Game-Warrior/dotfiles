@@ -107,6 +107,8 @@
     fd
     ripgrep
     clang
+    pandoc
+    gnuplot
 
     #shells
     home-manager
@@ -159,7 +161,11 @@
     cmake
     hunspell
 
-	
+    #Languages
+    go
+    kotlin
+    python
+    lua
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
