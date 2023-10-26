@@ -198,6 +198,7 @@ bind = $mainMod, S, exec, rofi -show drun -show-icons
     overpass
     source-sans-pro
     julia-mono
+    iosevka
 
     #Utils
     cmake
