@@ -55,29 +55,29 @@ hardware = {
     nvidia.modesetting.enable = true;
 };
 
-# waybar
-(pkgs.waybar.overrideAttrs (oldAttrs: {
-    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-  })
-)
+  # waybar
+    (pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    })
+    )
 
 # XDG portal
-xdg.portal.enable = true;
-xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.enable = true;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-# Enable sound with pipewire.
-sound.enable = true;
-security.rtkit.enable = true;
-services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  jack.enable = true;
-};
+  # Enable sound with pipewire.
+    sound.enable = true;
+    security.rtkit.enable = true;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
 
-# rofi keybind
-bind = $mainMod, S, exec, rofi -show drun -show-icons
+  # rofi keybind
+    bind = $mainMod, r, exec, rofi -show drun -show-icons
 
   # Configure keymap in X11
   services.xserver = {
@@ -151,6 +151,8 @@ bind = $mainMod, S, exec, rofi -show drun -show-icons
 
     #shells
     home-manager
+    zsh
+    pkgs.zsh-syntax-highlighting
     fish
     oh-my-fish
 
@@ -206,9 +208,15 @@ bind = $mainMod, S, exec, rofi -show drun -show-icons
 
     #Languages
     go
+    gopls
     kotlin
+    kotlin-language-server
     python
     lua
+    lua-language-server
+
+    #Desktop Environments
+    cinnamon.cinnamon-common
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
