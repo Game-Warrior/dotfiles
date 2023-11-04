@@ -13,8 +13,6 @@
 
     (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
-(pixel-scroll-precision-mode 1)
-
 (beacon-mode 1)
 
 (setq doom-font (font-spec :family "JuliaMono" :size 15)
@@ -29,40 +27,6 @@
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
       )
-
-(use-package elfeed-goodies
-  :init
-  (elfeed-goodies/setup)
-  :config
-  (setq elfeed-goodies/entry-pane-size 0.5))
-
-(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-(evil-define-key 'normal elfeed-show-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-(evil-define-key 'normal elfeed-search-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-
-(setq elfeed-feeds (quote
-                     (
-                     ;; General
-                     ("https://frame.work/blog.rss" Framework)
-                     ;; Linux
-                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
-                     ("https://archlinux.org/news/" linux Arch)
-                     ("https://fedoramagazine.org/feed/" linux Fedora)
-                     ("https://endeavouros.com/news/" linux EndeavourOS)
-                     ;; Boat Stuff
-                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
-                     ("https://mobius.world/feed/" Mobius boat)
-                     ;; Emacs
-                     ("http://xenodium.com/rss.xml" emacs Xenodium)
-                     ("https://cmdln.org/post/" emacs Commandline)
-                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
-                     ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
-                     ("https://sachachua.com/blog/feed/" emacs SachaChua)
-                     )))
 
 (defun gw/insert-todays-date (prefix)
   (interactive "P")
@@ -123,16 +87,15 @@
      'face 'doom-dashboard-banner)))
 
 ;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
-(setq fancy-splash-image (concat doom-private-dir "images/doom-emacs-dash.png"))
+(setq fancy-splash-image (concat doom-private-dir "images/emacs-e-logo.png"))
 
-(setq chatgpt-shell-openai-key "placeholder")
-
-(setq dall-e-shell-openai-key "placeholder")
-
-(setq user-full-name "Gardner Berry"
-    user-mail-address "gardner@gardnerberry.com")
-
-(menu-bar-mode -1)
+(add-hook 'doom-after-init-hook (lambda ()
+                                  (tool-bar-mode 1)
+                                  (tool-bar-mode 0)))
+;; (add-hook 'doom-after-init-hook (lambda ()
+                                  ;; (menu-bar-mode 1)
+                                  ;; (menu-bar-mode 0)))
+(setq menu-bar-mode 0)
 ;; (define-key global-map [menu-bar options] nil)
 ;; (define-key global-map [menu-bar file] nil)
 ;; (define-key global-map [menu-bar File] nil)
@@ -143,11 +106,23 @@
 ;; (define-key global-map [menu-bar Table] nil)
 ;; (define-key global-map [menu-bar Org] nil)
 ;; (define-key global-map [menu-bar Text] nil)
+;; (define-key global-map [menu-bar Jinx] nil)
+
+(setq chatgpt-shell-openai-key "placeholder")
+;; (setq chatgpt-shell-model-versions	 GPT-4)
+
+(setq dall-e-shell-openai-key "placeholder")
+
+(setq user-full-name "Gardner Berry"
+    user-mail-address "gardner@gardnerberry.com")
 
 ;; (use-package emojify
   ;; :hook (after-init . global-emojify-mode))
 
-(setq display-line-numbers-type nil)
+;;(add-hook org-mode
+;;(setq display-line-numbers-type nil)
+;;)
+(setq display-line-numbers-type 1)
 (map! :leader
       :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
       (:prefix ("t" . "toggle")
@@ -166,6 +141,59 @@
 (map!
  :leader
  (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
+
+(use-package elfeed-goodies
+  :init
+  (elfeed-goodies/setup)
+  :config
+  (setq elfeed-goodies/entry-pane-size 0.5))
+
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+
+(setq elfeed-feeds (quote
+                     (
+                     ;; General
+                     ("https://frame.work/blog.rss" Framework)
+                     ;; Linux
+                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
+                     ("https://archlinux.org/news/" linux Arch)
+                     ("https://fedoramagazine.org/feed/" linux Fedora)
+                     ("https://endeavouros.com/news/" linux EndeavourOS)
+                     ;; Boat Stuff
+                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
+                     ("https://mobius.world/feed/" Mobius boat)
+                     ;; Emacs
+                     ("http://xenodium.com/rss.xml" emacs Xenodium)
+                     ("https://cmdln.org/post/" emacs Commandline)
+                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
+                     ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
+                     ("https://sachachua.com/blog/feed/" emacs SachaChua)
+                     )))
+
+(after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
+projectile-project-root-files-bottom-up))
+  (lambda ()
+    (projectile-add-known-project "~/Documents")
+    (projectile-add-known-project "~/Developer/Projects/blog")
+    ;; (projectile-add-known-project "~/Developer/Projects/")
+  ))
+
+(map! :leader
+      (:prefix ("=" . "open file")
+       :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/agenda.org"))
+       :desc "Edit doom config.org" "c" #'(lambda () (interactive) (find-file "~/.config/doom/config.org"))
+       :desc "Edit doom init.el" "i" #'(lambda () (interactive) (find-file "~/.config/doom/init.el"))
+       :desc "Edit doom packages.el" "p" #'(lambda () (interactive) (find-file "~/.config/doom/packages.el"))))
+(map! :leader
+      (:prefix ("= e" . "open eshell files")
+       :desc "Edit eshell aliases" "a" #'(lambda () (interactive) (find-file "~/.config/doom/eshell/aliases"))
+       :desc "Edit eshell profile" "p" #'(lambda () (interactive) (find-file "~/.config/doom/eshell/profile"))))
 
 (load "~/.config/doom/typing-practice.el")
 
@@ -220,7 +248,9 @@
 (flycheck-mode -1)
 
 ;; Enable abbreviation mode
-(add-hook 'text-mode-hook 'abbrev-mode)
+  (dolist (hook '(org-mode-hook
+                    text-mode-hook))
+      (add-hook hook #'abbrev-mode))
 
 (use-package blamer
   :bind (("s-i" . blamer-show-commit-info))
@@ -424,11 +454,13 @@
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org")
+        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-archive-location "~/Documents/archive.org::"
         org-ellipsis " ↴ "
         ;; org-ellipsis" ⤷ "
+        org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
+        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -442,6 +474,7 @@
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
           '((sequence
              "TODO(t)"           ; A task that is ready to be tackled
+             "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
              "WAIT(w)"           ; Something is holding up this task
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
@@ -543,17 +576,13 @@
           ;; org-novelist-author-email "gardner@gamewarrior.xyz"  ; The default author contact email to use when exporting a story. Each story can also override this setting
           ;; org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
 (require 'org-tempo)
 
-;; (require 'mastodon-alt)
-;; (mastodon-alt-tl-activate)
 (setq mastodon-instance-url "https://social.linux.pizza"
       mastodon-active-user "Gamewarrior010")
 
-(load "~/.config/doom/mastodon-alt.el")
-(mastodon-alt-tl-activate)
+(setq lem-instance-url "https://discuss.online")
+(setq lem-current-user "GameWarrior")
 
 (setq eshell-aliases-file "~/.config/doom/eshell/aliases")
 
@@ -561,3 +590,6 @@
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
+
+;; (setq ellama-buffer-mode "org-mode")
+(setopt ellama-language "English")

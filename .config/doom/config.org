@@ -12,23 +12,24 @@
 - [[#gui-changes][GUI CHANGES]]
   - [[#doom-theme][Doom Theme]]
   - [[#title-bar][Title Bar]]
-  - [[#pixel-scrolling-mode][Pixel Scrolling Mode]]
   - [[#beacon][Beacon]]
   - [[#fonts][Fonts]]
   - [[#doom-modeline][Doom-Modeline]]
-  - [[#elfeed][Elfeed]]
   - [[#insert-date][Insert Date]]
   - [[#ibuffer][IBuffer]]
   - [[#doom-dashboard][Doom-Dashboard]]
+  - [[#menu-bar][Menu Bar]]
 - [[#personal-settings][PERSONAL SETTINGS]]
   - [[#chatgpt-shell][Chatgpt-Shell]]
   - [[#dall-e-shell][Dall-E-Shell]]
   - [[#setting-username-and-e-mail][Setting Username and E-Mail]]
-  - [[#menu-bar][Menu Bar]]
   - [[#emojis][Emojis]]
   - [[#line-settings][Line Settings]]
   - [[#rainbow-mode][Rainbow Mode]]
   - [[#xwidgets-browser][xWidgets-Browser]]
+  - [[#elfeed][Elfeed]]
+  - [[#pojectile-root][Pojectile Root]]
+  - [[#open-specific-files][OPEN SPECIFIC FILES]]
 - [[#writing-stuff][WRITING STUFF]]
   - [[#typing-practice][Typing Practice]]
   - [[#synosaurus][Synosaurus]]
@@ -45,7 +46,6 @@
   - [[#magit][Magit]]
   - [[#yasnippet][YAsnippet]]
   - [[#web-mode][Web-Mode]]
-  - [[#codeiumel][Codeium.el]]
 - [[#dired][Dired]]
   - [[#keybindings-to-open-dired][Keybindings To Open Dired]]
   - [[#keybindings-within-dired][Keybindings Within Dired]]
@@ -64,13 +64,15 @@
   - [[#org-auto-tangle][Org-auto-tangle]]
   - [[#custom-functions][Custom Functions]]
   - [[#org-novelist][Org-Novelist]]
-  - [[#org-bullets][Org-Bullets]]
   - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
-- [[#mastodon][Mastodon]]
-  - [[#mastodon-alt][Mastodon-alt]]
+- [[#social-media][Social Media]]
+  - [[#mastodon][Mastodon]]
+  - [[#lemmy][Lemmy]]
 - [[#eshell][Eshell]]
   - [[#aliases][Aliases]]
   - [[#prompt][Prompt]]
+- [[#ai-stuff][AI Stuff]]
+  - [[#ellama][Ellama]]
 
 * ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -124,11 +126,6 @@ Change the title bar format
     (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 #+end_src
 
-** Pixel Scrolling Mode
-#+begin_src emacs-lisp
-(pixel-scroll-precision-mode 1)
-#+end_src
-
 ** Beacon
 Never lose your cursor.  When you scroll, your cursor will shine!  This is a global minor-mode. Turn it on everywhere with:
 
@@ -162,44 +159,6 @@ https://github.com/seagle0128/doom-modeline
       doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
       )
 #+end_src
-** Elfeed
-An RSS newsfeed reader for Emacs.
-#+BEGIN_SRC emacs-lisp
-(use-package elfeed-goodies
-  :init
-  (elfeed-goodies/setup)
-  :config
-  (setq elfeed-goodies/entry-pane-size 0.5))
-
-(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-(evil-define-key 'normal elfeed-show-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-(evil-define-key 'normal elfeed-search-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-
-(setq elfeed-feeds (quote
-                     (
-                     ;; General
-                     ("https://frame.work/blog.rss" Framework)
-                     ;; Linux
-                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
-                     ("https://archlinux.org/news/" linux Arch)
-                     ("https://fedoramagazine.org/feed/" linux Fedora)
-                     ("https://endeavouros.com/news/" linux EndeavourOS)
-                     ;; Boat Stuff
-                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
-                     ("https://mobius.world/feed/" Mobius boat)
-                     ;; Emacs
-                     ("http://xenodium.com/rss.xml" emacs Xenodium)
-                     ("https://cmdln.org/post/" emacs Commandline)
-                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
-                     ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
-                     ("https://sachachua.com/blog/feed/" emacs SachaChua)
-                     )))
-#+END_SRC
-
 ** Insert Date
 Some custom functions to insert the date.  The function 'insert-todays-date' can be used one of three different ways: (1) just the keybinding without the universal argument prefix, (2) with one universal argument prefix, or (3) with two universal argument prefixes.  The universal argument prefix is 'SPC-u' in Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only outputs to one format, which is the same format as 'insert-todays-date' without a prefix.
 
@@ -278,12 +237,37 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
      'face 'doom-dashboard-banner)))
 
 ;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
-(setq fancy-splash-image (concat doom-private-dir "images/doom-emacs-dash.png"))
+(setq fancy-splash-image (concat doom-private-dir "images/emacs-e-logo.png"))
 #+end_src
+
+** Menu Bar
+Setting menu-bar-mode to be disabled because I think it takes up to much screen real estate in the top bar.
+#+begin_src emacs-lisp
+(add-hook 'doom-after-init-hook (lambda ()
+                                  (tool-bar-mode 1)
+                                  (tool-bar-mode 0)))
+;; (add-hook 'doom-after-init-hook (lambda ()
+                                  ;; (menu-bar-mode 1)
+                                  ;; (menu-bar-mode 0)))
+(setq menu-bar-mode 0)
+;; (define-key global-map [menu-bar options] nil)
+;; (define-key global-map [menu-bar file] nil)
+;; (define-key global-map [menu-bar File] nil)
+;; (define-key global-map [menu-bar edit] nil)
+;; (define-key global-map [menu-bar tools] nil)
+;; (define-key global-map [menu-bar buffer] nil)
+;; (define-key global-map [menu-bar help-menu] nil)
+;; (define-key global-map [menu-bar Table] nil)
+;; (define-key global-map [menu-bar Org] nil)
+;; (define-key global-map [menu-bar Text] nil)
+;; (define-key global-map [menu-bar Jinx] nil)
+#+end_src
+
 * PERSONAL SETTINGS
 ** Chatgpt-Shell
 #+begin_src emacs-lisp
 (setq chatgpt-shell-openai-key "placeholder")
+;; (setq chatgpt-shell-model-versions	 GPT-4)
 #+end_src
 
 ** Dall-E-Shell
@@ -297,22 +281,6 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
 #+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gardnerberry.com")
-#+end_src
-
-** Menu Bar
-Setting menu-bar-mode to be disabled because I think it takes up to much screen real estate in the top bar.
-#+begin_src emacs-lisp
-(menu-bar-mode -1)
-;; (define-key global-map [menu-bar options] nil)
-;; (define-key global-map [menu-bar file] nil)
-;; (define-key global-map [menu-bar File] nil)
-;; (define-key global-map [menu-bar edit] nil)
-;; (define-key global-map [menu-bar tools] nil)
-;; (define-key global-map [menu-bar buffer] nil)
-;; (define-key global-map [menu-bar help-menu] nil)
-;; (define-key global-map [menu-bar Table] nil)
-;; (define-key global-map [menu-bar Org] nil)
-;; (define-key global-map [menu-bar Text] nil)
 #+end_src
 
 ** Emojis
@@ -336,7 +304,10 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
 | toggle-truncate-lines    | /Toggle truncate lines/                     | SPC t t     |
 
 #+BEGIN_SRC emacs-lisp
-(setq display-line-numbers-type nil)
+;;(add-hook org-mode
+;;(setq display-line-numbers-type nil)
+;;)
+(setq display-line-numbers-type 1)
 (map! :leader
       :desc "Comment or uncomment lines" "TAB TAB" #'comment-line
       (:prefix ("t" . "toggle")
@@ -364,6 +335,80 @@ Rainbow mode displays the actual color for any hex value color.  It's such a nic
  :leader
  (:desc "Open Xwidgets URL" "y" #'xwidget-webkit-browse-url))
 #+end_src
+
+** Elfeed
+An RSS newsfeed reader for Emacs.
+#+BEGIN_SRC emacs-lisp
+(use-package elfeed-goodies
+  :init
+  (elfeed-goodies/setup)
+  :config
+  (setq elfeed-goodies/entry-pane-size 0.5))
+
+(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+
+(setq elfeed-feeds (quote
+                     (
+                     ;; General
+                     ("https://frame.work/blog.rss" Framework)
+                     ;; Linux
+                     ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
+                     ("https://archlinux.org/news/" linux Arch)
+                     ("https://fedoramagazine.org/feed/" linux Fedora)
+                     ("https://endeavouros.com/news/" linux EndeavourOS)
+                     ;; Boat Stuff
+                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
+                     ("https://mobius.world/feed/" Mobius boat)
+                     ;; Emacs
+                     ("http://xenodium.com/rss.xml" emacs Xenodium)
+                     ("https://cmdln.org/post/" emacs Commandline)
+                     ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
+                     ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
+                     ("https://sachachua.com/blog/feed/" emacs SachaChua)
+                     )))
+#+END_SRC
+
+** Pojectile Root
+#+begin_src emacs-lisp
+(after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
+projectile-project-root-files-bottom-up))
+  (lambda ()
+    (projectile-add-known-project "~/Documents")
+    (projectile-add-known-project "~/Developer/Projects/blog")
+    ;; (projectile-add-known-project "~/Developer/Projects/")
+  ))
+#+end_src
+
+** OPEN SPECIFIC FILES
+Keybindings to open files that I work with all the time using the find-file command, which is the interactive file search that opens with 'C-x C-f' in GNU Emacs or 'SPC f f' in Doom Emacs.  These keybindings use find-file non-interactively since we specify exactly what file to open.  The format I use for these bindings is 'SPC =' plus 'key' since Doom Emacs does not use 'SPC ='.
+
+| PATH TO FILE                   | DESCRIPTION           | KEYBINDING |
+|--------------------------------+-----------------------+------------|
+| ~/Org/agenda.org               | /Edit agenda file/      | SPC = a    |
+| ~/.config/doom/config.org      | /Edit doom config.org/  | SPC = c    |
+| ~/.config/doom/init.el         | /Edit doom init.el/     | SPC = i    |
+| ~/.config/doom/packages.el     | /Edit doom packages.el/ | SPC = p    |
+| ~/.config/doom/eshell/aliases  | /Edit eshell aliases/   | SPC = e a  |
+| ~/.config/doom/eshell/profile  | /Edit eshell profile/   | SPC = e p  |
+
+#+BEGIN_SRC emacs-lisp
+(map! :leader
+      (:prefix ("=" . "open file")
+       :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/agenda.org"))
+       :desc "Edit doom config.org" "c" #'(lambda () (interactive) (find-file "~/.config/doom/config.org"))
+       :desc "Edit doom init.el" "i" #'(lambda () (interactive) (find-file "~/.config/doom/init.el"))
+       :desc "Edit doom packages.el" "p" #'(lambda () (interactive) (find-file "~/.config/doom/packages.el"))))
+(map! :leader
+      (:prefix ("= e" . "open eshell files")
+       :desc "Edit eshell aliases" "a" #'(lambda () (interactive) (find-file "~/.config/doom/eshell/aliases"))
+       :desc "Edit eshell profile" "p" #'(lambda () (interactive) (find-file "~/.config/doom/eshell/profile"))))
+#+END_SRC
 
 
 * WRITING STUFF
@@ -463,7 +508,9 @@ Next time you're writing fiction, non-fiction, a journalistic piece or a blog po
 Auto expansion for Abbrev-mode.
 #+begin_src emacs-lisp
 ;; Enable abbreviation mode
-(add-hook 'text-mode-hook 'abbrev-mode)
+  (dolist (hook '(org-mode-hook
+                    text-mode-hook))
+      (add-hook hook #'abbrev-mode))
 #+end_src
 * PROGRAMMING STUFF
 ** Blamer
@@ -513,9 +560,6 @@ These are my hooks for web-mode.
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 #+end_src
 
-** Codeium.el
-/Free, ultrafast, extensible AI code completion tool for Emacs/
-codeium.el is an open source client and (mostly) written by Alan Chen. It uses a proprietary language server binary, currently downloaded (automatically, with confirmation) from [[https://github.com/Exafunction/codeium/releases/][here]]. Use M-x codeium-diagnose to see apis/fields that would be sent to the local language server, and the command used to run the local language server. Customize codeium-api-enabled, codeium-fields-regexps and codeium-command to change them.
 * Dired
 Dired is the file manager within Emacs.  Below, I setup keybindings for image previews (peep-dired).  Doom Emacs does not use 'SPC d' for any of its keybindings, so I've chosen the format of 'SPC d' plus 'key'.
 
@@ -781,11 +825,13 @@ I wrapped most of this block in (after! org). Without this, my settings might be
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
   (setq org-directory "~/Documents/"
-        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org")
+        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-archive-location "~/Documents/archive.org::"
         org-ellipsis " ↴ "
         ;; org-ellipsis" ⤷ "
+        org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
+        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
@@ -799,6 +845,7 @@ I wrapped most of this block in (after! org). Without this, my settings might be
         org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
           '((sequence
              "TODO(t)"           ; A task that is ready to be tackled
+             "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
              "WAIT(w)"           ; Something is holding up this task
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
@@ -938,12 +985,6 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
           ;; org-novelist-author-email "gardner@gamewarrior.xyz"  ; The default author contact email to use when exporting a story. Each story can also override this setting
           ;; org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 #+end_src
-** Org-Bullets
-#+begin_src emacs-lisp
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-#+end_src
-
-
 
 ** Source Code Block Tag Expansion
 Org-tempo is not a separate package but a module within org that can be enabled.  Org-tempo allows for '<s' followed by TAB to expand to a begin_src tag.  Other expansions available include:
@@ -965,22 +1006,18 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 (require 'org-tempo)
 #+end_src
 
-
-* Mastodon
+* Social Media
+** Mastodon
 mastodon.el is an Emacs client for the AcitivityPub social networks that implement the Mastodon API.
 #+begin_src emacs-lisp
-;; (require 'mastodon-alt)
-;; (mastodon-alt-tl-activate)
 (setq mastodon-instance-url "https://social.linux.pizza"
       mastodon-active-user "Gamewarrior010")
 #+end_src
-** Mastodon-alt
-This provides an alternative layout for the mastodon client.
+** Lemmy
 #+begin_src emacs-lisp
-(load "~/.config/doom/mastodon-alt.el")
-(mastodon-alt-tl-activate)
+(setq lem-instance-url "https://discuss.online")
+(setq lem-current-user "GameWarrior")
 #+end_src
-
 
 * Eshell
 ** Aliases
@@ -994,4 +1031,10 @@ This provides an alternative layout for the mastodon client.
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
 #+end_src
+* AI Stuff
+** Ellama
+#+begin_src emacs-lisp
+;; (setq ellama-buffer-mode "org-mode")
+(setopt ellama-language "English")
 
+#+end_src
