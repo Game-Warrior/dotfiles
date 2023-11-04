@@ -10,10 +10,10 @@
 ;; Keywords         : mode-line, header-line
 ;; Package-Requires : ((emacs "28") (doom-themes "2"))
 ;; URL              : https://github.com/ronisbr/doom-nano-themes/
-;; Version          : 0.1.0
+;; Version          : 0.2.3
 ;;
 ;;; Usage:
-;; 1. Copy this file to `~/.doom.d/themes/'.
+;; 1. Copy this file to `~/.doom.d/themes/' `~/.config/doom/themes/`.
 ;; 2. Load the theme using `(setq doom-theme 'doom-nano-light)'.
 ;;
 ;;; License:
@@ -39,7 +39,16 @@
 ;;; Commentary:
 ;; This package provides a light theme for Doom Emacs based on N Λ N O.
 
-;;; Code
+;;; Code:
+
+(defgroup doom-nano-light-theme nil
+  "Options for the `doom-nano-light' theme."
+  :group 'doom-themes)
+
+(defcustom doom-nano-light-theme-highlight-tab-whitespaces nil
+  "If non-nil, the tab whitespaces will be highlighted."
+  :group 'doom-nano-light-theme
+  :type 'boolean)
 
 (def-doom-theme doom-nano-light
   "A light theme for Doom Emacs based on N Λ N O."
@@ -147,6 +156,11 @@
    (tooltip                      :background nano-subtle)
    (trailing-whitespace          :background nano-subtle)
 
+   (whitespace-tab :background
+                   (if doom-nano-light-theme-highlight-tab-whitespaces
+                       nano-subtle
+                     bg))
+
    ;; === Ace window ===========================================================
 
    (aw-leading-char-face :foreground nano-popout)
@@ -220,6 +234,18 @@
    (company-tooltip-scrollbar-track      :foreground bg :foreground nano-faded)
    (company-tooltip-selection            :foreground bg :background nano-salient)
 
+   ;; === Diff =================================================================
+
+   (diff-header         :foreground nano-faded)
+   (diff-file           :foreground nano-strong :weight 'bold)
+   (diff-context        :foreground fg)
+   (diff-removed        :foreground nano-faded)
+   (diff-changed        :foreground nano-popout)
+   (diff-added          :foreground nano-salient)
+   (diff-refine-added   :foreground nano-salient :weight 'bold)
+   (diff-refine-changed :foreground nano-popout)
+   (diff-refine-removed :foreground nano-faded :strike-through t)
+
    ;; === Doom NANO modeline ===================================================
 
    (doom-nano-modeline-evil-emacs-state-face    :foreground bg :background nano-faded)
@@ -231,10 +257,14 @@
    (doom-nano-modeline-evil-visual-state-face   :foreground bg :background nano-salient)
    (doom-nano-modeline-inactive-face            :foreground nano-faded :background nano-highlight)
 
-   ;; === Evil mode=============================================================
+   ;; === Evil mode ============================================================
 
    (evil-snipe-first-match-face :background nano-highlight :weight 'bold)
    (evil-snipe-matches-face     :background nano-subtle)
+
+   ;; === Flycheck =============================================================
+
+   (flycheck-posframe-background-face :background nano-subtle)
 
    ;; === Font lock ============================================================
 
@@ -268,10 +298,10 @@
 
    ;; === Line numbers =========================================================
 
-   (line-number :foreground nano-faded)
-   (line-number-current-line :foreground nil)
-   (line-number-major-tick :foreground nano-faded)
-   (line-number-minor-tick :foreground nano-faded)
+   (line-number              :foreground nano-faded)
+   (line-number-current-line :foreground fg)
+   (line-number-major-tick   :foreground nano-faded)
+   (line-number-minor-tick   :foreground nano-faded)
 
    ;; === LSP ==================================================================
 
@@ -330,7 +360,7 @@
    (magit-blame-date                      :foreground fg)
    (magit-blame-dimmed                    :foreground fg)
    (magit-blame-hash                      :foreground nano-faded)
-   (magit-blame-heading                   :foreground nano-subtle :weight 'bold)
+   (magit-blame-heading                   :background nano-subtle :weight 'bold)
    (magit-blame-highlight                 :background highlight)
    (magit-blame-margin                    :foreground fg)
    (magit-blame-name                      :foreground fg)
@@ -346,18 +376,18 @@
    (magit-diff-added-highlight            :foreground nano-salient :weight 'bold)
    (magit-diff-base                       :foreground fg)
    (magit-diff-base-highlight             :background highlight)
-   (magit-diff-conflict-heading           :foreground nano-subtle :weight 'bold)
+   (magit-diff-conflict-heading           :background nano-subtle :weight 'bold)
    (magit-diff-context                    :foreground nano-faded)
    (magit-diff-context-highlight          :foreground nano-faded)
    (magit-diff-file-heading               :foreground nano-strong :weight 'bold)
    (magit-diff-file-heading-highlight     :background highlight :weight 'bold)
    (magit-diff-file-heading-selection     :foreground fg)
-   (magit-diff-hunk-heading               :foreground nano-subtle)
+   (magit-diff-hunk-heading               :background nano-subtle)
    (magit-diff-hunk-heading-highlight     :foreground fg)
    (magit-diff-hunk-heading-selection     :foreground fg)
    (magit-diff-hunk-region                :foreground fg)
    (magit-diff-lines-boundary             :foreground fg)
-   (magit-diff-lines-heading              :foreground nano-subtle :weight 'bold)
+   (magit-diff-lines-heading              :background nano-subtle :weight 'bold)
    (magit-diff-our                        :foreground fg)
    (magit-diff-our-highlight              :background highlight)
    (magit-diff-removed                    :foreground nano-popout :weight 'bold)
@@ -366,7 +396,7 @@
    (magit-diff-revision-summary-highlight :foreground fg)
    (magit-diff-their                      :foreground fg)
    (magit-diff-their-highlight            :background highlight)
-   (magit-diff-whitespace-warning         :foreground nano-subtle)
+   (magit-diff-whitespace-warning         :background nano-subtle)
    (magit-diffstat-added                  :foreground fg)
    (magit-diffstat-removed                :foreground fg)
    (magit-dimmed                          :foreground nano-faded)
@@ -561,7 +591,7 @@
 
    ;; === Org-agenda ===========================================================
 
-   (org-agenda-calendar-event   :foreground fg :background bg)
+   (org-agenda-calendar-event   :foreground fg)
    (org-agenda-calendar-sexp    :foreground nano-salient)
    (org-agenda-clocking         :foreground nano-faded)
    (org-agenda-column-dateline  :foreground nano-faded)
@@ -596,7 +626,16 @@
    ;; === Semantics ============================================================
 
    (match  :foreground nano-popout)
-   (shadow :foreground nano-popout)
+   (shadow :foreground nano-faded)
+
+   ;; === smerge ===============================================================
+
+   (smerge-lower           :background bg)
+   (smerge-markers         :background nano-subtle :weight 'bold :distant-foreground 'unspecified)
+   (smerge-refined-added   :foreground nano-salient :weight 'bold)
+   (smerge-refined-changed :foreground nano-popout)
+   (smerge-refined-removed :foreground nano-faded :strike-through t)
+   (smerge-upper           :background bg)
 
    ;; === Structural ===========================================================
 
@@ -621,6 +660,11 @@
    (term-color-red     :foreground red :background bright-red)
    (term-color-yellow  :foreground yellow :background bright-yellow)
 
+   ;; === Transient ============================================================
+
+   ;; Set only faces that influence Magit.
+   (transient-value :foreground fg)
+
    ;; === Vertico ==============================================================
 
    (vertico-current         :background nano-subtle :weight 'bold)
@@ -628,8 +672,27 @@
    (vertico-group-title     :foreground nano-faded)
    (vertico-multiline       :foreground nano-faded)
 
+   ;;; === Vterm ===============================================================
+
+   (vterm-color-black   :foreground fg :background fg)
+   (vterm-color-blue    :foreground blue :background bright-blue)
+   (vterm-color-cyan    :foreground cyan :background bright-cyan)
+   (vterm-color-green   :foreground green :background bright-green)
+   (vterm-color-magenta :foreground magenta :background bright-magenta)
+   (vterm-color-red     :foreground red :background bright-red)
+   (vterm-color-yellow  :foreground yellow :background bright-yellow)
+   (vterm-color-white   :foreground grey :background grey)
+
+   ;; === Workspaces ===========================================================
+
+   (+workspace-tab-selected-face :foreground nano-salient :weight 'bold)
+
    ;; === Which key ============================================================
 
    (which-key-command-description-face   :foreground fg)
    (which-key-key-face                   :foreground nano-strong :weight 'bold)
    (which-key-key-group-description-face :foreground nano-salient)))
+
+(provide 'doom-nano-light-theme)
+
+;;; doom-nano-light-theme.el ends here
