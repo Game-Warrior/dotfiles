@@ -20,8 +20,6 @@
   - [[#doom-dashboard][Doom-Dashboard]]
   - [[#menu-bar][Menu Bar]]
 - [[#personal-settings][PERSONAL SETTINGS]]
-  - [[#chatgpt-shell][Chatgpt-Shell]]
-  - [[#dall-e-shell][Dall-E-Shell]]
   - [[#setting-username-and-e-mail][Setting Username and E-Mail]]
   - [[#emojis][Emojis]]
   - [[#line-settings][Line Settings]]
@@ -29,7 +27,7 @@
   - [[#xwidgets-browser][xWidgets-Browser]]
   - [[#elfeed][Elfeed]]
   - [[#pojectile-root][Pojectile Root]]
-  - [[#open-specific-files][OPEN SPECIFIC FILES]]
+  - [[#open-specifice-files][Open Specifice Files]]
 - [[#writing-stuff][WRITING STUFF]]
   - [[#typing-practice][Typing Practice]]
   - [[#synosaurus][Synosaurus]]
@@ -73,6 +71,8 @@
   - [[#prompt][Prompt]]
 - [[#ai-stuff][AI Stuff]]
   - [[#ellama][Ellama]]
+  - [[#chatgpt-shell][Chatgpt-Shell]]
+  - [[#dall-e-shell][Dall-E-Shell]]
 
 * ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -115,7 +115,7 @@ Setting in which browser EMACS will open links
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-palenight)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 #+end_src
@@ -216,28 +216,28 @@ This is where I customize the DOOM emacs Dashboard. I have a custom banner set. 
        (add-hook! '+doom-dashboard-functions :append
          (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
 
-(defun gw/doom-art1 ()
-  (let* ((banner'("______ _____ ____ ___ ___"
-                  "`  _  V  _  V  _ \\|  V  ´"
-                  "| | | | | | | | | |     |"
-                  "| | | | | | | | | | . . |"
-                  "| |/ / \\ \\| | |/ /\\ |V| |"
-                  "|   /   \\__/ \\__/  \\| | |"
-                  "|  /                ' | |"
-                  "| /     E M A C S     \\ |"
-                  "´´                     ``"))
-         (longest-line (apply #'max (mapcar #'length banner))))
-    (put-text-property
-     (point)
-     (dolist (line banner (point))
-       (insert (+doom-dashboard--center
-                +doom-dashboard--width
-                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-               "\n"))
-     'face 'doom-dashboard-banner)))
+;; (defun gw/doom-art1 ()
+  ;; (let* ((banner'("______ _____ ____ ___ ___"
+                  ;; "`  _  V  _  V  _ \\|  V  ´"
+                  ;; "| | | | | | | | | |     |"
+                  ;; "| | | | | | | | | | . . |"
+                  ;; "| |/ / \\ \\| | |/ /\\ |V| |"
+                  ;; "|   /   \\__/ \\__/  \\| | |"
+                  ;; "|  /                ' | |"
+                  ;; "| /     E M A C S     \\ |"
+                  ;; "´´                     ``"))
+         ;; (longest-line (apply #'max (mapcar #'length banner))))
+    ;; (put-text-property
+     ;; (point)
+     ;; (dolist (line banner (point))
+       ;; (insert (+doom-dashboard--center
+                ;; +doom-dashboard--width
+                ;; (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               ;; "\n"))
+     ;; 'face 'doom-dashboard-banner)))
 
 ;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
-(setq fancy-splash-image (concat doom-private-dir "images/emacs-e-logo.png"))
+(setq fancy-splash-image (concat doom-private-dir "images/doom-emacs-dash.png"))
 #+end_src
 
 ** Menu Bar
@@ -249,7 +249,7 @@ Setting menu-bar-mode to be disabled because I think it takes up to much screen 
 ;; (add-hook 'doom-after-init-hook (lambda ()
                                   ;; (menu-bar-mode 1)
                                   ;; (menu-bar-mode 0)))
-(setq menu-bar-mode 0)
+;; (setq menu-bar-mode -1)
 ;; (define-key global-map [menu-bar options] nil)
 ;; (define-key global-map [menu-bar file] nil)
 ;; (define-key global-map [menu-bar File] nil)
@@ -264,18 +264,6 @@ Setting menu-bar-mode to be disabled because I think it takes up to much screen 
 #+end_src
 
 * PERSONAL SETTINGS
-** Chatgpt-Shell
-#+begin_src emacs-lisp
-(setq chatgpt-shell-openai-key "placeholder")
-;; (setq chatgpt-shell-model-versions	 GPT-4)
-#+end_src
-
-** Dall-E-Shell
-#+begin_src emacs-lisp
-(setq dall-e-shell-openai-key "placeholder")
-
-#+end_src
-
 
 ** Setting Username and E-Mail
 #+begin_src emacs-lisp
@@ -385,7 +373,7 @@ projectile-project-root-files-bottom-up))
   ))
 #+end_src
 
-** OPEN SPECIFIC FILES
+** Open Specifice Files
 Keybindings to open files that I work with all the time using the find-file command, which is the interactive file search that opens with 'C-x C-f' in GNU Emacs or 'SPC f f' in Doom Emacs.  These keybindings use find-file non-interactively since we specify exactly what file to open.  The format I use for these bindings is 'SPC =' plus 'key' since Doom Emacs does not use 'SPC ='.
 
 | PATH TO FILE                   | DESCRIPTION           | KEYBINDING |
@@ -655,8 +643,8 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
 (setq dired-open-extensions '(("gif" . "Preview")
                               ("jpg" . "Preview")
                               ("png" . "Preview")
-                              ("mkv" . "mpv")
-                              ("mp4" . "mpv")))
+                              ("mkv" . "IINA")
+                              ("mp4" . "IINA")))
 #+end_src
 
 * mu4e
@@ -924,8 +912,9 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
 #+begin_src emacs-lisp
 ;; Reveal.js + Org mode
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
-      org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
-      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      ;; org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>gardner.berry@crms.org</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      ;; org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>gardner.berry@crms.org</h3>"
       org-reveal-theme "moon"
       org-re-reveal-theme "moon"
       ;; org-re-reveal-theme "blood"
@@ -940,7 +929,6 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
            (t (setq  org-export-exclude-tags '("noexport")))
        ))
 #+end_src
-
 
 ** Org-journal
 #+begin_src emacs-lisp
@@ -1036,5 +1024,17 @@ mastodon.el is an Emacs client for the AcitivityPub social networks that impleme
 #+begin_src emacs-lisp
 ;; (setq ellama-buffer-mode "org-mode")
 (setopt ellama-language "English")
+
+#+end_src
+
+** Chatgpt-Shell
+#+begin_src emacs-lisp
+(setq chatgpt-shell-openai-key "placeholder")
+#+end_src
+
+
+** Dall-E-Shell
+#+begin_src emacs-lisp
+(setq dall-e-shell-openai-key "placeholder")
 
 #+end_src

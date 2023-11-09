@@ -7,7 +7,7 @@
 
 (setq browse-url-browser-function 'browse-url-default-browser)
 
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-palenight)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -66,28 +66,28 @@
        (add-hook! '+doom-dashboard-functions :append
          (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
 
-(defun gw/doom-art1 ()
-  (let* ((banner'("______ _____ ____ ___ ___"
-                  "`  _  V  _  V  _ \\|  V  ´"
-                  "| | | | | | | | | |     |"
-                  "| | | | | | | | | | . . |"
-                  "| |/ / \\ \\| | |/ /\\ |V| |"
-                  "|   /   \\__/ \\__/  \\| | |"
-                  "|  /                ' | |"
-                  "| /     E M A C S     \\ |"
-                  "´´                     ``"))
-         (longest-line (apply #'max (mapcar #'length banner))))
-    (put-text-property
-     (point)
-     (dolist (line banner (point))
-       (insert (+doom-dashboard--center
-                +doom-dashboard--width
-                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-               "\n"))
-     'face 'doom-dashboard-banner)))
+;; (defun gw/doom-art1 ()
+  ;; (let* ((banner'("______ _____ ____ ___ ___"
+                  ;; "`  _  V  _  V  _ \\|  V  ´"
+                  ;; "| | | | | | | | | |     |"
+                  ;; "| | | | | | | | | | . . |"
+                  ;; "| |/ / \\ \\| | |/ /\\ |V| |"
+                  ;; "|   /   \\__/ \\__/  \\| | |"
+                  ;; "|  /                ' | |"
+                  ;; "| /     E M A C S     \\ |"
+                  ;; "´´                     ``"))
+         ;; (longest-line (apply #'max (mapcar #'length banner))))
+    ;; (put-text-property
+     ;; (point)
+     ;; (dolist (line banner (point))
+       ;; (insert (+doom-dashboard--center
+                ;; +doom-dashboard--width
+                ;; (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               ;; "\n"))
+     ;; 'face 'doom-dashboard-banner)))
 
 ;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
-(setq fancy-splash-image (concat doom-private-dir "images/emacs-e-logo.png"))
+(setq fancy-splash-image (concat doom-private-dir "images/doom-emacs-dash.png"))
 
 (add-hook 'doom-after-init-hook (lambda ()
                                   (tool-bar-mode 1)
@@ -95,7 +95,7 @@
 ;; (add-hook 'doom-after-init-hook (lambda ()
                                   ;; (menu-bar-mode 1)
                                   ;; (menu-bar-mode 0)))
-(setq menu-bar-mode 0)
+;; (setq menu-bar-mode -1)
 ;; (define-key global-map [menu-bar options] nil)
 ;; (define-key global-map [menu-bar file] nil)
 ;; (define-key global-map [menu-bar File] nil)
@@ -107,11 +107,6 @@
 ;; (define-key global-map [menu-bar Org] nil)
 ;; (define-key global-map [menu-bar Text] nil)
 ;; (define-key global-map [menu-bar Jinx] nil)
-
-(setq chatgpt-shell-openai-key "placeholder")
-;; (setq chatgpt-shell-model-versions	 GPT-4)
-
-(setq dall-e-shell-openai-key "placeholder")
 
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gardnerberry.com")
@@ -329,8 +324,8 @@ projectile-project-root-files-bottom-up))
 (setq dired-open-extensions '(("gif" . "Preview")
                               ("jpg" . "Preview")
                               ("png" . "Preview")
-                              ("mkv" . "mpv")
-                              ("mp4" . "mpv")))
+                              ("mkv" . "IINA")
+                              ("mp4" . "IINA")))
 
 ;; for sending mails
 (require 'smtpmail)
@@ -531,8 +526,9 @@ projectile-project-root-files-bottom-up))
 
 ;; Reveal.js + Org mode
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
-      org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
-      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      ;; org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>gardner.berry@crms.org</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+      ;; org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>gardner.berry@crms.org</h3>"
       org-reveal-theme "moon"
       org-re-reveal-theme "moon"
       ;; org-re-reveal-theme "blood"
@@ -593,3 +589,7 @@ projectile-project-root-files-bottom-up))
 
 ;; (setq ellama-buffer-mode "org-mode")
 (setopt ellama-language "English")
+
+(setq chatgpt-shell-openai-key "placeholder")
+
+(setq dall-e-shell-openai-key "placeholder")
