@@ -7,7 +7,7 @@
 
 (setq browse-url-browser-function 'browse-url-default-browser)
 
-(setq doom-theme 'doom-palenight)
+(setq doom-theme 'doom-solarized-dark)
 (map! :leader
       :desc "Load new theme" "h t" #'load-theme)
 
@@ -27,6 +27,8 @@
       doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
       )
+(setq doom-modeline-time-icon t)
+(setq doom-modeline-buffer-file-name-style 'autotruncate-except-project)
 
 (defun gw/insert-todays-date (prefix)
   (interactive "P")
@@ -66,32 +68,32 @@
        (add-hook! '+doom-dashboard-functions :append
          (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Powered by Proprietary Garbage!")))))
 
-;; (defun gw/doom-art1 ()
-  ;; (let* ((banner'("______ _____ ____ ___ ___"
-                  ;; "`  _  V  _  V  _ \\|  V  ´"
-                  ;; "| | | | | | | | | |     |"
-                  ;; "| | | | | | | | | | . . |"
-                  ;; "| |/ / \\ \\| | |/ /\\ |V| |"
-                  ;; "|   /   \\__/ \\__/  \\| | |"
-                  ;; "|  /                ' | |"
-                  ;; "| /     E M A C S     \\ |"
-                  ;; "´´                     ``"))
-         ;; (longest-line (apply #'max (mapcar #'length banner))))
-    ;; (put-text-property
-     ;; (point)
-     ;; (dolist (line banner (point))
-       ;; (insert (+doom-dashboard--center
-                ;; +doom-dashboard--width
-                ;; (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-               ;; "\n"))
-     ;; 'face 'doom-dashboard-banner)))
+(defun gw/doom-art1 ()
+  (let* ((banner'("______ _____ ____ ___ ___"
+                  "|  _  V  _  V  _ \\|  V  |"
+                  "| | | | | | | | | |     |"
+                  "| | | | | | | | | | . . |"
+                  "| |/ / \\ \\| | |/ /\\ |V| |"
+                  "|   /   \\__/ \\__/  \\| | |"
+                  "|  /                ' | |"
+                  "| /     E M A C S     \\ |"
+                  "´´                     ``"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+;;
+(setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
+;; (setq fancy-splash-image (concat doom-private-dir "images/doom-emacs-dash.png"))
 
-;; (setq +doom-dashboard-ascii-banner-fn #'gw/doom-art1)
-(setq fancy-splash-image (concat doom-private-dir "images/doom-emacs-dash.png"))
-
-(add-hook 'doom-after-init-hook (lambda ()
-                                  (tool-bar-mode 1)
-                                  (tool-bar-mode 0)))
+;; (add-hook 'doom-after-init-hook (lambda ()
+                                  ;; (tool-bar-mode 1)
+                                  ;; (tool-bar-mode 0)))
 ;; (add-hook 'doom-after-init-hook (lambda ()
                                   ;; (menu-bar-mode 1)
                                   ;; (menu-bar-mode 0)))
@@ -206,21 +208,6 @@ projectile-project-root-files-bottom-up))
 (setq nov-unzip-program (executable-find "bsdtar")
       nov-unzip-args '("-xC" directory "-f" filename))
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-
-(add-hook 'text-mode-hook 'writegood-mode)
-
-(setq gw/weasel-words
-      '("actually"
-        "basically"
-        "easily"
-        "easy"
-        "simple"
-        "simply"))
-;; (setq writegood-weasel-words
-      ;; (-concat writegood-weasel-words gw/weasel-words))
-;; (map!
-        ;; :leader
-        ;; (:desc ""))
 
 (setq +zen-text-scale 0.8)
 
@@ -451,9 +438,10 @@ projectile-project-root-files-bottom-up))
   (setq org-directory "~/Documents/"
         org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
-        org-archive-location "~/Documents/archive.org::"
-        org-ellipsis " ↴ "
+        org-archive-location "~/Documents/Archive/archive.org::"
+        ;; org-ellipsis " ↴ "
         ;; org-ellipsis" ⤷ "
+        org-ellipsis " ... "
         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
         org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
         org-log-done 'time
@@ -502,9 +490,9 @@ projectile-project-root-files-bottom-up))
 
 (after! org-capture
   (setq org-capture-templates
-        '(("t" "todo" entry (file+headline "~/Documents/agenda.org")
+        '(("t" "todo" entry (file "~/Documents/agenda.org")
            "* TODO %?\n  %i\n  %a")
-          ("T" "todo today" entry (file+headline "~/Documents/agenda.org")
+          ("T" "todo today" entry (file "~/Documents/agenda.org")
            "* TODO %?\n  %i\nDEADLINE: %t\n  %a")
           ("i" "inbox" entry (file "~/Documents/inbox.org")
            "* %?")
@@ -572,12 +560,15 @@ projectile-project-root-files-bottom-up))
           ;; org-novelist-author-email "gardner@gamewarrior.xyz"  ; The default author contact email to use when exporting a story. Each story can also override this setting
           ;; org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
+(setq org-clock-sound "~/.config/doom/Bell.wav")
+(setq org-timer-default-timer "00:25:00")
+
 (require 'org-tempo)
 
 (setq mastodon-instance-url "https://social.linux.pizza"
       mastodon-active-user "Gamewarrior010")
 
-(setq lem-instance-url "https://discuss.online")
+(setq lem-instance-url "https://lemmy.world")
 (setq lem-current-user "GameWarrior")
 
 (setq eshell-aliases-file "~/.config/doom/eshell/aliases")
