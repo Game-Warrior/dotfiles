@@ -157,21 +157,46 @@
                      (
                      ;; General
                      ("https://frame.work/blog.rss" Framework)
+                     ("https://factorio.com/blog/rss" Factorio)
+                     ("https://news.nononsenseapps.com/index.atom" Feeder)
+                     ("https://kagifeedback.org/atom/t/release-notes" Kagi)
+                     ("https://news.play.date/index.xml" Playdate)
                      ;; Linux
                      ("https://blog.linuxmint.com/?feed=rss2" linux LinuxMint)
                      ("https://archlinux.org/news/" linux Arch)
                      ("https://fedoramagazine.org/feed/" linux Fedora)
                      ("https://endeavouros.com/news/" linux EndeavourOS)
                      ;; Boat Stuff
-                     ("https://buffalonickelblog.com/feed/" Buffalo-Nickle boat)
-                     ("https://mobius.world/feed/" Mobius boat)
+                     ("https://buffalonickelblog.com/feed/" boat Buffalo-Nickel)
+                     ("https://mobius.world/feed/" boat Mobius)
+                     ("https://www.mvuglybetty.com/blog-feed.xml"boat Ugly-Betty)
                      ;; Emacs
                      ("http://xenodium.com/rss.xml" emacs Xenodium)
                      ("https://cmdln.org/post/" emacs Commandline)
                      ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" Karal-Voit emacs)
                      ("https://systemcrafters.net/rss/news.xml" emacs SystemCrafter)
                      ("https://sachachua.com/blog/feed/" emacs SachaChua)
+                     ("https://rostre.bearblog.dev/feed/?type=rss" emacs ParsingTime)
+                     ("https://200ok.ch/atom.xml" emacs 200ok)
+                     ;; News
+                     ("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml" news first)
+                     ("https://www.ftc.gov/feeds/press-release-consumer-protection.xml" gov first ftc)
                      )))
+
+(defun elfeed-xwidgets-open (&optional use-generic-p)
+  "open with xWidgets"
+  (interactive "P")
+  (let ((entries (elfeed-search-selected)))
+    (cl-loop for entry in entries
+             do (elfeed-untag entry 'unread)
+             when (elfeed-entry-link entry)
+             do (xwidget-webkit-browse-url it))
+    (mapc #'elfeed-search-update-entry entries)
+    (unless (use-region-p) (forward-line))))
+
+(map! :leader
+      :map elfeed-mode-map
+     (:desc "Open article form Elfeed in xWidgets" "o w" #'elfeed-xwidgets-open))
 
 (after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
 projectile-project-root-files-bottom-up))
