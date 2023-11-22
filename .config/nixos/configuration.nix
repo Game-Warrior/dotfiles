@@ -36,7 +36,7 @@
   services.xserver.enable = true;
 
   # Enable The Window Manager 
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.windowManager.awesome.enable = true;
 
