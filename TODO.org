@@ -3,14 +3,9 @@
 #+author: Gardner Berry
 #+options: toc:nil num:nil timestamp:nil
 
-* TODO Annotate My Awesome WM config
+* Figureout a way to install emacs
+- [ ] native comp
+- [ ] Xwidgets
 
-* TODO Annotate My Nixos Config
-
-* TODO Annotate My Install Scripts [0/4]
-- [ ] Debian/Ubuntu Script
-- [ ] Arch Script
-- [ ] MacOS Script
-- [ ] NixOS Script
 
 * Parking Lot :noexport:

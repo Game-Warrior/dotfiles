@@ -130,9 +130,7 @@ hardware = {
   nixpkgs.config.allowUnfree = true;
 
   #Doom Emacs with native complilation support
-  nixpkgs.overlays = [
-  (import (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
-];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -163,9 +161,7 @@ hardware = {
 
     #Text Editors
     neovim
-    {
-      emacsWithPackages = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: ([epkgs.vterm]));
-    }
+    emacs
     micro
 
     #Internet
