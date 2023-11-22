@@ -40,44 +40,10 @@
   services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.windowManager.awesome.enable = true;
 
-environment.sessionVariables = {
-  # If your cursor becomes invisible
-  WLR_NO_HARDWARE_CURSORS = "1";
-  # Hint electron apps to use wayland
-  NIXOS_OZONE_WL = "1";
-};
-
-hardware = {
-    # Opengl
-    opengl.enable = true;
-
-    # Most wayland compositors need this
-    nvidia.modesetting.enable = true;
-};
-
-  # waybar
-    (pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    })
-    )
 
 # XDG portal
   xdg.portal.enable = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # Enable sound with pipewire.
-    sound.enable = true;
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-    };
-
-  # rofi keybind
-    bind = $mainMod, r, exec, rofi -show drun -show-icons
 
   # Configure keymap in X11
   services.xserver = {
@@ -135,34 +101,33 @@ hardware = {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #command line stuff
-    wget
-    git
-    btop
+    wget #A command line tool for downloading things from the internet
+    git #A distributed version control system
+    btop #A tool for monitoring system information
     neofetch
-    exa
-    starship
-    fd
-    ripgrep
+    exa #A replacement for ls written in rust
+    fd #A replacement for find written in rust
+    ripgrep #A replacement for grep also written in rust
     clang
-    pandoc
+    pandoc #A tool for converting files written in Haskell
     gnuplot
 
     #shells
     home-manager
     zsh
     pkgs.zsh-syntax-highlighting
-    fish
+    fish #The Friendly Interactive SHell: Finally a shell for the 90's
     oh-my-fish
 
     #Terminal Emulators
-    kitty
+    kitty #A GPU accelerated terminal editor with tabs
     kitty-themes
-    alacritty
+    alacritty #A GPU accelerated terminal editor written in rust
 
     #Text Editors
-    neovim
-    emacs
-    micro
+    neovim #A mid fall back editor
+    emacs #The greatest editor of all times
+    micro #An excellent fall back editor
 
     #Internet
     brave
@@ -171,7 +136,7 @@ hardware = {
 
     #Productivity
     mpv
-    libreoffice
+    libreoffice #The best libre office suite
     cura
     #rustdesk
 
@@ -186,10 +151,10 @@ hardware = {
     wofi
     awesome
     dmenu
-    nitrogen
-    cinnamon.nemo
+    nitrogen #A tool for setting wallpaper's on X11
+    cinnamon.nemo #A good GUI file-manager
     arandr
-    lxappearance
+    lxappearance #A tool for setting themes
 
     #Fonts
     jetbrains-mono
@@ -201,6 +166,7 @@ hardware = {
     #Utils
     cmake
     hunspell
+    enchant #A library for interacting with different spell checking back ends
 
     #Languages
     go
@@ -210,9 +176,6 @@ hardware = {
     python
     lua
     lua-language-server
-
-    #Desktop Environments
-    cinnamon.cinnamon-common
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
