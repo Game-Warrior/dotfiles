@@ -1,0 +1,5 @@
+(use-package nix-mode
+  :straight t
+  )
+
+(use-package ob-nix)
