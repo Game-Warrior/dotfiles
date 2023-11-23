@@ -193,85 +193,107 @@ $ nix search wget
 ** Command Line Stuff
 #+begin_src nix
     #command line stuff
-    wget
-    git
-    btop
-    neofetch
-    exa
-    starship
-    fd
-    ripgrep
-    clang
-    zsh-syntax-highlighting
-    vale
+    pkgs.wget #A command line tool for downloading things from the internet
+    pkgs.git #A distributed version control system
+    pkgs.btop #A tool for monitoring system information
+    pkgs.hyfetch #A replacement for neofetch adds pride flags and maintained neowofetch
+    pkgs.exa #A replacement for ls written in rust
+    pkgs.fd #A replacement for find written in rust
+    pkgs.ripgrep #A replacement for grep also written in rust
+    pkgs.clang
+    pkgs.pandoc #A tool for converting files written in Haskell
+    pkgs.gnuplot #A tool for ploting graphs
+
 #+end_src
 ** Shells
 #+begin_src nix
     #shells
-    home-manager
-    fish
+    pkgs.home-manager
+    pkgs.pkgs.zsh
+    pkgs.zsh-syntax-highlighting
+    pkgs.fish #the Friendly Interactive SHell: Finally a shell for the 90's
+    pkgs.oh-my-fish
+
 #+end_src
 ** Terminal Emulators
 #+begin_src nix
     #Terminal Emulators
-    kitty
-    kitty-themes
-    alacritty
+    pkgs.kitty #A GPU accelerated terminal editor with tabs
+    pkgs.kitty-themes
+    pkgs.alacritty #A GPU accelerated terminal editor written in rust
+
 #+end_src
 ** Text Editors
 #+begin_src nix
     #Text Editors
-    neovim
-{
-emacsWithPackages = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: ([epkgs.vterm]));
-}
-    micro
+    pkgs.neovim #A mid fall back editor
+    pkgs.emacs #The greatest editor of all times
+    pkgs.micro #An excellent fall back editor
+
 #+end_src
 ** Internet
 #+begin_src nix
     #Internet
-    brave
-    firefox
-    zoom-us
+    pkgs.brave
+    pkgs.firefox
+    pkgs.zoom-us
 #+end_src
 ** Productivity
 #+begin_src nix
     #Productivity
-    mpv
-    libreoffice
-    cura
+    pkgs.mpv
+    pkgs.libreoffice #The best libre office suite
+    pkgs.cura
     #rustdesk
 #+end_src
 ** Gaming
 #+begin_src nix
     #Gaming
-    steam
-    discord
-    element-desktop
+    pkgs.steam
+    pkgs.discord
+    pkgs.element-desktop
 #+end_src
 ** Window Manger Stuff
 #+begin_src nix
     #Window Manager stuff
-    awesome
-    dmenu
-    nitrogen
-    cinnamon.nemo
-    arandr
-    lxappearance
+    pkgs.sddm
+    pkgs.hyprland
+    pkgs.wofi
+    pkgs.awesome
+    pkgs.dmenu
+    pkgs.nitrogen #A tool for setting wallpaper's on X11
+    pkgs.cinnamon.nemo #A good GUI file-manager
+    pkgs.arandr
+    pkgs.lxappearance #A tool for setting themes
+
 #+end_src
 ** Fonts
 #+begin_src nix
     #Fonts
-    jetbrains-mono
-    overpass
-    source-sans-pro
-    julia-mono
+    pkgs.jetbrains-mono
+    pkgs.overpass
+    pkgs.source-sans-pro
+    pkgs.julia-mono
+    pkgs.iosevka
 #+end_src
 ** Utils
 #+begin_src nix
     #Utils
-    cmake
-    enchant
+    pkgs.cmake
+    pkgs.hunspell
+    pkgs.enchant #A library for interacting with different spell checking back ends
+
+#+end_src
+** Languages
+#+begin_src  nix
+    #Languages
+    pkgs.go
+    pkgs.gopls
+    pkgs.kotlin
+    pkgs.kotlin-language-server
+    pkgs.python
+    pkgs.lua
+    pkgs.lua-language-server
   ];
 #+end_src
 

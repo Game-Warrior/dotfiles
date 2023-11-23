@@ -35,7 +35,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable The Window Manager 
+  # Enable The Window Manager
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.windowManager.awesome.enable = true;
@@ -101,81 +101,81 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #command line stuff
-    wget #A command line tool for downloading things from the internet
-    git #A distributed version control system
-    btop #A tool for monitoring system information
-    neofetch
-    exa #A replacement for ls written in rust
-    fd #A replacement for find written in rust
-    ripgrep #A replacement for grep also written in rust
-    clang
-    pandoc #A tool for converting files written in Haskell
-    gnuplot
+    pkgs.wget #A command line tool for downloading things from the internet
+    pkgs.git #A distributed version control system
+    pkgs.btop #A tool for monitoring system information
+    pkgs.hyfetch #A replacement for neofetch adds pride flags and maintained neowofetch
+    pkgs.exa #A replacement for ls written in rust
+    pkgs.fd #A replacement for find written in rust
+    pkgs.ripgrep #A replacement for grep also written in rust
+    pkgs.clang
+    pkgs.pandoc #A tool for converting files written in Haskell
+    pkgs.gnuplot #A tool for ploting graphs
 
     #shells
-    home-manager
-    zsh
+    pkgs.home-manager
+    pkgs.pkgs.zsh
     pkgs.zsh-syntax-highlighting
-    fish #The Friendly Interactive SHell: Finally a shell for the 90's
-    oh-my-fish
+    pkgs.fish #the Friendly Interactive SHell: Finally a shell for the 90's
+    pkgs.oh-my-fish
 
     #Terminal Emulators
-    kitty #A GPU accelerated terminal editor with tabs
-    kitty-themes
-    alacritty #A GPU accelerated terminal editor written in rust
+    pkgs.kitty #A GPU accelerated terminal editor with tabs
+    pkgs.kitty-themes
+    pkgs.alacritty #A GPU accelerated terminal editor written in rust
 
     #Text Editors
-    neovim #A mid fall back editor
-    emacs #The greatest editor of all times
-    micro #An excellent fall back editor
+    pkgs.neovim #A mid fall back editor
+    pkgs.emacs #The greatest editor of all times
+    pkgs.micro #An excellent fall back editor
 
     #Internet
-    brave
-    firefox
-    zoom-us
+    pkgs.brave
+    pkgs.firefox
+    pkgs.zoom-us
 
     #Productivity
-    mpv
-    libreoffice #The best libre office suite
-    cura
+    pkgs.mpv
+    pkgs.libreoffice #The best libre office suite
+    pkgs.cura
     #rustdesk
 
     #Gaming
-    steam 
-    discord
-    element-desktop
-    
+    pkgs.steam
+    pkgs.discord
+    pkgs.element-desktop
+
     #Window Manager stuff
-    sddm
-    hyprland
-    wofi
-    awesome
-    dmenu
-    nitrogen #A tool for setting wallpaper's on X11
-    cinnamon.nemo #A good GUI file-manager
-    arandr
-    lxappearance #A tool for setting themes
+    pkgs.sddm
+    pkgs.hyprland
+    pkgs.wofi
+    pkgs.awesome
+    pkgs.dmenu
+    pkgs.nitrogen #A tool for setting wallpaper's on X11
+    pkgs.cinnamon.nemo #A good GUI file-manager
+    pkgs.arandr
+    pkgs.lxappearance #A tool for setting themes
 
     #Fonts
-    jetbrains-mono
-    overpass
-    source-sans-pro
-    julia-mono
-    iosevka
+    pkgs.jetbrains-mono
+    pkgs.overpass
+    pkgs.source-sans-pro
+    pkgs.julia-mono
+    pkgs.iosevka
 
     #Utils
-    cmake
-    hunspell
-    enchant #A library for interacting with different spell checking back ends
+    pkgs.cmake
+    pkgs.hunspell
+    pkgs.enchant #A library for interacting with different spell checking back ends
 
     #Languages
-    go
-    gopls
-    kotlin
-    kotlin-language-server
-    python
-    lua
-    lua-language-server
+    pkgs.go
+    pkgs.gopls
+    pkgs.kotlin
+    pkgs.kotlin-language-server
+    pkgs.python
+    pkgs.lua
+    pkgs.lua-language-server
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
