@@ -49,6 +49,12 @@ The first line below designates the directory where will place all of our custom
 ;; or built-in themes
 (setq minemacs-theme 'doom-solarized-dark) ; `doom-one' is a dark theme, `doom-one-light' is the light one
 #+end_src
+*** Solarized Theme
+#+begin_src emacs-lisp
+(use-package solarized-theme
+  :straight t
+  )
+#+end_src
 
 ** Title Bar
 Change the title bar format
@@ -270,7 +276,9 @@ https://github.com/seagle0128/doom-modeline
     "o d" '(dashboard-open :wk "Dashboard")
     "o e" '(elfeed :wk "Elfeed RSS")
     "o f" '(make-frame :wk "Open buffer in new frame")
-    "o F" '(select-frame-by-name :wk "Select frame by name"))
+    "o F" '(select-frame-by-name :wk "Select frame by name")
+    "o o" '(reveal-in-osx-finder :wk "Reveal current folder in OSX Finder")
+    )
 
   ;; projectile-command-map already has a ton of bindings
   ;; set for us, so no need to specify each individually.
@@ -282,14 +290,14 @@ https://github.com/seagle0128/doom-modeline
     "s d" '(dictionary-search :wk "Search dictionary")
     "s m" '(man :wk "Man pages")
     "s t" '(tldr :wk "Lookup TLDR docs for a command")
-    "s w" '(woman :wk "Similar to man but doesn't require man"))
+    "s w" '(jinx-correct :wk "Jinx is a fast spell checker for emacs"))
 
   (gb/leader-keys
     "t" '(:ignore t :wk "Toggle")
     "t e" '(eshell-toggle :wk "Toggle eshell")
     "t f" '(flycheck-mode :wk "Toggle flycheck")
     "t l" '(display-line-numbers-mode :wk "Toggle line numbers")
-    "t n" '(neotree-toggle :wk "Toggle neotree file viewer")
+    "t n" '(synosaurus-choose-and-insert :wk "Lookup and replace under point")
     "t o" '(org-mode :wk "Toggle org mode")
     "t r" '(rainbow-mode :wk "Toggle rainbow mode")
     "t t" '(visual-line-mode :wk "Toggle truncated lines")
@@ -313,8 +321,7 @@ https://github.com/seagle0128/doom-modeline
     "w J" '(buf-move-down :wk "Buffer move down")
     "w K" '(buf-move-up :wk "Buffer move up")
     "w L" '(buf-move-right :wk "Buffer move right"))
-)
-
+  )
 #+end_src
 
 ** Menu-bar-mode
@@ -323,6 +330,13 @@ https://github.com/seagle0128/doom-modeline
 #+end_src
 
 ** Dashboard
+#+begin_src emacs-lisp
+(setq dashboard-startup-banner "~/.emacs.d/assets/images/minemacs.svg")
+(setq dashboard-center-content t)
+(setq dashboard-items '((recents . 5)
+                        (agenda . 5 )
+                        (bookmarks . 3)))
+#+end_src
 
 ** Word Wrap
 #+begin_src emacs-lisp
@@ -425,6 +439,21 @@ An RSS newsfeed reader for Emacs.
                          ("melpa-devel" . "https://melpa.org/packages/")))
 #+end_src
 
+** OSX Reveal in Finder
+#+begin_src emacs-lisp
+(use-package reveal-in-osx-finder
+  :straight t
+  )
+#+end_src
+
+** Yeetube
+#+begin_src emacs-lisp
+(use-package yeetube
+  :straight t
+  )
+(setq yeetube-player 'IINA)
+#+end_src
+
 * WRITING STUFF
 ** Typing Practice
 The typing-practice package runs solely in the minibuffer, so your boss thinks you are working 😊. It utilizes a database of the 1000 most commonly used English words, and let’s you customize how easy or difficult a session will be through a couple of variables. Before long, your hand should have a good feel for all of the most common English morphemes, giving you the foundation to quickly build other words with morphemes you’ve already learned. For example, after you have learned to type the word “the” (the most common English word) you will have a building block for quickly typing “there”, “these”, “their”, “father”, “they”, “other”, “together”, etc.
@@ -477,11 +506,6 @@ Next time you're writing fiction, non-fiction, a journalistic piece or a blog po
       ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
 #+end_src
 
-** Grammar Checker
-#+begin_src emacs-lisp
-;; (require 'flycheck-vale)
-;; (flycheck-vale-setup)
-#+end_src
 ** Abbrev-Mode
 Auto expansion for Abbrev-mode.
 #+begin_src emacs-lisp
@@ -489,6 +513,7 @@ Auto expansion for Abbrev-mode.
   (dolist (hook '(org-mode-hook
                     text-mode-hook))
       (add-hook hook #'abbrev-mode))
+(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
 #+end_src
 
 ** YAsnippet
@@ -505,8 +530,24 @@ YASnippet is a tool that allows you to create templates do allow you to write le
 #+begin_src emacs-lisp
 (use-package magit-todos
   :straight t
-)
+  :after magit
+  :config (magit-todos-mode 1))
+#+end_src
 
+** Spell Checker
+Jinx is a fast just-in-time spell-checker for Emacs.
+#+begin_src emacs-lisp
+(use-package jinx
+  :straight t
+  :hook (emacs-startup . global-jinx-mode))
+#+end_src
+
+** Thesarus
+Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
+#+begin_src emacs-lisp
+(use-package synosaurus
+  :straight t
+  )
 #+end_src
 
 * ORG-MODE
@@ -524,8 +565,8 @@ I wrapped most of this block in (after! org). Without this, my settings might be
         org-archive-location "~/Documents/Archive/archive.org::"
         ;; Set org-ellipsis
         ;; org-ellipsis " ↴ "
-        ;; org-ellipsis" ⤷ "
-        org-ellipsis " ... "
+        org-ellipsis" ⤷ "
+        ;; org-ellipsis " ... "
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -743,7 +784,7 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "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")
+  (setq chatgpt-shell-openai-key "Placeholder")
   )
 #+end_src
 

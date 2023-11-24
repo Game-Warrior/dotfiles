@@ -9,6 +9,10 @@
 ;; or built-in themes
 (setq minemacs-theme 'doom-solarized-dark) ; `doom-one' is a dark theme, `doom-one-light' is the light one
 
+(use-package solarized-theme
+  :straight t
+  )
+
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
 ;; MinEmacs defines the variable `minemacs-fonts-plist' that is used by the
@@ -208,7 +212,9 @@
     "o d" '(dashboard-open :wk "Dashboard")
     "o e" '(elfeed :wk "Elfeed RSS")
     "o f" '(make-frame :wk "Open buffer in new frame")
-    "o F" '(select-frame-by-name :wk "Select frame by name"))
+    "o F" '(select-frame-by-name :wk "Select frame by name")
+    "o o" '(reveal-in-osx-finder :wk "Reveal current folder in OSX Finder")
+    )
 
   ;; projectile-command-map already has a ton of bindings
   ;; set for us, so no need to specify each individually.
@@ -220,14 +226,14 @@
     "s d" '(dictionary-search :wk "Search dictionary")
     "s m" '(man :wk "Man pages")
     "s t" '(tldr :wk "Lookup TLDR docs for a command")
-    "s w" '(woman :wk "Similar to man but doesn't require man"))
+    "s w" '(jinx-correct :wk "Jinx is a fast spell checker for emacs"))
 
   (gb/leader-keys
     "t" '(:ignore t :wk "Toggle")
     "t e" '(eshell-toggle :wk "Toggle eshell")
     "t f" '(flycheck-mode :wk "Toggle flycheck")
     "t l" '(display-line-numbers-mode :wk "Toggle line numbers")
-    "t n" '(neotree-toggle :wk "Toggle neotree file viewer")
+    "t n" '(synosaurus-choose-and-insert :wk "Lookup and replace under point")
     "t o" '(org-mode :wk "Toggle org mode")
     "t r" '(rainbow-mode :wk "Toggle rainbow mode")
     "t t" '(visual-line-mode :wk "Toggle truncated lines")
@@ -251,9 +257,15 @@
     "w J" '(buf-move-down :wk "Buffer move down")
     "w K" '(buf-move-up :wk "Buffer move up")
     "w L" '(buf-move-right :wk "Buffer move right"))
-)
+  )
 
 (menu-bar-mode -1)
+
+(setq dashboard-startup-banner "~/.emacs.d/assets/images/minemacs.svg")
+(setq dashboard-center-content t)
+(setq dashboard-items '((recents . 5)
+                        (agenda . 5 )
+                        (bookmarks . 3)))
 
 (setq word-wrap-mode 1)
 
@@ -329,6 +341,15 @@
                          ("melpa" . "https://stable.melpa.org/packages/")
                          ("melpa-devel" . "https://melpa.org/packages/")))
 
+(use-package reveal-in-osx-finder
+  :straight t
+  )
+
+(use-package yeetube
+  :straight t
+  )
+(setq yeetube-player 'IINA)
+
 (load "~/.config/doom/typing-practice.el")
 
 (defadvice practice-typing (around no-cursor activate)
@@ -356,13 +377,11 @@
        ;; :leader
       ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
 
-;; (require 'flycheck-vale)
-;; (flycheck-vale-setup)
-
 ;; Enable abbreviation mode
   (dolist (hook '(org-mode-hook
                     text-mode-hook))
       (add-hook hook #'abbrev-mode))
+(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
 
 (use-package yasnippet
   :straight t
@@ -372,7 +391,16 @@
 
 (use-package magit-todos
   :straight t
-)
+  :after magit
+  :config (magit-todos-mode 1))
+
+(use-package jinx
+  :straight t
+  :hook (emacs-startup . global-jinx-mode))
+
+(use-package synosaurus
+  :straight t
+  )
 
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
@@ -384,8 +412,8 @@
         org-archive-location "~/Documents/Archive/archive.org::"
         ;; Set org-ellipsis
         ;; org-ellipsis " ↴ "
-        ;; org-ellipsis" ⤷ "
-        org-ellipsis " ... "
+        org-ellipsis" ⤷ "
+        ;; org-ellipsis " ... "
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -531,7 +559,7 @@
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "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")
+  (setq chatgpt-shell-openai-key "Placeholder")
   )
 
 (use-package dired-open)
