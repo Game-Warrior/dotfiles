@@ -1,4 +1,4 @@
-#+title: Dotfiles TODOs
+#+title: Dotfiles TODO's
 #+description: Here is a list of TODOs for my dotfiles
 #+author: Gardner Berry
 #+options: toc:nil num:nil timestamp:nil
@@ -6,5 +6,7 @@
 * TODO Fix Neovim config
 
 * TODO Replace Doom with minEmacs
+
+* TODO Remove Debian from compatibility List for scripts
 
 * Parking Lot :noexport:
