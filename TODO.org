@@ -1,11 +1,10 @@
-#+title: dotfiles TODOs
+#+title: Dotfiles TODOs
 #+description: Here is a list of TODOs for my dotfiles
 #+author: Gardner Berry
 #+options: toc:nil num:nil timestamp:nil
 
-* Figureout a way to install emacs
-- [ ] native comp
-- [ ] Xwidgets
+* TODO Fix Neovim config
 
+* TODO Replace Doom with minEmacs
 
 * Parking Lot :noexport:
