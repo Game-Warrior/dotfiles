@@ -6,7 +6,7 @@ echo  "       _____  __          __
       | |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
        \_____|     \/  \/"
 
-echo "Welcome to my Post Installtion script for Ubuntu and Debian based Distros"
+echo "Welcome to my Post Installtion script for Ubuntu based Distros"
 
 echo "Copying my Configs"
 
@@ -25,10 +25,6 @@ sudo add-apt-repository ppa:kelleyk/emacs
 echo "Adding Alacritty PPA"
 sudo add-apt-repository ppa:aslatter/ppa
 
-echo "Adding Github Desktop deb"
-wget -qO - https://mirror.mwt.me/shiftkey-desktop/gpgkey | gpg --dearmor | sudo tee /etc/apt/keyrings/mwt-desktop.gpg > /dev/null
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/mwt-desktop.gpg] https://mirror.mwt.me/shiftkey-desktop/deb/ any main" > /etc/apt/sources.list.d/mwt-desktop.list'
-
 echo "Updating"
 sudo apt update&&sudo apt upgrade
 
@@ -40,6 +36,7 @@ sudo apt install qemu-system virt-manager bridge-utils
 
 echo "Making Directories"
 
+echo "Making Developer Directories"
 mkdir ~/Developer
 mkdir ~/Developer/Git-Repos
 mkdir ~/Developer/Projects
@@ -52,9 +49,8 @@ cd ~/Wallpapers
 git clone https://gitlab.com/dwt1/wallpapers
 cd
 
-echo "Installing Doom Emacs"
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-~/.emacs.d/bin/doom install
+echo "Installing MinEmacs"
+git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
 
 echo "Enableing libvirtd"
 sudo systemctl start libvirtd
