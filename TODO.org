@@ -7,6 +7,4 @@
 
 * TODO Replace Doom with minEmacs
 
-* TODO Remove Debian from compatibility List for scripts
-
 * Parking Lot :noexport:
