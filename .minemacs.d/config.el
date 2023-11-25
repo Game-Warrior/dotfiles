@@ -7,11 +7,7 @@
 
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-solarized-dark) ; `doom-one' is a dark theme, `doom-one-light' is the light one
-
-(use-package solarized-theme
-  :straight t
-  )
+(setq minemacs-theme 'doom-peacock) ; `doom-one' is a dark theme, `doom-one-light' is the light one
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -350,58 +346,6 @@
   )
 (setq yeetube-player 'IINA)
 
-(load "~/.config/doom/typing-practice.el")
-
-(defadvice practice-typing (around no-cursor activate)
-  "Do not show cursor at minibuffer during typing practice."
-  (let ((minibuffer-setup-hook
-         (cons (lambda () (setq cursor-type nil))
-               minibuffer-setup-hook)))
-    ad-do-it))
-
-(setq nov-unzip-program (executable-find "bsgbar")
-      nov-unzip-args '("-xC" directory "-f" filename))
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-
-(use-package olivetti
-  :straight t
-  )
-(setq olivetti-style 'fringes-and-margins)
-
-(use-package palimpsest
-  :straight t
-  )
-(add-hook 'text-mode-hook 'palimpsest-mode)
-
-;; (map!
-       ;; :leader
-      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
-
-;; Enable abbreviation mode
-  (dolist (hook '(org-mode-hook
-                    text-mode-hook))
-      (add-hook hook #'abbrev-mode))
-(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
-
-(use-package yasnippet
-  :straight t
-  )
-(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(yas-global-mode 1)
-
-(use-package magit-todos
-  :straight t
-  :after magit
-  :config (magit-todos-mode 1))
-
-(use-package jinx
-  :straight t
-  :hook (emacs-startup . global-jinx-mode))
-
-(use-package synosaurus
-  :straight t
-  )
-
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
   (setq org-directory "~/Documents/"
@@ -412,8 +356,8 @@
         org-archive-location "~/Documents/Archive/archive.org::"
         ;; Set org-ellipsis
         ;; org-ellipsis " ↴ "
-        org-ellipsis" ⤷ "
-        ;; org-ellipsis " ... "
+        ;; org-ellipsis" ⤷ "
+        org-ellipsis " ... "
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -432,16 +376,6 @@
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" ))) ; Task has been cancelled
   )
-
-(use-package org-superstar
-  :straight t
-  )
-(with-eval-after-load 'org
-(setq         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
-        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
-))
-(add-hook 'org
-(org-superstar-mode 1))
 
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
@@ -541,7 +475,68 @@
   )
 (add-hook 'org-mode-hook #'org-make-toc-mode)
 
+(use-package org-superstar
+  :straight t
+)
+(add-hook 'org-mode-hook #'org-superstar-mode)
+
 ;; (use-package org-tempo)
+
+(load "~/.config/doom/typing-practice.el")
+
+(defadvice practice-typing (around no-cursor activate)
+  "Do not show cursor at minibuffer during typing practice."
+  (let ((minibuffer-setup-hook
+         (cons (lambda () (setq cursor-type nil))
+               minibuffer-setup-hook)))
+    ad-do-it))
+
+(setq nov-unzip-program (executable-find "bsgbar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(use-package olivetti
+  :straight t
+  )
+(setq olivetti-style 'fringes-and-margins)
+
+(use-package palimpsest
+  :straight t
+  )
+(add-hook 'text-mode-hook 'palimpsest-mode)
+
+;; (map!
+       ;; :leader
+      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
+
+;; Enable abbreviation mode
+  (dolist (hook '(org-mode-hook
+                    text-mode-hook))
+      (add-hook hook #'abbrev-mode))
+(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
+
+(use-package yasnippet
+  :straight t
+  )
+(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+(yas-global-mode 1)
+
+(use-package magit-todos
+  :straight t
+  :after magit
+  :config (magit-todos-mode 1))
+
+(use-package jinx
+  :straight t
+  :hook (emacs-startup . global-jinx-mode))
+
+(use-package synosaurus
+  :straight t
+  )
+
+(setq nov-unzip-program (executable-find "bsdtar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 (setq eshell-aliases-file "~/.config/doom/eshell/aliases")
 
@@ -559,17 +554,30 @@
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "Placeholder")
+  (setq chatgpt-shell-openai-key "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")
   )
 
-(use-package dired-open)
-:straight t
-   :config
+(use-package mastodon
+  :straight t
+  :config
+  (setq mastodon-instance-url "https://social.linux.pizza"
+      mastodon-active-user "Gamewarrior010")
+  )
+
+(use-package lem
+  :straight t
+  :config
+(setq lem-instance-url "https://lemmy.world")
+(setq lem-current-user "GameWarrior"))
+
+(use-package dired-open
+  :straight t
+  :config
    (setq dired-open-extensions '(("gif" . "sxiv")
                                  ("jpg" . "sxiv")
                                  ("png" . "sxiv")
                                  ("mkv" . "IINA")
-                                 ("mp4" . "IINA")))
+                                 ("mp4" . "IINA"))))
 
 (use-package peep-dired
   :straight t
@@ -586,6 +594,12 @@
   :straight t
   :hook
   (dired-mode . nerd-icons-dired-mode))
+
+(use-package diredfl
+  :straight t
+  :hook
+  (dired-mode . diredfl-mode)
+  )
 
 (cond ((eq system-type 'darwin)
        (setq dired-use-ls-dired t

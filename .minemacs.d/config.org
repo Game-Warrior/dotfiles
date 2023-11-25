@@ -1,7 +1,6 @@
 #+title: GW's minEmacs Config
 #+description: My personal minEmacs Configuration
 #+property: header-args:emacs-lisp :tangle ./config.el :mkdirp yes
-#+startup: showeverything
 #+options: num:nil
 #+auto_tangle: t
 
@@ -47,15 +46,8 @@ The first line below designates the directory where will place all of our custom
 #+begin_src emacs-lisp
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-solarized-dark) ; `doom-one' is a dark theme, `doom-one-light' is the light one
+(setq minemacs-theme 'doom-peacock) ; `doom-one' is a dark theme, `doom-one-light' is the light one
 #+end_src
-*** Solarized Theme
-#+begin_src emacs-lisp
-(use-package solarized-theme
-  :straight t
-  )
-#+end_src
-
 ** Title Bar
 Change the title bar format
 #+begin_src emacs-lisp
@@ -454,104 +446,8 @@ An RSS newsfeed reader for Emacs.
 (setq yeetube-player 'IINA)
 #+end_src
 
-* WRITING STUFF
-** Typing Practice
-The typing-practice package runs solely in the minibuffer, so your boss thinks you are working 😊. It utilizes a database of the 1000 most commonly used English words, and let’s you customize how easy or difficult a session will be through a couple of variables. Before long, your hand should have a good feel for all of the most common English morphemes, giving you the foundation to quickly build other words with morphemes you’ve already learned. For example, after you have learned to type the word “the” (the most common English word) you will have a building block for quickly typing “there”, “these”, “their”, “father”, “they”, “other”, “together”, etc.
-#+begin_src emacs-lisp
-(load "~/.config/doom/typing-practice.el")
-
-(defadvice practice-typing (around no-cursor activate)
-  "Do not show cursor at minibuffer during typing practice."
-  (let ((minibuffer-setup-hook
-         (cons (lambda () (setq cursor-type nil))
-               minibuffer-setup-hook)))
-    ad-do-it))
-#+end_src
-
-
-** Nov.el
-nov.el provides a major mode for reading EPUB documents
-#+begin_src emacs-lisp
-(setq nov-unzip-program (executable-find "bsgbar")
-      nov-unzip-args '("-xC" directory "-f" filename))
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-#+end_src
-
-** Olivetti
-#+begin_src emacs-lisp
-(use-package olivetti
-  :straight t
-  )
-(setq olivetti-style 'fringes-and-margins)
-#+end_src
-** Palimpsest-Mode
-This minor mode for Emacs provides several strategies to remove text without permanently deleting it. Namely, it provides the following capabilities:
-| Keybindings | Action                                         |
-|-------------+------------------------------------------------|
-| C-c C-r     | Send selected text to the bottom of the buffer |
-| C-c C-s     | Send selected text to the top of the buffer    |
-| C-c C-q     | Send selected text to a trash file             |
-
-Much like code, the process of writing text is a progression of revisions where content gets transformed and refined. During these iterations, it is often desirable to move text instead of deleting it: you may have written a sentence that doesn't belong in the paragraph you're editing right now, but it might fit somewhere else. Since you don't know where exactly, you'd like to put it out of the way, not discard it entirely. Palimpsest saves you from the traveling back and forth between your current position and the bottom of your document (or another draft or trash document).
-
-Next time you're writing fiction, non-fiction, a journalistic piece or a blog post using Emacs, give palimpsest-mode a try. You might even try it while coding in a functional language, moving stuff around sprightly, aided by an abstraction reminiscent of the Read-Eval-Print loop, yet completely orthogonal.
-#+begin_src emacs-lisp
-(use-package palimpsest
-  :straight t
-  )
-(add-hook 'text-mode-hook 'palimpsest-mode)
-
-;; (map!
-       ;; :leader
-      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
-#+end_src
-
-** Abbrev-Mode
-Auto expansion for Abbrev-mode.
-#+begin_src emacs-lisp
-;; Enable abbreviation mode
-  (dolist (hook '(org-mode-hook
-                    text-mode-hook))
-      (add-hook hook #'abbrev-mode))
-(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
-#+end_src
-
-** YAsnippet
-YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
-#+begin_src emacs-lisp
-(use-package yasnippet
-  :straight t
-  )
-(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(yas-global-mode 1)
-#+end_src
-
-** Magit
-#+begin_src emacs-lisp
-(use-package magit-todos
-  :straight t
-  :after magit
-  :config (magit-todos-mode 1))
-#+end_src
-
-** Spell Checker
-Jinx is a fast just-in-time spell-checker for Emacs.
-#+begin_src emacs-lisp
-(use-package jinx
-  :straight t
-  :hook (emacs-startup . global-jinx-mode))
-#+end_src
-
-** Thesarus
-Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
-#+begin_src emacs-lisp
-(use-package synosaurus
-  :straight t
-  )
-#+end_src
-
 * ORG-MODE
-I wrapped most of this block in (after! org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal by adding (+journal) to the org section of my Doom Emacs init.el.
+I wrapped most of this block in (with-eval-after-load org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal by adding (+journal) to the org section of my Doom Emacs init.el.
 
 ** Org-Settings
 #+begin_src emacs-lisp
@@ -565,8 +461,8 @@ I wrapped most of this block in (after! org). Without this, my settings might be
         org-archive-location "~/Documents/Archive/archive.org::"
         ;; Set org-ellipsis
         ;; org-ellipsis " ↴ "
-        org-ellipsis" ⤷ "
-        ;; org-ellipsis " ... "
+        ;; org-ellipsis" ⤷ "
+        org-ellipsis " ... "
         org-hide-emphasis-markers t
         ;; ex. of org-link-abbrev-alist in action
         ;; [[arch-wiki:Name_of_Page][Description]]
@@ -587,21 +483,6 @@ I wrapped most of this block in (after! org). Without this, my settings might be
   )
 #+end_src
 
-** Org-Superstar
-Prettify headings and plain lists in Org mode. This package is a direct descendant of ‘org-bullets’, with most of the code base completely rewritten.
-#+begin_src emacs-lisp
-(use-package org-superstar
-  :straight t
-  )
-(with-eval-after-load 'org
-(setq         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
-        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
-))
-(add-hook 'org
-(org-superstar-mode 1))
-#+end_src
-
-** Org-modern
 ** Org-fonts
 #+begin_src emacs-lisp
   (custom-set-faces
@@ -737,6 +618,15 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
   )
 (add-hook 'org-mode-hook #'org-make-toc-mode)
 #+end_src
+
+** Org-Superstar
+#+begin_src emacs-lisp
+(use-package org-superstar
+  :straight t
+)
+(add-hook 'org-mode-hook #'org-superstar-mode)
+
+#+end_src
 ** Source Code Block Tag Expansion
 Org-tempo is not a separate package but a module within org that can be enabled.  Org-tempo allows for '<s' followed by TAB to expand to a begin_src tag.  Other expansions available include:
 
@@ -757,7 +647,113 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 ;; (use-package org-tempo)
 #+end_src
 
-* Eshell
+* WRITING STUFF
+** Typing Practice
+The typing-practice package runs solely in the minibuffer, so your boss thinks you are working 😊. It utilizes a database of the 1000 most commonly used English words, and let’s you customize how easy or difficult a session will be through a couple of variables. Before long, your hand should have a good feel for all of the most common English morphemes, giving you the foundation to quickly build other words with morphemes you’ve already learned. For example, after you have learned to type the word “the” (the most common English word) you will have a building block for quickly typing “there”, “these”, “their”, “father”, “they”, “other”, “together”, etc.
+#+begin_src emacs-lisp
+(load "~/.config/doom/typing-practice.el")
+
+(defadvice practice-typing (around no-cursor activate)
+  "Do not show cursor at minibuffer during typing practice."
+  (let ((minibuffer-setup-hook
+         (cons (lambda () (setq cursor-type nil))
+               minibuffer-setup-hook)))
+    ad-do-it))
+#+end_src
+
+
+** Nov.el
+nov.el provides a major mode for reading EPUB documents
+#+begin_src emacs-lisp
+(setq nov-unzip-program (executable-find "bsgbar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+#+end_src
+
+** Olivetti
+#+begin_src emacs-lisp
+(use-package olivetti
+  :straight t
+  )
+(setq olivetti-style 'fringes-and-margins)
+#+end_src
+** Palimpsest-Mode
+This minor mode for Emacs provides several strategies to remove text without permanently deleting it. Namely, it provides the following capabilities:
+| Keybindings | Action                                         |
+|-------------+------------------------------------------------|
+| C-c C-r     | Send selected text to the bottom of the buffer |
+| C-c C-s     | Send selected text to the top of the buffer    |
+| C-c C-q     | Send selected text to a trash file             |
+
+Much like code, the process of writing text is a progression of revisions where content gets transformed and refined. During these iterations, it is often desirable to move text instead of deleting it: you may have written a sentence that doesn't belong in the paragraph you're editing right now, but it might fit somewhere else. Since you don't know where exactly, you'd like to put it out of the way, not discard it entirely. Palimpsest saves you from the traveling back and forth between your current position and the bottom of your document (or another draft or trash document).
+
+Next time you're writing fiction, non-fiction, a journalistic piece or a blog post using Emacs, give palimpsest-mode a try. You might even try it while coding in a functional language, moving stuff around sprightly, aided by an abstraction reminiscent of the Read-Eval-Print loop, yet completely orthogonal.
+#+begin_src emacs-lisp
+(use-package palimpsest
+  :straight t
+  )
+(add-hook 'text-mode-hook 'palimpsest-mode)
+
+;; (map!
+       ;; :leader
+      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
+#+end_src
+
+** Abbrev-Mode
+Auto expansion for Abbrev-mode.
+#+begin_src emacs-lisp
+;; Enable abbreviation mode
+  (dolist (hook '(org-mode-hook
+                    text-mode-hook))
+      (add-hook hook #'abbrev-mode))
+(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
+#+end_src
+
+** YAsnippet
+YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
+#+begin_src emacs-lisp
+(use-package yasnippet
+  :straight t
+  )
+(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+(yas-global-mode 1)
+#+end_src
+
+** Magit
+#+begin_src emacs-lisp
+(use-package magit-todos
+  :straight t
+  :after magit
+  :config (magit-todos-mode 1))
+#+end_src
+
+** Spell Checker
+Jinx is a fast just-in-time spell-checker for Emacs.
+#+begin_src emacs-lisp
+(use-package jinx
+  :straight t
+  :hook (emacs-startup . global-jinx-mode))
+#+end_src
+
+** Thesarus
+Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
+#+begin_src emacs-lisp
+(use-package synosaurus
+  :straight t
+  )
+#+end_src
+
+
+* Reading Stuff
+** Nov
+nov.el provides a major mode for reading EPUB documents
+#+begin_src emacs-lisp
+(setq nov-unzip-program (executable-find "bsdtar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+#+end_src
+
+* ESHELL
 ** Aliases
 #+begin_src emacs-lisp
 (setq eshell-aliases-file "~/.config/doom/eshell/aliases")
@@ -769,7 +765,7 @@ Org-tempo is not a separate package but a module within org that can be enabled.
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
 #+end_src
-* AI Stuff
+* AI ASSIANTS
 ** Ellama
 #+begin_src emacs-lisp
 ;; (setq ellama-buffer-mode "org-mode")
@@ -784,20 +780,40 @@ Org-tempo is not a separate package but a module within org that can be enabled.
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "Placeholder")
+  (setq chatgpt-shell-openai-key "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")
   )
 #+end_src
 
+* SOCIAL MEDIA
+** Mastodon
+mastodon.el is an Emacs client for the AcitivityPub social networks that implement the Mastodon API.
+#+begin_src emacs-lisp
+(use-package mastodon
+  :straight t
+  :config
+  (setq mastodon-instance-url "https://social.linux.pizza"
+      mastodon-active-user "Gamewarrior010")
+  )
+#+end_src
+** Lemmy
+lem.el is an Emacs client for the federated link aggregator Lemmy.
+#+begin_src emacs-lisp
+(use-package lem
+  :straight t
+  :config
+(setq lem-instance-url "https://lemmy.world")
+(setq lem-current-user "GameWarrior"))
+#+end_src
 * DIRED
 #+begin_src emacs-lisp
-(use-package dired-open)
-:straight t
-   :config
+(use-package dired-open
+  :straight t
+  :config
    (setq dired-open-extensions '(("gif" . "sxiv")
                                  ("jpg" . "sxiv")
                                  ("png" . "sxiv")
                                  ("mkv" . "IINA")
-                                 ("mp4" . "IINA")))
+                                 ("mp4" . "IINA"))))
 
 (use-package peep-dired
   :straight t
@@ -814,6 +830,12 @@ Org-tempo is not a separate package but a module within org that can be enabled.
   :straight t
   :hook
   (dired-mode . nerd-icons-dired-mode))
+
+(use-package diredfl
+  :straight t
+  :hook
+  (dired-mode . diredfl-mode)
+  )
 
 (cond ((eq system-type 'darwin)
        (setq dired-use-ls-dired t
