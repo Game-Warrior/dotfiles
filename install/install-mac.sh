@@ -56,9 +56,8 @@ do
     esac
 done
 
-echo "Installing Doom Emacs"
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-~/.emacs.d/bin/doom install
+echo "Installing MinEmacs"
+git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
 
 echo "Making Developer folder"
 mkdir ~/Developer/

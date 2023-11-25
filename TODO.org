@@ -5,6 +5,4 @@
 
 * TODO Fix Neovim config
 
-* TODO Replace Doom with minEmacs
-
 * Parking Lot :noexport:

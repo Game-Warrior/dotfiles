@@ -1,5 +1,5 @@
-#+title: Ubuntu Post Installation Script
-#+description: Ubuntu Post Installation Script in org-mode
+#+title: Arch Post Installation Script
+#+description: Arch Post Installation Script in org-mode
 #+author: Gardner Berry
 #+property: header-args :tangle install-arch.sh
 #+options: toc:nil num:nil timestamp:nil
@@ -87,7 +87,7 @@ git clone https://gitlab.com/dwt1/wallpapers
 * Install MinEmacs
 #+begin_src shell
 echo "Installing MinEmacs"
-git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs#+end_src
+git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
 #+end_src
 ** Enabling Emacs daemon
 #+begin_src shell
