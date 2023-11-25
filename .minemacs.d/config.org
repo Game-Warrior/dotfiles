@@ -17,7 +17,7 @@ This is my Doom Emacs Config. I have built this over the last couple of months m
 ;; | |  __   \ \  /\  / /  https://github.com/game-warrior
 ;; | | |_ |   \ \/  \/ /   @gamewarrior010@social.linux.pizza
 ;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
-;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
+;;  \_____|     \/  \/     https://github.com/abougouffa/minemacs
 #+end_src
 
 ** Why Emacs
@@ -46,7 +46,7 @@ The first line below designates the directory where will place all of our custom
 #+begin_src emacs-lisp
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-peacock) ; `doom-one' is a dark theme, `doom-one-light' is the light one
+(setq minemacs-theme 'doom-solarized-dark)
 #+end_src
 ** Title Bar
 Change the title bar format
@@ -780,7 +780,7 @@ nov.el provides a major mode for reading EPUB documents
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "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")
+  (setq chatgpt-shell-openai-key "placeholder")
   )
 #+end_src
 
@@ -834,8 +834,9 @@ lem.el is an Emacs client for the federated link aggregator Lemmy.
 (use-package diredfl
   :straight t
   :hook
-  (dired-mode . diredfl-mode)
-  )
+  (dired-mode . diredfl-mode))
+
+
 
 (cond ((eq system-type 'darwin)
        (setq dired-use-ls-dired t

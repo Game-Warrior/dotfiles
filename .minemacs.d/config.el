@@ -3,11 +3,11 @@
 ;; | |  __   \ \  /\  / /  https://github.com/game-warrior
 ;; | | |_ |   \ \/  \/ /   @gamewarrior010@social.linux.pizza
 ;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
-;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
+;;  \_____|     \/  \/     https://github.com/abougouffa/minemacs
 
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-peacock) ; `doom-one' is a dark theme, `doom-one-light' is the light one
+(setq minemacs-theme 'doom-solarized-dark)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -554,7 +554,7 @@
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "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")
+  (setq chatgpt-shell-openai-key "placeholder")
   )
 
 (use-package mastodon
@@ -598,8 +598,9 @@
 (use-package diredfl
   :straight t
   :hook
-  (dired-mode . diredfl-mode)
-  )
+  (dired-mode . diredfl-mode))
+
+
 
 (cond ((eq system-type 'darwin)
        (setq dired-use-ls-dired t
