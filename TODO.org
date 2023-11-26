@@ -5,11 +5,18 @@
 
 * TODO Fix Neovim config
 
+<<<<<<< HEAD
 * Update Install Scripts [/]
 - [ ] Replace doom with minemacs [/]
   - [ ] Arch
   - [ ] Ubuntu
   - [ ] MacOS
 
+=======
+* TODO Have the scripts copy minEmacs config
+- [ ] Arch
+- [ ] Ubuntu
+- [ ] MacOS
+>>>>>>> origin/main
 
 * Parking Lot :noexport:
