@@ -1,6 +1,5 @@
 #+title: MacOS Post Installation Script
 #+description: The literate version of this script written in org-mode.
-#+date: <2023-03-07 Tue 09:48>
 #+property: header-args :tangle install-mac.sh
 #+author: Gardner Berry
 #+options: toc:nil num:nil timestamp:nil
