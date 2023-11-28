@@ -11,6 +11,9 @@
 ;; Disable `dashboard'
 ;; (setq +dashboard-disable t)
 
+;; Disable Menu-bar mode
+(setq menu-bar-mode nil)
+
 ;; Disable org-modern
 (setq org-modern-mode -1)
 

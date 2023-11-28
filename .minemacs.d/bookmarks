@@ -1,0 +1,54 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("school-schedule.pdf"
+ (filename . "~/Documents/School-2023-2024/school-schedule.pdf")
+ (position . 1)
+ (last-modified 25958 21192 938955 0)
+ (page . 1)
+ (slice)
+ (size . fit-page)
+ (origin 0.0 . 0.0)
+ (handler . pdf-view-bookmark-jump-handler))
+("config.org"
+ (filename . "~/.minemacs.d/config.org")
+ (front-context-string . "\n* Table of Cont")
+ (rear-context-string . "+auto_tangle: t\n")
+ (position . 184)
+ (last-modified 25956 35613 119265 0))
+("agenda.org"
+ (filename . "~/Documents/agenda.org")
+ (front-context-string . "\n* Personal :per")
+ (rear-context-string . "l timestamp:nil\n")
+ (position . 144)
+ (last-modified 25894 4159 641583 0))
+("inbox.org"
+ (filename . "~/Documents/inbox.org")
+ (front-context-string . "\n* French For Re")
+ (rear-context-string . "l timestamp:nil\n")
+ (position . 171)
+ (last-modified 25894 4146 575306 0))
+("mobile.org"
+ (filename . "~/Documents/mobile.org")
+ (front-context-string)
+ (rear-context-string . "num:nil toc:nil\n")
+ (position . 110)
+ (last-modified 25894 4139 710486 0))
+("notes.org"
+ (filename . "~/Documents/notes.org")
+ (front-context-string . "\n* Table of Cont")
+ (rear-context-string . "artup: overview\n")
+ (position . 153)
+ (last-modified 25894 4133 134785 0))
+("To-Research"
+ (filename . "~/Documents/To-Research.org")
+ (front-context-string . "o\n\n* Privacy and")
+ (rear-context-string . ":nil\n#+tags: tod")
+ (position . 149))
+("zsh"
+ (filename . "~/.zshrc")
+ (front-context-string . "d/bin:$PATH\"\n\n#a")
+ (rear-context-string . "H=\"$HOME/.emacs.")
+ (position . 623))
+)

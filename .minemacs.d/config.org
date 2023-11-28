@@ -1,10 +1,10 @@
-#+title: GW's minEmacs Config
+#+title: GB's minEmacs Config
 #+description: My personal minEmacs Configuration
 #+property: header-args:emacs-lisp :tangle ./config.el :mkdirp yes
 #+options: num:nil
 #+auto_tangle: t
 
-* Table of Contents
+* Table of Contents :TOC:
 :properties:
 :toc:      :include all :ignore this
 :end:
@@ -19,7 +19,6 @@ This is my Doom Emacs Config. I have built this over the last couple of months m
 ;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
 ;;  \_____|     \/  \/     https://github.com/abougouffa/minemacs
 #+end_src
-
 ** Why Emacs
 I highly recommend that you checkout this [[https://tecosaur.github.io/emacs-config/config.html][this blog post/config by Tecosaur]] it covers way more about Doom Emacs that I want to here but to quote an excerpt from it.
 #+begin_quote
@@ -38,7 +37,6 @@ and more…
 Ideally, one may use Emacs as the interface to perform input → transform → output cycles, i.e. form a bridge between the human mind and information manipulation.
 #+end_quote
 
-
 * GUI CHANGES
 ** Theme
 The first line below designates the directory where will place all of our custom-made themes, which I have created only one (dtmacs).  You can create your own Emacs themes with the help of the [[https://emacsfodder.github.io/emacs-theme-editor/][Emacs Theme Editor]].  I am also installing =doom-themes= because it contains a huge collection of themes.  M-x load-theme will list all of the themes available.
@@ -46,7 +44,7 @@ The first line below designates the directory where will place all of our custom
 #+begin_src emacs-lisp
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-solarized-dark)
+(setq minemacs-theme 'doom-1337)
 #+end_src
 ** Title Bar
 Change the title bar format
@@ -55,18 +53,12 @@ Change the title bar format
 #+end_src
 
 ** Fonts
-MinEmacs defines the variable `minemacs-fonts-plist' that is used by the
-`+setup-fonts' function. The function checks and enables the first available
-font from these defined in `minemacs-fonts-plist'. This variable can be
+MinEmacs defines the variable =minemacs-fonts-plist= that is used by k
+=+setup-fonts= function. The function checks and enables the first available
+font from these defined in =minemacs-fonts-plist=. This variable can be
 customized to set font specs for specific Emacs faces or to enable some
 language-specific fonts.
 #+begin_src emacs-lisp
-;; MinEmacs defines the variable `minemacs-fonts-plist' that is used by the
-;; `+setup-fonts' function. The function checks and enables the first available
-;; font from these defined in `minemacs-fonts-plist'. This variable can be
-;; customized to set font specs for specific Emacs faces or to enable some
-;; language-specific fonts.
-
 (+setup-fonts)
 ;; You can set a list of fonts to be used, like the snippet below. The first
 ;; font found on the system will be used:
@@ -113,6 +105,26 @@ https://github.com/seagle0128/doom-modeline
 
 #+end_src
 
+** Menu-bar-mode
+#+begin_src emacs-lisp
+(menu-bar-mode -1)
+#+end_src
+
+** Dashboard
+#+begin_src emacs-lisp
+(setq dashboard-startup-banner "~/.emacs.d/assets/images/minemacs.svg")
+(setq dashboard-center-content t)
+(setq dashboard-items '((recents . 5)
+                        (agenda . 5 )
+                        (bookmarks . 3)))
+#+end_src
+
+** Word Wrap
+#+begin_src emacs-lisp
+(setq word-wrap-mode 1)
+#+end_src
+
+* PERSONAL SETTINGS
 ** General Keybindings
 #+begin_src emacs-lisp
 (use-package general
@@ -137,7 +149,7 @@ https://github.com/seagle0128/doom-modeline
     "b" '(:ignore t :wk "Bookmarks/Buffers")
     "b b" '(switch-to-buffer :wk "Switch to buffer")
     "b c" '(clone-indirect-buffer :wk "Create indirect buffer copy in a split")
-    "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
+    ;; "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
     "b d" '(bookmark-delete :wk "Delete bookmark")
     "b i" '(ibuffer :wk "Ibuffer")
     "b k" '(kill-current-buffer :wk "Kill current buffer")
@@ -192,7 +204,7 @@ https://github.com/seagle0128/doom-modeline
   (gb/leader-keys
     "g" '(:ignore t :wk "Git")
     "g /" '(magit-dispatch :wk "Magit dispatch")
-    "g ." '(magit-file-displatch :wk "Magit file dispatch")
+    "g ." '(magit-file-dispatch :wk "Magit file dispatch")
     "g b" '(magit-branch-checkout :wk "Switch branch")
     "g c" '(:ignore t :wk "Create")
     "g c b" '(magit-branch-and-checkout :wk "Create branch and checkout")
@@ -253,6 +265,8 @@ https://github.com/seagle0128/doom-modeline
     "m i" '(org-toggle-item :wk "Org toggle item")
     "m t" '(org-todo :wk "Org todo")
     "m B" '(org-babel-tangle :wk "Org babel tangle")
+    "m x" '(org-toggle-checkbox :wk "Org mark checkbox")
+    "m l" '(org-cliplink :wk "Insert a link using org-cliplink")
     "m T" '(org-todo-list :wk "Org todo list"))
 
   (gb/leader-keys
@@ -316,27 +330,6 @@ https://github.com/seagle0128/doom-modeline
   )
 #+end_src
 
-** Menu-bar-mode
-#+begin_src emacs-lisp
-(menu-bar-mode -1)
-#+end_src
-
-** Dashboard
-#+begin_src emacs-lisp
-(setq dashboard-startup-banner "~/.emacs.d/assets/images/minemacs.svg")
-(setq dashboard-center-content t)
-(setq dashboard-items '((recents . 5)
-                        (agenda . 5 )
-                        (bookmarks . 3)))
-#+end_src
-
-** Word Wrap
-#+begin_src emacs-lisp
-(setq word-wrap-mode 1)
-#+end_src
-
-* PERSONAL SETTINGS
-
 ** Setting Username and E-Mail
 #+begin_src emacs-lisp
 (setq user-full-name "Gardner Berry"
@@ -392,7 +385,8 @@ An RSS newsfeed reader for Emacs.
           ("https://sachachua.com/blog/feed/" SachaChua emacs)
           ("https://rostre.bearblog.dev/feed/?type=rss" ParsingTime emacs)
           ("https://200ok.ch/atom.xml" 200ok emacs)
-          ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+          ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+          ("https://blog.tecosaur.com/tmio/rss.xml" TMiO emacs)
           ;; News
           )))
 
@@ -446,9 +440,15 @@ An RSS newsfeed reader for Emacs.
 (setq yeetube-player 'IINA)
 #+end_src
 
-* ORG-MODE
-I wrapped most of this block in (with-eval-after-load org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal by adding (+journal) to the org section of my Doom Emacs init.el.
+** Bookmarks
+#+begin_src emacs-lisp
+ (setq bookmark-default-file "~/.minemacs.d/bookmarks")  ; Set the bookmark file
+      (setq bookmark-save-flag 1)                         ; Save bookmarks after every change
 
+#+end_src
+
+* ORG-MODE
+Here is where I set my various configurations for org-mode. Ranging from agenda to org-superstar.
 ** Org-Settings
 #+begin_src emacs-lisp
 ;; Module: `me-org' -- Package: `org'
@@ -494,7 +494,6 @@ I wrapped most of this block in (with-eval-after-load org). Without this, my set
    '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
    '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
 #+end_src
-
 
 ** Org-agenda
 This is a way for me to archive my TODOs from my Schedule.org. As well as put TODO's into file for mildly interesting things that I want to look at someday.
@@ -555,14 +554,16 @@ I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, 
 (use-package org-re-reveal
   :straight t
   )
-(use-package ox-reveal
-  :straight t
-  )
+;; (use-package ox-reveal
+  ;; :straight t
+  ;; )
 (use-package ox-epub
   :straight t
   )
 ;; Make it so that org-export wont use numbered headings
 (setq org-export-with-section-numbers nil)
+;; Disable Timestamping
+(setq org-export-time-stamp-file nil)
 #+end_src
 
 *** OX-Reveal
@@ -588,7 +589,6 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
        ))
 #+end_src
 
-
 ** Org-auto-tangle
 =org-auto-tangle= allows you to add the option =#+auto_tangle: t= in your Org file so that it automatically tangles when you save the document.
 
@@ -598,7 +598,8 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
   :defer t
   :hook (org-mode . org-auto-tangle-mode)
   :config
-  (setq org-auto-tangle-default t))
+  (setq org-auto-tangle-default t)
+  )
 #+end_src
 
 ** Org-Novelist
@@ -615,17 +616,28 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
 #+begin_src emacs-lisp
 (use-package org-make-toc
   :straight t
+  :hook (org-mode . org-make-toc-mode)
   )
-(add-hook 'org-mode-hook #'org-make-toc-mode)
 #+end_src
 
 ** Org-Superstar
 #+begin_src emacs-lisp
 (use-package org-superstar
   :straight t
+  :hook (org-mode . org-superstar-mode)
+  :config
+  (setq org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
+        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
 )
-(add-hook 'org-mode-hook #'org-superstar-mode)
+)
 
+#+end_src
+
+** Org-Cliplink
+#+begin_src emacs-lisp
+(use-package org-cliplink
+  :straight t
+  )
 #+end_src
 ** Source Code Block Tag Expansion
 Org-tempo is not a separate package but a module within org that can be enabled.  Org-tempo allows for '<s' followed by TAB to expand to a begin_src tag.  Other expansions available include:
@@ -660,7 +672,6 @@ The typing-practice package runs solely in the minibuffer, so your boss thinks y
                minibuffer-setup-hook)))
     ad-do-it))
 #+end_src
-
 
 ** Nov.el
 nov.el provides a major mode for reading EPUB documents
@@ -742,7 +753,6 @@ Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
   :straight t
   )
 #+end_src
-
 
 * Reading Stuff
 ** Nov
@@ -846,7 +856,7 @@ lem.el is an Emacs client for the federated link aggregator Lemmy.
 #+end_src
 
 * CODING
-
+So I need to program a couple of different languages regularly. Mostly Nix for NixOS and Lua for configuring Awesome WM.
 ** Nix-Mode
 Nix is a cross-platform package manager that uses a deployment model where software is installed into unique directories generated through cryptographic hashes. It is also the name of the tool's programming language. Here are some of the tools that I am using for writing nix.
 #+begin_src emacs-lisp

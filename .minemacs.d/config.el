@@ -7,15 +7,9 @@
 
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-solarized-dark)
+(setq minemacs-theme 'doom-1337)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
-
-;; MinEmacs defines the variable `minemacs-fonts-plist' that is used by the
-;; `+setup-fonts' function. The function checks and enables the first available
-;; font from these defined in `minemacs-fonts-plist'. This variable can be
-;; customized to set font specs for specific Emacs faces or to enable some
-;; language-specific fonts.
 
 (+setup-fonts)
 ;; You can set a list of fonts to be used, like the snippet below. The first
@@ -55,6 +49,16 @@
 ;; (setq doom-modeline-time-icon t)
 (setq doom-modeline-buffer-file-name-style 'autotruncate-except-project)
 
+(menu-bar-mode -1)
+
+(setq dashboard-startup-banner "~/.emacs.d/assets/images/minemacs.svg")
+(setq dashboard-center-content t)
+(setq dashboard-items '((recents . 5)
+                        (agenda . 5 )
+                        (bookmarks . 3)))
+
+(setq word-wrap-mode 1)
+
 (use-package general
   :config
   (general-evil-setup)
@@ -77,7 +81,7 @@
     "b" '(:ignore t :wk "Bookmarks/Buffers")
     "b b" '(switch-to-buffer :wk "Switch to buffer")
     "b c" '(clone-indirect-buffer :wk "Create indirect buffer copy in a split")
-    "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
+    ;; "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
     "b d" '(bookmark-delete :wk "Delete bookmark")
     "b i" '(ibuffer :wk "Ibuffer")
     "b k" '(kill-current-buffer :wk "Kill current buffer")
@@ -132,7 +136,7 @@
   (gb/leader-keys
     "g" '(:ignore t :wk "Git")
     "g /" '(magit-dispatch :wk "Magit dispatch")
-    "g ." '(magit-file-displatch :wk "Magit file dispatch")
+    "g ." '(magit-file-dispatch :wk "Magit file dispatch")
     "g b" '(magit-branch-checkout :wk "Switch branch")
     "g c" '(:ignore t :wk "Create")
     "g c b" '(magit-branch-and-checkout :wk "Create branch and checkout")
@@ -193,6 +197,8 @@
     "m i" '(org-toggle-item :wk "Org toggle item")
     "m t" '(org-todo :wk "Org todo")
     "m B" '(org-babel-tangle :wk "Org babel tangle")
+    "m x" '(org-toggle-checkbox :wk "Org mark checkbox")
+    "m l" '(org-cliplink :wk "Insert a link using org-cliplink")
     "m T" '(org-todo-list :wk "Org todo list"))
 
   (gb/leader-keys
@@ -255,16 +261,6 @@
     "w L" '(buf-move-right :wk "Buffer move right"))
   )
 
-(menu-bar-mode -1)
-
-(setq dashboard-startup-banner "~/.emacs.d/assets/images/minemacs.svg")
-(setq dashboard-center-content t)
-(setq dashboard-items '((recents . 5)
-                        (agenda . 5 )
-                        (bookmarks . 3)))
-
-(setq word-wrap-mode 1)
-
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gardnerberry.com")
 
@@ -305,7 +301,8 @@
           ("https://sachachua.com/blog/feed/" SachaChua emacs)
           ("https://rostre.bearblog.dev/feed/?type=rss" ParsingTime emacs)
           ("https://200ok.ch/atom.xml" 200ok emacs)
-          ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+          ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+          ("https://blog.tecosaur.com/tmio/rss.xml" TMiO emacs)
           ;; News
           )))
 
@@ -345,6 +342,9 @@
   :straight t
   )
 (setq yeetube-player 'IINA)
+
+(setq bookmark-default-file "~/.minemacs.d/bookmarks")  ; Set the bookmark file
+     (setq bookmark-save-flag 1)                         ; Save bookmarks after every change
 
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
@@ -429,14 +429,16 @@
 (use-package org-re-reveal
   :straight t
   )
-(use-package ox-reveal
-  :straight t
-  )
+;; (use-package ox-reveal
+  ;; :straight t
+  ;; )
 (use-package ox-epub
   :straight t
   )
 ;; Make it so that org-export wont use numbered headings
 (setq org-export-with-section-numbers nil)
+;; Disable Timestamping
+(setq org-export-time-stamp-file nil)
 
 ;; Reveal.js + Org mode
 (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
@@ -462,7 +464,8 @@
   :defer t
   :hook (org-mode . org-auto-tangle-mode)
   :config
-  (setq org-auto-tangle-default t))
+  (setq org-auto-tangle-default t)
+  )
 
 (load "~/.config/doom/org-novelist.el")
     (setq org-novelist-language-tag "en-US"  ; The interface language for Org Novelist to use. It defaults to 'en-GB' when not set
@@ -472,13 +475,21 @@
 
 (use-package org-make-toc
   :straight t
+  :hook (org-mode . org-make-toc-mode)
   )
-(add-hook 'org-mode-hook #'org-make-toc-mode)
 
 (use-package org-superstar
   :straight t
+  :hook (org-mode . org-superstar-mode)
+  :config
+  (setq org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
+        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
 )
-(add-hook 'org-mode-hook #'org-superstar-mode)
+)
+
+(use-package org-cliplink
+  :straight t
+  )
 
 ;; (use-package org-tempo)
 
