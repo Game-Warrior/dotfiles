@@ -7,7 +7,7 @@
 
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-1337)
+(setq minemacs-theme 'doom-solarized-dark-high-contrast)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -86,7 +86,7 @@
     "b i" '(ibuffer :wk "Ibuffer")
     "b k" '(kill-current-buffer :wk "Kill current buffer")
     "b K" '(kill-some-buffers :wk "Kill multiple buffers")
-    "b l" '(list-bookmarks :wk "List bookmarks")
+    "b l" '(bookmark-jump :wk "Open a Bookmark")
     "b m" '(bookmark-set :wk "Set bookmark")
     "b n" '(next-buffer :wk "Next buffer")
     "b p" '(previous-buffer :wk "Previous buffer")
@@ -117,16 +117,13 @@
   (gb/leader-keys
     "f" '(:ignore t :wk "Files")
     "f c" '((lambda () (interactive)
-              (find-file "~/.config/emacs/config.org"))
+              (find-file "~/.minemacs.d/config.org"))
             :wk "Open emacs config.org")
     "f e" '((lambda () (interactive)
-              (dired "~/.config/emacs/"))
+              (dired "~/.minemacs.d/emacs/"))
             :wk "Open user-emacs-directory in dired")
     "f d" '(find-grep-dired :wk "Search for string in files in DIR")
     "f g" '(counsel-grep-or-swiper :wk "Search for string current file")
-    "f i" '((lambda () (interactive)
-              (find-file "~/.config/emacs/init.el"))
-            :wk "Open emacs init.el")
     "f j" '(counsel-file-jump :wk "Jump to a file below current directory")
     "f l" '(counsel-locate :wk "Locate a file")
     "f r" '(counsel-recentf :wk "Find recent files")
@@ -182,7 +179,7 @@
     "h m" '(describe-mode :wk "Describe mode")
     "h r" '(:ignore t :wk "Reload")
     "h r r" '((lambda () (interactive)
-                (load-file "~/.emacs.d/init.el")
+                (load-file "~/.minemacs.d/config.el")
                 (ignore (elpaca-process-queues)))
               :wk "Reload emacs config")
     "h t" '(load-theme :wk "Load theme")
@@ -259,6 +256,12 @@
     "w J" '(buf-move-down :wk "Buffer move down")
     "w K" '(buf-move-up :wk "Buffer move up")
     "w L" '(buf-move-right :wk "Buffer move right"))
+
+  (gb/leader-keys
+    "v" '(org-archive-subtree :wk "Archive Org Heading.")
+    "y" '(xwidgets-webkit-browse-url :wk "Open a link in xWidgets Webkit")
+    )
+
   )
 
 (setq user-full-name "Gardner Berry"
@@ -473,9 +476,10 @@
           ;; org-novelist-author-email "gardner@gamewarrior.xyz"  ; The default author contact email to use when exporting a story. Each story can also override this setting
           ;; org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 
-(use-package org-make-toc
+(use-package toc-org
   :straight t
-  :hook (org-mode . org-make-toc-mode)
+  :hook (org-mode . toc-org-mode)
+  :hook (markdown-mode . toc-org-mode)
   )
 
 (use-package org-superstar
@@ -488,6 +492,10 @@
 )
 
 (use-package org-cliplink
+  :straight t
+  )
+
+(use-package org-contrib
   :straight t
   )
 

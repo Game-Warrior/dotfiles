@@ -2,7 +2,25 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("school-schedule.pdf"
+(("org-capture-last-stored-marker"
+ (filename . "~/Documents/agenda.org")
+ (front-context-string . "** TODO Clean th")
+ (rear-context-string . "story :history:\n")
+ (position . 1064)
+ (last-modified 25960 63256 441820 0))
+("org-refile-last-stored"
+ (filename . "~/Documents/agenda.org")
+ (front-context-string . "** TODO Clean th")
+ (rear-context-string . "story :history:\n")
+ (position . 1064)
+ (last-modified 25960 63256 429016 0))
+("org-capture-last-stored"
+ (filename . "~/Documents/agenda.org")
+ (front-context-string . "* TODO Clean the")
+ (rear-context-string . "ss and Classics\n")
+ (position . 1101)
+ (last-modified 25960 63253 435021 0))
+("school-schedule.pdf"
  (filename . "~/Documents/School-2023-2024/school-schedule.pdf")
  (position . 1)
  (last-modified 25958 21192 938955 0)
@@ -31,10 +49,10 @@
  (last-modified 25894 4146 575306 0))
 ("mobile.org"
  (filename . "~/Documents/mobile.org")
- (front-context-string)
+ (front-context-string . "\n* TODO Grocery ")
  (rear-context-string . "num:nil toc:nil\n")
  (position . 110)
- (last-modified 25894 4139 710486 0))
+ (last-modified 25959 16937 611369 0))
 ("notes.org"
  (filename . "~/Documents/notes.org")
  (front-context-string . "\n* Table of Cont")

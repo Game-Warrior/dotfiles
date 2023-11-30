@@ -5,9 +5,63 @@
 #+auto_tangle: t
 
 * Table of Contents :TOC:
-:properties:
-:toc:      :include all :ignore this
-:end:
+- [[#about-this-config][ABOUT THIS CONFIG]]
+  - [[#why-emacs][Why Emacs]]
+- [[#gui-changes][GUI CHANGES]]
+  - [[#theme][Theme]]
+  - [[#title-bar][Title Bar]]
+  - [[#fonts][Fonts]]
+  - [[#doom-modeline][Doom-Modeline]]
+  - [[#menu-bar-mode][Menu-bar-mode]]
+  - [[#dashboard][Dashboard]]
+  - [[#word-wrap][Word Wrap]]
+- [[#personal-settings][PERSONAL SETTINGS]]
+  - [[#general-keybindings][General Keybindings]]
+  - [[#setting-username-and-e-mail][Setting Username and E-Mail]]
+  - [[#rainbow-mode][Rainbow Mode]]
+  - [[#setting-the-default-link-opener][Setting the Default Link Opener]]
+  - [[#elfeed][Elfeed]]
+  - [[#use-package][Use-package]]
+  - [[#osx-reveal-in-finder][OSX Reveal in Finder]]
+  - [[#yeetube][Yeetube]]
+  - [[#bookmarks][Bookmarks]]
+- [[#org-mode][ORG-MODE]]
+  - [[#org-settings][Org-Settings]]
+  - [[#org-fonts][Org-fonts]]
+  - [[#org-agenda][Org-agenda]]
+  - [[#org-capture][Org-capture]]
+  - [[#org-export][Org-export]]
+  - [[#org-auto-tangle][Org-auto-tangle]]
+  - [[#org-novelist][Org-Novelist]]
+  - [[#toc-org][Toc-Org]]
+  - [[#org-superstar][Org-Superstar]]
+  - [[#org-cliplink][Org-Cliplink]]
+  - [[#org-contrib][Org-contrib]]
+  - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
+- [[#writing-stuff][WRITING STUFF]]
+  - [[#typing-practice][Typing Practice]]
+  - [[#novel][Nov.el]]
+  - [[#olivetti][Olivetti]]
+  - [[#palimpsest-mode][Palimpsest-Mode]]
+  - [[#abbrev-mode][Abbrev-Mode]]
+  - [[#yasnippet][YAsnippet]]
+  - [[#magit][Magit]]
+  - [[#spell-checker][Spell Checker]]
+  - [[#thesarus][Thesarus]]
+- [[#reading-stuff][Reading Stuff]]
+  - [[#nov][Nov]]
+- [[#eshell][ESHELL]]
+  - [[#aliases][Aliases]]
+  - [[#prompt][Prompt]]
+- [[#ai-assiants][AI ASSIANTS]]
+  - [[#ellama][Ellama]]
+  - [[#chatgpt-shell][Chatgpt-Shell]]
+- [[#social-media][SOCIAL MEDIA]]
+  - [[#mastodon][Mastodon]]
+  - [[#lemmy][Lemmy]]
+- [[#dired][DIRED]]
+- [[#coding][CODING]]
+  - [[#nix-mode][Nix-Mode]]
 
 * ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -39,12 +93,10 @@ Ideally, one may use Emacs as the interface to perform input → transform → o
 
 * GUI CHANGES
 ** Theme
-The first line below designates the directory where will place all of our custom-made themes, which I have created only one (dtmacs).  You can create your own Emacs themes with the help of the [[https://emacsfodder.github.io/emacs-theme-editor/][Emacs Theme Editor]].  I am also installing =doom-themes= because it contains a huge collection of themes.  M-x load-theme will list all of the themes available.
-
 #+begin_src emacs-lisp
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-1337)
+(setq minemacs-theme 'doom-solarized-dark-high-contrast)
 #+end_src
 ** Title Bar
 Change the title bar format
@@ -154,7 +206,7 @@ https://github.com/seagle0128/doom-modeline
     "b i" '(ibuffer :wk "Ibuffer")
     "b k" '(kill-current-buffer :wk "Kill current buffer")
     "b K" '(kill-some-buffers :wk "Kill multiple buffers")
-    "b l" '(list-bookmarks :wk "List bookmarks")
+    "b l" '(bookmark-jump :wk "Open a Bookmark")
     "b m" '(bookmark-set :wk "Set bookmark")
     "b n" '(next-buffer :wk "Next buffer")
     "b p" '(previous-buffer :wk "Previous buffer")
@@ -185,16 +237,13 @@ https://github.com/seagle0128/doom-modeline
   (gb/leader-keys
     "f" '(:ignore t :wk "Files")
     "f c" '((lambda () (interactive)
-              (find-file "~/.config/emacs/config.org"))
+              (find-file "~/.minemacs.d/config.org"))
             :wk "Open emacs config.org")
     "f e" '((lambda () (interactive)
-              (dired "~/.config/emacs/"))
+              (dired "~/.minemacs.d/emacs/"))
             :wk "Open user-emacs-directory in dired")
     "f d" '(find-grep-dired :wk "Search for string in files in DIR")
     "f g" '(counsel-grep-or-swiper :wk "Search for string current file")
-    "f i" '((lambda () (interactive)
-              (find-file "~/.config/emacs/init.el"))
-            :wk "Open emacs init.el")
     "f j" '(counsel-file-jump :wk "Jump to a file below current directory")
     "f l" '(counsel-locate :wk "Locate a file")
     "f r" '(counsel-recentf :wk "Find recent files")
@@ -250,7 +299,7 @@ https://github.com/seagle0128/doom-modeline
     "h m" '(describe-mode :wk "Describe mode")
     "h r" '(:ignore t :wk "Reload")
     "h r r" '((lambda () (interactive)
-                (load-file "~/.emacs.d/init.el")
+                (load-file "~/.minemacs.d/config.el")
                 (ignore (elpaca-process-queues)))
               :wk "Reload emacs config")
     "h t" '(load-theme :wk "Load theme")
@@ -327,6 +376,12 @@ https://github.com/seagle0128/doom-modeline
     "w J" '(buf-move-down :wk "Buffer move down")
     "w K" '(buf-move-up :wk "Buffer move up")
     "w L" '(buf-move-right :wk "Buffer move right"))
+
+  (gb/leader-keys
+    "v" '(org-archive-subtree :wk "Archive Org Heading.")
+    "y" '(xwidgets-webkit-browse-url :wk "Open a link in xWidgets Webkit")
+    )
+
   )
 #+end_src
 
@@ -611,12 +666,13 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
           ;; org-novelist-automatic-referencing-p nil)  ; Set this variable to 't' if you want Org Novelist to always keep note links up to date. This may slow down some systems when operating on complex stories. It defaults to 'nil' when not set
 #+end_src
 
-** Automatic Tables of Contents
+** Toc-Org
 
 #+begin_src emacs-lisp
-(use-package org-make-toc
+(use-package toc-org
   :straight t
-  :hook (org-mode . org-make-toc-mode)
+  :hook (org-mode . toc-org-mode)
+  :hook (markdown-mode . toc-org-mode)
   )
 #+end_src
 
@@ -636,6 +692,12 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
 ** Org-Cliplink
 #+begin_src emacs-lisp
 (use-package org-cliplink
+  :straight t
+  )
+#+end_src
+** Org-contrib
+#+begin_src emacs-lisp
+(use-package org-contrib
   :straight t
   )
 #+end_src
