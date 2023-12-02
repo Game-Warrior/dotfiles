@@ -4,6 +4,28 @@
 #+property: header-args :tangle install-ubuntu.sh
 #+options: toc:nil num:nil timestamp:nil
 
+* Table of Contents :toc:
+- [[#what-is-this-script][What is this script]]
+- [[#introduction][Introduction]]
+- [[#copying-my-config-files][Copying My Config Files]]
+  - [[#copying-my-bashrc][Copying my .bashrc]]
+  - [[#copying-my-zshrc][Copying my .zshrc]]
+  - [[#copying-my-config-folder][Copying my .config folder]]
+- [[#different-ppas][Different PPAs]]
+  - [[#emacs-ppa][Emacs PPA]]
+  - [[#alacritty-ppa][Alacritty PPA]]
+- [[#installing-packages][Installing Packages]]
+  - [[#updating-packages-and-repos][Updating Packages and Repos]]
+  - [[#installing-packages-1][Installing Packages]]
+  - [[#installing-vm-stuff][Installing VM Stuff]]
+- [[#making-directories][Making Directories]]
+  - [[#making-developer-folder][Making Developer Folder]]
+  - [[#making-the-wallpapers-directory][Making the Wallpaper's Directory]]
+- [[#downloading-distrotubes-wallpapers][Downloading DistroTube's Wallpapers]]
+- [[#installing-minemacs][Installing MinEmacs]]
+- [[#enabling-services][Enabling Services]]
+- [[#adding-user-to-groups][Adding user to groups]]
+
 * What is this script
 
 * Introduction
