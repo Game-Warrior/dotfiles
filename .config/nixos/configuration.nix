@@ -11,10 +11,8 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -27,23 +25,30 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Denver";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable The Window Manager
+ # Enable The Window Manager
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.cinnamon.enable = true;
   services.xserver.windowManager.awesome.enable = true;
-
-
-# XDG portal
-  xdg.portal.enable = true;
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Configure keymap in X11
   services.xserver = {
@@ -74,38 +79,29 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Set the Default Users Shell
-   #users.defaultUserShell - pkgs.fish;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gb = {
     isNormalUser = true;
-    description = "gb";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "libvirt"];
+    description = "Gardner Berry";
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
     #  thunderbird
     ];
   };
 
-  # Enable automatic login for the user.
-  #services.xserver.displayManager.autoLogin.enable = true;
-  #services.xserver.displayManager.autoLogin.user = "gb";
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  #Doom Emacs with native complilation support
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #command line stuff
+ #command line stuff
     pkgs.wget #A command line tool for downloading things from the internet
     pkgs.git #A distributed version control system
     pkgs.btop #A tool for monitoring system information
     pkgs.hyfetch #A replacement for neofetch adds pride flags and maintained neowofetch
-    pkgs.exa #A replacement for ls written in rust
+    pkgs.eza #A replacement for ls written in rust
     pkgs.fd #A replacement for find written in rust
     pkgs.ripgrep #A replacement for grep also written in rust
     pkgs.clang
@@ -126,7 +122,7 @@
 
     #Text Editors
     pkgs.neovim #A mid fall back editor
-    pkgs.emacs #The greatest editor of all times
+    pkgs.emacs29 #The greatest editor of all times
     pkgs.micro #An excellent fall back editor
 
     #Internet
@@ -173,7 +169,6 @@
     pkgs.gopls
     pkgs.kotlin
     pkgs.kotlin-language-server
-    pkgs.python
     pkgs.lua
     pkgs.lua-language-server
   ];
@@ -203,6 +198,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }
