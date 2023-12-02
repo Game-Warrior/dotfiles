@@ -1,0 +1,61 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("themes"
+ (filename . "~/.config/doom/themes/")
+ (front-context-string)
+ (rear-context-string . "-light-theme.el\n")
+ (position . 598)
+ (last-modified 25865 39237 270993 0))
+("To-Research"
+ (filename . "~/Documents/To-Research.org")
+ (front-context-string . "o\n\n* Privacy and")
+ (rear-context-string . ":nil\n#+tags: tod")
+ (position . 149))
+("world-history"
+ (filename . "~/Documents/School/World-History/Overview.org")
+ (front-context-string)
+ (rear-context-string . "heese\n\n* Parking")
+ (position . 998))
+("config"
+ (filename . "~/.config/doom/config.org")
+ (front-context-string . "\n* TABLE OF CONT")
+ (rear-context-string . "ptions: num:nil\n")
+ (position . 130))
+("zsh"
+ (filename . "~/.zshrc")
+ (front-context-string . "d/bin:$PATH\"\n\n#a")
+ (rear-context-string . "H=\"$HOME/.emacs.")
+ (position . 623))
+("us-history"
+ (filename . "~/Documents/School/US-history/us-h-overview.org")
+ (front-context-string . "#+title: US Hist")
+ (rear-context-string)
+ (position . 1))
+("To-Research<2>"
+ (filename . "~/Documents/To-Research.org")
+ (front-context-string . "o\n\n* Privacy and")
+ (rear-context-string . ":nil\n#+tags: tod")
+ (position . 149))
+("world-history<2>"
+ (filename . "~/Documents/School/World-History/Overview.org")
+ (front-context-string)
+ (rear-context-string . "heese\n\n* Parking")
+ (position . 998))
+("config<2>"
+ (filename . "~/.config/doom/config.org")
+ (front-context-string . "\n* TABLE OF CONT")
+ (rear-context-string . "ptions: num:nil\n")
+ (position . 130))
+("zsh<2>"
+ (filename . "~/.zshrc")
+ (front-context-string . "d/bin:$PATH\"\n\n#a")
+ (rear-context-string . "H=\"$HOME/.emacs.")
+ (position . 623))
+("us-history<2>"
+ (filename . "~/Documents/School/US-history/us-h-overview.org")
+ (front-context-string . "#+title: US Hist")
+ (rear-context-string)
+ (position . 1))
+)
