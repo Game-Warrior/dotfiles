@@ -18,5 +18,6 @@
 - [ ] Ubuntu
 - [ ] MacOS
 >>>>>>> origin/main
+* TODO Replace exa with eza
 
 * Parking Lot :noexport:
