@@ -7,7 +7,7 @@
 
 ;; Set a theme for MinEmacs, supported themes include these from `doom-themes'
 ;; or built-in themes
-(setq minemacs-theme 'doom-solarized-dark-high-contrast)
+(setq minemacs-theme 'doom-one)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -51,11 +51,27 @@
 
 (menu-bar-mode -1)
 
-(setq dashboard-startup-banner "~/.emacs.d/assets/images/minemacs.svg")
-(setq dashboard-center-content t)
-(setq dashboard-items '((recents . 5)
-                        (agenda . 5 )
-                        (bookmarks . 3)))
+;; (use-package dashboard
+  ;; :straight t
+  ;; :ensure t
+  ;; :init
+  ;; (setq initial-buffer-choice 'dashboard-open)
+  ;; (setq dashboard-set-heading-icons t)
+  ;; (setq dashboard-set-file-icons t)
+  ;; (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
+  ;; (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  ;; (setq dashboard-startup-banner "~/.config/emacs/images/emacs-dash.png")  ;; use custom image as banner
+  ;; (setq dashboard-center-content nil) ;; set to 't' for centered content
+  ;; (setq dashboard-items '((recents . 5)
+                          ;; (agenda . 5 )
+                          ;; (bookmarks . 3)
+                          ;; (projects . 3)
+                          ;; (registers . 3)))
+  ;; :custom
+  ;; (dashboard-modify-heading-icons '((recents . "file-text")
+              ;; (bookmarks . "book")))
+  ;; :config
+  ;; (dashboard-setup-startup-hook))
 
 (setq word-wrap-mode 1)
 
@@ -100,6 +116,7 @@
     "d" '(:ignore t :wk "Dired")
     "d d" '(dired :wk "Open dired")
     "d j" '(dired-jump :wk "Dired jump to current")
+    "d t" '(dired-create-empty-file :wk "Dired create and empty file")
     "d p" '(peep-dired :wk "Peep-dired"))
 
   (gb/leader-keys
@@ -379,6 +396,7 @@
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" ))) ; Task has been cancelled
   )
+(add-hook 'org-mode-hook (lambda () (global-display-line-numbers-mode -1)))
 
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
@@ -701,11 +719,12 @@
   :after dired
   :hook (evil-normalize-keymaps . peep-dired-hook)
   :config
-    (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-    (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
     (evil-define-key 'normal peep-dired-mode-map (kbd "j") 'peep-dired-next-file)
     (evil-define-key 'normal peep-dired-mode-map (kbd "k") 'peep-dired-prev-file)
 )
+
+    ;; (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+    ;; (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
 
 (use-package nerd-icons-dired
   :straight t

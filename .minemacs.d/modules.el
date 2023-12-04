@@ -47,7 +47,7 @@
         me-biblio         ; Bibliography & citations (citar, zotxt, ...)
         ;; me-natural-langs ; Natural language stuff (spell-fu, go-translate, eglot-ltex, ...)
         ;; me-files          ; Files and directories (dirvish, treemacs, vlf, ...)
-        me-tools          ; System tools (vterm, tldr, ssh-deploy, docker, ...)
+        ;; me-tools          ; System tools (vterm, tldr, ssh-deploy, docker, ...)
         me-tty            ; Emacs from terminal (xt-mouse, xclip, ...)
         me-fun            ; Games and funny packages (xkcd, speed-type, ...)
         me-media          ; Multimedia (empv, emms, ...)
