@@ -1,0 +1,4 @@
+*.org linguist-detectable=true
+*.odt linguist-detectable=true
+*.pdf linguist-detectable=true
+*.md linguist-detectable=true
