@@ -21,7 +21,7 @@ echo "Copying .config"
 cp -r ~/dotfiles/.config ~/
 
 echo "Installing Packages from the Core Repos"
-sudo pacman -S awesome dmenu picom starship arandr exa btop lxappearance emacs-nativecomp alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli hunspell-en_us aspell-en syncthing zathura lolcat enchant
+sudo pacman -S awesome dmenu picom starship arandr eza btop lxappearance emacs-nativecomp alacritty zsh nitrogen fish neovim ripgrep fd chromium neofetch speedtest-cli hunspell-en_us aspell-en syncthing zathura lolcat enchant
 sudo pacman -Rs gnu-free-fonts
 
 read -p "If you are installing this on Arch Linux you will need to build paru but if you are using a derivitave e.g. EndavourOS it will be in your standard repos y to build n to install (y/n)" yn

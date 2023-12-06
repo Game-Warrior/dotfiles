@@ -26,7 +26,7 @@ echo "Copying my .config folder"
 cp -r ~/dotfiles/.config ~/
 
 echo "Installing Everything"
-brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us libreoffice alfred alt-tab istat-menus background-music exa starship fish bash neowofetch pfetch zsh-syntax-highlighting font-overpass-nerd-font font-source-sans-pro enchant vale spark lolcat
+brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us libreoffice alfred alt-tab istat-menus background-music eza starship fish bash neowofetch pfetch zsh-syntax-highlighting font-overpass-nerd-font font-source-sans-pro enchant vale spark lolcat
 
 valid_response=false
 

@@ -29,7 +29,7 @@ echo "Updating"
 sudo apt update&&sudo apt upgrade
 
 echo "Installing packages"
-sudo apt install awesome alacritty dmenu picom exa emacs28-nativecomp btop lxappearance zsh nitrogen fish neovim ripgrep neofetch speedtest-cli shellcheck npm gopls cmake tidy kotlin xdotool pandoc github-desktop
+sudo apt install awesome alacritty dmenu picom eza emacs28-nativecomp btop lxappearance zsh nitrogen fish neovim ripgrep neofetch speedtest-cli shellcheck npm gopls cmake tidy kotlin xdotool pandoc github-desktop
 
 echo "Installing VM stuff"
 sudo apt install qemu-system virt-manager bridge-utils
