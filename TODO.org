@@ -9,10 +9,4 @@
 - [ ] Arch
 - [ ] Ubuntu
 - [ ] MacOS
-* TODO Replace exa with eza
-- [ ] .bashrc
-- [ ] .zsh aliases
-- [ ] Arch install script
-- [ ] Ubuntu Install script
-
 * Parking Lot :noexport:
