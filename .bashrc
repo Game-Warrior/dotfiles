@@ -35,7 +35,6 @@ alias vim='nvim'
 alias weather='curl wttr.in'
 alias update='sudo pacman -Syu'
 alias nr='nitrogen --restore'
-# alias pacdiff=eos-pacdiff
 
 [[ "$(whoami)" = "root" ]] && return
 
@@ -47,7 +46,13 @@ bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
 #pfetch
-neofetch
+# neofetch
+echo  "  _____  __          __
+ / ____| \ \        / /
+| |  __   \ \  /\  / / GameWarrior
+| | |_ |   \ \/  \/ /  https://github.com/game-warrior
+| |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+ \_____|     \/  \/"
 
 #Pokemon Scripts
 #pokemon-colorscripts -n treecko

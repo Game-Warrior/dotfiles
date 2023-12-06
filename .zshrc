@@ -48,6 +48,12 @@ source ~/.config/zsh/aliases.zsh
 #pokemon-colorscripts -n treecko
 #pokemon-colorscripts -r
 #colorscript -e crunchbang
+echo  "  _____  __          __
+ / ____| \ \        / /
+| |  __   \ \  /\  / / GameWarrior
+| | |_ |   \ \/  \/ /  https://github.com/game-warrior
+| |__| |    \  /\  /   @gamewarrior010@social.linux.pizza
+ \_____|     \/  \/"
 
 # End of lines added by compinstall
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
