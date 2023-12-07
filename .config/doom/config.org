@@ -1,6 +1,6 @@
 #+title: GW's Doom Emacs Config
 #+description: My personal Doom Emacs Configuration
-#+PROPERTY: header-args:emacs-lisp :tangle ./config.el :mkdirp yes
+#+property: header-args:emacs-lisp :tangle ./config.el :mkdirp yes
 #+startup: showeverything
 #+options: num:nil
 
@@ -12,7 +12,6 @@
 - [[#gui-changes][GUI CHANGES]]
   - [[#doom-theme][Doom Theme]]
   - [[#title-bar][Title Bar]]
-  - [[#beacon][Beacon]]
   - [[#fonts][Fonts]]
   - [[#doom-modeline][Doom-Modeline]]
   - [[#insert-date][Insert Date]]
@@ -46,10 +45,6 @@
 - [[#dired][Dired]]
   - [[#keybindings-to-open-dired][Keybindings To Open Dired]]
   - [[#keybindings-within-dired][Keybindings Within Dired]]
-- [[#mu4e][mu4e]]
-  - [[#context][context]]
-  - [[#sending][sending]]
-  - [[#optional][optional]]
 - [[#markdown][Markdown]]
 - [[#org-mode][ORG-MODE]]
   - [[#org-settings][Org-Settings]]
@@ -126,26 +121,19 @@ Change the title bar format
     (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 #+end_src
 
-** Beacon
-Never lose your cursor.  When you scroll, your cursor will shine!  This is a global minor-mode. Turn it on everywhere with:
-
-#+begin_src emacs-lisp
-(beacon-mode 1)
-#+end_src
-
 ** Fonts
 Settings related to fonts within Doom Emacs:
 + 'doom-font' -- standard monospace font that is used for most things in Emacs.
 + 'doom-variable-pitch-font' -- variable font which is useful in some Emacs plugins.
 + 'doom-big-font' -- used in doom-big-font-mode; useful for presentations.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (setq doom-font (font-spec :family "JuliaMono" :size 15)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "JuliaMono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t))
-#+END_SRC
+#+end_src
 
 ** Doom-Modeline
 The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
@@ -252,7 +240,7 @@ Setting menu-bar-mode to be disabled because I think it takes up to much screen 
 ;; (add-hook 'doom-after-init-hook (lambda ()
                                   ;; (menu-bar-mode 1)
                                   ;; (menu-bar-mode 0)))
-;; (setq menu-bar-mode -1)
+(menu-bar-mode -1)
 ;; (define-key global-map [menu-bar options] nil)
 ;; (define-key global-map [menu-bar file] nil)
 ;; (define-key global-map [menu-bar File] nil)
@@ -294,7 +282,7 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
 | doom/toggle-line-numbers | /Toggle line numbers/                       | SPC t l     |
 | toggle-truncate-lines    | /Toggle truncate lines/                     | SPC t t     |
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ;;(add-hook org-mode
 ;;(setq display-line-numbers-type nil)
 ;;)
@@ -306,7 +294,7 @@ I set comment-line to 'SPC TAB TAB' which is a rather comfortable keybinding for
        :desc "Toggle line highlight in frame" "h" #'hl-line-mode
        :desc "Toggle line highlight globally" "H" #'global-hl-line-mode
        :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
-#+END_SRC
+#+end_src
 
 ** Rainbow Mode
 Rainbow mode displays the actual color for any hex value color.  It's such a nice feature that I wanted it turned on all the time, regardless of what mode I am in.  The following creates a global minor mode for rainbow-mode and enables it (exception: org-agenda-mode since rainbow-mode destroys all highlighting in org-agenda).
@@ -330,7 +318,7 @@ This is a compilation option that allows Emacs to embed a webkit browser in Emac
 
 ** Elfeed
 An RSS newsfeed reader for Emacs.
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package elfeed-goodies
   :init
   (elfeed-goodies/setup)
@@ -371,10 +359,8 @@ An RSS newsfeed reader for Emacs.
                      ("https://rostre.bearblog.dev/feed/?type=rss" emacs ParsingTime)
                      ("https://200ok.ch/atom.xml" emacs 200ok)
                      ;; News
-                     ("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml" news first)
-                     ("https://www.ftc.gov/feeds/press-release-consumer-protection.xml" gov first ftc)
                      )))
-#+END_SRC
+#+end_src
 *** Open In a specific browser
 #+begin_src emacs-lisp
 (defun elfeed-xwidgets-open (&optional use-generic-p)
@@ -416,7 +402,7 @@ Keybindings to open files that I work with all the time using the find-file comm
 | ~/.config/doom/eshell/aliases  | /Edit eshell aliases/   | SPC = e a  |
 | ~/.config/doom/eshell/profile  | /Edit eshell profile/   | SPC = e p  |
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (map! :leader
       (:prefix ("=" . "open file")
        :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Documents/agenda.org"))
@@ -427,7 +413,7 @@ Keybindings to open files that I work with all the time using the find-file comm
       (:prefix ("= e" . "open eshell files")
        :desc "Edit eshell aliases" "a" #'(lambda () (interactive) (find-file "~/.config/doom/eshell/aliases"))
        :desc "Edit eshell profile" "p" #'(lambda () (interactive) (find-file "~/.config/doom/eshell/profile"))))
-#+END_SRC
+#+end_src
 
 
 * WRITING STUFF
@@ -467,7 +453,7 @@ I think Doom is a bit over-zealous when zooming in.
 #+end_src
 
 ** Spell Checker
-This is where I set GNU Aspell as my default spell checker.
+Jinx is a fast just-in-time spell-checker for Emacs.
 #+begin_src emacs-lisp
 (use-package jinx
   :hook (emacs-startup . global-jinx-mode))
@@ -660,149 +646,6 @@ Dired is the file manager within Emacs.  Below, I setup keybindings for image pr
                               ("mp4" . "IINA")))
 #+end_src
 
-* mu4e
-[[https://macowners.club/posts/email-emacs-mu4e-macos/][Email setup in Emacs with Mu4e on macOS | macOS & (open-source) Software]]
-#+begin_src emacs-lisp
-;; for sending mails
-(require 'smtpmail)
-
-;; we installed this with homebrew
-(setq mu4e-mu-binary (executable-find "mu"))
-
-;; this is the directory we created before:
-(setq mu4e-maildir "~/.maildir")
-
-;; this command is called to sync imap servers:
-(setq mu4e-get-mail-command (concat (executable-find "mbsync") " -a"))
-
-;; how often to call it in seconds:
-(setq mu4e-update-interval 300)
-
-;; save attachment to desktop by default
-;; or another choice of yours:
-(setq mu4e-attachment-dir "~/Desktop")
-
-;; rename files when moving - needed for mbsync:
-(setq mu4e-change-filenames-when-moving t)
-
-;; list of your email adresses:
-(setq mu4e-user-mail-address-list '("berrygw06@gmail.com"))
-#+end_src
-** context
-This controls the account context one is in. Helpful for instance, when composing an email. You can then select the context, which sets at the same time the sender.
-+begin_src emacs-lisp
-(setq mu4e-contexts
-      `(,(make-mu4e-context
-          :name "gmail"
-          :enter-func
-          (lambda () (mu4e-message "Enter berrygw@gmail.com context"))
-          :leave-func
-          (lambda () (mu4e-message "Leave berrygw06@gmail.com context"))
-          :match-func
-          (lambda (msg)
-            (when msg
-              (mu4e-message-contact-field-matches msg
-                                                  :to "berrygw06@gmail.com")))
-          :vars '((user-mail-address . "berrygw06@gmail.com")
-                  (user-full-name . "Gardner Berry")
-                  (mu4e-drafts-folder . "/gmail/Drafts")
-                  (mu4e-refile-folder . "/gmail/Archive")
-                  (mu4e-sent-folder . "/gmail/Sent")
-                  (mu4e-trash-folder . "/gmail/Trash")))))
-
-(setq mu4e-context-policy 'pick-first) ;; start with the first (default) context;
-(setq mu4e-compose-context-policy 'ask) ;; ask for context if no context matches;
-+end_src
-** sending
-#+begin_src emacs-lisp
-;; gpg encryptiom & decryption:
-
-;; this can be left alone
-
-(require 'epa-file)
-
-(epa-file-enable)
-
-(setq epa-pinentry-mode 'loopback)
-
-(auth-source-forget-all-cached)
-
-;; don't keep message compose buffers around after sending:
-(setq message-kill-buffer-on-exit t)
-
-;; send function:
-(setq send-mail-function 'sendmail-send-it
-      message-send-mail-function 'sendmail-send-it)
-
-;; send program:
-;; this is exeranal. remember we installed it before.
-(setq sendmail-program (executable-find "msmtp"))
-
-;; select the right sender email from the context.
-(setq message-sendmail-envelope-from 'header)
-
-;; chose from account before sending
-;; this is a custom function that works for me.
-;; well I stole it somewhere long ago.
-;; I suggest using it to make matters easy
-;; of course adjust the email adresses and account descriptions
-(defun timu/set-msmtp-account ()
-  (if (message-mail-p)
-      (save-excursion
-        (let*
-            ((from (save-restriction
-                     (message-narrow-to-headers)
-                     (message-fetch-field "from")))
-             (account
-              (cond
-               ((string-match "berrygw06@gmail.com" from) "personal"))))
-          (setq message-sendmail-extra-arguments (list '"-a" account))))))
-
-(add-hook 'message-send-mail-hook 'timu/set-msmtp-account)
-
-;; mu4e cc & bcc
-;; this is custom as well
-(add-hook 'mu4e-compose-mode-hook
-          (defun timu/add-cc-and-bcc ()
-            "My Function to automatically add Cc & Bcc: headers.
-    This is in the mu4e compose mode."
-            (save-excursion (message-add-header "Cc:\n"))
-            (save-excursion (message-add-header "Bcc:\n"))))
-
-;; mu4e address completion
-(add-hook 'mu4e-compose-mode-hook 'company-mode)
-#+end_src
-** optional
-Here are some sane defaults for mu4e.
-#+begin_src emacs-lisp
-;; store link to message if in header view, not to header query:
-(setq org-mu4e-link-query-in-headers-mode nil)
-
-;; don't have to confirm when quitting:
-(setq mu4e-confirm-quit nil)
-
-;; number of visible headers in horizontal split view:
-(setq mu4e-headers-visible-lines 20)
-
-;; don't show threading by default:
-(setq mu4e-headers-show-threads nil)
-
-;; hide annoying "mu4e Retrieving mail..." msg in mini buffer:
-(setq mu4e-hide-index-messages t)
-
-;; customize the reply-quote-string:
-(setq message-citation-line-format "%N @ %Y-%m-%d %H:%M :\n")
-
-;; M-x find-function RET message-citation-line-format for docs:
-(setq message-citation-line-function 'message-insert-formatted-citation-line)
-
-;; by default do not show related emails:
-(setq mu4e-headers-include-related nil)
-
-;; by default do not show threads:
-(setq mu4e-headers-show-threads nil)
-#+end_src
-
 * Markdown
 
 #+begin_src emacs-lisp
@@ -821,7 +664,7 @@ Here are some sane defaults for mu4e.
 I wrapped most of this block in (after! org). Without this, my settings might be evaluated too early, which will result in my settings being overwritten by Doom's defaults. I have also enabled org-journal by adding (+journal) to the org section of my Doom Emacs init.el.
 
 ** Org-Settings
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (map! :leader
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
@@ -853,7 +696,7 @@ I wrapped most of this block in (after! org). Without this, my settings might be
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" ))) ; Task has been cancelled
   )
-#+END_SRC
+#+end_src
 
 ** Org-fonts
 #+begin_src emacs-lisp
@@ -911,7 +754,7 @@ I copy and pasted most of this from a very interesting blog post by [[https://ka
 I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, Reveal.js allows to export org to a HTML presentation, Github Flavored Markdown to export to Joplin, and finaly Pandoc for exporting to other formats like .docx and .pptx and manny manny others.
 =NOTE=: I also enable ox-publish for converting an Org site into an HTML site, but that is done in init.el (org +publish).
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package! ox-twbs)
 (use-package! ox-pandoc)
 (use-package! ox-gfm)
@@ -919,7 +762,7 @@ I have setup org-export to include Twitter Bootstrap to make pretty HTML pages, 
 (use-package! ox-epub)
 ;; Make it so that org-export wont use numbered headings
 (setq org-export-with-section-numbers nil)
-#+END_SRC
+#+end_src
 
 *** OX-Reveal
 Org-Reveal is a package that allows you to export your org documents to Reveal.js to make pretty presentations. I also have a macro to allow me no hide content from said presentations.

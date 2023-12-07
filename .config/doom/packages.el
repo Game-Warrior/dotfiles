@@ -66,7 +66,6 @@
 (package! dired-subtree)
 (package! peep-dired)
 (package! emojify)
-(package! beacon)
 (package! rainbow-mode)
 (package! resize-window)
 (package! fountain-mode)
@@ -76,7 +75,6 @@
 (package! palimpsest)
 (package! emmet-mode)
 (package! elfeed-goodies)
-(package! mw-thesaurus)
 (package! writeroom-mode)
 (package! olivetti)
 (package! org-ref)
@@ -88,19 +86,7 @@
 (package! poetry)
 (package! pretty-symbols)
 (package! magit-todos)
-(package! org-anki)
-(package! anki-connect)
 (package! ox-gfm)
-(package! ivy-bibtex)
-(package! anki-mode)
-(package! go-translate)
-(package! transient
-      :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440"
-      :recipe (:host github :repo "magit/transient"))
-
-(package! with-editor
-          :pin "bbc60f68ac190f02da8a100b6fb67cf1c27c53ab"
-          :recipe (:host github :repo "magit/with-editor"))
 (package! blamer)
 (package! org-noter)
 (package! nov.el)
@@ -109,11 +95,8 @@
 (package! burly)
 (package! eshell-prompt-extras)
 (package! chatgpt-shell)
-(package! dall-e-shell)
-(package! ob-chatgpt-shell)
 (package! synosaurus)
 (package! academic-phrases)
-(package! pacmacs)
 (package! fireplace)
 (package! jinx)
 (package! org-bullets)
