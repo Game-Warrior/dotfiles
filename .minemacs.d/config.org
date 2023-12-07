@@ -25,6 +25,7 @@
   - [[#osx-reveal-in-finder][OSX Reveal in Finder]]
   - [[#yeetube][Yeetube]]
   - [[#bookmarks][Bookmarks]]
+  - [[#eperiodic][Eperiodic]]
 - [[#org-mode][ORG-MODE]]
   - [[#org-settings][Org-Settings]]
   - [[#org-fonts][Org-fonts]]
@@ -519,6 +520,11 @@ An RSS newsfeed reader for Emacs.
       (setq bookmark-save-flag 1)                         ; Save bookmarks after every change
 
 #+end_src
+** Eperiodic
+A Periodic table package for emacs.
+#+begin_src emacs-lisp
+(load "~/.minemacs.d/eperiodic.el")
+#+end_src
 
 * ORG-MODE
 Here is where I set my various configurations for org-mode. Ranging from agenda to org-superstar.
@@ -979,7 +985,7 @@ nov.el provides a major mode for reading EPUB documents
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "placeholder")
+  (setq chatgpt-shell-openai-key "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")
   )
 #+end_src
 

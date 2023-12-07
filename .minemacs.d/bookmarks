@@ -16,10 +16,10 @@
  (last-modified 25960 63256 429016 0))
 ("org-capture-last-stored"
  (filename . "~/Documents/agenda.org")
- (front-context-string . "* TODO Clean the")
- (rear-context-string . "ss and Classics\n")
- (position . 1101)
- (last-modified 25960 63253 435021 0))
+ (front-context-string . "* TODO Create a ")
+ (rear-context-string . "2023-12-04 Mon>\n")
+ (position . 1260)
+ (last-modified 25966 33898 316832 0))
 ("school-schedule.pdf"
  (filename . "~/Documents/School-2023-2024/school-schedule.pdf")
  (position . 1)

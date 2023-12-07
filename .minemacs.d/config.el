@@ -366,6 +366,8 @@
 (setq bookmark-default-file "~/.minemacs.d/bookmarks")  ; Set the bookmark file
      (setq bookmark-save-flag 1)                         ; Save bookmarks after every change
 
+(load "~/.minemacs.d/eperiodic.el")
+
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
   (setq org-directory "~/Documents/"
@@ -689,7 +691,7 @@
 (use-package chatgpt-shell
   :straight t
   :config
-  (setq chatgpt-shell-openai-key "placeholder")
+  (setq chatgpt-shell-openai-key "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")
   )
 
 (use-package mastodon
