@@ -73,6 +73,7 @@
 - [[#coding][CODING]]
   - [[#nix-mode][Nix-Mode]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
+- [[#company][COMPANY]]
 
 * ABOUT THIS CONFIG
 This is my Doom Emacs Config. I have built this over the last couple of months mainly from DistroTube's config.
@@ -1197,4 +1198,25 @@ Nix is a cross-platform package manager that uses a deployment model where softw
   (ivy-set-display-transformer 'ivy-switch-buffer
                                'ivy-rich-switch-buffer-transformer))
 
+#+end_src
+
+* COMPANY
+[[https://company-mode.github.io/][Company]] is a text completion framework for Emacs. The name stands for "complete anything".  Completion will start automatically after you type a few letters. Use M-n and M-p to select, <return> to complete or <tab> to complete the common part.
+
+#+begin_src emacs-lisp
+(use-package company
+  :defer 2
+  :diminish
+  :custom
+  (company-begin-commands '(self-insert-command))
+  (company-idle-delay .1)
+  (company-minimum-prefix-length 2)
+  (company-show-numbers t)
+  (company-tooltip-align-annotations 't)
+  (global-company-mode t))
+
+(use-package company-box
+  :after company
+  :diminish
+  :hook (company-mode . company-box-mode))
 #+end_src
