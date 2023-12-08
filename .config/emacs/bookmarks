@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("themes"
+(("config.org"
+ (filename . "~/.config/emacs/config.org")
+ (front-context-string . "\n* Table of Cont")
+ (rear-context-string . ".el :mkdirp yes\n")
+ (position . 267)
+ (last-modified 25971 35748 970579 0))
+("themes"
  (filename . "~/.config/doom/themes/")
  (front-context-string)
  (rear-context-string . "-light-theme.el\n")
@@ -18,11 +24,6 @@
  (front-context-string)
  (rear-context-string . "heese\n\n* Parking")
  (position . 998))
-("config"
- (filename . "~/.config/doom/config.org")
- (front-context-string . "\n* TABLE OF CONT")
- (rear-context-string . "ptions: num:nil\n")
- (position . 130))
 ("zsh"
  (filename . "~/.zshrc")
  (front-context-string . "d/bin:$PATH\"\n\n#a")
@@ -43,11 +44,6 @@
  (front-context-string)
  (rear-context-string . "heese\n\n* Parking")
  (position . 998))
-("config<2>"
- (filename . "~/.config/doom/config.org")
- (front-context-string . "\n* TABLE OF CONT")
- (rear-context-string . "ptions: num:nil\n")
- (position . 130))
 ("zsh<2>"
  (filename . "~/.zshrc")
  (front-context-string . "d/bin:$PATH\"\n\n#a")

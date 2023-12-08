@@ -5,3 +5,6 @@ Backups/
 emacs-stuff/emacs-reveal/
 *._
 *.localized
+.config/emacs/eln-cache
+.config/emacs/elpaca
+.config/emacs/transient

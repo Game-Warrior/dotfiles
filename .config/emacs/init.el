@@ -7,76 +7,8 @@
 
 (add-to-list 'load-path "~/.config/emacs/scripts/")
 
-;; (require 'elpaca-setup)  ;; The Elpaca Package Manager
-(load "~/.config/emacs/scripts/elpaca-setup.el")
-(load "~/.config/emacs/scripts/buffer-move.el")   ;; Buffer-move for better window management
-
-(global-set-key [escape] 'keyboard-escape-quit)
-
-(use-package dashboard
-  :ensure t
-  :init
-  (setq initial-buffer-choice 'dashboard-open)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
-  ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  ;; (setq dashboard-startup-banner "~/.config/emacs/images/emacs-dash.png")  ;; use custom image as banner
-  (setq dashboard-center-content nil) ;; set to 't' for centered content
-  (setq dashboard-items '((recents . 5)
-                          (agenda . 5)
-                          (bookmarks . 3)
-                          (projects . 3)
-                          (registers . 3)))
-  :custom
-  (dashboard-modify-heading-icons '((recents . "file-text")
-                                    (bookmarks . "book")))
-  :config
-  (dashboard-setup-startup-hook))
-
-(use-package hl-todo
-  :hook ((org-mode . hl-todo-mode)
-         (prog-mode . hl-todo-mode))
-  :config
-  (setq hl-todo-highlight-punctuation ":"
-        hl-todo-keyword-faces
-        `(("TODO"       warning bold)
-          ("FIXME"      error bold)
-          ("HACK"       font-lock-constant-face bold)
-          ("REVIEW"     font-lock-keyword-face bold)
-          ("NOTE"       success bold)
-          ("DEPRECATED" font-lock-doc-face bold))))
-
-(use-package rainbow-delimiters
-  :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
-         (clojure-mode . rainbow-delimiters-mode)))
-
-;; Display buffer icons on GUI
-(define-ibuffer-column icon (:name "  ")
-  (let ((icon (if (and (buffer-file-name)
-                       (nerd-icons-auto-mode-match?))
-                  (nerd-icons-icon-for-file (file-name-nondirectory (buffer-file-name)) :v-adjust -0.05)
-                (nerd-icons-icon-for-mode major-mode :v-adjust -0.05))))
-    (if (symbolp icon)
-        (setq icon (nerd-icons-faicon "nf-fa-file_o" :face 'nerd-icons-dsilver :height 0.8 :v-adjust 0.0))
-      icon)))
-
-(use-package rainbow-mode
-  :diminish
-  :hook org-mode prog-mode)
-
-(setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
-
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1)
-  :config
-  (setq doom-modeline-height 30      ;; sets modeline height
-        doom-modeline-bar-width 5    ;; sets right bar width
-        doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
-        doom-modeline-persp-name t   ;; adds perspective name to modeline
-        doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
-        doom-modeline-persp-icon t)) ;; adds folder icon next to persp name
+(require 'elpaca-setup)  ;; The Elpaca Package Manager
+(require 'buffer-move)   ;; Buffer-move for better window management
 
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
@@ -91,24 +23,91 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
-(use-package which-key
+(setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
+
+(set-face-attribute 'default nil
+  :font "JetBrains Mono"
+  :height 110
+  :weight 'medium)
+(set-face-attribute 'variable-pitch nil
+  :font "Ubuntu"
+  :height 120
+  :weight 'medium)
+(set-face-attribute 'fixed-pitch nil
+  :font "JetBrains Mono"
+  :height 110
+  :weight 'medium)
+
+;; This sets the default font on all graphical frames created after restarting Emacs.
+;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
+;; are not right unless I also add this method of setting the default font.
+(add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+
+;; Uncomment the following line if line spacing needs adjusting.
+(setq-default line-spacing 0.12)
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+
+(defun ntf/mode-line-format (left right)
+  "Return a string of `window-width' length.
+Containing LEFT, and RIGHT aligned respectively."
+  (let ((available-width (- (window-width) (length left) 1)))
+    (format (format "%%s %%%ds " available-width) left right)))
+
+(defface evil-mode-line-face '((t (:foreground  "black"
+                                                  :background "orange")))
+    "Face for evil mode-line colors.")
+
+(setq-default
+   mode-line-format
+   '((:eval (ntf/mode-line-format
+             ;; left portion
+             (format-mode-line
+              (quote ("%e"
+                      (:eval
+                       (when (bound-and-true-p evil-local-mode)
+                         (propertize
+                          (concat
+                           " "
+                           (upcase
+                            (substring (symbol-name evil-state) 0 1))
+                           (substring (symbol-name evil-state) 1)
+                           " ") 'face 'evil-mode-line-face)))
+                      " " (:eval (when (buffer-modified-p) "[+]"))
+                      " " mode-line-buffer-identification
+                      " %l:%c")))
+             ;; right portion
+             (format-mode-line (quote ("%m " (vc-mode vc-mode))))))))
+
+(menu-bar-mode -1)
+
+(tool-bar-mode -1)
+
+(use-package dashboard
+  :ensure t
   :init
-    (which-key-mode 1)
-  :diminish
+  (setq initial-buffer-choice 'dashboard-open)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
+  (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  (setq dashboard-startup-banner "~/.config/emacs/images/emacs-dash.png")  ;; use custom image as banner
+  (setq dashboard-center-content nil) ;; set to 't' for centered content
+  (setq dashboard-items '((recents . 5)
+			  (agenda . 5 )
+			  (bookmarks . 3)
+			  (registers . 3)))
+  :custom
+  (dashboard-modify-heading-icons '((recents . "file-text")
+	      (bookmarks . "book")))
   :config
-  (setq which-key-side-window-location 'bottom
-    which-key-sort-order #'which-key-key-order-alpha
-    which-key-allow-imprecise-window-fit nil
-    which-key-sort-uppercase-first nil
-    which-key-add-column-padding 1
-    which-key-max-display-columns nil
-    which-key-min-display-lines 6
-    which-key-side-window-slot -10
-    which-key-side-window-max-height 0.25
-    which-key-idle-delay 0.8
-    which-key-max-description-length 25
-    which-key-allow-imprecise-window-fit nil
-    which-key-separator " → " ))
+   (dashboard-setup-startup-hook))
+
+(setq word-wrap-mode 1)
 
 (use-package general
   :config
@@ -151,6 +150,7 @@
     "d" '(:ignore t :wk "Dired")
     "d d" '(dired :wk "Open dired")
     "d j" '(dired-jump :wk "Dired jump to current")
+    "d t" '(dired-create-empty-file :wk "Dired create and empty file")
     "d p" '(peep-dired :wk "Peep-dired"))
 
   (gb/leader-keys
@@ -230,7 +230,7 @@
     "h m" '(describe-mode :wk "Describe mode")
     "h r" '(:ignore t :wk "Reload")
     "h r r" '((lambda () (interactive)
-                (load-file "~/.minemacs.d/config.el")
+                (load-file "~/.config/emacs/init.el")
                 (ignore (elpaca-process-queues)))
               :wk "Reload emacs config")
     "h t" '(load-theme :wk "Load theme")
@@ -263,14 +263,8 @@
     "o e" '(elfeed :wk "Elfeed RSS")
     "o f" '(make-frame :wk "Open buffer in new frame")
     "o F" '(select-frame-by-name :wk "Select frame by name")
-    "o a" '(org-agenda :wk "Open org-agenda")
     "o o" '(reveal-in-osx-finder :wk "Reveal current folder in OSX Finder")
     )
-
-  ;; projectile-command-map already has a ton of bindings
-  ;; set for us, so no need to specify each individually.
-  (gb/leader-keys
-    "p" '(projectile-command-map :wk "Projectile"))
 
   (gb/leader-keys
     "s" '(:ignore t :wk "Search")
@@ -316,95 +310,120 @@
 
   )
 
-(setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
+(setq user-full-name "Gardner Berry"
+    user-mail-address "gardner@gardnerberry.com")
 
-(set-face-attribute 'default nil
-  :font "JetBrains Mono"
-  :height 110
-  :weight 'medium)
-(set-face-attribute 'variable-pitch nil
-  :font "Ubuntu"
-  :height 120
-  :weight 'medium)
-(set-face-attribute 'fixed-pitch nil
-  :font "JetBrains Mono"
-  :height 110
-  :weight 'medium)
+;; (define-globalized-minor-mode global-rainbow-mode rainbow-mode
+  ;; (lambda ()
+    ;; (when (not (memq major-mode
+                ;; (list 'org-agenda-mode)))
+     ;; (rainbow-mode 1))))
+;; (global-rainbow-mode 1 )
 
-;; This sets the default font on all graphical frames created after restarting Emacs.
-;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
-;; are not right unless I also add this method of setting the default font.
-(add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+(setq browse-url-browser-function 'browse-url-default-browser)
 
-;; Uncomment the following line if line spacing needs adjusting.
-(setq-default line-spacing 0.12)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; Module: `me-rss' -- Package: `elfeed'
+(with-eval-after-load 'elfeed
+  ;; Add news feeds for `elfeed'
+  (setq elfeed-feeds
+        '(
+          ;; General
+          ("https://frame.work/blog.rss" Framework)
+          ("https://factorio.com/blog/rss" Factorio)
+          ("https://news.nononsenseapps.com/index.atom" Feeder)
+          ("https://kagifeedback.org/atom/t/release-notes" Kagi)
+          ("https://news.play.date/index.xml" Playdate)
+          ;; Linux
+          ("https://blog.linuxmint.com/?feed=rss2" LinuxMint linux)
+          ("https://archlinux.org/news/" Arch linux)
+          ("https://fedoramagazine.org/feed/" Fedora linux)
+          ("https://endeavouros.com/news/" EndeavourOS linux)
+          ;; Boat Stuff
+          ("https://buffalonickelblog.com/feed/" Buffalo-Nickel boat)
+          ("https://mobius.world/feed/" Mobius boat)
+          ("https://www.mvuglybetty.com/blog-feed.xml" Ugly-Betty boat)
+           ;; Emacs
+          ("http://xenodium.com/rss.xml" Xenodium emacs)
+          ("https://cmdln.org/post/" Commandline emacs)
+          ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs Karal-Voit)
+          ("https://systemcrafters.net/rss/news.xml" SystemCrafter emacs)
+          ("https://sachachua.com/blog/feed/" SachaChua emacs)
+          ("https://rostre.bearblog.dev/feed/?type=rss" ParsingTime emacs)
+          ("https://200ok.ch/atom.xml" 200ok emacs)
+          ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+          ("https://blog.tecosaur.com/tmio/rss.xml" TMiO emacs)
+          ;; News
+          )))
 
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-
-(use-package nerd-icons)
-
-(use-package diminish
-)
-
-(delete-selection-mode 1)    ;; You can select text and delete it by typing.
-(electric-indent-mode -1)    ;; Turn off the weird indenting that Emacs does by default.
-(electric-pair-mode 1)       ;; Turns on automatic parens pairing
-;; The following prevents <> from auto-pairing when electric-pair-mode is on.
-;; Otherwise, org-tempo is broken when you try to <s TAB...
-(add-hook 'org-mode-hook (lambda ()
-           (setq-local electric-pair-inhibit-predicate
-                   `(lambda (c)
-                  (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
-(global-auto-revert-mode t)  ;; Automatically show changes if the file has changed
-;; (global-display-line-numbers-mode 1) ;; Display line numbers
-(global-visual-line-mode t)  ;; Enable truncated lines
-(menu-bar-mode -1)           ;; Disable the menu bar
-(scroll-bar-mode -1)         ;; Disable the scroll bar
-(tool-bar-mode -1)           ;; Disable the tool bar
-(setq org-edit-src-content-indentation 0) ;; Set src block automatic indent to 0 instead of 2.
-(pixel-scroll-precision-mode 1)
-
-(use-package sudo-edit)
-
-(use-package flycheck
-  :ensure t
-  :defer t
-  :diminish
-  :init (global-flycheck-mode))
-
-(use-package git-timemachine
-  :after git-timemachine
-  :hook (evil-normalize-keymaps . git-timemachine-hook)
+(use-package elfeed-goodies
+  :init
+  (elfeed-goodies/setup)
   :config
-    (evil-define-key 'normal git-timemachine-mode-map (kbd "C-j") 'git-timemachine-show-previous-revision)
-    (evil-define-key 'normal git-timemachine-mode-map (kbd "C-k") 'git-timemachine-show-next-revision)
-)
+  (setq elfeed-goodies/entry-pane-size 0.5))
 
-(use-package magit)
+(defun elfeed-xwidgets-open (&optional use-generic-p)
+  "open with xWidgets"
+  (interactive "P")
+  (let ((entries (elfeed-search-selected)))
+    (cl-loop for entry in entries
+             do (elfeed-untag entry 'unread)
+             when (elfeed-entry-link entry)
+             do (xwidget-webkit-browse-url it))
+    (mapc #'elfeed-search-update-entry entries)
+    (unless (use-region-p) (forward-line))))
 
-(use-package haskell-mode)
-(use-package lua-mode)
-(use-package php-mode)
+;; (map! :leader
+      ;; :map elfeed-mode-map
+     ;; (:desc "Open article form Elfeed in xWidgets" "o w" #'elfeed-xwidgets-open))
 
-(use-package company
-  :defer 2
-  :diminish
-  :custom
-  (company-begin-commands '(self-insert-command))
-  (company-idle-delay .1)
-  (company-minimum-prefix-length 2)
-  (company-show-numbers t)
-  (company-tooltip-align-annotations 't)
-  (global-company-mode t))
+(setq package-archive-priorities '(("gnu" . 10)
+                                   ("melpa" . 5))
+      package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://stable.melpa.org/packages/")
+                         ("melpa-devel" . "https://melpa.org/packages/")))
 
-(use-package company-box
-  :after company
-  :diminish
-  :hook (company-mode . company-box-mode))
+(use-package reveal-in-osx-finder
+  )
+
+(use-package yeetube
+  )
+(setq yeetube-player 'IINA)
+
+(setq bookmark-default-file "~/.config/emacs/bookmarks")  ; Set the bookmark file
+     (setq bookmark-save-flag 1)                         ; Save bookmarks after every change
+
+(load "~/.config/emacs/eperiodic.el")
+
+;; Expands to: (elpaca evil (use-package evil :demand t))
+(use-package evil
+    :init      ;; tweak evil's configuration before loading it
+    (setq evil-want-integration t  ;; This is optional since it's already set to t by default.
+          evil-want-keybinding nil
+          evil-vsplit-window-right t
+          evil-split-window-below t
+          evil-undo-system 'undo-redo)  ;; Adds vim-like C-r redo functionality
+    (evil-mode))
+
+(use-package evil-collection
+  :after evil
+  :config
+  ;; Do not uncomment this unless you want to specify each and every mode
+  ;; that evil-collection should works with.  The following line is here
+  ;; for documentation purposes in case you need it.
+  ;; (setq evil-collection-mode-list '(calendar dashboard dired ediff info magit ibuffer))
+  (add-to-list 'evil-collection-mode-list 'help) ;; evilify help mode
+  (evil-collection-init))
+
+(use-package evil-tutor)
+
+;; Using RETURN to follow links in Org/Evil
+;; Unmap keys in 'evil-maps if not done, (setq org-return-follows-link t) will not work
+(with-eval-after-load 'evil-maps
+  (define-key evil-motion-state-map (kbd "SPC") nil)
+  (define-key evil-motion-state-map (kbd "RET") nil)
+  (define-key evil-motion-state-map (kbd "TAB") nil))
+;; Setting RETURN key in org-mode to follow links
+  (setq org-return-follows-link  t)
 
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
@@ -436,6 +455,7 @@
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" ))) ; Task has been cancelled
   )
+(add-hook 'org-mode-hook (lambda () (global-display-line-numbers-mode -1)))
 
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
@@ -645,6 +665,94 @@
 
 ;; (use-package org-tempo)
 
+(load "~/.config/doom/typing-practice.el")
+
+(defadvice practice-typing (around no-cursor activate)
+  "Do not show cursor at minibuffer during typing practice."
+  (let ((minibuffer-setup-hook
+         (cons (lambda () (setq cursor-type nil))
+               minibuffer-setup-hook)))
+    ad-do-it))
+
+(setq nov-unzip-program (executable-find "bsgbar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(use-package olivetti
+  )
+(setq olivetti-style 'fringes-and-margins)
+
+(use-package palimpsest
+  )
+(add-hook 'text-mode-hook 'palimpsest-mode)
+
+;; (map!
+       ;; :leader
+      ;; (:desc "Palimpsest-Send-Bottom" "n g" palimpsest-send-bottom))
+
+;; Enable abbreviation mode
+  (dolist (hook '(org-mode-hook
+                    text-mode-hook))
+      (add-hook hook #'abbrev-mode))
+(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
+
+(use-package yasnippet
+  )
+(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+;; (yas-global-mode 1)
+
+(use-package git-timemachine
+  :after git-timemachine
+  :hook (evil-normalize-keymaps . git-timemachine-hook)
+  :config
+    (evil-define-key 'normal git-timemachine-mode-map (kbd "C-j") 'git-timemachine-show-previous-revision)
+    (evil-define-key 'normal git-timemachine-mode-map (kbd "C-k") 'git-timemachine-show-next-revision)
+)
+
+(use-package magit)
+
+  (use-package magit-todos
+    :after magit
+    :config (magit-todos-mode 1))
+
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode))
+
+(use-package synosaurus
+  )
+
+(setq nov-unzip-program (executable-find "bsdtar")
+      nov-unzip-args '("-xC" directory "-f" filename))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(setq eshell-aliases-file "~/.config/doom/eshell/aliases")
+
+(with-eval-after-load "esh-opt"
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda))
+
+;; (setq ellama-buffer-mode "org-mode")
+(use-package ellama
+  )
+(setopt ellama-language "English")
+
+(use-package chatgpt-shell
+  :config
+  (setq chatgpt-shell-openai-key "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")
+  )
+
+(use-package mastodon
+  :config
+  (setq mastodon-instance-url "https://social.linux.pizza"
+      mastodon-active-user "Gamewarrior010")
+  )
+
+(use-package lem
+  :config
+(setq lem-instance-url "https://lemmy.world")
+(setq lem-current-user "GameWarrior"))
+
 (use-package dired-open
   :config
    (setq dired-open-extensions '(("gif" . "sxiv")
@@ -657,11 +765,12 @@
   :after dired
   :hook (evil-normalize-keymaps . peep-dired-hook)
   :config
-    (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-    (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
     (evil-define-key 'normal peep-dired-mode-map (kbd "j") 'peep-dired-next-file)
     (evil-define-key 'normal peep-dired-mode-map (kbd "k") 'peep-dired-prev-file)
 )
+
+    ;; (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+    ;; (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
 
 (use-package nerd-icons-dired
   :hook
@@ -671,131 +780,55 @@
   :hook
   (dired-mode . diredfl-mode))
 
+
+
 (cond ((eq system-type 'darwin)
        (setq dired-use-ls-dired t
              insert-directory-program "/opt/homebrew/bin/gls"
              dired-listing-switches "-aBhl --group-directories-first")
        ))
 
-;; Expands to: (elpaca evil (use-package evil :demand t))
-(use-package evil
-    :init      ;; tweak evil's configuration before loading it
-    (setq evil-want-integration t  ;; This is optional since it's already set to t by default.
-          evil-want-keybinding nil
-          evil-vsplit-window-right t
-          evil-split-window-below t
-          evil-undo-system 'undo-redo)  ;; Adds vim-like C-r redo functionality
-    (evil-mode))
+(use-package nix-mode
+  )
 
-(use-package evil-collection
-  :after evil
+(use-package ob-nix
+  )
+
+(use-package nixpkgs-fmt
+  )
+
+(use-package counsel
+  :after ivy
+  :diminish
+  :config 
+    (counsel-mode)
+    (setq ivy-initial-inputs-alist nil)) ;; removes starting ^ regex in M-x
+
+(use-package ivy
+  :bind
+  ;; ivy-resume resumes the last Ivy-based completion.
+  (("C-c C-r" . ivy-resume)
+   ("C-x B" . ivy-switch-buffer-other-window))
+  :diminish
+  :custom
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq enable-recursive-minibuffers t)
   :config
-  ;; Do not uncomment this unless you want to specify each and every mode
-  ;; that evil-collection should works with.  The following line is here
-  ;; for documentation purposes in case you need it.
-  ;; (setq evil-collection-mode-list '(calendar dashboard dired ediff info magit ibuffer))
-  (add-to-list 'evil-collection-mode-list 'help) ;; evilify help mode
-  (evil-collection-init))
+  (ivy-mode))
 
-(use-package evil-tutor)
+(use-package all-the-icons-ivy-rich
+  :ensure t
+  :init (all-the-icons-ivy-rich-mode 1))
 
-;; Using RETURN to follow links in Org/Evil
-;; Unmap keys in 'evil-maps if not done, (setq org-return-follows-link t) will not work
-(with-eval-after-load 'evil-maps
-  (define-key evil-motion-state-map (kbd "SPC") nil)
-  (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map (kbd "TAB") nil))
-;; Setting RETURN key in org-mode to follow links
-  (setq org-return-follows-link  t)
-
-(use-package pdf-tools)
-
-(use-package perspective
+(use-package ivy-rich
+  :after ivy
+  :ensure t
+  :init (ivy-rich-mode 1) ;; this gets us descriptions in M-x.
   :custom
-  ;; NOTE! I have also set 'SCP =' to open the perspective menu.
-  ;; I'm only setting the additional binding because setting it
-  ;; helps suppress an annoying warning message.
-  (persp-mode-prefix-key (kbd "C-c M-p"))
-  :init
-  (persp-mode)
+  (ivy-virtual-abbreviate 'full
+   ivy-rich-switch-buffer-align-virtual-buffer t
+   ivy-rich-path-style 'abbrev)
   :config
-  ;; Sets a file to write to when we save states
-  (setq persp-state-default-file "~/.config/emacs/sessions"))
-
-;; This will group buffers by persp-name in ibuffer.
-(add-hook 'ibuffer-hook
-          (lambda ()
-            (persp-ibuffer-set-filter-groups)
-            (unless (eq ibuffer-sorting-mode 'alphabetic)
-              (ibuffer-do-sort-by-alphabetic))))
-
-;; Automatically save perspective states to file when Emacs exits.
-(add-hook 'kill-emacs-hook #'persp-state-save)
-
-(use-package embark-consult
-  :after embark consult
-  :hook (embark-collect-mode . consult-preview-at-point-mode))
-
-(use-package marginalia
-  :hook (minemacs-after-startup . marginalia-mode))
-
-(use-package nerd-icons-completion
-  :hook (marginalia-mode . nerd-icons-completion-marginalia-setup))
-
-(use-package orderless
-  :after minemacs-loaded
-  :demand t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
-
-(use-package vertico
-  :hook (minemacs-after-startup . vertico-mode)
-  ;; In the minibuffer, "C-k" is be mapped to act like "<up>". However, in
-  ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
-  ;; to serve the original "C-k".
-  :bind (:map vertico-map
-         ("C-j" . vertico-next)
-         ("C-k" . vertico-previous)
-         :map minibuffer-local-map
-         ("C-S-k" . kill-line))
-  :custom
-  (vertico-cycle t)
-  (vertico-resize nil)
-  (vertico-count 12))
-
-(use-package eshell-toggle
-  :custom
-  (eshell-toggle-size-fraction 3)
-  (eshell-toggle-use-projectile-root t)
-  (eshell-toggle-run-command nil)
-  (eshell-toggle-init-function #'eshell-toggle-init-ansi-term))
-
-  (use-package eshell-syntax-highlighting
-    :after esh-mode
-    :config
-    (eshell-syntax-highlighting-global-mode +1))
-
-  ;; eshell-syntax-highlighting -- adds fish/zsh-like syntax highlighting.
-  ;; eshell-rc-script -- your profile for eshell; like a bashrc for eshell.
-  ;; eshell-aliases-file -- sets an aliases file for the eshell.
-
-  (setq eshell-rc-script (concat user-emacs-directory "eshell/profile")
-        eshell-aliases-file (concat user-emacs-directory "eshell/aliases")
-        eshell-history-size 5000
-        eshell-buffer-maximum-lines 5000
-        eshell-hist-ignoredups t
-        eshell-scroll-to-bottom-on-input t
-        eshell-destroy-buffer-when-process-dies t
-        eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
-
-(use-package vterm
-:config
-(setq shell-file-name "/bin/sh"
-      vterm-max-scrollback 5000))
-
-(use-package chatgpt-shell)
-(setq chatgpt-shell-openai-key "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")
-
-(use-package dall-e-shell)
-(setq dall-e-shell-openai-key "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")
+  (ivy-set-display-transformer 'ivy-switch-buffer
+                               'ivy-rich-switch-buffer-transformer))
