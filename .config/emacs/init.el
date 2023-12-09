@@ -18,8 +18,6 @@
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; Sets the default theme to load!!!
   (load-theme 'doom-one t)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
@@ -28,10 +26,6 @@
 (set-face-attribute 'default nil
   :font "JetBrains Mono"
   :height 110
-  :weight 'medium)
-(set-face-attribute 'variable-pitch nil
-  :font "Ubuntu"
-  :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
   :font "JetBrains Mono"
@@ -168,11 +162,11 @@ Containing LEFT, and RIGHT aligned respectively."
   (gb/leader-keys
     "f" '(:ignore t :wk "Files")
     "f c" '((lambda () (interactive)
-              (find-file "~/.minemacs.d/config.org"))
-            :wk "Open emacs config.org")
+	      (find-file "~/.minemacs.d/config.org"))
+	    :wk "Open emacs config.org")
     "f e" '((lambda () (interactive)
-              (dired "~/.minemacs.d/emacs/"))
-            :wk "Open user-emacs-directory in dired")
+	      (dired "~/.minemacs.d/emacs/"))
+	    :wk "Open user-emacs-directory in dired")
     "f d" '(find-grep-dired :wk "Search for string in files in DIR")
     "f g" '(counsel-grep-or-swiper :wk "Search for string current file")
     "f j" '(counsel-file-jump :wk "Jump to a file below current directory")
@@ -230,9 +224,9 @@ Containing LEFT, and RIGHT aligned respectively."
     "h m" '(describe-mode :wk "Describe mode")
     "h r" '(:ignore t :wk "Reload")
     "h r r" '((lambda () (interactive)
-                (load-file "~/.config/emacs/init.el")
-                (ignore (elpaca-process-queues)))
-              :wk "Reload emacs config")
+		(load-file "~/.config/emacs/init.el")
+		(ignore (elpaca-process-queues)))
+	      :wk "Reload emacs config")
     "h t" '(load-theme :wk "Load theme")
     "h v" '(describe-variable :wk "Describe variable")
     "h w" '(where-is :wk "Prints keybinding for command if set")
@@ -306,6 +300,8 @@ Containing LEFT, and RIGHT aligned respectively."
   (gb/leader-keys
     "v" '(org-archive-subtree :wk "Archive Org Heading.")
     "y" '(xwidgets-webkit-browse-url :wk "Open a link in xWidgets Webkit")
+    "x" '(scratch-buffer :wk "Open the scratch buffer")
+    "X" '(org-capture :wk "Start an org-capture")
     )
 
   )
@@ -715,8 +711,8 @@ Containing LEFT, and RIGHT aligned respectively."
     :after magit
     :config (magit-todos-mode 1))
 
-(use-package jinx
-  :hook (emacs-startup . global-jinx-mode))
+;; (use-package jinx
+;; :hook (emacs-startup . global-jinx-mode))
 
 (use-package synosaurus
   )
@@ -817,9 +813,13 @@ Containing LEFT, and RIGHT aligned respectively."
   :config
   (ivy-mode))
 
-(use-package all-the-icons-ivy-rich
+(use-package nerd-icons-ivy-rich
   :ensure t
-  :init (all-the-icons-ivy-rich-mode 1))
+  :config
+  (setq nerd-icons-ivy-rich-icon t)
+  (setq nerd-icons-ivy-rich-color-icon t)
+  (setq inhibit-compacting-font-caches t)
+  :init (nerd-icons-ivy-rich-mode 1))
 
 (use-package ivy-rich
   :after ivy
@@ -831,7 +831,7 @@ Containing LEFT, and RIGHT aligned respectively."
    ivy-rich-path-style 'abbrev)
   :config
   (ivy-set-display-transformer 'ivy-switch-buffer
-                               'ivy-rich-switch-buffer-transformer))
+			       'ivy-rich-switch-buffer-transformer))
 
 (use-package company
   :defer 2
