@@ -8,3 +8,4 @@ emacs-stuff/emacs-reveal/
 .config/emacs/eln-cache
 .config/emacs/elpaca
 .config/emacs/transient
+*.plstore
