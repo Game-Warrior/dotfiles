@@ -2,7 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("notes.org"
+(("school-schedule.pdf"
+ (filename . "~/Documents/School-2023-2024/school-schedule.pdf")
+ (position . 1)
+ (last-modified 25971 43962 91352 0)
+ (page . 1)
+ (slice)
+ (size . 1.2030228758169934)
+ (origin 0.0 . 0.05876180482686254)
+ (handler . pdf-view-bookmark-jump-handler))
+("notes.org"
  (filename . "~/Documents/notes.org")
  (front-context-string . "\n* Table of Cont")
  (rear-context-string . "artup: overview\n")

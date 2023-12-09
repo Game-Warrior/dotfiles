@@ -16,7 +16,7 @@
   - [[#setting-the-font-face][Setting the Font Face]]
   - [[#zooming-inout][Zooming In/Out]]
   - [[#doom-modeline][Doom-Modeline]]
-  - [[#personal-modeline][Personal Modeline]]
+  - [[#personal-mode-line][Personal Mode-line]]
   - [[#menu-bar-mode][Menu-bar-mode]]
   - [[#tool-bar-mode][Tool-bar-mode]]
   - [[#dashboard][Dashboard]]
@@ -32,7 +32,7 @@
   - [[#yeetube][Yeetube]]
   - [[#bookmarks][Bookmarks]]
   - [[#eperiodic][Eperiodic]]
-  - [[#evil][EVIL]]
+  - [[#evil][Evil]]
 - [[#org-mode][ORG-MODE]]
   - [[#org-settings][Org-Settings]]
   - [[#org-fonts][Org-fonts]]
@@ -60,6 +60,7 @@
   - [[#thesarus][Thesarus]]
 - [[#reading-stuff][Reading Stuff]]
   - [[#nov][Nov]]
+  - [[#pdf-tools][PDF-tools]]
 - [[#eshell][ESHELL]]
   - [[#aliases][Aliases]]
   - [[#prompt][Prompt]]
@@ -72,6 +73,7 @@
 - [[#dired][DIRED]]
 - [[#coding][CODING]]
   - [[#nix-mode][Nix-Mode]]
+  - [[#yaml-mode][Yaml-mode]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#company][COMPANY]]
 
@@ -132,6 +134,8 @@ The first line below designates the directory where will place all of our custom
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; Sets the default theme to load!!!
   (load-theme 'doom-one t)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 #+end_src
@@ -147,6 +151,10 @@ Change the title bar format
 (set-face-attribute 'default nil
   :font "JetBrains Mono"
   :height 110
+  :weight 'medium)
+(set-face-attribute 'variable-pitch nil
+  :font "Ubuntu"
+  :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
   :font "JetBrains Mono"
@@ -177,22 +185,23 @@ You can use the bindings CTRL plus =/- for zooming in/out.  You can also use CTR
 The modeline is the bottom status bar that appears in Emacs windows.  For more information on what is available to configure in the Doom modeline, check out:
 https://github.com/seagle0128/doom-modeline
 
-# #+begin_src emacs-lisp
-    (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-  (use-package doom-modeline
-    :config
+#+begin_src emacs-lisp
+	(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
+      (use-package doom-modeline
+	:hook (emacs-startup . doom-modeline-mode)
+	:init
     (setq doom-modeline-height 25     ;; sets modeline height
 	  doom-modeline-bar-width 5   ;; sets right bar width
 	  doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
-	  doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode fountain-mode) ;; Show word count
-	  ))
-    ;; (setq doom-modeline-time-icon t)
-    (setq doom-modeline-buffer-file-name-style 'autotruncate-except-project)
-
-# #+end_src
-** Personal Modeline
-#+begin_src emacs-lisp
-(defun ntf/mode-line-format (left right)
+	  doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode rst-mode latex-mode tex-mode text-mode) ;; Show word count
+	  doom-modeline-time-icon t
+	  doom-modeline-buffer-file-name-style 'autotruncate-except-project
+  )
+	  )
+#+end_src
+** Personal Mode-line
+# #+begin_src emacs-lisp
+(defun gwb/mode-line-format (left right)
   "Return a string of `window-width' length.
 Containing LEFT, and RIGHT aligned respectively."
   (let ((available-width (- (window-width) (length left) 1)))
@@ -204,7 +213,7 @@ Containing LEFT, and RIGHT aligned respectively."
 
 (setq-default
    mode-line-format
-   '((:eval (ntf/mode-line-format
+   '((:eval (gwb/mode-line-format
              ;; left portion
              (format-mode-line
               (quote ("%e"
@@ -222,7 +231,7 @@ Containing LEFT, and RIGHT aligned respectively."
                       " %l:%c")))
              ;; right portion
              (format-mode-line (quote ("%m " (vc-mode vc-mode))))))))
-#+end_src
+# #+end_src
 ** Menu-bar-mode
 #+begin_src emacs-lisp
 (menu-bar-mode -1)
@@ -243,11 +252,11 @@ Containing LEFT, and RIGHT aligned respectively."
     (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
     (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
     (setq dashboard-startup-banner "~/.config/emacs/images/emacs-dash.png")  ;; use custom image as banner
-    (setq dashboard-center-content nil) ;; set to 't' for centered content
+    (setq dashboard-center-content t) ;; set to 't' for centered content
     (setq dashboard-items '((recents . 5)
 			    (agenda . 5 )
 			    (bookmarks . 3)
-			    (registers . 3)))
+			    ))
     :custom
     (dashboard-modify-heading-icons '((recents . "file-text")
 		(bookmarks . "book")))
@@ -585,9 +594,8 @@ A Periodic table package for emacs.
 (load "~/.config/emacs/eperiodic.el")
 #+end_src
 
-** EVIL
+** Evil
 [[https://github.com/emacs-evil/evil][Evil]] is an extensible vi/vim layer for Emacs.  Because...let's face it.  The Vim keybindings are just plain better.
-
 #+begin_src emacs-lisp
 ;; Expands to: (elpaca evil (use-package evil :demand t))
 (use-package evil
@@ -1032,8 +1040,8 @@ YASnippet is a tool that allows you to create templates do allow you to write le
 ** Spell Checker
 Jinx is a fast just-in-time spell-checker for Emacs.
 #+begin_src emacs-lisp
-   ;; (use-package jinx
-  ;; :hook (emacs-startup . global-jinx-mode))
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode))
 #+end_src
 
 ** Thesarus
@@ -1050,6 +1058,10 @@ nov.el provides a major mode for reading EPUB documents
 (setq nov-unzip-program (executable-find "bsdtar")
       nov-unzip-args '("-xC" directory "-f" filename))
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+#+end_src
+** PDF-tools
+#+begin_src emacs-lisp
+(use-package pdf-tools)
 #+end_src
 
 * ESHELL
@@ -1151,6 +1163,10 @@ Nix is a cross-platform package manager that uses a deployment model where softw
 (use-package nixpkgs-fmt
   )
 #+end_src
+** Yaml-mode
+#+begin_src emacs-lisp
+(use-package yaml-mode)
+#+end_src
 
 * IVY (COUNSEL)
 + Ivy, a generic completion mechanism for Emacs.
@@ -1158,45 +1174,41 @@ Nix is a cross-platform package manager that uses a deployment model where softw
 + Ivy-rich allows us to add descriptions alongside the commands in M-x.
 
 #+begin_src emacs-lisp
-    (use-package counsel
-      :after ivy
-      :diminish
-      :config 
-	(counsel-mode)
-	(setq ivy-initial-inputs-alist nil)) ;; removes starting ^ regex in M-x
+(use-package counsel
+  :after ivy
+  :diminish
+  :config 
+    (counsel-mode)
+    (setq ivy-initial-inputs-alist nil)) ;; removes starting ^ regex in M-x
 
-    (use-package ivy
-      :bind
-      ;; ivy-resume resumes the last Ivy-based completion.
-      (("C-c C-r" . ivy-resume)
-       ("C-x B" . ivy-switch-buffer-other-window))
-      :diminish
-      :custom
-      (setq ivy-use-virtual-buffers t)
-      (setq ivy-count-format "(%d/%d) ")
-      (setq enable-recursive-minibuffers t)
-      :config
-      (ivy-mode))
+(use-package ivy
+  :bind
+  ;; ivy-resume resumes the last Ivy-based completion.
+  (("C-c C-r" . ivy-resume)
+   ("C-x B" . ivy-switch-buffer-other-window))
+  :diminish
+  :custom
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq enable-recursive-minibuffers t)
+  :config
+  (ivy-mode))
 
-    (use-package nerd-icons-ivy-rich
-      :ensure t
-      :config
-      (setq nerd-icons-ivy-rich-icon t)
-      (setq nerd-icons-ivy-rich-color-icon t)
-      (setq inhibit-compacting-font-caches t)
-      :init (nerd-icons-ivy-rich-mode 1))
+(use-package all-the-icons-ivy-rich
+  :ensure t
+  :init (all-the-icons-ivy-rich-mode 1))
 
-    (use-package ivy-rich
-      :after ivy
-      :ensure t
-      :init (ivy-rich-mode 1) ;; this gets us descriptions in M-x.
-      :custom
-      (ivy-virtual-abbreviate 'full
-       ivy-rich-switch-buffer-align-virtual-buffer t
-       ivy-rich-path-style 'abbrev)
-      :config
-      (ivy-set-display-transformer 'ivy-switch-buffer
-				   'ivy-rich-switch-buffer-transformer))
+(use-package ivy-rich
+  :after ivy
+  :ensure t
+  :init (ivy-rich-mode 1) ;; this gets us descriptions in M-x.
+  :custom
+  (ivy-virtual-abbreviate 'full
+   ivy-rich-switch-buffer-align-virtual-buffer t
+   ivy-rich-path-style 'abbrev)
+  :config
+  (ivy-set-display-transformer 'ivy-switch-buffer
+                               'ivy-rich-switch-buffer-transformer))
 
 #+end_src
 

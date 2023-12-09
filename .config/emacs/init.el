@@ -18,6 +18,8 @@
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; Sets the default theme to load!!!
   (load-theme 'doom-one t)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
@@ -26,6 +28,10 @@
 (set-face-attribute 'default nil
   :font "JetBrains Mono"
   :height 110
+  :weight 'medium)
+(set-face-attribute 'variable-pitch nil
+  :font "Ubuntu"
+  :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
   :font "JetBrains Mono"
@@ -46,36 +52,18 @@
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-(defun ntf/mode-line-format (left right)
-  "Return a string of `window-width' length.
-Containing LEFT, and RIGHT aligned respectively."
-  (let ((available-width (- (window-width) (length left) 1)))
-    (format (format "%%s %%%ds " available-width) left right)))
-
-(defface evil-mode-line-face '((t (:foreground  "black"
-                                                  :background "orange")))
-    "Face for evil mode-line colors.")
-
-(setq-default
-   mode-line-format
-   '((:eval (ntf/mode-line-format
-             ;; left portion
-             (format-mode-line
-              (quote ("%e"
-                      (:eval
-                       (when (bound-and-true-p evil-local-mode)
-                         (propertize
-                          (concat
-                           " "
-                           (upcase
-                            (substring (symbol-name evil-state) 0 1))
-                           (substring (symbol-name evil-state) 1)
-                           " ") 'face 'evil-mode-line-face)))
-                      " " (:eval (when (buffer-modified-p) "[+]"))
-                      " " mode-line-buffer-identification
-                      " %l:%c")))
-             ;; right portion
-             (format-mode-line (quote ("%m " (vc-mode vc-mode))))))))
+(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
+    (use-package doom-modeline
+      :hook (emacs-startup . doom-modeline-mode)
+      :init
+  (setq doom-modeline-height 25     ;; sets modeline height
+	doom-modeline-bar-width 5   ;; sets right bar width
+	doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
+	doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode rst-mode latex-mode tex-mode text-mode) ;; Show word count
+	doom-modeline-time-icon t
+	doom-modeline-buffer-file-name-style 'autotruncate-except-project
+)
+	)
 
 (menu-bar-mode -1)
 
@@ -90,11 +78,11 @@ Containing LEFT, and RIGHT aligned respectively."
   (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
   (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
   (setq dashboard-startup-banner "~/.config/emacs/images/emacs-dash.png")  ;; use custom image as banner
-  (setq dashboard-center-content nil) ;; set to 't' for centered content
+  (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
 			  (agenda . 5 )
 			  (bookmarks . 3)
-			  (registers . 3)))
+			  ))
   :custom
   (dashboard-modify-heading-icons '((recents . "file-text")
 	      (bookmarks . "book")))
@@ -711,8 +699,8 @@ Containing LEFT, and RIGHT aligned respectively."
     :after magit
     :config (magit-todos-mode 1))
 
-;; (use-package jinx
-;; :hook (emacs-startup . global-jinx-mode))
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode))
 
 (use-package synosaurus
   )
@@ -720,6 +708,8 @@ Containing LEFT, and RIGHT aligned respectively."
 (setq nov-unzip-program (executable-find "bsdtar")
       nov-unzip-args '("-xC" directory "-f" filename))
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(use-package pdf-tools)
 
 (setq eshell-aliases-file "~/.config/doom/eshell/aliases")
 
@@ -793,6 +783,8 @@ Containing LEFT, and RIGHT aligned respectively."
 (use-package nixpkgs-fmt
   )
 
+(use-package yaml-mode)
+
 (use-package counsel
   :after ivy
   :diminish
@@ -813,13 +805,9 @@ Containing LEFT, and RIGHT aligned respectively."
   :config
   (ivy-mode))
 
-(use-package nerd-icons-ivy-rich
+(use-package all-the-icons-ivy-rich
   :ensure t
-  :config
-  (setq nerd-icons-ivy-rich-icon t)
-  (setq nerd-icons-ivy-rich-color-icon t)
-  (setq inhibit-compacting-font-caches t)
-  :init (nerd-icons-ivy-rich-mode 1))
+  :init (all-the-icons-ivy-rich-mode 1))
 
 (use-package ivy-rich
   :after ivy
@@ -831,7 +819,7 @@ Containing LEFT, and RIGHT aligned respectively."
    ivy-rich-path-style 'abbrev)
   :config
   (ivy-set-display-transformer 'ivy-switch-buffer
-			       'ivy-rich-switch-buffer-transformer))
+                               'ivy-rich-switch-buffer-transformer))
 
 (use-package company
   :defer 2
