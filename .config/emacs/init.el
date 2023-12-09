@@ -3,12 +3,12 @@
 ;; | |  __   \ \  /\  / /  https://github.com/game-warrior
 ;; | | |_ |   \ \/  \/ /   @gamewarrior010@social.linux.pizza
 ;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
-;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
+;;  \_____|     \/  \/
 
 (add-to-list 'load-path "~/.config/emacs/scripts/")
 
-(require 'elpaca-setup)  ;; The Elpaca Package Manager
-(require 'buffer-move)   ;; Buffer-move for better window management
+(load "~/.config/emacs/scripts/elpaca-setup.el") ;; The Elpaca Package Manager
+(load "~/.config/emacs/scripts/buffer-move.el") ;; Buffer-move for better window management
 
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
@@ -28,10 +28,6 @@
 (set-face-attribute 'default nil
   :font "JetBrains Mono"
   :height 110
-  :weight 'medium)
-(set-face-attribute 'variable-pitch nil
-  :font "Ubuntu"
-  :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
   :font "JetBrains Mono"
@@ -685,9 +681,9 @@
 (quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
 
 (use-package yasnippet
-  )
-(setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-;; (yas-global-mode 1)
+    )
+  (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+(add-hook 'text-mode-hook (lambda () (yas-minor-mode 1)))
 
 (use-package git-timemachine
   :after git-timemachine
@@ -703,8 +699,8 @@
     :after magit
     :config (magit-todos-mode 1))
 
-(use-package jinx
-  :hook (emacs-startup . global-jinx-mode))
+;; (use-package jinx
+  ;; :hook (emacs-startup . global-jinx-mode))
 
 (use-package synosaurus
   )
@@ -789,27 +785,37 @@
 
 (use-package yaml-mode)
 
-(use-package corfu)
-
-;; (use-package corfu-popupinfo
-  ;; :hook (corfu-mode . corfu-popupinfo-mode)
-  ;; :bind (:package corfu
-	 ;; :map corfu-map
-	 ;; ("M-p" . corfu-popupinfo-scroll-down)
-	 ;; ("M-n" . corfu-popupinfo-scroll-up)
-	 ;; ("M-d" . corfu-popupinfo-toggle))
-  ;; :custom
-  ;; (corfu-popupinfo-delay 0.1)
-  ;; (corfu-popupinfo-max-height 15))
-
-(use-package corfu-terminal
-  :hook (corfu-mode . corfu-terminal-mode))
-
-(use-package nerd-icons-corfu
-  :after corfu
-  :demand t
+(use-package corfu
+  :hook (emacs-startup . global-corfu-mode)
+  :hook (eshell-mode . +corfu-less-intrusive-h)
+  :hook (minibuffer-setup . +corfu-enable-in-minibuffer-h)
+  :bind (:map corfu-map
+	 ("M-m" . +corfu-complete-in-minibuffer)
+	 ("<tab>" . corfu-next)
+	 ("<backtab>" . corfu-previous)
+	 ("C-j" . corfu-next)
+	 ("C-k" . corfu-previous))
+  :custom
+  (corfu-auto t) ; Enable auto completion
+  (corfu-cycle t) ; Allows cycling through candidates
+  (corfu-min-width 25)
+  (corfu-auto-delay 0.2)
   :config
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+  (defun +corfu-enable-in-minibuffer-h ()
+    "Enable Corfu in the minibuffer if `completion-at-point' is bound."
+    (when (where-is-internal #'completion-at-point (list (current-local-map)))
+      (setq-local corfu-auto nil) ; Enable/disable auto completion
+      (corfu-mode 1)))
+)
+
+  (use-package corfu-terminal
+    :hook (corfu-mode . corfu-terminal-mode))
+
+  (use-package nerd-icons-corfu
+    :after corfu
+    :demand t
+    :config
+    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (use-package consult
     :hook (embark-collect-mode . consult-preview-at-point-mode)

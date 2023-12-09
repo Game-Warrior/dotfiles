@@ -1,4 +1,3 @@
-
 #+title: My Vanilla Emacs Config
 #+description: The config borrows heavily from my Doom Emacs config and DistroTube's New vanilla Emacs config.
 #+author: Gardner Berry
@@ -93,7 +92,7 @@ This is my Doom Emacs Config. I have built this over the last couple of months m
 ;; | |  __   \ \  /\  / /  https://github.com/game-warrior
 ;; | | |_ |   \ \/  \/ /   @gamewarrior010@social.linux.pizza
 ;; | |__| |    \  /\  /    https://www.gnu.org/software/emacs/
-;;  \_____|     \/  \/     https://:github.com/doomemacs/doomemacs
+;;  \_____|     \/  \/     
 #+end_src
 
 ** Why Emacs
@@ -124,8 +123,8 @@ To keep this =config.org= a reasonable length, I have moved a lot of code to ind
 
 ** Sourcing the scripts
 #+begin_src emacs-lisp
-(require 'elpaca-setup)  ;; The Elpaca Package Manager
-(require 'buffer-move)   ;; Buffer-move for better window management
+(load "~/.config/emacs/scripts/elpaca-setup.el") ;; The Elpaca Package Manager
+(load "~/.config/emacs/scripts/buffer-move.el") ;; Buffer-move for better window management
 #+end_src
 
 
@@ -159,10 +158,6 @@ Change the title bar format
 (set-face-attribute 'default nil
   :font "JetBrains Mono"
   :height 110
-  :weight 'medium)
-(set-face-attribute 'variable-pitch nil
-  :font "Ubuntu"
-  :height 120
   :weight 'medium)
 (set-face-attribute 'fixed-pitch nil
   :font "JetBrains Mono"
@@ -1027,7 +1022,7 @@ YASnippet is a tool that allows you to create templates do allow you to write le
   (use-package yasnippet
     )
   (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-  ;; (yas-global-mode 1)
+(add-hook 'text-mode-hook (lambda () (yas-minor-mode 1)))
 #+end_src
 
 ** Git Time Machine
@@ -1055,8 +1050,8 @@ YASnippet is a tool that allows you to create templates do allow you to write le
 ** Spell Checker
 Jinx is a fast just-in-time spell-checker for Emacs.
 #+begin_src emacs-lisp
-(use-package jinx
-  :hook (emacs-startup . global-jinx-mode))
+  ;; (use-package jinx
+    ;; :hook (emacs-startup . global-jinx-mode))
 #+end_src
 
 ** Thesarus
@@ -1251,27 +1246,37 @@ Nix is a cross-platform package manager that uses a deployment model where softw
 ** Corefu
 Corfu enhances in-buffer completion with a small completion popup. The current candidates are shown in a popup below or above the point. The candidates can be selected by moving up and down. Corfu is the minimalistic in-buffer completion counterpart of the Vertico minibuffer UI.
 #+begin_src emacs-lisp
-    (use-package corfu)
-
-  ;; (use-package corfu-popupinfo
-    ;; :hook (corfu-mode . corfu-popupinfo-mode)
-    ;; :bind (:package corfu
-	   ;; :map corfu-map
-	   ;; ("M-p" . corfu-popupinfo-scroll-down)
-	   ;; ("M-n" . corfu-popupinfo-scroll-up)
-	   ;; ("M-d" . corfu-popupinfo-toggle))
-    ;; :custom
-    ;; (corfu-popupinfo-delay 0.1)
-    ;; (corfu-popupinfo-max-height 15))
-
-  (use-package corfu-terminal
-    :hook (corfu-mode . corfu-terminal-mode))
-
-  (use-package nerd-icons-corfu
-    :after corfu
-    :demand t
+  (use-package corfu
+    :hook (emacs-startup . global-corfu-mode)
+    :hook (eshell-mode . +corfu-less-intrusive-h)
+    :hook (minibuffer-setup . +corfu-enable-in-minibuffer-h)
+    :bind (:map corfu-map
+	   ("M-m" . +corfu-complete-in-minibuffer)
+	   ("<tab>" . corfu-next)
+	   ("<backtab>" . corfu-previous)
+	   ("C-j" . corfu-next)
+	   ("C-k" . corfu-previous))
+    :custom
+    (corfu-auto t) ; Enable auto completion
+    (corfu-cycle t) ; Allows cycling through candidates
+    (corfu-min-width 25)
+    (corfu-auto-delay 0.2)
     :config
-    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+    (defun +corfu-enable-in-minibuffer-h ()
+      "Enable Corfu in the minibuffer if `completion-at-point' is bound."
+      (when (where-is-internal #'completion-at-point (list (current-local-map)))
+	(setq-local corfu-auto nil) ; Enable/disable auto completion
+	(corfu-mode 1)))
+  )
+
+    (use-package corfu-terminal
+      :hook (corfu-mode . corfu-terminal-mode))
+
+    (use-package nerd-icons-corfu
+      :after corfu
+      :demand t
+      :config
+      (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 #+end_src
 ** Consult
 Consult provides search and navigation commands based on the Emacs completion function completing-read. Completion allows you to quickly select an item from a list of candidates. Consult offers asynchronous and interactive consult-grep and consult-ripgrep commands, and the line-based search command consult-line. Furthermore Consult provides an advanced buffer switching command consult-buffer to switch between buffers, recently opened files, bookmarks and buffer-like candidates from other sources. Some of the Consult commands are enhanced versions of built-in Emacs commands. For example the command consult-imenu presents a flat list of the Imenu with live preview, grouping and narrowing. Please take a look at the full list of commands.
