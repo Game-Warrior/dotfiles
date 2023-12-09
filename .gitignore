@@ -8,4 +8,7 @@ emacs-stuff/emacs-reveal/
 .config/emacs/eln-cache
 .config/emacs/elpaca
 .config/emacs/transient
+.config/emacs/url
+.config/emacs/sessions
+.config/emacs/auto-save-list
 *.plstore
