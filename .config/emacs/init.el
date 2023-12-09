@@ -89,7 +89,11 @@
   :config
    (dashboard-setup-startup-hook))
 
-(setq word-wrap-mode 1)
+(setq global-word-wrap-whitespace-mode 1)
+
+(use-package nerd-icons-ibuffer
+  :ensure t
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
 (use-package general
   :config
@@ -785,54 +789,79 @@
 
 (use-package yaml-mode)
 
-(use-package counsel
-  :after ivy
-  :diminish
-  :config 
-    (counsel-mode)
-    (setq ivy-initial-inputs-alist nil)) ;; removes starting ^ regex in M-x
+(use-package corfu)
 
-(use-package ivy
-  :bind
-  ;; ivy-resume resumes the last Ivy-based completion.
-  (("C-c C-r" . ivy-resume)
-   ("C-x B" . ivy-switch-buffer-other-window))
-  :diminish
-  :custom
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq enable-recursive-minibuffers t)
+;; (use-package corfu-popupinfo
+  ;; :hook (corfu-mode . corfu-popupinfo-mode)
+  ;; :bind (:package corfu
+	 ;; :map corfu-map
+	 ;; ("M-p" . corfu-popupinfo-scroll-down)
+	 ;; ("M-n" . corfu-popupinfo-scroll-up)
+	 ;; ("M-d" . corfu-popupinfo-toggle))
+  ;; :custom
+  ;; (corfu-popupinfo-delay 0.1)
+  ;; (corfu-popupinfo-max-height 15))
+
+(use-package corfu-terminal
+  :hook (corfu-mode . corfu-terminal-mode))
+
+(use-package nerd-icons-corfu
+  :after corfu
+  :demand t
   :config
-  (ivy-mode))
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
-(use-package all-the-icons-ivy-rich
-  :ensure t
-  :init (all-the-icons-ivy-rich-mode 1))
+(use-package consult
+    :hook (embark-collect-mode . consult-preview-at-point-mode)
+    :bind (:map minibuffer-local-map
+	   ("C-r" . consult-history)
+	   ("C-S-v" . consult-yank-pop)
+	   :package isearch
+	   :map isearch-mode-map
+	   ("C-S-v" . consult-yank-pop)))
+(use-package consult-dir
+  :bind (("C-x C-d" . consult-dir)
+         :package vertico
+         :map vertico-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
 
-(use-package ivy-rich
-  :after ivy
-  :ensure t
-  :init (ivy-rich-mode 1) ;; this gets us descriptions in M-x.
+(use-package embark
+    :bind (("<remap> <describe-bindings>" . embark-bindings)
+	   ("C-²" . embark-act) ; In a French AZERTY keyboard, the ² key is right above TAB
+	   ("M-²" . embark-collect)
+	   ("C-&" . embark-dwim))
+    :init
+    ;; Use Embark to show bindings in a key prefix with `C-h`
+    (setq prefix-help-command #'embark-prefix-help-command))
+
+(use-package embark-consult
+  :after embark consult
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package marginalia
+  :hook (emacs-startup . marginalia-mode))
+
+(use-package nerd-icons-completion
+  :hook (marginalia-mode . nerd-icons-completion-marginalia-setup))
+
+(use-package orderless
+  :demand t
   :custom
-  (ivy-virtual-abbreviate 'full
-   ivy-rich-switch-buffer-align-virtual-buffer t
-   ivy-rich-path-style 'abbrev)
-  :config
-  (ivy-set-display-transformer 'ivy-switch-buffer
-                               'ivy-rich-switch-buffer-transformer))
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
-(use-package company
-  :defer 2
-  :diminish
+(use-package vertico
+  :hook (emacs-startup . vertico-mode)
+  ;; In the minibuffer, "C-k" is be mapped to act like "<up>". However, in
+  ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
+  ;; to serve the original "C-k".
+  :bind (:map vertico-map
+         ("C-j" . vertico-next)
+         ("C-k" . vertico-previous)
+         :map minibuffer-local-map
+         ("C-S-k" . kill-line))
   :custom
-  (company-begin-commands '(self-insert-command))
-  (company-idle-delay .1)
-  (company-minimum-prefix-length 2)
-  (company-show-numbers t)
-  (company-tooltip-align-annotations 't)
-  (global-company-mode t))
-
-(use-package company-box
-  :after company
-  :diminish
-  :hook (company-mode . company-box-mode))
+  (vertico-cycle t)
+  (vertico-resize nil)
+  (vertico-count 12))
