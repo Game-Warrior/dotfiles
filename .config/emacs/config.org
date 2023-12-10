@@ -21,6 +21,7 @@
   - [[#dashboard][Dashboard]]
   - [[#word-wrap][Word Wrap]]
   - [[#ibuffer][iBuffer]]
+  - [[#visible-bell][Visible Bell]]
 - [[#personal-settings][PERSONAL SETTINGS]]
   - [[#general-keybindings][General Keybindings]]
   - [[#setting-username-and-e-mail][Setting Username and E-Mail]]
@@ -74,6 +75,7 @@
 - [[#coding][CODING]]
   - [[#nix-mode][Nix-Mode]]
   - [[#yaml-mode][Yaml-mode]]
+  - [[#rainbow-delimiters][Rainbow Delimiters]]
 - [[#completion][Completion]]
   - [[#corefu][Corefu]]
   - [[#consult][Consult]]
@@ -130,18 +132,23 @@ To keep this =config.org= a reasonable length, I have moved a lot of code to ind
 The first line below designates the directory where will place all of our custom-made themes, which I have created only one (dtmacs).  You can create your own Emacs themes with the help of the [[https://emacsfodder.github.io/emacs-theme-editor/][Emacs Theme Editor]].  I am also installing =doom-themes= because it contains a huge collection of themes.  M-x load-theme will list all of the themes available.
 
 #+begin_src emacs-lisp
-(add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+    (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
-(use-package doom-themes
-  :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; Sets the default theme to load!!!
-  (load-theme 'doom-one t)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+    (use-package doom-themes
+      :config
+      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	    doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;; Sets the default theme to load!!!
+      ;; (load-theme 'doom-one t)
+      ;; Enable custom neotree theme (all-the-icons must be installed!)
+      (doom-themes-neotree-config)
+      ;; Corrects (and improves) org-mode's native fontification.
+      (doom-themes-org-config))
+
+  (use-package timu-rouge-theme
+    :ensure t
+    :config
+    (load-theme 'timu-rouge t))
 #+end_src
 
 ** Title Bar
@@ -241,6 +248,10 @@ iBuffer allows you to interactively manage Emacs buffers.
 (use-package nerd-icons-ibuffer
   :ensure t
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+#+end_src
+** Visible Bell
+#+begin_src emacs-lisp
+(setq visible-bell t)
 #+end_src
 * PERSONAL SETTINGS
 ** General Keybindings
@@ -1140,7 +1151,12 @@ Nix is a cross-platform package manager that uses a deployment model where softw
 #+begin_src emacs-lisp
 (use-package yaml-mode)
 #+end_src
-
+** Rainbow Delimiters
+#+begin_src emacs-lisp
+(use-package rainbow-delimiters
+  :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
+         (clojure-mode . rainbow-delimiters-mode)))
+#+end_src
 * Completion
 ** Corefu
 Corfu enhances in-buffer completion with a small completion popup. The current candidates are shown in a popup below or above the point. The candidates can be selected by moving up and down. Corfu is the minimalistic in-buffer completion counterpart of the Vertico minibuffer UI.
@@ -1228,18 +1244,24 @@ Embark makes it easy to choose a command to run based on what is near point, bot
 #+end_src
 ** Vertico
 #+begin_src emacs-lisp
-(use-package vertico
-  :hook (emacs-startup . vertico-mode)
-  ;; In the minibuffer, "C-k" is be mapped to act like "<up>". However, in
-  ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
-  ;; to serve the original "C-k".
-  :bind (:map vertico-map
-         ("C-j" . vertico-next)
-         ("C-k" . vertico-previous)
-         :map minibuffer-local-map
-         ("C-S-k" . kill-line))
-  :custom
-  (vertico-cycle t)
-  (vertico-resize nil)
-  (vertico-count 12))
+    (use-package vertico
+      :hook (emacs-startup . vertico-mode)
+      ;; In the minibuffer, "C-k" is be mapped to act like "<up>". However, in
+      ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
+      ;; to serve the original "C-k".
+      :bind (:map vertico-map
+	     ("C-j" . vertico-next)
+	     ("C-k" . vertico-previous)
+	     :map minibuffer-local-map
+	     ("C-S-k" . kill-line))
+      :custom
+      (vertico-cycle t)
+      (vertico-resize nil)
+      (vertico-count 12))
+
+  ;; Persist history over Emacs restarts. Vertico sorts by history position.
+  ;; (use-package savehist
+    ;; :init
+    ;; (savehist-mode))
+
 #+end_src

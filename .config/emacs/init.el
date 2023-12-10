@@ -12,16 +12,21 @@
 
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
-(use-package doom-themes
+  (use-package doom-themes
+    :config
+    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	  doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    ;; Sets the default theme to load!!!
+    ;; (load-theme 'doom-one t)
+    ;; Enable custom neotree theme (all-the-icons must be installed!)
+    (doom-themes-neotree-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config))
+
+(use-package timu-rouge-theme
+  :ensure t
   :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; Sets the default theme to load!!!
-  (load-theme 'doom-one t)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  (load-theme 'timu-rouge t))
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -90,6 +95,8 @@
 (use-package nerd-icons-ibuffer
   :ensure t
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
+(setq visible-bell t)
 
 (use-package general
   :config
@@ -783,6 +790,10 @@
 
 (use-package yaml-mode)
 
+(use-package rainbow-delimiters
+  :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
+         (clojure-mode . rainbow-delimiters-mode)))
+
 (use-package corfu
   :hook (emacs-startup . global-corfu-mode)
   :hook (eshell-mode . +corfu-less-intrusive-h)
@@ -856,16 +867,21 @@
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package vertico
-  :hook (emacs-startup . vertico-mode)
-  ;; In the minibuffer, "C-k" is be mapped to act like "<up>". However, in
-  ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
-  ;; to serve the original "C-k".
-  :bind (:map vertico-map
-         ("C-j" . vertico-next)
-         ("C-k" . vertico-previous)
-         :map minibuffer-local-map
-         ("C-S-k" . kill-line))
-  :custom
-  (vertico-cycle t)
-  (vertico-resize nil)
-  (vertico-count 12))
+    :hook (emacs-startup . vertico-mode)
+    ;; In the minibuffer, "C-k" is be mapped to act like "<up>". However, in
+    ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
+    ;; to serve the original "C-k".
+    :bind (:map vertico-map
+	   ("C-j" . vertico-next)
+	   ("C-k" . vertico-previous)
+	   :map minibuffer-local-map
+	   ("C-S-k" . kill-line))
+    :custom
+    (vertico-cycle t)
+    (vertico-resize nil)
+    (vertico-count 12))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+;; (use-package savehist
+  ;; :init
+  ;; (savehist-mode))
