@@ -16,7 +16,6 @@
   - [[#setting-the-font-face][Setting the Font Face]]
   - [[#zooming-inout][Zooming In/Out]]
   - [[#doom-modeline][Doom-Modeline]]
-  - [[#personal-mode-line][Personal Mode-line]]
   - [[#menu-bar-mode][Menu-bar-mode]]
   - [[#tool-bar-mode][Tool-bar-mode]]
   - [[#dashboard][Dashboard]]
@@ -75,8 +74,6 @@
 - [[#coding][CODING]]
   - [[#nix-mode][Nix-Mode]]
   - [[#yaml-mode][Yaml-mode]]
-- [[#ivy-counsel][IVY (COUNSEL)]]
-- [[#company][COMPANY]]
 - [[#completion][Completion]]
   - [[#corefu][Corefu]]
   - [[#consult][Consult]]
@@ -202,39 +199,6 @@ https://github.com/seagle0128/doom-modeline
   )
 	  )
 #+end_src
-** Personal Mode-line
-# #+begin_src emacs-lisp
-(defun gwb/mode-line-format (left right)
-  "Return a string of `window-width' length.
-Containing LEFT, and RIGHT aligned respectively."
-  (let ((available-width (- (window-width) (length left) 1)))
-    (format (format "%%s %%%ds " available-width) left right)))
-
-(defface evil-mode-line-face '((t (:foreground  "black"
-                                                  :background "orange")))
-    "Face for evil mode-line colors.")
-
-(setq-default
-   mode-line-format
-   '((:eval (gwb/mode-line-format
-             ;; left portion
-             (format-mode-line
-              (quote ("%e"
-                      (:eval
-                       (when (bound-and-true-p evil-local-mode)
-                         (propertize
-                          (concat
-                           " "
-                           (upcase
-                            (substring (symbol-name evil-state) 0 1))
-                           (substring (symbol-name evil-state) 1)
-                           " ") 'face 'evil-mode-line-face)))
-                      " " (:eval (when (buffer-modified-p) "[+]"))
-                      " " mode-line-buffer-identification
-                      " %l:%c")))
-             ;; right portion
-             (format-mode-line (quote ("%m " (vc-mode vc-mode))))))))
-# #+end_src
 ** Menu-bar-mode
 #+begin_src emacs-lisp
 (menu-bar-mode -1)
@@ -1123,40 +1087,39 @@ lem.el is an Emacs client for the federated link aggregator Lemmy.
 #+end_src
 * DIRED
 #+begin_src emacs-lisp
-(use-package dired-open
-  :config
-   (setq dired-open-extensions '(("gif" . "sxiv")
-                                 ("jpg" . "sxiv")
-                                 ("png" . "sxiv")
-                                 ("mkv" . "IINA")
-                                 ("mp4" . "IINA"))))
+   (use-package dired-open
+     :config
+      (setq dired-open-extensions '(("gif" . "sxiv")
+				    ("jpg" . "sxiv")
+				    ("png" . "sxiv")
+				    ("mkv" . "IINA")
+				    ("mp4" . "IINA"))))
 
-(use-package peep-dired
-  :after dired
-  :hook (evil-normalize-keymaps . peep-dired-hook)
-  :config
-    (evil-define-key 'normal peep-dired-mode-map (kbd "j") 'peep-dired-next-file)
-    (evil-define-key 'normal peep-dired-mode-map (kbd "k") 'peep-dired-prev-file)
-)
+   (use-package peep-dired
+     :after dired
+     :hook (evil-normalize-keymaps . peep-dired-hook)
+     :config
+       (evil-define-key 'normal peep-dired-mode-map (kbd "j") 'peep-dired-next-file)
+       (evil-define-key 'normal peep-dired-mode-map (kbd "k") 'peep-dired-prev-file)
+       (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+       (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
+    )
 
-    ;; (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-    ;; (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
+   (use-package nerd-icons-dired
+     :hook
+     (dired-mode . nerd-icons-dired-mode))
 
-(use-package nerd-icons-dired
-  :hook
-  (dired-mode . nerd-icons-dired-mode))
+   (use-package diredfl
+     :hook
+     (dired-mode . diredfl-mode))
 
-(use-package diredfl
-  :hook
-  (dired-mode . diredfl-mode))
+   (setq dired-use-ls-dired t
+    dired-listing-switches "-aBhl --group-directories-first")
 
+   (cond ((eq system-type 'darwin)
+	  (setq insert-directory-program "/opt/homebrew/bin/gls"))
+	 )
 
-
-(cond ((eq system-type 'darwin)
-       (setq dired-use-ls-dired t
-             insert-directory-program "/opt/homebrew/bin/gls"
-             dired-listing-switches "-aBhl --group-directories-first")
-       ))
 #+end_src
 
 * CODING
@@ -1178,70 +1141,6 @@ Nix is a cross-platform package manager that uses a deployment model where softw
 (use-package yaml-mode)
 #+end_src
 
-* IVY (COUNSEL)
-+ Ivy, a generic completion mechanism for Emacs.
-+ Counsel, a collection of Ivy-enhanced versions of common Emacs commands.
-+ Ivy-rich allows us to add descriptions alongside the commands in M-x.
-
-# #+begin_src emacs-lisp
-(use-package counsel
-  :after ivy
-  :diminish
-  :config 
-    (counsel-mode)
-    (setq ivy-initial-inputs-alist nil)) ;; removes starting ^ regex in M-x
-
-(use-package ivy
-  :bind
-  ;; ivy-resume resumes the last Ivy-based completion.
-  (("C-c C-r" . ivy-resume)
-   ("C-x B" . ivy-switch-buffer-other-window))
-  :diminish
-  :custom
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq enable-recursive-minibuffers t)
-  :config
-  (ivy-mode))
-
-(use-package all-the-icons-ivy-rich
-  :ensure t
-  :init (all-the-icons-ivy-rich-mode 1))
-
-(use-package ivy-rich
-  :after ivy
-  :ensure t
-  :init (ivy-rich-mode 1) ;; this gets us descriptions in M-x.
-  :custom
-  (ivy-virtual-abbreviate 'full
-   ivy-rich-switch-buffer-align-virtual-buffer t
-   ivy-rich-path-style 'abbrev)
-  :config
-  (ivy-set-display-transformer 'ivy-switch-buffer
-                               'ivy-rich-switch-buffer-transformer))
-
-# #+end_src
-
-* COMPANY
-[[https://company-mode.github.io/][Company]] is a text completion framework for Emacs. The name stands for "complete anything".  Completion will start automatically after you type a few letters. Use M-n and M-p to select, <return> to complete or <tab> to complete the common part.
-
-# #+begin_src emacs-lisp
-(use-package company
-  :defer 2
-  :diminish
-  :custom
-  (company-begin-commands '(self-insert-command))
-  (company-idle-delay .1)
-  (company-minimum-prefix-length 2)
-  (company-show-numbers t)
-  (company-tooltip-align-annotations 't)
-  (global-company-mode t))
-
-(use-package company-box
-  :after company
-  :diminish
-  :hook (company-mode . company-box-mode))
-# #+end_src
 * Completion
 ** Corefu
 Corfu enhances in-buffer completion with a small completion popup. The current candidates are shown in a popup below or above the point. The candidates can be selected by moving up and down. Corfu is the minimalistic in-buffer completion counterpart of the Vertico minibuffer UI.

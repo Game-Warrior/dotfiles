@@ -742,10 +742,10 @@
 (use-package dired-open
   :config
    (setq dired-open-extensions '(("gif" . "sxiv")
-                                 ("jpg" . "sxiv")
-                                 ("png" . "sxiv")
-                                 ("mkv" . "IINA")
-                                 ("mp4" . "IINA"))))
+				 ("jpg" . "sxiv")
+				 ("png" . "sxiv")
+				 ("mkv" . "IINA")
+				 ("mp4" . "IINA"))))
 
 (use-package peep-dired
   :after dired
@@ -753,10 +753,9 @@
   :config
     (evil-define-key 'normal peep-dired-mode-map (kbd "j") 'peep-dired-next-file)
     (evil-define-key 'normal peep-dired-mode-map (kbd "k") 'peep-dired-prev-file)
-)
-
-    ;; (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-    ;; (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
+    (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+    (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-open-file) ; use dired-find-file instead if not using dired-open package
+ )
 
 (use-package nerd-icons-dired
   :hook
@@ -766,13 +765,12 @@
   :hook
   (dired-mode . diredfl-mode))
 
-
+(setq dired-use-ls-dired t
+ dired-listing-switches "-aBhl --group-directories-first")
 
 (cond ((eq system-type 'darwin)
-       (setq dired-use-ls-dired t
-             insert-directory-program "/opt/homebrew/bin/gls"
-             dired-listing-switches "-aBhl --group-directories-first")
-       ))
+       (setq insert-directory-program "/opt/homebrew/bin/gls"))
+      )
 
 (use-package nix-mode
   )
