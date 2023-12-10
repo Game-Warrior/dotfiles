@@ -63,6 +63,7 @@
 	doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode rst-mode latex-mode tex-mode text-mode) ;; Show word count
 	doom-modeline-time-icon t
 	doom-modeline-buffer-file-name-style 'autotruncate-except-project
+	doom-modeline-modal-icon nil
 )
 	)
 
