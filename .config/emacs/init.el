@@ -47,7 +47,7 @@
 
 ;; Uncomment the following line if line spacing needs adjusting.
 (setq-default line-spacing 0.12)
-(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+(add-hook 'org-mode-hook (lambda () (org-modern-mode 1)))
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
@@ -80,8 +80,7 @@
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
-  (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  (setq dashboard-startup-banner "~/.config/emacs/images/emacs-dash.png")  ;; use custom image as banner
+  (setq dashboard-startup-banner '2) ;; use standard emacs logo as banner
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
 			  (agenda . 5 )
@@ -551,11 +550,11 @@
   :hook (markdown-mode . toc-org-mode)
   )
 
-(use-package org-superstar
-  :hook (org-mode . org-superstar-mode)
+(use-package org-modern
+  :hook (org-mode . org-modern-mode)
   :config
-  (setq org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
-        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+  (setq org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆")
+	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
 )
 )
 
@@ -695,7 +694,7 @@
 (use-package yasnippet
     )
   (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(add-hook 'text-mode-hook (lambda () (yas-minor-mode 1)))
+(add-hook 'org-mode-hook (lambda () (yas-minor-mode 1)))
 
 (use-package git-timemachine
   :after git-timemachine

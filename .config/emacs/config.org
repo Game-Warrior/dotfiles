@@ -44,7 +44,7 @@
   - [[#org-auto-tangle][Org-auto-tangle]]
   - [[#org-novelist][Org-Novelist]]
   - [[#toc-org][Toc-Org]]
-  - [[#org-superstar][Org-Superstar]]
+  - [[#org-modern][Org-Modern]]
   - [[#org-cliplink][Org-Cliplink]]
   - [[#org-contrib][Org-contrib]]
   - [[#org-insert-item][org-insert-item]]
@@ -177,7 +177,7 @@ Change the title bar format
 
 ;; Uncomment the following line if line spacing needs adjusting.
 (setq-default line-spacing 0.12)
-(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+(add-hook 'org-mode-hook (lambda () (org-modern-mode 1)))
 #+end_src
 
 ** Zooming In/Out
@@ -228,8 +228,7 @@ https://github.com/seagle0128/doom-modeline
     (setq dashboard-set-heading-icons t)
     (setq dashboard-set-file-icons t)
     (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
-    (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-    (setq dashboard-startup-banner "~/.config/emacs/images/emacs-dash.png")  ;; use custom image as banner
+    (setq dashboard-startup-banner '2) ;; use standard emacs logo as banner
     (setq dashboard-center-content t) ;; set to 't' for centered content
     (setq dashboard-items '((recents . 5)
 			    (agenda . 5 )
@@ -628,7 +627,7 @@ A Periodic table package for emacs.
 #+end_src
 
 * ORG-MODE
-Here is where I set my various configurations for org-mode. Ranging from agenda to org-superstar.
+Here is where I set my various configurations for org-mode. Ranging from agenda to org-modern.
 ** Org-Settings
 #+begin_src emacs-lisp
 ;; Module: `me-org' -- Package: `org'
@@ -794,15 +793,16 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
   )
 #+end_src
 
-** Org-Superstar
+** Org-Modern
+This package implements a modern style for your Org buffers using font locking and text properties. The package styles headlines, keywords, tables and source blocks. The styling is configurable, you can enable, disable or modify the style of each syntax element individually via the org-modern customization group.
 #+begin_src emacs-lisp
-(use-package org-superstar
-  :hook (org-mode . org-superstar-mode)
-  :config
-  (setq org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
-        org-superstar-item-bullet-alist '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
-)
-)
+  (use-package org-modern
+    :hook (org-mode . org-modern-mode)
+    :config
+    (setq org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆")
+	  org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+  )
+  )
 
 #+end_src
 
@@ -1001,7 +1001,7 @@ YASnippet is a tool that allows you to create templates do allow you to write le
   (use-package yasnippet
     )
   (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(add-hook 'text-mode-hook (lambda () (yas-minor-mode 1)))
+(add-hook 'org-mode-hook (lambda () (yas-minor-mode 1)))
 #+end_src
 
 ** Git Time Machine
