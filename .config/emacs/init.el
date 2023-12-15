@@ -18,8 +18,6 @@
 	    doom-themes-enable-italic t) ; if nil, italics is universally disabled
       ;; Sets the default theme to load!!!
       (load-theme 'doom-one t)
-      ;; Enable custom neotree theme (all-the-icons must be installed!)
-      (doom-themes-neotree-config)
       ;; Corrects (and improves) org-mode's native fontification.
       (doom-themes-org-config))
 
@@ -47,7 +45,7 @@
 
 ;; Uncomment the following line if line spacing needs adjusting.
 (setq-default line-spacing 0.12)
-(add-hook 'org-mode-hook (lambda () (org-modern-mode 1)))
+;; (add-hook 'org-mode-hook (lambda () (org-modern-mode 1)))
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
@@ -96,8 +94,9 @@
 ;; (toogle-tru
 
 (use-package nerd-icons-ibuffer
-  :ensure t
-  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+    :ensure t
+    :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+(use-package bufler)
 
 (setq visible-bell t)
 
@@ -125,7 +124,7 @@
     "b c" '(clone-indirect-buffer :wk "Create indirect buffer copy in a split")
     ;; "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
     "b d" '(bookmark-delete :wk "Delete bookmark")
-    "b i" '(ibuffer :wk "Ibuffer")
+    "b i" '(bufler :wk "bufler")
     "b k" '(kill-current-buffer :wk "Kill current buffer")
     "b K" '(kill-some-buffers :wk "Kill multiple buffers")
     "b l" '(bookmark-jump :wk "Open a Bookmark")
@@ -424,35 +423,41 @@
 
 ;; (use-package syncthing)
 
+(setq auto-save-file-name-transforms
+	    `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups/")))))
+
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
   (setq org-directory "~/Documents/"
-        ;; Set where org agenda get todos from
-        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org")
-        org-default-notes-file (expand-file-name "notes.org" org-directory)
-        ;; Set where archive org-headings go
-        org-archive-location "~/Documents/Archive/archive.org::"
-        ;; Set org-ellipsis
-        ;; org-ellipsis " ↴ "
-        ;; org-ellipsis" ⤷ "
-        org-ellipsis " ... "
-        org-hide-emphasis-markers t
-        ;; ex. of org-link-abbrev-alist in action
-        ;; [[arch-wiki:Name_of_Page][Description]]
-        org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
-          '(("google" . "http://www.google.com/search?q=")
-            ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
-            ("ddg" . "https://duckduckgo.com/?q=")
-            ("wiki" . "https://en.wikipedia.org/wiki/"))
-        org-table-convert-region-max-lines 20000
-        org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
-          '((sequence
-             "TODO(t)"           ; A task that is ready to be tackled
-             "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
-             "WAIT(w)"           ; Something is holding up this task
-             "|"                 ; The pipe necessary to separate "active" states and "inactive" states
-             "DONE(d)"           ; Task has been completed
-             "CANCELLED(c)" ))) ; Task has been cancelled
+	;; Set where org agenda get todos from
+	org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org" "~/Documents/mobile.org")
+	org-default-notes-file (expand-file-name "notes.org" org-directory)
+	;; Set where archive org-headings go
+	org-archive-location "~/Documents/Archive/archive.org::"
+	;; Set org-ellipsis
+	;; org-ellipsis " ↴ "
+	;; org-ellipsis" ⤷ "
+	org-ellipsis " ... "
+	org-hide-emphasis-markers t
+	;; ex. of org-link-abbrev-alist in action
+	;; [[arch-wiki:Name_of_Page][Description]]
+	org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
+	  '(("google" . "http://www.google.com/search?q=")
+	    ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
+	    ("ddg" . "https://duckduckgo.com/?q=")
+	    ("wiki" . "https://en.wikipedia.org/wiki/"))
+	org-table-convert-region-max-lines 20000
+	org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
+	  '((sequence
+	     "TODO(t)"           ; A task that is ready to be tackled
+	     "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
+	     "WAIT(w)"           ; Something is holding up this task
+	     "|"                 ; The pipe necessary to separate "active" states and "inactive" states
+	     "DONE(d)"           ; Task has been completed
+	     "CANCELLED(c)" ))) ; Task has been cancelled
   )
 (add-hook 'org-mode-hook (lambda () (global-display-line-numbers-mode -1)))
 
@@ -554,8 +559,8 @@
   :hook (org-mode . org-modern-mode)
   :config
   (setq org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆")
-	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
-)
+;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+ )
 )
 
 (use-package org-cliplink
@@ -694,7 +699,7 @@
 (use-package yasnippet
     )
   (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(add-hook 'org-mode-hook (lambda () (yas-minor-mode 1)))
+(add-hook 'text-mode-hook (lambda () (yas-minor-mode 1)))
 
 (use-package git-timemachine
   :after git-timemachine
@@ -748,6 +753,7 @@
 
 (use-package chatgpt-shell
   :config
+
   (setq chatgpt-shell-openai-key "placeholder")
   )
 

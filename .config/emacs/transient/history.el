@@ -1,2 +1,5 @@
 ((magit-commit nil)
- (magit-push nil))
+ (magit-pull nil)
+ (magit-push nil)
+ (magit-rebase
+  ("--autostash")))

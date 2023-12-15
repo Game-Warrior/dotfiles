@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("notes.org"
+(("mobile.org"
+ (filename . "~/Documents/mobile.org")
+ (front-context-string)
+ (rear-context-string . "num:nil toc:nil\n")
+ (position . 110)
+ (last-modified 25973 4575 776384 985000))
+("notes.org"
  (filename . "~/Documents/notes.org")
  (front-context-string . "\n* Table of Cont")
  (rear-context-string . "artup: overview\n")

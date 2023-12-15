@@ -35,6 +35,7 @@
   - [[#eperiodic][Eperiodic]]
   - [[#evil][Evil]]
   - [[#syncthing][Syncthing]]
+  - [[#autosave-files-and-backups][Autosave-files and Backups]]
 - [[#org-mode][ORG-MODE]]
   - [[#org-settings][Org-Settings]]
   - [[#org-fonts][Org-fonts]]
@@ -141,8 +142,6 @@ The first line below designates the directory where will place all of our custom
 	      doom-themes-enable-italic t) ; if nil, italics is universally disabled
 	;; Sets the default theme to load!!!
 	(load-theme 'doom-one t)
-	;; Enable custom neotree theme (all-the-icons must be installed!)
-	(doom-themes-neotree-config)
 	;; Corrects (and improves) org-mode's native fontification.
 	(doom-themes-org-config))
 
@@ -161,23 +160,23 @@ Change the title bar format
 
 ** Setting the Font Face
 #+begin_src emacs-lisp
-(set-face-attribute 'default nil
-  :font "JetBrains Mono"
-  :height 110
-  :weight 'medium)
-(set-face-attribute 'fixed-pitch nil
-  :font "JetBrains Mono"
-  :height 110
-  :weight 'medium)
+  (set-face-attribute 'default nil
+    :font "JetBrains Mono"
+    :height 110
+    :weight 'medium)
+  (set-face-attribute 'fixed-pitch nil
+    :font "JetBrains Mono"
+    :height 110
+    :weight 'medium)
 
-;; This sets the default font on all graphical frames created after restarting Emacs.
-;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
-;; are not right unless I also add this method of setting the default font.
-(add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+  ;; This sets the default font on all graphical frames created after restarting Emacs.
+  ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
+  ;; are not right unless I also add this method of setting the default font.
+  (add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
 
-;; Uncomment the following line if line spacing needs adjusting.
-(setq-default line-spacing 0.12)
-(add-hook 'org-mode-hook (lambda () (org-modern-mode 1)))
+  ;; Uncomment the following line if line spacing needs adjusting.
+  (setq-default line-spacing 0.12)
+  ;; (add-hook 'org-mode-hook (lambda () (org-modern-mode 1)))
 #+end_src
 
 ** Zooming In/Out
@@ -249,9 +248,10 @@ https://github.com/seagle0128/doom-modeline
 ** iBuffer
 iBuffer allows you to interactively manage Emacs buffers.
 #+begin_src emacs-lisp
-(use-package nerd-icons-ibuffer
-  :ensure t
-  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+  (use-package nerd-icons-ibuffer
+    :ensure t
+    :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+(use-package bufler)
 #+end_src
 ** Visible Bell
 #+begin_src emacs-lisp
@@ -284,7 +284,7 @@ iBuffer allows you to interactively manage Emacs buffers.
       "b c" '(clone-indirect-buffer :wk "Create indirect buffer copy in a split")
       ;; "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
       "b d" '(bookmark-delete :wk "Delete bookmark")
-      "b i" '(ibuffer :wk "Ibuffer")
+      "b i" '(bufler :wk "bufler")
       "b k" '(kill-current-buffer :wk "Kill current buffer")
       "b K" '(kill-some-buffers :wk "Kill multiple buffers")
       "b l" '(bookmark-jump :wk "Open a Bookmark")
@@ -625,42 +625,51 @@ A Periodic table package for emacs.
 #+begin_src emacs-lisp
   ;; (use-package syncthing)
 #+end_src
+** Autosave-files and Backups
+#+begin_src emacs-lisp
+  (setq auto-save-file-name-transforms
+	    `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups/")))))
 
+
+#+end_src
 * ORG-MODE
-Here is where I set my various configurations for org-mode. Ranging from agenda to org-modern.
+Here is where I set my various configurations for org-mode. Ranging from agenda to org-superstar.
 ** Org-Settings
 #+begin_src emacs-lisp
-;; Module: `me-org' -- Package: `org'
-(with-eval-after-load 'org
-  (setq org-directory "~/Documents/"
-        ;; Set where org agenda get todos from
-        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org")
-        org-default-notes-file (expand-file-name "notes.org" org-directory)
-        ;; Set where archive org-headings go
-        org-archive-location "~/Documents/Archive/archive.org::"
-        ;; Set org-ellipsis
-        ;; org-ellipsis " ↴ "
-        ;; org-ellipsis" ⤷ "
-        org-ellipsis " ... "
-        org-hide-emphasis-markers t
-        ;; ex. of org-link-abbrev-alist in action
-        ;; [[arch-wiki:Name_of_Page][Description]]
-        org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
-          '(("google" . "http://www.google.com/search?q=")
-            ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
-            ("ddg" . "https://duckduckgo.com/?q=")
-            ("wiki" . "https://en.wikipedia.org/wiki/"))
-        org-table-convert-region-max-lines 20000
-        org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
-          '((sequence
-             "TODO(t)"           ; A task that is ready to be tackled
-             "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
-             "WAIT(w)"           ; Something is holding up this task
-             "|"                 ; The pipe necessary to separate "active" states and "inactive" states
-             "DONE(d)"           ; Task has been completed
-             "CANCELLED(c)" ))) ; Task has been cancelled
-  )
-(add-hook 'org-mode-hook (lambda () (global-display-line-numbers-mode -1)))
+  ;; Module: `me-org' -- Package: `org'
+  (with-eval-after-load 'org
+    (setq org-directory "~/Documents/"
+	  ;; Set where org agenda get todos from
+	  org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org" "~/Documents/mobile.org")
+	  org-default-notes-file (expand-file-name "notes.org" org-directory)
+	  ;; Set where archive org-headings go
+	  org-archive-location "~/Documents/Archive/archive.org::"
+	  ;; Set org-ellipsis
+	  ;; org-ellipsis " ↴ "
+	  ;; org-ellipsis" ⤷ "
+	  org-ellipsis " ... "
+	  org-hide-emphasis-markers t
+	  ;; ex. of org-link-abbrev-alist in action
+	  ;; [[arch-wiki:Name_of_Page][Description]]
+	  org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
+	    '(("google" . "http://www.google.com/search?q=")
+	      ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
+	      ("ddg" . "https://duckduckgo.com/?q=")
+	      ("wiki" . "https://en.wikipedia.org/wiki/"))
+	  org-table-convert-region-max-lines 20000
+	  org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
+	    '((sequence
+	       "TODO(t)"           ; A task that is ready to be tackled
+	       "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
+	       "WAIT(w)"           ; Something is holding up this task
+	       "|"                 ; The pipe necessary to separate "active" states and "inactive" states
+	       "DONE(d)"           ; Task has been completed
+	       "CANCELLED(c)" ))) ; Task has been cancelled
+    )
+  (add-hook 'org-mode-hook (lambda () (global-display-line-numbers-mode -1)))
 #+end_src
 
 ** Org-fonts
@@ -679,22 +688,21 @@ Here is where I set my various configurations for org-mode. Ranging from agenda 
 This is a way for me to archive my TODOs from my Schedule.org. As well as put TODO's into file for mildly interesting things that I want to look at someday.
 #+begin_src emacs-lisp
 
-(setq org-archive-default-command 'org-archive-subtree)
+  (setq org-archive-default-command 'org-archive-subtree)
 
-;;(map! :leader
-;;      (:desc "Archive Org-Todos" "v" org-archive-default-command))
+  ;;(map! :leader
+  ;;      (:desc "Archive Org-Todos" "v" org-archive-default-command))
 
-(with-eval-after-load 'org
-  (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
-      org-deadline-warning-days 0
-      org-agenda-span 7
-      org-agenda-start-day "-0d"
-      org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
-      org-log-done 'time
-      )
-)
+  (with-eval-after-load 'org
+    (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
+	org-deadline-warning-days 0
+	org-agenda-span 7
+	org-agenda-start-day "-0d"
+	org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
+	org-log-done 'time
+	)
+  )
 #+end_src
-
 ** Org-capture
 I copy and pasted most of this from a very interesting blog post by [[https://karelvo.com/orgmode/][KarelVO]] on how they manage their TODO's. The Org-agenda simplification above is also taken from there.
 #+begin_src emacs-lisp
@@ -800,8 +808,8 @@ This package implements a modern style for your Org buffers using font locking a
     :hook (org-mode . org-modern-mode)
     :config
     (setq org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆")
-	  org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
-  )
+  ;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+   )
   )
 
 #+end_src
@@ -1001,7 +1009,7 @@ YASnippet is a tool that allows you to create templates do allow you to write le
   (use-package yasnippet
     )
   (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(add-hook 'org-mode-hook (lambda () (yas-minor-mode 1)))
+(add-hook 'text-mode-hook (lambda () (yas-minor-mode 1)))
 #+end_src
 
 ** Git Time Machine
@@ -1089,6 +1097,7 @@ nov.el provides a major mode for reading EPUB documents
 #+begin_src emacs-lisp
 (use-package chatgpt-shell
   :config
+
   (setq chatgpt-shell-openai-key "placeholder")
   )
 #+end_src
