@@ -114,7 +114,7 @@
     :global-prefix "M-SPC") ;; access leader in insert mode
 
   (gb/leader-keys
-    "SPC" '(counsel-M-x :wk "Counsel M-x")
+    "SPC" '(execute-extended-command :wk "execute-extended-command")
     "." '(find-file :wk "Find file")
     "=" '(perspective-map :wk "Perspective") ;; Lists all the perspective keybindings
     "TAB TAB" '(comment-line :wk "Comment lines")
