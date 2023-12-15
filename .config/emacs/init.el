@@ -12,21 +12,22 @@
 
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
-  (use-package doom-themes
-    :config
-    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-	  doom-themes-enable-italic t) ; if nil, italics is universally disabled
-    ;; Sets the default theme to load!!!
-    ;; (load-theme 'doom-one t)
-    ;; Enable custom neotree theme (all-the-icons must be installed!)
-    (doom-themes-neotree-config)
-    ;; Corrects (and improves) org-mode's native fontification.
-    (doom-themes-org-config))
+    (use-package doom-themes
+      :config
+      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	    doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;; Sets the default theme to load!!!
+      (load-theme 'doom-one t)
+      ;; Enable custom neotree theme (all-the-icons must be installed!)
+      (doom-themes-neotree-config)
+      ;; Corrects (and improves) org-mode's native fontification.
+      (doom-themes-org-config))
 
-(use-package timu-rouge-theme
-  :ensure t
-  :config
-  (load-theme 'timu-rouge t))
+  (use-package timu-rouge-theme
+    :ensure t
+    :config
+    ;; (load-theme 'doom-solarized-dark t))
+)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -64,6 +65,7 @@
 	doom-modeline-time-icon t
 	doom-modeline-buffer-file-name-style 'autotruncate-except-project
 	doom-modeline-modal-icon nil
+	doom-modeline-buffer-encoding nil
 )
 	)
 
@@ -92,6 +94,7 @@
    (dashboard-setup-startup-hook))
 
 (setq global-word-wrap-whitespace-mode 1)
+;; (toogle-tru
 
 (use-package nerd-icons-ibuffer
   :ensure t
@@ -374,8 +377,11 @@
                          ("melpa" . "https://stable.melpa.org/packages/")
                          ("melpa-devel" . "https://melpa.org/packages/")))
 
-(use-package reveal-in-osx-finder
-  )
+(cond ((eq system-type 'darwin)
+  (use-package reveal-in-osx-finder
+    )
+  (customize-set-variable 'mac-command-modifier 'meta)) ; make cmd key do Meta
+)
 
 (use-package yeetube
   )
@@ -416,6 +422,8 @@
   (define-key evil-motion-state-map (kbd "TAB") nil))
 ;; Setting RETURN key in org-mode to follow links
   (setq org-return-follows-link  t)
+
+;; (use-package syncthing)
 
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
@@ -666,10 +674,6 @@
                minibuffer-setup-hook)))
     ad-do-it))
 
-(setq nov-unzip-program (executable-find "bsgbar")
-      nov-unzip-args '("-xC" directory "-f" filename))
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-
 (use-package olivetti
   )
 (setq olivetti-style 'fringes-and-margins)
@@ -707,8 +711,8 @@
     :after magit
     :config (magit-todos-mode 1))
 
-;; (use-package jinx
-  ;; :hook (emacs-startup . global-jinx-mode))
+(use-package jinx
+   :hook (emacs-startup . global-jinx-mode))
 
 (use-package synosaurus
   )
@@ -717,7 +721,19 @@
       nov-unzip-args '("-xC" directory "-f" filename))
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
-(use-package pdf-tools)
+(use-package pdf-tools
+  :defer t
+  :commands (pdf-loader-install)
+  :mode "\\.pdf\\'"
+  :bind (:map pdf-view-mode-map
+              ("j" . pdf-view-next-line-or-next-page)
+              ("k" . pdf-view-previous-line-or-previous-page)
+              ("C-=" . pdf-view-enlarge)
+              ("C--" . pdf-view-shrink))
+  :init (pdf-loader-install)
+  :config (add-to-list 'revert-without-query ".pdf"))
+
+(add-hook 'pdf-view-mode-hook #'(lambda () (interactive) (display-line-numbers-mode -1)))
 
 (setq eshell-aliases-file "~/.config/doom/eshell/aliases")
 
@@ -733,7 +749,7 @@
 
 (use-package chatgpt-shell
   :config
-  (setq chatgpt-shell-openai-key "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")
+  (setq chatgpt-shell-openai-key "placeholder")
   )
 
 (use-package mastodon
@@ -886,3 +902,22 @@
 ;; (use-package savehist
   ;; :init
   ;; (savehist-mode))
+
+(use-package which-key
+  :init
+    (which-key-mode 1)
+  :diminish
+  :config
+  (setq which-key-side-window-location 'bottom
+	  which-key-sort-order #'which-key-key-order-alpha
+	  which-key-allow-imprecise-window-fit nil
+	  which-key-sort-uppercase-first nil
+	  which-key-add-column-padding 1
+	  which-key-max-display-columns nil
+	  which-key-min-display-lines 6
+	  which-key-side-window-slot -10
+	  which-key-side-window-max-height 0.25
+	  which-key-idle-delay 0.8
+	  which-key-max-description-length 25
+	  which-key-allow-imprecise-window-fit nil
+	  which-key-separator " → " ))
