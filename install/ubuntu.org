@@ -128,10 +128,10 @@ cd
 #+end_src
 
 * Installing MinEmacs
-#+begin_src shell
+# #+begin_src shell
 echo "Installing MinEmacs"
 git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
-#+end_src
+# #+end_src
 
 * Enabling Services
 #+begin_src shell

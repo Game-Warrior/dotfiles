@@ -56,9 +56,6 @@ do
     esac
 done
 
-echo "Installing MinEmacs"
-git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
-
 echo "Making Developer folder"
 mkdir ~/Developer/
 mkdir ~/Developer/Git-Repos

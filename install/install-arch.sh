@@ -54,9 +54,6 @@ echo "Downloading Distrotube's Wallpapers"
 cd ~/Wallpapers/
 git clone https://gitlab.com/dwt1/wallpapers
 
-echo "Installing MinEmacs"
-git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
-
 sudo systemctl enable --user emacs
 sudo systemctl start --user emacs
 

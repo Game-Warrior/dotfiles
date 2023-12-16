@@ -4,6 +4,20 @@
 #+property: header-args :tangle install-arch.sh
 #+options: toc:nil num:nil timestamp:nil
 
+* Table of Contents :toc:
+- [[#install-script][Install Script]]
+- [[#script-intro][Script Intro]]
+- [[#copying-config][Copying Config]]
+- [[#installing-packages][Installing packages]]
+- [[#installing-aur-helper][Installing AUR helper]]
+- [[#installing-packages-from-the-aur][Installing packages from the AUR]]
+- [[#making-directories][Making Directories]]
+- [[#downloading-wallpapers][Downloading Wallpapers]]
+- [[#install-minemacs][Install MinEmacs]]
+  - [[#enabling-emacs-daemon][Enabling Emacs daemon]]
+  - [[#making-caps-lock-the-control-key][Making Caps Lock the control key]]
+- [[#vm-stuff][VM stuff]]
+
 * Install Script
 
 * Script Intro
@@ -85,10 +99,10 @@ git clone https://gitlab.com/dwt1/wallpapers
 #+end_src
 
 * Install MinEmacs
-#+begin_src shell
+# #+begin_src shell
 echo "Installing MinEmacs"
 git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
-#+end_src
+# #+end_src
 ** Enabling Emacs daemon
 #+begin_src shell
 sudo systemctl enable --user emacs

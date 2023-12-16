@@ -49,9 +49,6 @@ cd ~/Wallpapers
 git clone https://gitlab.com/dwt1/wallpapers
 cd
 
-echo "Installing MinEmacs"
-git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
-
 echo "Enableing libvirtd"
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd

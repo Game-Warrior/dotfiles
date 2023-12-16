@@ -5,8 +5,4 @@
 
 * TODO Fix Neovim config
 
-* TODO Have the scripts copy minEmacs config
-- [ ] Arch
-- [ ] Ubuntu
-- [ ] MacOS
 * Parking Lot :noexport:

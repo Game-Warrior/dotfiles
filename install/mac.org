@@ -106,10 +106,10 @@ done
 ** Installing things that need to not be quarantined
 
 * Installing MinEmacs
-#+begin_src shell
+# #+begin_src shell
 echo "Installing MinEmacs"
 git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
-#+end_src
+# #+end_src
 
 * New Directories
 ** Developer
