@@ -556,12 +556,27 @@
   )
 
 (use-package org-modern
-  :hook (org-mode . org-modern-mode)
-  :config
-  (setq org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆")
-;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
- )
-)
+    :ensure t
+    :custom
+    ;; (org-modern-hide-stars nil)		; adds extra indentation
+    ;; (org-modern-table nil)
+    (org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆"))
+    (org-modern-list 
+     '(;; (?- . "-")
+       (?* . "•")
+       (?+ . "✦")))
+    :hook
+    (org-mode . org-modern-mode)
+    (org-agenda-finalize . org-modern-agenda))
+        ;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+
+(use-package org-modern-indent
+  ;; :load-path "~/code/emacs/org-modern-indent/"
+  ; or
+  :elpaca (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+  :hook
+  (org-mode . org-indent-mode)
+  )
 
 (use-package org-cliplink
   )

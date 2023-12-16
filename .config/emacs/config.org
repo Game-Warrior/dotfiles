@@ -804,15 +804,29 @@ Org-Reveal is a package that allows you to export your org documents to Reveal.j
 ** Org-Modern
 This package implements a modern style for your Org buffers using font locking and text properties. The package styles headlines, keywords, tables and source blocks. The styling is configurable, you can enable, disable or modify the style of each syntax element individually via the org-modern customization group.
 #+begin_src emacs-lisp
-  (use-package org-modern
-    :hook (org-mode . org-modern-mode)
-    :config
-    (setq org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆")
-  ;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
-   )
-  )
+     (use-package org-modern
+       :ensure t
+       :custom
+       ;; (org-modern-hide-stars nil)		; adds extra indentation
+       ;; (org-modern-table nil)
+       (org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆"))
+       (org-modern-list 
+        '(;; (?- . "-")
+          (?* . "•")
+          (?+ . "✦")))
+       :hook
+       (org-mode . org-modern-mode)
+       (org-agenda-finalize . org-modern-agenda))
+           ;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
 
-#+end_src
+   (use-package org-modern-indent
+     ;; :load-path "~/code/emacs/org-modern-indent/"
+     ; or
+     :elpaca (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+     :hook
+     (org-mode . org-indent-mode)
+     )
+  #+end_src
 
 ** Org-Cliplink
 #+begin_src emacs-lisp
