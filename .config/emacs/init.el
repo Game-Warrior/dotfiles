@@ -376,9 +376,12 @@
                          ("melpa-devel" . "https://melpa.org/packages/")))
 
 (cond ((eq system-type 'darwin)
-  (use-package reveal-in-osx-finder
-    )
-  (customize-set-variable 'mac-command-modifier 'meta)) ; make cmd key do Meta
+  (use-package reveal-in-osx-finder)
+  (setq mac-option-key-is-meta nil
+        mac-command-key-is-meta t
+        mac-command-modifier `meta
+        mac-option-modifier `none
+        )
 )
 
 (use-package yeetube

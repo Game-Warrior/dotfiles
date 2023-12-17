@@ -560,11 +560,14 @@ An RSS newsfeed reader for Emacs.
 
 ** MacOS Customizations
 #+begin_src emacs-lisp
-  (cond ((eq system-type 'darwin)
-  (use-package reveal-in-osx-finder
-    )
-  (customize-set-variable 'mac-command-modifier 'meta)) ; make cmd key do Meta
-)
+    (cond ((eq system-type 'darwin)
+    (use-package reveal-in-osx-finder)
+    (setq mac-option-key-is-meta nil
+          mac-command-key-is-meta t
+          mac-command-modifier `meta
+          mac-option-modifier `none
+          )
+  )
 #+end_src
 
 ** Yeetube
