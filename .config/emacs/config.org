@@ -567,7 +567,7 @@ An RSS newsfeed reader for Emacs.
           mac-command-modifier `meta
           mac-option-modifier `none
           )
-  )
+  ))
 #+end_src
 
 ** Yeetube
@@ -1166,7 +1166,7 @@ lem.el is an Emacs client for the federated link aggregator Lemmy.
      (dired-mode . diredfl-mode))
 
    (setq dired-use-ls-dired t
-    dired-listing-switches "-aBhl --group-directories-first")
+    dired-listing-switches "-ahl --group-directories-first")
 
    (cond ((eq system-type 'darwin)
 	  (setq insert-directory-program "/opt/homebrew/bin/gls"))

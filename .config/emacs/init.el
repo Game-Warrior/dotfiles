@@ -382,7 +382,7 @@
         mac-command-modifier `meta
         mac-option-modifier `none
         )
-)
+))
 
 (use-package yeetube
   )
@@ -813,7 +813,7 @@
   (dired-mode . diredfl-mode))
 
 (setq dired-use-ls-dired t
- dired-listing-switches "-aBhl --group-directories-first")
+ dired-listing-switches "-ahl --group-directories-first")
 
 (cond ((eq system-type 'darwin)
        (setq insert-directory-program "/opt/homebrew/bin/gls"))
