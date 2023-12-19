@@ -11,4 +11,8 @@ emacs-stuff/emacs-reveal/
 .config/emacs/url
 .config/emacs/sessions
 .config/emacs/auto-save-list
+.config/emacs/auto-save/
+.config/emacs/elpa/
+.config/emacs/elpa/
 *.plstore
+\#*#
