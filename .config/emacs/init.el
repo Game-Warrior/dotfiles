@@ -100,6 +100,11 @@
 
 (setq visible-bell t)
 
+(use-package spacious-padding
+  :ensure t
+  :hook (emacs-startup . spacious-padding-mode)
+  )
+
 (use-package general
   :config
   (general-evil-setup)
@@ -738,6 +743,13 @@
 
 (use-package synosaurus
   )
+
+(use-package denote)
+  (setq denote-directory (expand-file-name "~/Notes")
+        denote-know-keywords '("emacs" "history" "english")
+        denote-file-type 'org
+        )
+(add-hook 'dired-mode-hook #'denote-dired-mode)
 
 (setq nov-unzip-program (executable-find "bsdtar")
       nov-unzip-args '("-xC" directory "-f" filename))

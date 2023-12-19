@@ -22,6 +22,7 @@
   - [[#word-wrap][Word Wrap]]
   - [[#ibuffer][iBuffer]]
   - [[#visible-bell][Visible Bell]]
+  - [[#spacious-padding][Spacious Padding]]
 - [[#personal-settings][PERSONAL SETTINGS]]
   - [[#general-keybindings][General Keybindings]]
   - [[#setting-username-and-e-mail][Setting Username and E-Mail]]
@@ -60,6 +61,7 @@
   - [[#magit][Magit]]
   - [[#spell-checker][Spell Checker]]
   - [[#thesarus][Thesarus]]
+  - [[#denote][Denote]]
 - [[#reading-stuff][Reading Stuff]]
   - [[#nov][Nov]]
   - [[#pdf-tools][PDF-tools]]
@@ -256,6 +258,13 @@ iBuffer allows you to interactively manage Emacs buffers.
 ** Visible Bell
 #+begin_src emacs-lisp
 (setq visible-bell t)
+#+end_src
+** Spacious Padding
+#+begin_src emacs-lisp
+  (use-package spacious-padding
+    :ensure t
+    :hook (emacs-startup . spacious-padding-mode)
+    )
 #+end_src
 * PERSONAL SETTINGS
 ** General Keybindings
@@ -1064,7 +1073,16 @@ Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
 (use-package synosaurus
   )
 #+end_src
-
+** Denote
+*Denote is a simple note-taking tool for Emacs. It is based on the idea that notes should follow a predictable and descriptive file-naming scheme. The file name must offer a clear indication of what the note is about, without reference to any other metadata. Denote basically streamlines the creation of such files while providing facilities to link between them.* Denote
+#+begin_src emacs-lisp
+    (use-package denote)
+  (setq denote-directory (expand-file-name "~/Notes")
+        denote-know-keywords '("emacs" "history" "english")
+        denote-file-type 'org
+        )
+(add-hook 'dired-mode-hook #'denote-dired-mode)
+#+end_src
 * Reading Stuff
 ** Nov
 nov.el provides a major mode for reading EPUB documents
