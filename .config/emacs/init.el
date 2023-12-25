@@ -12,20 +12,20 @@
 
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
-    (use-package doom-themes
-      :config
-      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-	    doom-themes-enable-italic t) ; if nil, italics is universally disabled
-      ;; Sets the default theme to load!!!
-      (load-theme 'doom-one t)
-      ;; Corrects (and improves) org-mode's native fontification.
-      (doom-themes-org-config))
-
-  (use-package timu-rouge-theme
-    :ensure t
+  (use-package doom-themes
     :config
-    ;; (load-theme 'doom-solarized-dark t))
-)
+    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+          doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    ;; Sets the default theme to load!!!
+    (load-theme 'doom-one t)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config))
+
+(use-package timu-rouge-theme
+  :ensure t
+  :config
+  ;; (load-theme 'doom-peacock t)
+   )
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -81,17 +81,17 @@
   (setq dashboard-startup-banner '2) ;; use standard emacs logo as banner
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
-			  (agenda . 5 )
-			  (bookmarks . 3)
-			  ))
+                          (agenda . 5 )
+                          (bookmarks . 3)
+                          ))
   :custom
   (dashboard-modify-heading-icons '((recents . "file-text")
-	      (bookmarks . "book")))
+              (bookmarks . "book")))
   :config
    (dashboard-setup-startup-hook))
 
-(setq global-word-wrap-whitespace-mode 1)
-;; (toogle-tru
+(setq-default truncate-lines 1)
+(global-word-wrap-whitespace-mode 1)
 
 (use-package nerd-icons-ibuffer
     :ensure t
@@ -102,7 +102,7 @@
 
 (use-package spacious-padding
   :ensure t
-  :hook (emacs-startup . spacious-padding-mode)
+  ;; :hook (emacs-startup . spacious-padding-mode)
   )
 
 (use-package general
@@ -129,7 +129,7 @@
     "b c" '(clone-indirect-buffer :wk "Create indirect buffer copy in a split")
     ;; "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
     "b d" '(bookmark-delete :wk "Delete bookmark")
-    "b i" '(bufler :wk "bufler")
+    "b i" '(ibuffer :wk "ibuffer")
     "b k" '(kill-current-buffer :wk "Kill current buffer")
     "b K" '(kill-some-buffers :wk "Kill multiple buffers")
     "b l" '(bookmark-jump :wk "Open a Bookmark")
@@ -243,15 +243,13 @@
     "m B" '(org-babel-tangle :wk "Org babel tangle")
     "m x" '(org-toggle-checkbox :wk "Org mark checkbox")
     "m l" '(org-cliplink :wk "Insert a link using org-cliplink")
-    "m T" '(org-todo-list :wk "Org todo list"))
+    "m T" '(org-todo-list :wk "Org todo list")
+    "m d" '(org-deadline :wk "Add a deadline to a todo item")
+    "m s" '(org-sechedule :wk "Add a scheduled date to a todo item"))
 
   (gb/leader-keys
     "m b" '(:ignore t :wk "Tables")
     "m b -" '(org-table-insert-hline :wk "Insert hline in table"))
-
-  (gb/leader-keys
-    "m d" '(:ignore t :wk "Date/deadline")
-    "m d t" '(org-time-stamp :wk "Org time stamp"))
 
   (gb/leader-keys
     "o" '(:ignore t :wk "Open")
@@ -323,43 +321,53 @@
 (setq browse-url-browser-function 'browse-url-default-browser)
 
 ;; Module: `me-rss' -- Package: `elfeed'
-(with-eval-after-load 'elfeed
-  ;; Add news feeds for `elfeed'
-  (setq elfeed-feeds
-        '(
-          ;; General
-          ("https://frame.work/blog.rss" Framework)
-          ("https://factorio.com/blog/rss" Factorio)
-          ("https://news.nononsenseapps.com/index.atom" Feeder)
-          ("https://kagifeedback.org/atom/t/release-notes" Kagi)
-          ("https://news.play.date/index.xml" Playdate)
-          ;; Linux
-          ("https://blog.linuxmint.com/?feed=rss2" LinuxMint linux)
-          ("https://archlinux.org/news/" Arch linux)
-          ("https://fedoramagazine.org/feed/" Fedora linux)
-          ("https://endeavouros.com/news/" EndeavourOS linux)
-          ;; Boat Stuff
-          ("https://buffalonickelblog.com/feed/" Buffalo-Nickel boat)
-          ("https://mobius.world/feed/" Mobius boat)
-          ("https://www.mvuglybetty.com/blog-feed.xml" Ugly-Betty boat)
-           ;; Emacs
-          ("http://xenodium.com/rss.xml" Xenodium emacs)
-          ("https://cmdln.org/post/" Commandline emacs)
-          ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs Karal-Voit)
-          ("https://systemcrafters.net/rss/news.xml" SystemCrafter emacs)
-          ("https://sachachua.com/blog/feed/" SachaChua emacs)
-          ("https://rostre.bearblog.dev/feed/?type=rss" ParsingTime emacs)
-          ("https://200ok.ch/atom.xml" 200ok emacs)
-          ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
-          ("https://blog.tecosaur.com/tmio/rss.xml" TMiO emacs)
-          ;; News
-          )))
+  (with-eval-after-load 'elfeed
+    ;; Add news feeds for `elfeed'
+    (setq elfeed-feeds
+          '(
+            ;; General
+            ("https://frame.work/blog.rss" Framework)
+            ("https://factorio.com/blog/rss" Factorio)
+            ("https://news.nononsenseapps.com/index.atom" Feeder)
+            ("https://kagifeedback.org/atom/t/release-notes" Kagi)
+            ("https://news.play.date/index.xml" Playdate)
+            ;; Linux
+            ("https://blog.linuxmint.com/?feed=rss2" linux)
+            ("https://archlinux.org/news/" linux)
+            ("https://fedoramagazine.org/feed/" linux)
+            ("https://endeavouros.com/news/" linux)
+            ;; Boat Stuff
+            ("https://buffalonickelblog.com/feed/" boat)
+            ("https://mobius.world/feed/" boat)
+            ("https://www.mvuglybetty.com/blog-feed.xml" Ugly-Betty boat)
+             ;; Emacs
+            ("http://xenodium.com/rss.xml" emacs)
+            ("https://cmdln.org/post/" emacs)
+            ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs)
+            ("https://systemcrafters.net/rss/news.xml" emacs)
+            ("https://sachachua.com/blog/feed/" emacs)
+            ("https://rostre.bearblog.dev/feed/?type=rss" emacs)
+            ("https://200ok.ch/atom.xml" emacs)
+            ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+            ("https://blog.tecosaur.com/tmio/rss.xml" emacs)
+            ;; News
+            ))
+(defun toggle-elfeed-unread ()
+  (interactive)
+  (if (string-match-p "+unread" elfeed-search-filter)
+      (setq elfeed-search-filter (replace-regexp-in-string "+unread" "-unread" elfeed-search-filter))
+    (setq elfeed-search-filter (concat elfeed-search-filter " +unread")))
+  (elfeed-search-update :force))
 
-(use-package elfeed-goodies
-  :init
-  (elfeed-goodies/setup)
-  :config
-  (setq elfeed-goodies/entry-pane-size 0.5))
+;; Keybinding example for `elfeed-search-mode-map`:
+(define-key elfeed-search-mode-map (kbd "U") 'toggle-elfeed-unread)
+    )
+
+  (use-package elfeed-goodies
+    :init
+    (elfeed-goodies/setup)
+    :config
+    (setq elfeed-goodies/entry-pane-size 0.5))
 
 (defun elfeed-xwidgets-open (&optional use-generic-p)
   "open with xWidgets"
@@ -381,6 +389,7 @@
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://stable.melpa.org/packages/")
                          ("melpa-devel" . "https://melpa.org/packages/")))
+(setq package-install-upgrade-built-in t)
 
 (cond ((eq system-type 'darwin)
   (use-package reveal-in-osx-finder)
@@ -416,7 +425,7 @@
   ;; Do not uncomment this unless you want to specify each and every mode
   ;; that evil-collection should works with.  The following line is here
   ;; for documentation purposes in case you need it.
-  ;; (setq evil-collection-mode-list '(calendar dashboard dired ediff info magit ibuffer))
+  ;; (setq evil-collection-mode-list '(calendar dashboard dired ediff info magit ibuffer org-agenda))
   (add-to-list 'evil-collection-mode-list 'help) ;; evilify help mode
   (evil-collection-init))
 
@@ -692,7 +701,17 @@
 
 (define-key org-mode-map (kbd "<C-return>") '+org/insert-item-below)
 
-;; (use-package org-tempo)
+(defun my-org-todo-toggle ()
+  (interactive)
+  (let ((state (org-get-todo-state))
+        post-command-hook)
+    (if (string= state "TODO")
+        (org-todo "DONE")
+      (org-todo "TODO"))
+    (run-hooks 'post-command-hook)
+    (org-flag-subtree t)))
+
+(define-key org-mode-map (kbd "C-c C-d") 'my-org-todo-toggle)
 
 (load "~/.config/doom/typing-practice.el")
 
@@ -748,7 +767,7 @@
 
 (use-package denote)
   (setq denote-directory (expand-file-name "~/Notes")
-        denote-know-keywords '("emacs" "history" "english")
+        denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
         denote-file-type 'org
         )
 (add-hook 'dired-mode-hook #'denote-dired-mode)
@@ -773,15 +792,33 @@
 
 (setq eshell-aliases-file "~/.config/doom/eshell/aliases")
 
-(with-eval-after-load "esh-opt"
-  (autoload 'epe-theme-lambda "eshell-prompt-extras")
-  (setq eshell-highlight-prompt nil
-        eshell-prompt-function 'epe-theme-lambda))
+;; (with-eval-after-load "esh-opt"
+  ;; (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  ;; (setq eshell-highlight-prompt nil
+        ;; eshell-prompt-function 'epe-theme-lambda))
 
 ;; (setq ellama-buffer-mode "org-mode")
 (use-package ellama
-  )
-(setopt ellama-language "English")
+  :init
+  (setopt ellama-language "English")
+  (setopt ellama-buffer-mode 'org-mode)
+  (require 'llm-ollama)
+  (setopt ellama-provider
+                  (make-llm-ollama
+                   :chat-model "zephyr:latest" :embedding-model "zephyr:latest"))
+  ;; Predefined llm providers for interactive switching.
+  ;; You shouldn't add ollama providers here - it can be selected interactively
+  ;; without it. It is just example.
+  (setopt ellama-providers
+                  '(("zephyr" . (make-llm-ollama
+                                                 :chat-model "zephyr:latest"
+                                                 :embedding-model "zephyr:latest"))
+                        ("mistral" . (make-llm-ollama
+                                                  :chat-model "mistral:latest"
+                                                  :embedding-model "mistral:latest"))
+                        ("dolphin-mixtral" . (make-llm-ollama
+                                                  :chat-model "dolphin-mixtral:latest"
+                                                  :embedding-model "dolphin-mixtral:latest")))))
 
 (use-package chatgpt-shell
   :config
@@ -847,6 +884,8 @@
 (use-package rainbow-delimiters
   :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
          (clojure-mode . rainbow-delimiters-mode)))
+
+(use-package lua-mode)
 
 (use-package corfu
   :hook (emacs-startup . global-corfu-mode)

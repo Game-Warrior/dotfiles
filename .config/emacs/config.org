@@ -50,7 +50,7 @@
   - [[#org-cliplink][Org-Cliplink]]
   - [[#org-contrib][Org-contrib]]
   - [[#org-insert-item][org-insert-item]]
-  - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
+  - [[#org-todos][Org-todos]]
 - [[#writing-stuff][WRITING STUFF]]
   - [[#typing-practice][Typing Practice]]
   - [[#olivetti][Olivetti]]
@@ -79,6 +79,7 @@
   - [[#nix-mode][Nix-Mode]]
   - [[#yaml-mode][Yaml-mode]]
   - [[#rainbow-delimiters][Rainbow Delimiters]]
+  - [[#lua-mode][Lua-Mode]]
 - [[#completion][Completion]]
   - [[#corefu][Corefu]]
   - [[#consult][Consult]]
@@ -136,22 +137,22 @@ To keep this =config.org= a reasonable length, I have moved a lot of code to ind
 The first line below designates the directory where will place all of our custom-made themes, which I have created only one (dtmacs).  You can create your own Emacs themes with the help of the [[https://emacsfodder.github.io/emacs-theme-editor/][Emacs Theme Editor]].  I am also installing =doom-themes= because it contains a huge collection of themes.  M-x load-theme will list all of the themes available.
 
 #+begin_src emacs-lisp
-      (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+    (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
-      (use-package doom-themes
-	:config
-	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-	      doom-themes-enable-italic t) ; if nil, italics is universally disabled
-	;; Sets the default theme to load!!!
-	(load-theme 'doom-one t)
-	;; Corrects (and improves) org-mode's native fontification.
-	(doom-themes-org-config))
-
-    (use-package timu-rouge-theme
-      :ensure t
+    (use-package doom-themes
       :config
-      ;; (load-theme 'doom-solarized-dark t))
-  )
+      (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+            doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      ;; Sets the default theme to load!!!
+      (load-theme 'doom-one t)
+      ;; Corrects (and improves) org-mode's native fontification.
+      (doom-themes-org-config))
+
+  (use-package timu-rouge-theme
+    :ensure t
+    :config
+    ;; (load-theme 'doom-peacock t)
+     )
 #+end_src
 
 ** Title Bar
@@ -232,20 +233,20 @@ https://github.com/seagle0128/doom-modeline
     (setq dashboard-startup-banner '2) ;; use standard emacs logo as banner
     (setq dashboard-center-content t) ;; set to 't' for centered content
     (setq dashboard-items '((recents . 5)
-			    (agenda . 5 )
-			    (bookmarks . 3)
-			    ))
+                            (agenda . 5 )
+                            (bookmarks . 3)
+                            ))
     :custom
     (dashboard-modify-heading-icons '((recents . "file-text")
-		(bookmarks . "book")))
+                (bookmarks . "book")))
     :config
      (dashboard-setup-startup-hook))
 #+end_src
 
 ** Word Wrap
 #+begin_src emacs-lisp
-    (setq global-word-wrap-whitespace-mode 1)
-  ;; (toogle-tru
+(setq-default truncate-lines 1)
+(global-word-wrap-whitespace-mode 1)
 #+end_src
 ** iBuffer
 iBuffer allows you to interactively manage Emacs buffers.
@@ -263,216 +264,214 @@ iBuffer allows you to interactively manage Emacs buffers.
 #+begin_src emacs-lisp
   (use-package spacious-padding
     :ensure t
-    :hook (emacs-startup . spacious-padding-mode)
+    ;; :hook (emacs-startup . spacious-padding-mode)
     )
 #+end_src
 * PERSONAL SETTINGS
 ** General Keybindings
 #+begin_src emacs-lisp
-  (use-package general
-    :config
-    (general-evil-setup)
+    (use-package general
+      :config
+      (general-evil-setup)
 
-    ;; set up 'SPC' as the global leader key
-    (general-create-definer gb/leader-keys
-      :states '(normal insert visual emacs)
-      :keymaps 'override
-      :prefix "SPC" ;; set leader
-      :global-prefix "M-SPC") ;; access leader in insert mode
+      ;; set up 'SPC' as the global leader key
+      (general-create-definer gb/leader-keys
+        :states '(normal insert visual emacs)
+        :keymaps 'override
+        :prefix "SPC" ;; set leader
+        :global-prefix "M-SPC") ;; access leader in insert mode
 
-    (gb/leader-keys
-      "SPC" '(execute-extended-command :wk "execute-extended-command")
-      "." '(find-file :wk "Find file")
-      "=" '(perspective-map :wk "Perspective") ;; Lists all the perspective keybindings
-      "TAB TAB" '(comment-line :wk "Comment lines")
-      "u" '(universal-argument :wk "Universal argument"))
+      (gb/leader-keys
+        "SPC" '(execute-extended-command :wk "execute-extended-command")
+        "." '(find-file :wk "Find file")
+        "=" '(perspective-map :wk "Perspective") ;; Lists all the perspective keybindings
+        "TAB TAB" '(comment-line :wk "Comment lines")
+        "u" '(universal-argument :wk "Universal argument"))
 
-    (gb/leader-keys
-      "b" '(:ignore t :wk "Bookmarks/Buffers")
-      "b b" '(switch-to-buffer :wk "Switch to buffer")
-      "b c" '(clone-indirect-buffer :wk "Create indirect buffer copy in a split")
-      ;; "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
-      "b d" '(bookmark-delete :wk "Delete bookmark")
-      "b i" '(bufler :wk "bufler")
-      "b k" '(kill-current-buffer :wk "Kill current buffer")
-      "b K" '(kill-some-buffers :wk "Kill multiple buffers")
-      "b l" '(bookmark-jump :wk "Open a Bookmark")
-      "b m" '(bookmark-set :wk "Set bookmark")
-      "b n" '(next-buffer :wk "Next buffer")
-      "b p" '(previous-buffer :wk "Previous buffer")
-      "b r" '(revert-buffer :wk "Reload buffer")
-      "b R" '(rename-buffer :wk "Rename buffer")
-      "b s" '(basic-save-buffer :wk "Save buffer")
-      "b S" '(save-some-buffers :wk "Save multiple buffers")
-      "b w" '(bookmark-save :wk "Save current bookmarks to bookmark file"))
+      (gb/leader-keys
+        "b" '(:ignore t :wk "Bookmarks/Buffers")
+        "b b" '(switch-to-buffer :wk "Switch to buffer")
+        "b c" '(clone-indirect-buffer :wk "Create indirect buffer copy in a split")
+        ;; "b C" '(clone-indirect-buffer-other-window :wk "Clone indirect buffer in new window")
+        "b d" '(bookmark-delete :wk "Delete bookmark")
+        "b i" '(ibuffer :wk "ibuffer")
+        "b k" '(kill-current-buffer :wk "Kill current buffer")
+        "b K" '(kill-some-buffers :wk "Kill multiple buffers")
+        "b l" '(bookmark-jump :wk "Open a Bookmark")
+        "b m" '(bookmark-set :wk "Set bookmark")
+        "b n" '(next-buffer :wk "Next buffer")
+        "b p" '(previous-buffer :wk "Previous buffer")
+        "b r" '(revert-buffer :wk "Reload buffer")
+        "b R" '(rename-buffer :wk "Rename buffer")
+        "b s" '(basic-save-buffer :wk "Save buffer")
+        "b S" '(save-some-buffers :wk "Save multiple buffers")
+        "b w" '(bookmark-save :wk "Save current bookmarks to bookmark file"))
 
-    (gb/leader-keys
-      "d" '(:ignore t :wk "Dired")
-      "d d" '(dired :wk "Open dired")
-      "d j" '(dired-jump :wk "Dired jump to current")
-      "d t" '(dired-create-empty-file :wk "Dired create and empty file")
-      "d p" '(peep-dired :wk "Peep-dired"))
+      (gb/leader-keys
+        "d" '(:ignore t :wk "Dired")
+        "d d" '(dired :wk "Open dired")
+        "d j" '(dired-jump :wk "Dired jump to current")
+        "d t" '(dired-create-empty-file :wk "Dired create and empty file")
+        "d p" '(peep-dired :wk "Peep-dired"))
 
-    (gb/leader-keys
-      "e" '(:ignore t :wk "Eshell/Evaluate")
-      "e b" '(eval-buffer :wk "Evaluate elisp in buffer")
-      "e d" '(eval-defun :wk "Evaluate defun containing or after point")
-      "e e" '(eval-expression :wk "Evaluate and elisp expression")
-      "e h" '(counsel-esh-history :which-key "Eshell history")
-      "e l" '(eval-last-sexp :wk "Evaluate elisp expression before point")
-      "e r" '(eval-region :wk "Evaluate elisp in region")
-      "e R" '(eww-reload :which-key "Reload current page in EWW")
-      "e s" '(eshell :which-key "Eshell")
-      "e w" '(eww :which-key "EWW emacs web wowser"))
+      (gb/leader-keys
+        "e" '(:ignore t :wk "Eshell/Evaluate")
+        "e b" '(eval-buffer :wk "Evaluate elisp in buffer")
+        "e d" '(eval-defun :wk "Evaluate defun containing or after point")
+        "e e" '(eval-expression :wk "Evaluate and elisp expression")
+        "e h" '(counsel-esh-history :which-key "Eshell history")
+        "e l" '(eval-last-sexp :wk "Evaluate elisp expression before point")
+        "e r" '(eval-region :wk "Evaluate elisp in region")
+        "e R" '(eww-reload :which-key "Reload current page in EWW")
+        "e s" '(eshell :which-key "Eshell")
+        "e w" '(eww :which-key "EWW emacs web wowser"))
 
-    (gb/leader-keys
-      "f" '(:ignore t :wk "Files")
-      "f c" '((lambda () (interactive)
-                (find-file "~/.minemacs.d/config.org"))
-              :wk "Open emacs config.org")
-      "f e" '((lambda () (interactive)
-                (dired "~/.minemacs.d/emacs/"))
-              :wk "Open user-emacs-directory in dired")
-      "f d" '(find-grep-dired :wk "Search for string in files in DIR")
-      "f g" '(counsel-grep-or-swiper :wk "Search for string current file")
-      "f j" '(counsel-file-jump :wk "Jump to a file below current directory")
-      "f l" '(counsel-locate :wk "Locate a file")
-      "f r" '(counsel-recentf :wk "Find recent files")
-      "f u" '(sudo-edit-find-file :wk "Sudo find file")
-      "f U" '(sudo-edit :wk "Sudo edit file"))
+      (gb/leader-keys
+        "f" '(:ignore t :wk "Files")
+        "f c" '((lambda () (interactive)
+                  (find-file "~/.minemacs.d/config.org"))
+                :wk "Open emacs config.org")
+        "f e" '((lambda () (interactive)
+                  (dired "~/.minemacs.d/emacs/"))
+                :wk "Open user-emacs-directory in dired")
+        "f d" '(find-grep-dired :wk "Search for string in files in DIR")
+        "f g" '(counsel-grep-or-swiper :wk "Search for string current file")
+        "f j" '(counsel-file-jump :wk "Jump to a file below current directory")
+        "f l" '(counsel-locate :wk "Locate a file")
+        "f r" '(counsel-recentf :wk "Find recent files")
+        "f u" '(sudo-edit-find-file :wk "Sudo find file")
+        "f U" '(sudo-edit :wk "Sudo edit file"))
 
-    (gb/leader-keys
-      "g" '(:ignore t :wk "Git")
-      "g /" '(magit-dispatch :wk "Magit dispatch")
-      "g ." '(magit-file-dispatch :wk "Magit file dispatch")
-      "g b" '(magit-branch-checkout :wk "Switch branch")
-      "g c" '(:ignore t :wk "Create")
-      "g c b" '(magit-branch-and-checkout :wk "Create branch and checkout")
-      "g c c" '(magit-commit-create :wk "Create commit")
-      "g c f" '(magit-commit-fixup :wk "Create fixup commit")
-      "g C" '(magit-clone :wk "Clone repo")
-      "g f" '(:ignore t :wk "Find")
-      "g f c" '(magit-show-commit :wk "Show commit")
-      "g f f" '(magit-find-file :wk "Magit find file")
-      "g f g" '(magit-find-git-config-file :wk "Find gitconfig file")
-      "g F" '(magit-fetch :wk "Git fetch")
-      "g g" '(magit-status :wk "Magit status")
-      "g i" '(magit-init :wk "Initialize git repo")
-      "g l" '(magit-log-buffer-file :wk "Magit buffer log")
-      "g r" '(vc-revert :wk "Git revert file")
-      "g s" '(magit-stage-file :wk "Git stage file")
-      "g u" '(magit-stage-file :wk "Git unstage file"))
+      (gb/leader-keys
+        "g" '(:ignore t :wk "Git")
+        "g /" '(magit-dispatch :wk "Magit dispatch")
+        "g ." '(magit-file-dispatch :wk "Magit file dispatch")
+        "g b" '(magit-branch-checkout :wk "Switch branch")
+        "g c" '(:ignore t :wk "Create")
+        "g c b" '(magit-branch-and-checkout :wk "Create branch and checkout")
+        "g c c" '(magit-commit-create :wk "Create commit")
+        "g c f" '(magit-commit-fixup :wk "Create fixup commit")
+        "g C" '(magit-clone :wk "Clone repo")
+        "g f" '(:ignore t :wk "Find")
+        "g f c" '(magit-show-commit :wk "Show commit")
+        "g f f" '(magit-find-file :wk "Magit find file")
+        "g f g" '(magit-find-git-config-file :wk "Find gitconfig file")
+        "g F" '(magit-fetch :wk "Git fetch")
+        "g g" '(magit-status :wk "Magit status")
+        "g i" '(magit-init :wk "Initialize git repo")
+        "g l" '(magit-log-buffer-file :wk "Magit buffer log")
+        "g r" '(vc-revert :wk "Git revert file")
+        "g s" '(magit-stage-file :wk "Git stage file")
+        "g u" '(magit-stage-file :wk "Git unstage file"))
 
-   (gb/leader-keys
-      "h" '(:ignore t :wk "Help")
-      "h a" '(counsel-apropos :wk "Apropos")
-      "h b" '(describe-bindings :wk "Describe bindings")
-      "h c" '(describe-char :wk "Describe character under cursor")
-      "h d" '(:ignore t :wk "Emacs documentation")
-      "h d a" '(about-emacs :wk "About Emacs")
-      "h d d" '(view-emacs-debugging :wk "View Emacs debugging")
-      "h d f" '(view-emacs-FAQ :wk "View Emacs FAQ")
-      "h d m" '(info-emacs-manual :wk "The Emacs manual")
-      "h d n" '(view-emacs-news :wk "View Emacs news")
-      "h d o" '(describe-distribution :wk "How to obtain Emacs")
-      "h d p" '(view-emacs-problems :wk "View Emacs problems")
-      "h d t" '(view-emacs-todo :wk "View Emacs todo")
-      "h d w" '(describe-no-warranty :wk "Describe no warranty")
-      "h e" '(view-echo-area-messages :wk "View echo area messages")
-      "h f" '(describe-function :wk "Describe function")
-      "h F" '(describe-face :wk "Describe face")
-      "h g" '(describe-gnu-project :wk "Describe GNU Project")
-      "h i" '(info :wk "Info")
-      "h I" '(describe-input-method :wk "Describe input method")
-      "h k" '(describe-key :wk "Describe key")
-      "h l" '(view-lossage :wk "Display recent keystrokes and the commands run")
-      "h L" '(describe-language-environment :wk "Describe language environment")
-      "h m" '(describe-mode :wk "Describe mode")
-      "h r" '(:ignore t :wk "Reload")
-      "h r r" '((lambda () (interactive)
-                  (load-file "~/.config/emacs/init.el")
-                  (ignore (elpaca-process-queues)))
-                :wk "Reload emacs config")
-      "h t" '(load-theme :wk "Load theme")
-      "h v" '(describe-variable :wk "Describe variable")
-      "h w" '(where-is :wk "Prints keybinding for command if set")
-      "h x" '(describe-command :wk "Display full documentation for command"))
+     (gb/leader-keys
+        "h" '(:ignore t :wk "Help")
+        "h a" '(counsel-apropos :wk "Apropos")
+        "h b" '(describe-bindings :wk "Describe bindings")
+        "h c" '(describe-char :wk "Describe character under cursor")
+        "h d" '(:ignore t :wk "Emacs documentation")
+        "h d a" '(about-emacs :wk "About Emacs")
+        "h d d" '(view-emacs-debugging :wk "View Emacs debugging")
+        "h d f" '(view-emacs-FAQ :wk "View Emacs FAQ")
+        "h d m" '(info-emacs-manual :wk "The Emacs manual")
+        "h d n" '(view-emacs-news :wk "View Emacs news")
+        "h d o" '(describe-distribution :wk "How to obtain Emacs")
+        "h d p" '(view-emacs-problems :wk "View Emacs problems")
+        "h d t" '(view-emacs-todo :wk "View Emacs todo")
+        "h d w" '(describe-no-warranty :wk "Describe no warranty")
+        "h e" '(view-echo-area-messages :wk "View echo area messages")
+        "h f" '(describe-function :wk "Describe function")
+        "h F" '(describe-face :wk "Describe face")
+        "h g" '(describe-gnu-project :wk "Describe GNU Project")
+        "h i" '(info :wk "Info")
+        "h I" '(describe-input-method :wk "Describe input method")
+        "h k" '(describe-key :wk "Describe key")
+        "h l" '(view-lossage :wk "Display recent keystrokes and the commands run")
+        "h L" '(describe-language-environment :wk "Describe language environment")
+        "h m" '(describe-mode :wk "Describe mode")
+        "h r" '(:ignore t :wk "Reload")
+        "h r r" '((lambda () (interactive)
+                    (load-file "~/.config/emacs/init.el")
+                    (ignore (elpaca-process-queues)))
+                  :wk "Reload emacs config")
+        "h t" '(load-theme :wk "Load theme")
+        "h v" '(describe-variable :wk "Describe variable")
+        "h w" '(where-is :wk "Prints keybinding for command if set")
+        "h x" '(describe-command :wk "Display full documentation for command"))
 
-    (gb/leader-keys
-      "m" '(:ignore t :wk "Org")
-      "m a" '(org-agenda :wk "Org agenda")
-      "m e" '(org-export-dispatch :wk "Org export dispatch")
-      "m i" '(org-toggle-item :wk "Org toggle item")
-      "m t" '(org-todo :wk "Org todo")
-      "m B" '(org-babel-tangle :wk "Org babel tangle")
-      "m x" '(org-toggle-checkbox :wk "Org mark checkbox")
-      "m l" '(org-cliplink :wk "Insert a link using org-cliplink")
-      "m T" '(org-todo-list :wk "Org todo list"))
+      (gb/leader-keys
+        "m" '(:ignore t :wk "Org")
+        "m a" '(org-agenda :wk "Org agenda")
+        "m e" '(org-export-dispatch :wk "Org export dispatch")
+        "m i" '(org-toggle-item :wk "Org toggle item")
+        "m t" '(org-todo :wk "Org todo")
+        "m B" '(org-babel-tangle :wk "Org babel tangle")
+        "m x" '(org-toggle-checkbox :wk "Org mark checkbox")
+        "m l" '(org-cliplink :wk "Insert a link using org-cliplink")
+        "m T" '(org-todo-list :wk "Org todo list")
+        "m d" '(org-deadline :wk "Add a deadline to a todo item")
+        "m s" '(org-sechedule :wk "Add a scheduled date to a todo item"))
 
-    (gb/leader-keys
-      "m b" '(:ignore t :wk "Tables")
-      "m b -" '(org-table-insert-hline :wk "Insert hline in table"))
+      (gb/leader-keys
+        "m b" '(:ignore t :wk "Tables")
+        "m b -" '(org-table-insert-hline :wk "Insert hline in table"))
 
-    (gb/leader-keys
-      "m d" '(:ignore t :wk "Date/deadline")
-      "m d t" '(org-time-stamp :wk "Org time stamp"))
+      (gb/leader-keys
+        "o" '(:ignore t :wk "Open")
+        "o d" '(dashboard-open :wk "Dashboard")
+        "o e" '(elfeed :wk "Elfeed RSS")
+        "o f" '(make-frame :wk "Open buffer in new frame")
+        "o F" '(select-frame-by-name :wk "Select frame by name")
+        "o o" '(reveal-in-osx-finder :wk "Reveal current folder in OSX Finder")
+        )
 
-    (gb/leader-keys
-      "o" '(:ignore t :wk "Open")
-      "o d" '(dashboard-open :wk "Dashboard")
-      "o e" '(elfeed :wk "Elfeed RSS")
-      "o f" '(make-frame :wk "Open buffer in new frame")
-      "o F" '(select-frame-by-name :wk "Select frame by name")
-      "o o" '(reveal-in-osx-finder :wk "Reveal current folder in OSX Finder")
+      (gb/leader-keys
+        "s" '(:ignore t :wk "Search")
+        "s d" '(dictionary-search :wk "Search dictionary")
+        "s m" '(man :wk "Man pages")
+        "s t" '(tldr :wk "Lookup TLDR docs for a command")
+        "s w" '(jinx-correct :wk "Jinx is a fast spell checker for emacs")
+        "s b" '(consult-buffer :wk "switch buffer using consult")
+        )
+
+      (gb/leader-keys
+        "t" '(:ignore t :wk "Toggle")
+        "t e" '(eshell-toggle :wk "Toggle eshell")
+        "t f" '(flycheck-mode :wk "Toggle flycheck")
+        "t l" '(display-line-numbers-mode :wk "Toggle line numbers")
+        "t n" '(synosaurus-choose-and-insert :wk "Lookup and replace under point")
+        "t o" '(org-mode :wk "Toggle org mode")
+        "t r" '(rainbow-mode :wk "Toggle rainbow mode")
+        "t t" '(visual-line-mode :wk "Toggle truncated lines")
+        "t v" '(vterm-toggle :wk "Toggle vterm"))
+
+      (gb/leader-keys
+        "w" '(:ignore t :wk "Windows")
+        ;; Window splits
+        "w c" '(evil-window-delete :wk "Close window")
+        "w n" '(evil-window-new :wk "New window")
+        "w s" '(evil-window-split :wk "Horizontal split window")
+        "w v" '(evil-window-vsplit :wk "Vertical split window")
+        ;; Window motions
+        "w h" '(evil-window-left :wk "Window left")
+        "w j" '(evil-window-down :wk "Window down")
+        "w k" '(evil-window-up :wk "Window up")
+        "w l" '(evil-window-right :wk "Window right")
+        "w w" '(evil-window-next :wk "Goto next window")
+        ;; Move Windows
+        "w H" '(buf-move-left :wk "Buffer move left")
+        "w J" '(buf-move-down :wk "Buffer move down")
+        "w K" '(buf-move-up :wk "Buffer move up")
+        "w L" '(buf-move-right :wk "Buffer move right"))
+
+      (gb/leader-keys
+        "v" '(org-archive-subtree :wk "Archive Org Heading.")
+        "y" '(xwidgets-webkit-browse-url :wk "Open a link in xWidgets Webkit")
+        "x" '(scratch-buffer :wk "Open the scratch buffer")
+        "X" '(org-capture :wk "Start an org-capture")
+        )
+
       )
-
-    (gb/leader-keys
-      "s" '(:ignore t :wk "Search")
-      "s d" '(dictionary-search :wk "Search dictionary")
-      "s m" '(man :wk "Man pages")
-      "s t" '(tldr :wk "Lookup TLDR docs for a command")
-      "s w" '(jinx-correct :wk "Jinx is a fast spell checker for emacs")
-      "s b" '(consult-buffer :wk "switch buffer using consult")
-      )
-
-    (gb/leader-keys
-      "t" '(:ignore t :wk "Toggle")
-      "t e" '(eshell-toggle :wk "Toggle eshell")
-      "t f" '(flycheck-mode :wk "Toggle flycheck")
-      "t l" '(display-line-numbers-mode :wk "Toggle line numbers")
-      "t n" '(synosaurus-choose-and-insert :wk "Lookup and replace under point")
-      "t o" '(org-mode :wk "Toggle org mode")
-      "t r" '(rainbow-mode :wk "Toggle rainbow mode")
-      "t t" '(visual-line-mode :wk "Toggle truncated lines")
-      "t v" '(vterm-toggle :wk "Toggle vterm"))
-
-    (gb/leader-keys
-      "w" '(:ignore t :wk "Windows")
-      ;; Window splits
-      "w c" '(evil-window-delete :wk "Close window")
-      "w n" '(evil-window-new :wk "New window")
-      "w s" '(evil-window-split :wk "Horizontal split window")
-      "w v" '(evil-window-vsplit :wk "Vertical split window")
-      ;; Window motions
-      "w h" '(evil-window-left :wk "Window left")
-      "w j" '(evil-window-down :wk "Window down")
-      "w k" '(evil-window-up :wk "Window up")
-      "w l" '(evil-window-right :wk "Window right")
-      "w w" '(evil-window-next :wk "Goto next window")
-      ;; Move Windows
-      "w H" '(buf-move-left :wk "Buffer move left")
-      "w J" '(buf-move-down :wk "Buffer move down")
-      "w K" '(buf-move-up :wk "Buffer move up")
-      "w L" '(buf-move-right :wk "Buffer move right"))
-
-    (gb/leader-keys
-      "v" '(org-archive-subtree :wk "Archive Org Heading.")
-      "y" '(xwidgets-webkit-browse-url :wk "Open a link in xWidgets Webkit")
-      "x" '(scratch-buffer :wk "Open the scratch buffer")
-      "X" '(org-capture :wk "Start an org-capture")
-      )
-
-    )
 #+end_src
 
 ** Setting Username and E-Mail
@@ -502,44 +501,54 @@ Setting in which browser EMACS will open links
 ** Elfeed
 An RSS newsfeed reader for Emacs.
 #+begin_src emacs-lisp
-;; Module: `me-rss' -- Package: `elfeed'
-(with-eval-after-load 'elfeed
-  ;; Add news feeds for `elfeed'
-  (setq elfeed-feeds
-        '(
-          ;; General
-          ("https://frame.work/blog.rss" Framework)
-          ("https://factorio.com/blog/rss" Factorio)
-          ("https://news.nononsenseapps.com/index.atom" Feeder)
-          ("https://kagifeedback.org/atom/t/release-notes" Kagi)
-          ("https://news.play.date/index.xml" Playdate)
-          ;; Linux
-          ("https://blog.linuxmint.com/?feed=rss2" LinuxMint linux)
-          ("https://archlinux.org/news/" Arch linux)
-          ("https://fedoramagazine.org/feed/" Fedora linux)
-          ("https://endeavouros.com/news/" EndeavourOS linux)
-          ;; Boat Stuff
-          ("https://buffalonickelblog.com/feed/" Buffalo-Nickel boat)
-          ("https://mobius.world/feed/" Mobius boat)
-          ("https://www.mvuglybetty.com/blog-feed.xml" Ugly-Betty boat)
-           ;; Emacs
-          ("http://xenodium.com/rss.xml" Xenodium emacs)
-          ("https://cmdln.org/post/" Commandline emacs)
-          ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs Karal-Voit)
-          ("https://systemcrafters.net/rss/news.xml" SystemCrafter emacs)
-          ("https://sachachua.com/blog/feed/" SachaChua emacs)
-          ("https://rostre.bearblog.dev/feed/?type=rss" ParsingTime emacs)
-          ("https://200ok.ch/atom.xml" 200ok emacs)
-          ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
-          ("https://blog.tecosaur.com/tmio/rss.xml" TMiO emacs)
-          ;; News
-          )))
+  ;; Module: `me-rss' -- Package: `elfeed'
+  (with-eval-after-load 'elfeed
+    ;; Add news feeds for `elfeed'
+    (setq elfeed-feeds
+          '(
+            ;; General
+            ("https://frame.work/blog.rss" Framework)
+            ("https://factorio.com/blog/rss" Factorio)
+            ("https://news.nononsenseapps.com/index.atom" Feeder)
+            ("https://kagifeedback.org/atom/t/release-notes" Kagi)
+            ("https://news.play.date/index.xml" Playdate)
+            ;; Linux
+            ("https://blog.linuxmint.com/?feed=rss2" linux)
+            ("https://archlinux.org/news/" linux)
+            ("https://fedoramagazine.org/feed/" linux)
+            ("https://endeavouros.com/news/" linux)
+            ;; Boat Stuff
+            ("https://buffalonickelblog.com/feed/" boat)
+            ("https://mobius.world/feed/" boat)
+            ("https://www.mvuglybetty.com/blog-feed.xml" Ugly-Betty boat)
+             ;; Emacs
+            ("http://xenodium.com/rss.xml" emacs)
+            ("https://cmdln.org/post/" emacs)
+            ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs)
+            ("https://systemcrafters.net/rss/news.xml" emacs)
+            ("https://sachachua.com/blog/feed/" emacs)
+            ("https://rostre.bearblog.dev/feed/?type=rss" emacs)
+            ("https://200ok.ch/atom.xml" emacs)
+            ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+            ("https://blog.tecosaur.com/tmio/rss.xml" emacs)
+            ;; News
+            ))
+(defun toggle-elfeed-unread ()
+  (interactive)
+  (if (string-match-p "+unread" elfeed-search-filter)
+      (setq elfeed-search-filter (replace-regexp-in-string "+unread" "-unread" elfeed-search-filter))
+    (setq elfeed-search-filter (concat elfeed-search-filter " +unread")))
+  (elfeed-search-update :force))
 
-(use-package elfeed-goodies
-  :init
-  (elfeed-goodies/setup)
-  :config
-  (setq elfeed-goodies/entry-pane-size 0.5))
+;; Keybinding example for `elfeed-search-mode-map`:
+(define-key elfeed-search-mode-map (kbd "U") 'toggle-elfeed-unread)
+    )
+
+  (use-package elfeed-goodies
+    :init
+    (elfeed-goodies/setup)
+    :config
+    (setq elfeed-goodies/entry-pane-size 0.5))
 
 #+end_src
 *** Open In a specific browser
@@ -562,11 +571,12 @@ An RSS newsfeed reader for Emacs.
 
 ** Use-package
 #+begin_src emacs-lisp
-(setq package-archive-priorities '(("gnu" . 10)
-                                   ("melpa" . 5))
-      package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://stable.melpa.org/packages/")
-                         ("melpa-devel" . "https://melpa.org/packages/")))
+  (setq package-archive-priorities '(("gnu" . 10)
+                                     ("melpa" . 5))
+        package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                           ("melpa" . "https://stable.melpa.org/packages/")
+                           ("melpa-devel" . "https://melpa.org/packages/")))
+  (setq package-install-upgrade-built-in t)
 #+end_src
 
 ** MacOS Customizations
@@ -603,36 +613,36 @@ A Periodic table package for emacs.
 ** Evil
 [[https://github.com/emacs-evil/evil][Evil]] is an extensible vi/vim layer for Emacs.  Because...let's face it.  The Vim keybindings are just plain better.
 #+begin_src emacs-lisp
-;; Expands to: (elpaca evil (use-package evil :demand t))
-(use-package evil
-    :init      ;; tweak evil's configuration before loading it
-    (setq evil-want-integration t  ;; This is optional since it's already set to t by default.
-          evil-want-keybinding nil
-          evil-vsplit-window-right t
-          evil-split-window-below t
-          evil-undo-system 'undo-redo)  ;; Adds vim-like C-r redo functionality
-    (evil-mode))
+  ;; Expands to: (elpaca evil (use-package evil :demand t))
+  (use-package evil
+      :init      ;; tweak evil's configuration before loading it
+      (setq evil-want-integration t  ;; This is optional since it's already set to t by default.
+            evil-want-keybinding nil
+            evil-vsplit-window-right t
+            evil-split-window-below t
+            evil-undo-system 'undo-redo)  ;; Adds vim-like C-r redo functionality
+      (evil-mode))
 
-(use-package evil-collection
-  :after evil
-  :config
-  ;; Do not uncomment this unless you want to specify each and every mode
-  ;; that evil-collection should works with.  The following line is here
-  ;; for documentation purposes in case you need it.
-  ;; (setq evil-collection-mode-list '(calendar dashboard dired ediff info magit ibuffer))
-  (add-to-list 'evil-collection-mode-list 'help) ;; evilify help mode
-  (evil-collection-init))
+  (use-package evil-collection
+    :after evil
+    :config
+    ;; Do not uncomment this unless you want to specify each and every mode
+    ;; that evil-collection should works with.  The following line is here
+    ;; for documentation purposes in case you need it.
+    ;; (setq evil-collection-mode-list '(calendar dashboard dired ediff info magit ibuffer org-agenda))
+    (add-to-list 'evil-collection-mode-list 'help) ;; evilify help mode
+    (evil-collection-init))
 
-(use-package evil-tutor)
+  (use-package evil-tutor)
 
-;; Using RETURN to follow links in Org/Evil
-;; Unmap keys in 'evil-maps if not done, (setq org-return-follows-link t) will not work
-(with-eval-after-load 'evil-maps
-  (define-key evil-motion-state-map (kbd "SPC") nil)
-  (define-key evil-motion-state-map (kbd "RET") nil)
-  (define-key evil-motion-state-map (kbd "TAB") nil))
-;; Setting RETURN key in org-mode to follow links
-  (setq org-return-follows-link  t)
+  ;; Using RETURN to follow links in Org/Evil
+  ;; Unmap keys in 'evil-maps if not done, (setq org-return-follows-link t) will not work
+  (with-eval-after-load 'evil-maps
+    (define-key evil-motion-state-map (kbd "SPC") nil)
+    (define-key evil-motion-state-map (kbd "RET") nil)
+    (define-key evil-motion-state-map (kbd "TAB") nil))
+  ;; Setting RETURN key in org-mode to follow links
+    (setq org-return-follows-link  t)
 
 #+end_src
 ** Syncthing
@@ -959,25 +969,19 @@ This package implements a modern style for your Org buffers using font locking a
 #+begin_src emacs-lisp
 (define-key org-mode-map (kbd "<C-return>") '+org/insert-item-below)
 #+end_src
-
-** Source Code Block Tag Expansion
-Org-tempo is not a separate package but a module within org that can be enabled.  Org-tempo allows for '<s' followed by TAB to expand to a begin_src tag.  Other expansions available include:
-
-| Typing the below + TAB | Expands to ...                          |
-|------------------------+-----------------------------------------|
-| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
-| <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
-| <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
-| <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
-| <E                     | '#+BEGIN_EXPORT' … '#+END_EXPORT'       |
-| <h                     | '#+BEGIN_EXPORT html' … '#+END_EXPORT'  |
-| <l                     | '#+BEGIN_EXPORT latex' … '#+END_EXPORT' |
-| <q                     | '#+BEGIN_QUOTE' … '#+END_QUOTE'         |
-| <s                     | '#+BEGIN_SRC' … '#+END_SRC'             |
-| <v                     | '#+BEGIN_VERSE' … '#+END_VERSE'         |
-
+** Org-todos
 #+begin_src emacs-lisp
-;; (use-package org-tempo)
+(defun my-org-todo-toggle ()
+  (interactive)
+  (let ((state (org-get-todo-state))
+        post-command-hook)
+    (if (string= state "TODO")
+        (org-todo "DONE")
+      (org-todo "TODO"))
+    (run-hooks 'post-command-hook)
+    (org-flag-subtree t)))
+
+(define-key org-mode-map (kbd "C-c C-d") 'my-org-todo-toggle)
 #+end_src
 
 * WRITING STUFF
@@ -1080,7 +1084,7 @@ Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
 #+begin_src emacs-lisp
     (use-package denote)
   (setq denote-directory (expand-file-name "~/Notes")
-        denote-know-keywords '("emacs" "history" "english")
+        denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
         denote-file-type 'org
         )
 (add-hook 'dired-mode-hook #'denote-dired-mode)
@@ -1116,18 +1120,36 @@ nov.el provides a major mode for reading EPUB documents
 #+end_src
 ** Prompt
 #+begin_src emacs-lisp
-(with-eval-after-load "esh-opt"
-  (autoload 'epe-theme-lambda "eshell-prompt-extras")
-  (setq eshell-highlight-prompt nil
-        eshell-prompt-function 'epe-theme-lambda))
+  ;; (with-eval-after-load "esh-opt"
+    ;; (autoload 'epe-theme-lambda "eshell-prompt-extras")
+    ;; (setq eshell-highlight-prompt nil
+          ;; eshell-prompt-function 'epe-theme-lambda))
 #+end_src
 * AI ASSIANTS
 ** Ellama
 #+begin_src emacs-lisp
-;; (setq ellama-buffer-mode "org-mode")
-(use-package ellama
-  )
-(setopt ellama-language "English")
+  ;; (setq ellama-buffer-mode "org-mode")
+  (use-package ellama
+    :init
+    (setopt ellama-language "English")
+    (setopt ellama-buffer-mode 'org-mode)
+    (require 'llm-ollama)
+    (setopt ellama-provider
+                    (make-llm-ollama
+                     :chat-model "zephyr:latest" :embedding-model "zephyr:latest"))
+    ;; Predefined llm providers for interactive switching.
+    ;; You shouldn't add ollama providers here - it can be selected interactively
+    ;; without it. It is just example.
+    (setopt ellama-providers
+                    '(("zephyr" . (make-llm-ollama
+                                                   :chat-model "zephyr:latest"
+                                                   :embedding-model "zephyr:latest"))
+                          ("mistral" . (make-llm-ollama
+                                                    :chat-model "mistral:latest"
+                                                    :embedding-model "mistral:latest"))
+                          ("dolphin-mixtral" . (make-llm-ollama
+                                                    :chat-model "dolphin-mixtral:latest"
+                                                    :embedding-model "dolphin-mixtral:latest")))))
 #+end_src
 
 ** Chatgpt-Shell
@@ -1217,6 +1239,10 @@ Nix is a cross-platform package manager that uses a deployment model where softw
 (use-package rainbow-delimiters
   :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
          (clojure-mode . rainbow-delimiters-mode)))
+#+end_src
+** Lua-Mode
+#+begin_src emacs-lisp
+(use-package lua-mode)
 #+end_src
 * Completion
 ** Corefu
