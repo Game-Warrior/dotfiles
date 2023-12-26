@@ -13,6 +13,9 @@ emacs-stuff/emacs-reveal/
 .config/emacs/auto-save-list
 .config/emacs/auto-save/
 .config/emacs/elpa/
-.config/emacs/elpa/
+.config/emacs/persist/
+.config/emacs/emacs/
+.config/emacs/chatgpt/
+.config/emacs/backups/
 *.plstore
 \#*#
