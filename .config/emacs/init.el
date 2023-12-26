@@ -17,15 +17,14 @@
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
     ;; Sets the default theme to load!!!
-    (load-theme 'doom-one t)
+    (load-theme 'ef-dark t)
     ;; Corrects (and improves) org-mode's native fontification.
     (doom-themes-org-config))
 
 (use-package timu-rouge-theme
   :ensure t
-  :config
-  ;; (load-theme 'doom-peacock t)
    )
+(use-package ef-themes)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
@@ -745,7 +744,7 @@
 (use-package yasnippet
     )
   (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
-(add-hook 'text-mode-hook (lambda () (yas-minor-mode 1)))
+(add-hook 'text-mode-hook (lambda () (yas-global-mode 1)))
 
 (use-package git-timemachine
   :after git-timemachine
