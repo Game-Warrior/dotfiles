@@ -37,6 +37,7 @@
   - [[#evil][Evil]]
   - [[#syncthing][Syncthing]]
   - [[#autosave-files-and-backups][Autosave-files and Backups]]
+  - [[#transient][Transient]]
 - [[#org-mode][ORG-MODE]]
   - [[#org-settings][Org-Settings]]
   - [[#org-fonts][Org-fonts]]
@@ -134,7 +135,7 @@ To keep this =config.org= a reasonable length, I have moved a lot of code to ind
 
 * GUI CHANGES
 ** Theme
-The first line below designates the directory where will place all of our custom-made themes, which I have created only one (dtmacs).  You can create your own Emacs themes with the help of the [[https://emacsfodder.github.io/emacs-theme-editor/][Emacs Theme Editor]].  I am also installing =doom-themes= because it contains a huge collection of themes.  M-x load-theme will list all of the themes available.
+The first line below designates the directory where will place all of our custom-made themes. You can create your own Emacs themes with the help of the [[https://emacsfodder.github.io/emacs-theme-editor/][Emacs Theme Editor]]. I am also installing =doom-themes= because it contains a huge collection of themes. M-x load-theme will list all of the themes available.
 
 #+begin_src emacs-lisp
     (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
@@ -245,8 +246,8 @@ https://github.com/seagle0128/doom-modeline
 
 ** Word Wrap
 #+begin_src emacs-lisp
-(setq-default truncate-lines 1)
-(global-word-wrap-whitespace-mode 1)
+  (toggle-truncate-lines -1)
+  (global-word-wrap-whitespace-mode 1)
 #+end_src
 ** iBuffer
 iBuffer allows you to interactively manage Emacs buffers.
@@ -658,6 +659,10 @@ A Periodic table package for emacs.
                  (concat user-emacs-directory "backups/")))))
 
 
+#+end_src
+** Transient
+#+begin_src emacs-lisp
+(use-package transient)
 #+end_src
 * ORG-MODE
 Here is where I set my various configurations for org-mode. Ranging from agenda to org-superstar.

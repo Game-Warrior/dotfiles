@@ -90,7 +90,7 @@
   :config
    (dashboard-setup-startup-hook))
 
-(setq-default truncate-lines 1)
+(toggle-truncate-lines -1)
 (global-word-wrap-whitespace-mode 1)
 
 (use-package nerd-icons-ibuffer
@@ -447,6 +447,8 @@
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups/")))))
+
+(use-package transient)
 
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
