@@ -153,6 +153,7 @@ The first line below designates the directory where will place all of our custom
     :ensure t
      )
   (use-package ef-themes)
+  (use-package standard-themes)
 #+end_src
 
 ** Title Bar

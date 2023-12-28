@@ -25,6 +25,7 @@
   :ensure t
    )
 (use-package ef-themes)
+(use-package standard-themes)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
