@@ -17,7 +17,7 @@
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
     ;; Sets the default theme to load!!!
-    (load-theme 'ef-dark t)
+    (load-theme 'ef-duo-dark t)
     ;; Corrects (and improves) org-mode's native fontification.
     (doom-themes-org-config))
 
@@ -30,22 +30,25 @@
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
 (set-face-attribute 'default nil
-  :font "JetBrains Mono"
-  :height 110
-  :weight 'medium)
-(set-face-attribute 'fixed-pitch nil
-  :font "JetBrains Mono"
-  :height 110
-  :weight 'medium)
+   :font "JetBrains Mono"
+   :height 110
+   :weight 'medium)
+(set-face-attribute 'variable-pitch nil
+ :font "Atkinson Hyperlegible"
+ :height 120
+ :weight 'medium)
+  (set-face-attribute 'fixed-pitch nil
+   :font "JetBrains Mono"
+   :height 110
+   :weight 'medium)
 
-;; This sets the default font on all graphical frames created after restarting Emacs.
-;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
-;; are not right unless I also add this method of setting the default font.
-(add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+   ;; This sets the default font on all graphical frames created after restarting Emacs.
+   ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
+   ;; are not right unless I also add this method of setting the default font.
+   (add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
 
-;; Uncomment the following line if line spacing needs adjusting.
-(setq-default line-spacing 0.12)
-;; (add-hook 'org-mode-hook (lambda () (org-modern-mode 1)))
+   ;; Uncomment the following line if line spacing needs adjusting.
+   ;; (setq-default line-spacing 0.12)
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
