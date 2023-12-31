@@ -17,7 +17,7 @@
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
     ;; Sets the default theme to load!!!
-    (load-theme 'ef-duo-dark t)
+    (load-theme 'spolsky t)
     ;; Corrects (and improves) org-mode's native fontification.
     (doom-themes-org-config))
 
@@ -26,6 +26,7 @@
    )
 (use-package ef-themes)
 (use-package standard-themes)
+(use-package sublime-themes)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 

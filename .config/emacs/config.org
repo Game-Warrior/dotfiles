@@ -145,7 +145,7 @@ The first line below designates the directory where will place all of our custom
       (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
             doom-themes-enable-italic t) ; if nil, italics is universally disabled
       ;; Sets the default theme to load!!!
-      (load-theme 'ef-duo-dark t)
+      (load-theme 'spolsky t)
       ;; Corrects (and improves) org-mode's native fontification.
       (doom-themes-org-config))
 
@@ -154,6 +154,7 @@ The first line below designates the directory where will place all of our custom
      )
   (use-package ef-themes)
   (use-package standard-themes)
+  (use-package sublime-themes)
 #+end_src
 
 ** Title Bar
