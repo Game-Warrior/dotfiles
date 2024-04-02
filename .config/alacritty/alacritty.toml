@@ -1,20 +1,20 @@
-import = ["/Users/gb/.config/alacritty/themes/themes/doom_one.toml"]
+import = ["~/.config/alacritty/themes/themes/doom_one.toml"]
 
 [font]
 size = 12.0
 
 [font.bold]
-family = "Hack Nerd Font"
+family = "JuliaMono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Hack Nerd Font"
+family = "JuliaMono"
 style = "Bold Italic"
 
 [font.italic]
-family = "Hack Nerd Font"
+family = "JuliaMono"
 style = "Italic"
 
 [font.normal]
-family = "Hack Nerd Font"
+family = "JuliaMono"
 style = "Regular"
