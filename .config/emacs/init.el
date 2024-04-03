@@ -17,7 +17,7 @@
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
     ;; Sets the default theme to load!!!
-    (load-theme 'spolsky t)
+    (load-theme 'doom-one t)
     ;; Corrects (and improves) org-mode's native fontification.
     (doom-themes-org-config))
 
@@ -598,7 +598,7 @@
 (use-package org-modern-indent
   ;; :load-path "~/code/emacs/org-modern-indent/"
   ; or
-  :elpaca (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+  :ensure (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
   :hook
   (org-mode . org-indent-mode)
   )
@@ -744,7 +744,7 @@
   (dolist (hook '(org-mode-hook
                     text-mode-hook))
       (add-hook hook #'abbrev-mode))
-(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
+(quietly-read-abbrev-file "~/.config/emacs/abbrev_defs")
 
 (use-package yasnippet
     )
@@ -761,7 +761,8 @@
 
 (use-package magit)
 
-  (use-package magit-todos
+(use-package hl-todo)
+(use-package magit-todos
     :after magit
     :config (magit-todos-mode 1))
 
