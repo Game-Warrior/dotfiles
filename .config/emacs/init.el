@@ -719,6 +719,24 @@
 
 (define-key org-mode-map (kbd "C-c C-d") 'my-org-todo-toggle)
 
+;; (with-eval-after-load 'org-mode 
+  (defun gw/org-colors-doom-one ()
+    "Enable Doom One Colors for Org headers."
+    (interactive)
+    (dolist
+        (face
+         '((org-level-1 1.7 "#ff6c6b" ultra-bold)
+           (org-level-2 1.6 "#da8548" extra-bold)
+           (org-level-3 1.5 "#ECBE7B" bold)
+           (org-level-4 1.4 "#98be65" semi-bold)
+           (org-level-5 1.3 "#51afef" normal)
+           (org-level-6 1.2 "#2257A0" normal)
+           (org-level-7 1.1 "#a9a1e1" normal)
+           (org-level-8 1.0 "#c678dd" normal)))
+      (set-face-attribute (nth 0 face) nil :font '"Atkinson Hyperlegible" :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
+      (set-face-attribute 'org-table nil :font '"JetBrains Mono" :weight 'normal :height 1.0 :foreground "#bbc2cf"))
+(add-hook 'emacs-startup-hook 'org-colors-doom-one)
+
 (load "~/.config/doom/typing-practice.el")
 
 (defadvice practice-typing (around no-cursor activate)
