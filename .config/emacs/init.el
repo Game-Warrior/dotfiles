@@ -719,6 +719,13 @@
 
 (define-key org-mode-map (kbd "C-c C-d") 'my-org-todo-toggle)
 
+(use-package org-sticky-header
+  :config
+
+  :hook
+  (org-mode . org-sticky-header-mode)
+  )
+
 ;; (with-eval-after-load 'org-mode 
   (defun gw/org-colors-doom-one ()
     "Enable Doom One Colors for Org headers."

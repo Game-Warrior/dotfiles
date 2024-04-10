@@ -52,6 +52,7 @@
   - [[#org-contrib][Org-contrib]]
   - [[#org-insert-item][org-insert-item]]
   - [[#org-todos][Org-todos]]
+  - [[#org-sticky-header][org-sticky-header]]
   - [[#org-heading-colors][Org-Heading-Colors]]
 - [[#writing-stuff][WRITING STUFF]]
   - [[#typing-practice][Typing Practice]]
@@ -998,6 +999,18 @@ This package implements a modern style for your Org buffers using font locking a
     (org-flag-subtree t)))
 
 (define-key org-mode-map (kbd "C-c C-d") 'my-org-todo-toggle)
+#+end_src
+
+** org-sticky-header
+This package displays in the header-line the Org heading for the node that’s at the top of the window. This way, if the heading for the text at the top of the window is beyond the top of the window, you don’t forget which heading the text belongs to. The display can be customized to show just the heading, the full outline path, or the full outline path in reverse.
+[[https://github.com/alphapapa/org-sticky-header]]
+#+begin_src emacs-lisp
+  (use-package org-sticky-header
+    :config
+
+    :hook
+    (org-mode . org-sticky-header-mode)
+    )
 #+end_src
 
 ** Org-Heading-Colors
