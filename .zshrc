@@ -59,4 +59,10 @@ echo  "  _____  __          __
 if [[ "$OSTYPE" == darwin* ]]; then source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; fi
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
 
-if [[ "$OSTYPE" == gnu/linux* ]]; then source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; fi
+if [[ "$(uname)" == "Linux" ]]; then
+    if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    else
+        echo "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh does not exist"
+    fi
+fi
