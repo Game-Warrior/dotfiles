@@ -56,5 +56,7 @@ echo  "  _____  __          __
  \_____|     \/  \/"
 
 # End of lines added by compinstall
+if [[ "$OSTYPE" == darwin* ]]; then source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; fi
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
-source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ "$OSTYPE" == gnu/linux* ]]; then source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; fi
