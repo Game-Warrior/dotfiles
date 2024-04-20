@@ -457,34 +457,35 @@
 ;; Module: `me-org' -- Package: `org'
 (with-eval-after-load 'org
   (setq org-directory "~/Documents/"
-	;; Set where org agenda get todos from
-	org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org" "~/Documents/mobile.org")
-	org-default-notes-file (expand-file-name "notes.org" org-directory)
-	;; Set where archive org-headings go
-	org-archive-location "~/Documents/Archive/archive.org::"
-	;; Set org-ellipsis
-	;; org-ellipsis " ↴ "
-	;; org-ellipsis" ⤷ "
-	org-ellipsis " ... "
-	org-hide-emphasis-markers t
-	;; ex. of org-link-abbrev-alist in action
-	;; [[arch-wiki:Name_of_Page][Description]]
-	org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
-	  '(("google" . "http://www.google.com/search?q=")
-	    ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
-	    ("ddg" . "https://duckduckgo.com/?q=")
-	    ("wiki" . "https://en.wikipedia.org/wiki/"))
-	org-table-convert-region-max-lines 20000
-	org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
-	  '((sequence
-	     "TODO(t)"           ; A task that is ready to be tackled
-	     "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
-	     "WAIT(w)"           ; Something is holding up this task
-	     "|"                 ; The pipe necessary to separate "active" states and "inactive" states
-	     "DONE(d)"           ; Task has been completed
-	     "CANCELLED(c)" ))) ; Task has been cancelled
-  )
-(add-hook 'org-mode-hook (lambda () (global-display-line-numbers-mode -1)))
+        ;; Set where org agenda get todos from
+        org-agenda-files '("~/Documents/agenda.org" "~/Documents/To-Research.org" "~/Documents/inbox.org" "~/Documents/notes.org" "~/Documents/books.org" "~/Documents/mobile.org")
+        org-default-notes-file (expand-file-name "notes.org" org-directory)
+        ;; Set where archive org-headings go
+        org-archive-location "~/Documents/Archive/archive.org::"
+        ;; Set org-ellipsis
+        ;; org-ellipsis " ↴ "
+        ;; org-ellipsis" ⤷ "
+        org-ellipsis " ... "
+        org-hide-emphasis-markers t
+        ;; ex. of org-link-abbrev-alist in action
+        ;; [[arch-wiki:Name_of_Page][Description]]
+        org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
+          '(("google" . "http://www.google.com/search?q=")
+            ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
+            ("ddg" . "https://duckduckgo.com/?q=")
+            ("wiki" . "https://en.wikipedia.org/wiki/"))
+        org-table-convert-region-max-lines 20000
+        org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
+          '((sequence
+             "TODO(t)"           ; A task that is ready to be tackled
+             "NEXT(n)"           ; This is for something that I am in the process of doing (for example reading a book)
+             "WAIT(w)"           ; Something is holding up this task
+             "|"                 ; The pipe necessary to separate "active" states and "inactive" states
+             "DONE(d)"           ; Task has been completed
+             "CANCELLED(c)" ))) ; Task has been cancelled
+    org-list-allow-alphabetical t
+    )
+  (add-hook 'org-mode-hook (lambda () (global-display-line-numbers-mode -1)))
 
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
