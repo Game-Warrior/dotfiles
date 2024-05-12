@@ -153,7 +153,7 @@ The first line below designates the directory where will place all of our custom
       (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
             doom-themes-enable-italic t) ; if nil, italics is universally disabled
       ;; Sets the default theme to load!!!
-      (load-theme 'doom-one t)
+      (load-theme 'ef-night t)
       ;; Corrects (and improves) org-mode's native fontification.
       (doom-themes-org-config))
 
