@@ -746,6 +746,10 @@
       (set-face-attribute 'org-table nil :font '"JetBrains Mono" :weight 'normal :height 1.0 :foreground "#bbc2cf"))
 (add-hook 'emacs-startup-hook 'org-colors-doom-one)
 
+(use-package macro-slides
+  :ensure (macro-slides :host github
+                        :repo "positron-solutions/macro-slides"))
+
 (load "~/.config/doom/typing-practice.el")
 
 (defadvice practice-typing (around no-cursor activate)

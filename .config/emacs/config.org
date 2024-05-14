@@ -54,6 +54,7 @@
   - [[#org-todos][Org-todos]]
   - [[#org-sticky-header][org-sticky-header]]
   - [[#org-heading-colors][Org-Heading-Colors]]
+  - [[#org-macro-slides][Org-Macro-Slides]]
 - [[#writing-stuff][WRITING STUFF]]
   - [[#typing-practice][Typing Practice]]
   - [[#olivetti][Olivetti]]
@@ -1034,6 +1035,17 @@ This package displays in the header-line the Org heading for the node that’s a
       (set-face-attribute (nth 0 face) nil :font '"Atkinson Hyperlegible" :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
       (set-face-attribute 'org-table nil :font '"JetBrains Mono" :weight 'normal :height 1.0 :foreground "#bbc2cf"))
 (add-hook 'emacs-startup-hook 'org-colors-doom-one)
+#+end_src
+
+** Org-Macro-Slides
+- A presentation framework that can incorporate anything Emacs does
+- Any buffer can be part of a presentation sequence
+- Present Org documents with babel integration
+- Extensible presentation sequences and display options
+#+begin_src emacs-lisp
+(use-package macro-slides
+  :ensure (macro-slides :host github
+                        :repo "positron-solutions/macro-slides"))
 #+end_src
 
 * WRITING STUFF
