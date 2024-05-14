@@ -18,10 +18,10 @@ This Script installs my configuration files for UNIX like operating systems.
 - [[#installing-things-with-homebrew][Installing things with Homebrew]]
   - [[#installing-emacs][Installing Emacs]]
   - [[#installing-things-that-need-to-not-be-quarantined][Installing things that need to not be quarantined]]
-- [[#installing-minemacs][Installing MinEmacs]]
 - [[#new-directories][New Directories]]
   - [[#developer][Developer]]
   - [[#org][Org]]
+  - [[#wallpapers][Wallpapers]]
 
 * Welcome Message
 #+begin_src shell
@@ -38,7 +38,6 @@ echo  "       _____  __          __
 
 cd ~/
 #+end_src
-
 * Copying Configuration Files
 #+begin_src shell
 echo "Copying my Configuration files"
@@ -105,12 +104,6 @@ done
 #+end_src
 ** Installing things that need to not be quarantined
 
-* Installing MinEmacs
-# #+begin_src shell
-echo "Installing MinEmacs"
-git clone https://github.com/abougouffa/minemacs.git ~/.emacs.d && emacs
-# #+end_src
-
 * New Directories
 ** Developer
 #+begin_src shell
@@ -124,6 +117,13 @@ mkdir ~/Developer/Projects
 #+begin_src shell
 echo "Making Org folder"
 mkdir ~/Org
+#+end_src
+** Wallpapers
+#+begin_src shell
+
+echo "Downloading Distrotube's Wallpapers"
+cd ~/Wallpapers/
+git clone https://gitlab.com/dwt1/wallpapers
 #+end_src
 
 * Parking Lot :noexport:
