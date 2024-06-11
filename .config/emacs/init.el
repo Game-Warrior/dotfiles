@@ -17,54 +17,55 @@
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
     ;; Sets the default theme to load!!!
-    (load-theme 'ef-autumn t)
+    (load-theme 'doom-solarized-dark t)
     ;; Corrects (and improves) org-mode's native fontification.
     (doom-themes-org-config))
 
 (use-package ef-themes)
 
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
+(setq ns-use-proxy-icon nil)
 
 (set-face-attribute 'default nil
-   :font "JetBrains Mono"
-   :height 110
-   :weight 'medium)
-(set-face-attribute 'variable-pitch nil
- :font "Atkinson Hyperlegible"
- :height 120
- :weight 'medium)
-  (set-face-attribute 'fixed-pitch nil
-   :font "JetBrains Mono"
-   :height 110
-   :weight 'medium)
+  :font "JuliaMono"
+  :height 160
+  :weight 'medium)
+ (set-face-attribute 'variable-pitch nil
+  :font "Atkinson Hyperlegible"
+  :height 180
+  :weight 'medium)
+ (set-face-attribute 'fixed-pitch nil
+  :font "JuliaMono"
+  :height 160
+  :weight 'medium)
 
-   ;; This sets the default font on all graphical frames created after restarting Emacs.
-   ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
-   ;; are not right unless I also add this method of setting the default font.
-   (add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+ ;; This sets the default font on all graphical frames created after restarting Emacs.
+ ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
+ ;; are not right unless I also add this method of setting the default font.
+(add-to-list 'default-frame-alist '(font . "Jetbrains Mono-14"))
 
-   ;; Uncomment the following line if line spacing needs adjusting.
-   ;; (setq-default line-spacing 0.12)
+ ;; Uncomment the following line if line spacing needs adjusting.
+ ;; (setq-default line-spacing 0.12)
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-(set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-    (use-package doom-modeline
-      :hook (emacs-startup . doom-modeline-mode)
-      :init
-  (setq doom-modeline-height 25     ;; sets modeline height
-	doom-modeline-bar-width 5   ;; sets right bar width
-	doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
-	doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode rst-mode latex-mode tex-mode text-mode) ;; Show word count
-	doom-modeline-time-icon t
-	doom-modeline-buffer-file-name-style 'autotruncate-except-project
-	doom-modeline-modal-icon nil
-	doom-modeline-buffer-encoding nil
-)
-	)
+(set-face-attribute 'mode-line nil :font "Jetbrains Mono-15")
+(use-package doom-modeline
+    :hook (emacs-startup . doom-modeline-mode)
+    :init
+    (setq doom-modeline-height 18     ;; sets modeline height
+          doom-modeline-bar-width 5   ;; sets right bar width
+          doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
+          doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode rst-mode latex-mode tex-mode text-mode) ;; Show word count
+          doom-modeline-time-icon t
+          doom-modeline-buffer-file-name-style 'autotruncate-except-project
+          doom-modeline-modal-icon nil
+          doom-modeline-buffer-encoding nil
+  )
+          )
 
 (menu-bar-mode -1)
 
@@ -76,7 +77,7 @@
   (setq initial-buffer-choice 'dashboard-open)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
-  (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
+  ;; (setq dashboard-banner-logo-title "Emacs Is More Than A Text Editor!")
   (setq dashboard-startup-banner '2) ;; use standard emacs logo as banner
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
@@ -89,6 +90,7 @@
   :config
    (dashboard-setup-startup-hook))
 
+;; (add-hook 'emacs-startup-hook (lambda () (toggle-truncate-lines -2)))
 (toggle-truncate-lines -1)
 (global-word-wrap-whitespace-mode 1)
 
@@ -301,7 +303,7 @@
 
   (gb/leader-keys
     "v" '(org-archive-subtree :wk "Archive Org Heading.")
-    "y" '(xwidgets-webkit-browse-url :wk "Open a link in xWidgets Webkit")
+    "y" '(xwidget-webkit-browse-url :wk "Open a link in xWidgets Webkit")
     "x" '(scratch-buffer :wk "Open the scratch buffer")
     "X" '(org-capture :wk "Start an org-capture")
     )
@@ -311,47 +313,42 @@
 (setq user-full-name "Gardner Berry"
     user-mail-address "gardner@gardnerberry.com")
 
-;; (define-globalized-minor-mode global-rainbow-mode rainbow-mode
-  ;; (lambda ()
-    ;; (when (not (memq major-mode
-                ;; (list 'org-agenda-mode)))
-     ;; (rainbow-mode 1))))
-;; (global-rainbow-mode 1 )
-
 (setq browse-url-browser-function 'browse-url-default-browser)
 
 ;; Module: `me-rss' -- Package: `elfeed'
   (with-eval-after-load 'elfeed
     ;; Add news feeds for `elfeed'
     (setq elfeed-feeds
-          '(
-            ;; General
-            ("https://frame.work/blog.rss" Framework)
-            ("https://factorio.com/blog/rss" Factorio)
-            ("https://news.nononsenseapps.com/index.atom" Feeder)
-            ("https://kagifeedback.org/atom/t/release-notes" Kagi)
-            ("https://news.play.date/index.xml" Playdate)
-            ;; Linux
-            ("https://blog.linuxmint.com/?feed=rss2" linux)
-            ("https://archlinux.org/news/" linux)
-            ("https://fedoramagazine.org/feed/" linux)
-            ("https://endeavouros.com/news/" linux)
-            ;; Boat Stuff
-            ("https://buffalonickelblog.com/feed/" boat)
-            ("https://mobius.world/feed/" boat)
-            ("https://www.mvuglybetty.com/blog-feed.xml" Ugly-Betty boat)
-             ;; Emacs
-            ("http://xenodium.com/rss.xml" emacs)
-            ("https://cmdln.org/post/" emacs)
-            ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs)
-            ("https://systemcrafters.net/rss/news.xml" emacs)
-            ("https://sachachua.com/blog/feed/" emacs)
-            ("https://rostre.bearblog.dev/feed/?type=rss" emacs)
-            ("https://200ok.ch/atom.xml" emacs)
-            ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
-            ("https://blog.tecosaur.com/tmio/rss.xml" emacs)
-            ;; News
-            ))
+	  '(
+	    ;; General
+	    ("https://frame.work/blog.rss" Framework)
+	    ("https://factorio.com/blog/rss" Factorio)
+	    ("https://news.nononsenseapps.com/index.atom" Feeder)
+	    ("https://kagifeedback.org/atom/t/release-notes" Kagi)
+	    ("https://news.play.date/index.xml" Playdate)
+	    ("https://reecemartin.ca/feed/" Transit)
+	    ("https://apod.com/feed.rss" NASA)
+	    ;; Linux
+	    ("https://blog.linuxmint.com/?feed=rss2" linux)
+	    ("https://archlinux.org/news/" linux)
+	    ("https://fedoramagazine.org/feed/" linux)
+	    ("https://endeavouros.com/news/" linux)
+	    ;; Boat Stuff
+	    ("https://buffalonickelblog.com/feed/" boat)
+	    ("https://mobius.world/feed/" boat)
+	    ("https://www.mvuglybetty.com/blog-feed.xml" Ugly-Betty boat)
+	     ;; Emacs
+	    ("http://xenodium.com/rss.xml" emacs)
+	    ("https://cmdln.org/post/" emacs)
+	    ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs)
+	    ("https://systemcrafters.net/rss/news.xml" emacs)
+	    ("https://sachachua.com/blog/feed/" emacs)
+	    ("https://rostre.bearblog.dev/feed/?type=rss" emacs)
+	    ("https://200ok.ch/atom.xml" emacs)
+	    ;; ("https://planet.emacslife.com/atom.xml" PlanetEmacsLife emacs)
+	    ("https://blog.tecosaur.com/tmio/rss.xml" emacs)
+	    ;; News
+	    ))
 (defun toggle-elfeed-unread ()
   (interactive)
   (if (string-match-p "+unread" elfeed-search-filter)
@@ -393,16 +390,12 @@
 
 (cond ((eq system-type 'darwin)
   (use-package reveal-in-osx-finder)
-  (setq mac-option-key-is-meta nil
+  (setq mac-option-key-is-meta t
         mac-command-key-is-meta t
         mac-command-modifier `meta
         mac-option-modifier `none
         )
 ))
-
-(use-package yeetube
-  )
-(setq yeetube-player 'IINA)
 
 (setq bookmark-default-file "~/.config/emacs/bookmarks")  ; Set the bookmark file
      (setq bookmark-save-flag 1)                         ; Save bookmarks after every change
@@ -439,8 +432,6 @@
   (define-key evil-motion-state-map (kbd "TAB") nil))
 ;; Setting RETURN key in org-mode to follow links
   (setq org-return-follows-link  t)
-
-;; (use-package syncthing)
 
 (setq auto-save-file-name-transforms
 	    `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
@@ -494,9 +485,6 @@
 
 (setq org-archive-default-command 'org-archive-subtree)
 
-;;(map! :leader
-;;      (:desc "Archive Org-Todos" "v" org-archive-default-command))
-
 (with-eval-after-load 'org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
       org-deadline-warning-days 0
@@ -523,33 +511,24 @@
            "* Call from %^{Caller name}\n %U\n %i\n")
           )))
 
-(use-package ox-twbs
-  )
-(use-package ox-pandoc
-  )
-(use-package ox-gfm
-  )
-(use-package org-re-reveal
-  )
-;; (use-package ox-reveal
-  ;; )
-(use-package ox-epub
-  )
+(use-package ox-twbs)
+(use-package ox-pandoc)
+(use-package ox-gfm)
+(use-package org-re-reveal)
+(require 'ox-beamer)
+(use-package ox-epub)
 ;; Make it so that org-export wont use numbered headings
 (setq org-export-with-section-numbers nil)
 ;; Disable Timestamping
 (setq org-export-time-stamp-file nil)
 
 ;; Reveal.js + Org mode
-(setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
-      ;; org-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>emailme@gardnerberry.com</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
+(setq org-re-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"
       org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>gardner.berry@crms.org</h3><h5>@Gamewarrior010@social.linux.pizza</h5>"
-      ;; org-re-reveal-title-slide "<h1>%t</h1><h2>%a</h2><h3>gardner.berry@crms.org</h3>"
-      org-reveal-theme "moon"
       org-re-reveal-theme "moon"
-      ;; org-re-reveal-theme "blood"
       org-re-reveal-transition "slide"
-      org-reveal-plugins '(markdown notes math search zoom))
+      org-re-reveal-plugins '(notes)
+      org-re-reveal-revealjs-version "4")
 
 (defun set-ignored-headlines-tags (backend)
      "Remove all headlines with tag ignore_heading in the current buffer.
@@ -578,33 +557,30 @@
   )
 
 (use-package org-modern
-    :ensure t
-    :custom
-    ;; (org-modern-hide-stars nil)		; adds extra indentation
-    ;; (org-modern-table nil)
-    (org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆"))
-    (org-modern-list 
-     '(;; (?- . "-")
-       (?* . "•")
-       (?+ . "✦")))
-    :hook
-    (org-mode . org-modern-mode)
-    (org-agenda-finalize . org-modern-agenda))
-        ;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
+   :ensure t
+   :custom
+   ;; (org-modern-hide-stars nil)		; adds extra indentation
+   ;; (org-modern-table nil)
+   (org-modern-star '("◉" "●" "○" "◆" "●" "○" "◆"))
+   (org-modern-list 
+    '(;; (?- . "-")
+      (?* . "•")
+      (?+ . "✦")))
+   :hook
+   (org-mode . org-modern-mode)
+   (org-agenda-finalize . org-modern-agenda))
+       ;; 	org-modern-list '((?- . ?➤) (?+ . ?✦)) ; changes +/- symbols in item lists
 
 (use-package org-modern-indent
-  ;; :load-path "~/code/emacs/org-modern-indent/"
-  ; or
   :ensure (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
   :hook
+  (org-mode . org-modern-indent-mode)
   (org-mode . org-indent-mode)
   )
 
-(use-package org-cliplink
-  )
+(use-package org-cliplink)
 
-(use-package org-contrib
-  )
+(use-package org-contrib)
 
 (defun +org--insert-item (direction)
   (let ((context (org-element-lineage
@@ -704,7 +680,7 @@
 
 (define-key org-mode-map (kbd "<C-return>") '+org/insert-item-below)
 
-(defun my-org-todo-toggle ()
+(defun gw/toggle-to-done ()
   (interactive)
   (let ((state (org-get-todo-state))
         post-command-hook)
@@ -714,7 +690,7 @@
     (run-hooks 'post-command-hook)
     (org-flag-subtree t)))
 
-(define-key org-mode-map (kbd "C-c C-d") 'my-org-todo-toggle)
+;; (define-key org-mode-map (kbd "C-c C-d") 'my-org-todo-toggle)
 
 (use-package org-sticky-header
   :config
@@ -754,12 +730,10 @@
                minibuffer-setup-hook)))
     ad-do-it))
 
-(use-package olivetti
-  )
+(use-package olivetti)
 (setq olivetti-style 'fringes-and-margins)
 
-(use-package palimpsest
-  )
+(use-package palimpsest)
 (add-hook 'text-mode-hook 'palimpsest-mode)
 
 ;; (map!
@@ -770,10 +744,9 @@
   (dolist (hook '(org-mode-hook
                     text-mode-hook))
       (add-hook hook #'abbrev-mode))
-(quietly-read-abbrev-file "~/.config/emacs/abbrev_defs")
+(quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
 
-(use-package yasnippet
-    )
+(use-package yasnippet)
   (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
 (add-hook 'text-mode-hook (lambda () (yas-global-mode 1)))
 
@@ -786,28 +759,85 @@
 )
 
 (use-package magit)
-(use-package hl-todo)
-(use-package magit-todos
+
+  (use-package magit-todos
     :after magit
-    :after hl-todo
     :config (magit-todos-mode 1))
 
 (use-package jinx
    :hook (emacs-startup . global-jinx-mode))
 
 (use-package synosaurus
+  :hook (org-mode . synosaurus-mode)
   )
 
 (use-package denote)
   (setq denote-directory (expand-file-name "~/Notes")
-        denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
+        denote-known-keywords '("emacs" "history" "english" "school" "philosophy" "miami" "urbanism" "MoreThanJustBikes")
         denote-file-type 'org
         )
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 
-(setq nov-unzip-program (executable-find "bsdtar")
-      nov-unzip-args '("-xC" directory "-f" filename))
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+(use-package treemacs)
+(use-package treemacs-evil)
+
+(defun md-compile ()
+  "Compiles the currently loaded markdown file using pandoc into a PDF"
+  (interactive)
+  (save-buffer)
+  (shell-command (concat "pandoc " (buffer-file-name) " -o "
+                         (replace-regexp-in-string "md" "pdf" (buffer-file-name)))))
+
+(defun update-other-buffer ()
+  (interactive)
+  (other-window 1)
+  (revert-buffer nil t)
+  (other-window -1))
+
+(defun md-compile-and-update-other-buffer ()
+  "Has as a premise that it's run from a markdown-mode buffer and the
+   other buffer already has the PDF open"
+  (interactive)
+  (md-compile)
+  (update-other-buffer))
+
+(defun latex-compile-and-update-other-buffer ()
+  "Has as a premise that it's run from a latex-mode buffer and the
+   other buffer already has the PDF open"
+  (interactive)
+  (save-buffer)
+  (shell-command (concat "pdflatex " (buffer-file-name)))
+  (switch-to-buffer (other-buffer))
+  (kill-buffer)
+  (update-other-buffer))
+
+(defun org-compile-beamer-and-update-other-buffer ()
+  "Has as a premise that it's run from an org-mode buffer and the
+   other buffer already has the PDF open"
+  (interactive)
+  (org-beamer-export-to-pdf)
+  (update-other-buffer))
+
+(defun org-compile-latex-and-update-other-buffer ()
+  "Has as a premise that it's run from an org-mode buffer and the
+   other buffer already has the PDF open"
+  (interactive)
+  (org-latex-export-to-pdf)
+  (update-other-buffer))
+
+(eval-after-load 'latex-mode
+  '(define-key latex-mode-map (kbd "C-c r") 'latex-compile-and-update-other-buffer))
+
+(define-key org-mode-map (kbd "C-c lr") 'org-compile-latex-and-update-other-buffer)
+(define-key org-mode-map (kbd "C-c br") 'org-compile-beamer-and-update-other-buffer)
+
+(eval-after-load 'markdown-mode
+  '(define-key markdown-mode-map (kbd "C-c r") 'md-compile-and-update-other-buffer))
+
+(use-package nov)
+  (setq nov-unzip-program (executable-find "bsdtar")
+        nov-unzip-args '("-xC" directory "-f" filename))
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 (use-package pdf-tools
   :defer t
@@ -834,7 +864,7 @@
 (use-package ellama
   :init
   (setopt ellama-language "English")
-  (setopt ellama-buffer-mode 'org-mode)
+  ;; (setopt ellama-buffer-mode 'org-mode)
   (require 'llm-ollama)
   (setopt ellama-provider
                   (make-llm-ollama
@@ -843,19 +873,22 @@
   ;; You shouldn't add ollama providers here - it can be selected interactively
   ;; without it. It is just example.
   (setopt ellama-providers
-                  '(("zephyr" . (make-llm-ollama
-                                                 :chat-model "zephyr:latest"
-                                                 :embedding-model "zephyr:latest"))
-                        ("mistral" . (make-llm-ollama
-                                                  :chat-model "mistral:latest"
-                                                  :embedding-model "mistral:latest"))
-                        ("dolphin-mixtral" . (make-llm-ollama
-                                                  :chat-model "dolphin-mixtral:latest"
-                                                  :embedding-model "dolphin-mixtral:latest")))))
+            '(("zephyr" . (make-llm-ollama
+                                           :chat-model "zephyr:latest"
+                                           :embedding-model "zephyr:latest"))
+                  ("mistral" . (make-llm-ollama
+                                           :chat-model "mistral:latest"
+                                           :embedding-model "mistral:latest"))
+                  ("dolphin-mixtral" . (make-llm-ollama
+                                           :chat-model "dolphin-mixtral:latest"
+                                           :embedding-model "dolphin-mixtral:latest"))
+                  ("llama3" . (make-llm-ollama
+                               :chat-model "llama3:latest"
+                               :embedding-model "llama3:latest"))
+                  )))
 
 (use-package chatgpt-shell
   :config
-
   (setq chatgpt-shell-openai-key "placeholder")
   )
 
@@ -865,10 +898,13 @@
       mastodon-active-user "Gamewarrior010")
   )
 
-(use-package lem
-  :config
-(setq lem-instance-url "https://lemmy.world")
-(setq lem-current-user "GameWarrior"))
+(use-package fedi)
+;; (use-package lem
+;;   :config
+;; (
+;;  setq lem-instance-url "https://lemmy.world")
+;; (
+ ;; setq lem-current-user "GameWarrior"))
 
 (use-package dired-open
   :config
@@ -903,14 +939,11 @@
        (setq insert-directory-program "/opt/homebrew/bin/gls"))
       )
 
-(use-package nix-mode
-  )
+;; (use-package nix-mode)
 
-(use-package ob-nix
-  )
+(use-package ob-nix)
 
-(use-package nixpkgs-fmt
-  )
+(use-package nixpkgs-fmt)
 
 (use-package yaml-mode)
 
@@ -919,6 +952,31 @@
          (clojure-mode . rainbow-delimiters-mode)))
 
 (use-package lua-mode)
+
+(use-package blamer
+  :ensure t
+  :bind (("s-i" . blamer-show-commit-info)
+         ("C-c i" . blamer-show-posframe-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t)))
+  )
+
+(use-package vterm)
+(use-package vterm-toggle)
+
+(use-package multi-vterm
+	:config
+	(add-hook 'vterm-mode-hook
+			(lambda ()
+			(setq-local evil-insert-state-cursor 'box)
+			(evil-insert-state))))
 
 (use-package corfu
   :hook (emacs-startup . global-corfu-mode)
@@ -969,9 +1027,9 @@
 
 (use-package embark
     :bind (("<remap> <describe-bindings>" . embark-bindings)
-	   ("C-²" . embark-act) ; In a French AZERTY keyboard, the ² key is right above TAB
-	   ("M-²" . embark-collect)
-	   ("C-&" . embark-dwim))
+           ("C-²" . embark-act) ; In a French AZERTY keyboard, the ² key is right above TAB
+           ("M-²" . embark-collect)
+           ("C-&" . embark-dwim))
     :init
     ;; Use Embark to show bindings in a key prefix with `C-h`
     (setq prefix-help-command #'embark-prefix-help-command))
@@ -998,19 +1056,17 @@
     ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
     ;; to serve the original "C-k".
     :bind (:map vertico-map
-	   ("C-j" . vertico-next)
-	   ("C-k" . vertico-previous)
-	   :map minibuffer-local-map
-	   ("C-S-k" . kill-line))
+           ("C-j" . vertico-next)
+           ("C-k" . vertico-previous)
+           :map minibuffer-local-map
+           ("C-S-k" . kill-line))
     :custom
     (vertico-cycle t)
     (vertico-resize nil)
     (vertico-count 12))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
-;; (use-package savehist
-  ;; :init
-  ;; (savehist-mode))
+(add-hook 'emacs-startup (lambda () (savehist-mode -1)))
 
 (use-package which-key
   :init
@@ -1034,17 +1090,5 @@
 (use-package xkcd)
 
 (use-package 2048-game
-  :elpaca (2048-game :type git :host github :repo "https://github.com/emacsmirror/2048-game.git")
+  :ensure (2048-game :type git :host github :repo "https://github.com/emacsmirror/2048-game.git")
   )
-
-(use-package vterm)
-(use-package vterm-toggle)
-
-(use-package multi-vterm
-	:config
-	(add-hook 'vterm-mode-hook
-			(lambda ()
-			(setq-local evil-insert-state-cursor 'box)
-			(evil-insert-state))))
-
-(use-package casual)
