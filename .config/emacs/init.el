@@ -17,7 +17,7 @@
     (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
           doom-themes-enable-italic t) ; if nil, italics is universally disabled
     ;; Sets the default theme to load!!!
-    (load-theme 'ef-night t)
+    (load-theme 'ef-autumn t)
     ;; Corrects (and improves) org-mode's native fontification.
     (doom-themes-org-config))
 
@@ -32,21 +32,21 @@
 
 (set-face-attribute 'default nil
    :font "JetBrains Mono"
-   :height 110
+   :height 140
    :weight 'medium)
 (set-face-attribute 'variable-pitch nil
  :font "Atkinson Hyperlegible"
- :height 120
+ :height 150
  :weight 'medium)
   (set-face-attribute 'fixed-pitch nil
    :font "JetBrains Mono"
-   :height 110
+   :height 140
    :weight 'medium)
 
    ;; This sets the default font on all graphical frames created after restarting Emacs.
    ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
    ;; are not right unless I also add this method of setting the default font.
-   (add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+   (add-to-list 'default-frame-alist '(font . "JetBrains Mono-14"))
 
    ;; Uncomment the following line if line spacing needs adjusting.
    ;; (setq-default line-spacing 0.12)
@@ -445,7 +445,7 @@
 ;; Setting RETURN key in org-mode to follow links
   (setq org-return-follows-link  t)
 
-;; (use-package syncthing)
+(use-package syncthing)
 
 (setq auto-save-file-name-transforms
 	    `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
@@ -746,10 +746,6 @@
       (set-face-attribute 'org-table nil :font '"JetBrains Mono" :weight 'normal :height 1.0 :foreground "#bbc2cf"))
 (add-hook 'emacs-startup-hook 'org-colors-doom-one)
 
-(use-package macro-slides
-  :ensure (macro-slides :host github
-                        :repo "positron-solutions/macro-slides"))
-
 (load "~/.config/doom/typing-practice.el")
 
 (defadvice practice-typing (around no-cursor activate)
@@ -804,9 +800,9 @@
   )
 
 (use-package denote)
-  (setq denote-directory (expand-file-name "~/Notes")
-        denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
-        denote-file-type 'org
+(setq denote-directory (expand-file-name "~/Notes")
+      denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
+      denote-file-type 'org
         )
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 
@@ -835,7 +831,6 @@
   ;; (setq eshell-highlight-prompt nil
         ;; eshell-prompt-function 'epe-theme-lambda))
 
-;; (setq ellama-buffer-mode "org-mode")
 (use-package ellama
   :init
   (setopt ellama-language "English")
@@ -849,14 +844,17 @@
   ;; without it. It is just example.
   (setopt ellama-providers
                   '(("zephyr" . (make-llm-ollama
-                                                 :chat-model "zephyr:latest"
-                                                 :embedding-model "zephyr:latest"))
-                        ("mistral" . (make-llm-ollama
-                                                  :chat-model "mistral:latest"
-                                                  :embedding-model "mistral:latest"))
-                        ("dolphin-mixtral" . (make-llm-ollama
-                                                  :chat-model "dolphin-mixtral:latest"
-                                                  :embedding-model "dolphin-mixtral:latest")))))
+                                 :chat-model "zephyr:latest"
+                                 :embedding-model "zephyr:latest"))
+                    ("mistral" . (make-llm-ollama
+                                 :chat-model "mistral:latest"
+                                 :embedding-model "mistral:latest"))
+                    ("dolphin-mixtral" . (make-llm-ollama
+                                 :chat-model "dolphin-mixtral:latest"
+                                 :embedding-model "dolphin-mixtral:latest"))
+                    ("llama3" . (make-llm-ollama
+                                 :chat-model "llama3:latest"
+                                 :embedding-model "llama3:latest")))))
 
 (use-package chatgpt-shell
   :config
@@ -1039,7 +1037,7 @@
 (use-package xkcd)
 
 (use-package 2048-game
-  :elpaca (2048-game :type git :host github :repo "https://github.com/emacsmirror/2048-game.git")
+  :ensure (2048-game :type git :host github :repo "https://github.com/emacsmirror/2048-game.git")
   )
 
 (use-package vterm)
@@ -1052,4 +1050,4 @@
 			(setq-local evil-insert-state-cursor 'box)
 			(evil-insert-state))))
 
-(use-package casual)
+;; (use-package casual)

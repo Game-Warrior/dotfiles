@@ -2,12 +2,60 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("mobile.org"
+(("Good-Life"
+ (filename . "~/Documents/School-2023-2024/History:SocialChange/Good-Life/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "0K May 11 21:01 ")
+ (position . 151)
+ (last-modified 26197 23355 127361 115000))
+("Documents"
+ (filename . "~/Documents/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "0K May  3 16:49 ")
+ (position . 105)
+ (last-modified 26165 27456 509204 528000))
+("Projects"
+ (filename . "~/Documents/Projects/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "0K Apr 20 15:18 ")
+ (position . 114)
+ (last-modified 26149 50817 438031 453000))
+("Resposibilites"
+ (filename . "~/Documents/Resposibilites/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "0K Apr 20 15:18 ")
+ (position . 120)
+ (last-modified 26149 50811 808876 807000))
+("Resources"
+ (filename . "~/Documents/Resources/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "0K Apr 20 15:18 ")
+ (position . 115)
+ (last-modified 26149 50803 295075 734000))
+("dotfiles config"
+ (filename . "~/dotfiles/.config/emacs/config.org")
+ (front-context-string . "\n* Table of Cont")
+ (rear-context-string . ".el :mkdirp yes\n")
+ (position . 267)
+ (last-modified 26133 19569 448622 254000))
+("mobile.org"
  (filename . "~/Documents/mobile.org")
- (front-context-string)
+ (front-context-string . "\n* Barbra\nEmail:")
  (rear-context-string . "num:nil toc:nil\n")
  (position . 110)
- (last-modified 25973 4575 776384 985000))
+ (last-modified 26130 46708 839433 493000))
+("History:SocialChange"
+ (filename . "~/Documents/School-2023-2024/History:SocialChange/")
+ (front-context-string . "China-Presentati")
+ (rear-context-string . "0K Apr  4 08:08 ")
+ (position . 186)
+ (last-modified 26126 46287 632739 364000))
+("School-2023-2024"
+ (filename . "~/Documents/School-2023-2024/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "0K Apr  4 08:08 ")
+ (position . 122)
+ (last-modified 26126 46281 273420 191000))
 ("notes.org"
  (filename . "~/Documents/notes.org")
  (front-context-string . "\n* Table of Cont")

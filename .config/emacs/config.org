@@ -54,7 +54,6 @@
   - [[#org-todos][Org-todos]]
   - [[#org-sticky-header][org-sticky-header]]
   - [[#org-heading-colors][Org-Heading-Colors]]
-  - [[#org-macro-slides][Org-Macro-Slides]]
 - [[#writing-stuff][WRITING STUFF]]
   - [[#typing-practice][Typing Practice]]
   - [[#olivetti][Olivetti]]
@@ -154,7 +153,7 @@ The first line below designates the directory where will place all of our custom
       (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
             doom-themes-enable-italic t) ; if nil, italics is universally disabled
       ;; Sets the default theme to load!!!
-      (load-theme 'ef-night t)
+      (load-theme 'ef-autumn t)
       ;; Corrects (and improves) org-mode's native fontification.
       (doom-themes-org-config))
 
@@ -176,21 +175,21 @@ Change the title bar format
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
     :font "JetBrains Mono"
-    :height 110
+    :height 140
     :weight 'medium)
  (set-face-attribute 'variable-pitch nil
   :font "Atkinson Hyperlegible"
-  :height 120
+  :height 150
   :weight 'medium)
    (set-face-attribute 'fixed-pitch nil
     :font "JetBrains Mono"
-    :height 110
+    :height 140
     :weight 'medium)
 
     ;; This sets the default font on all graphical frames created after restarting Emacs.
     ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
     ;; are not right unless I also add this method of setting the default font.
-    (add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+    (add-to-list 'default-frame-alist '(font . "JetBrains Mono-14"))
 
     ;; Uncomment the following line if line spacing needs adjusting.
     ;; (setq-default line-spacing 0.12)
@@ -662,11 +661,11 @@ A Periodic table package for emacs.
 #+end_src
 ** Syncthing
 #+begin_src emacs-lisp
-  ;; (use-package syncthing)
+(use-package syncthing)
 #+end_src
 ** Autosave-files and Backups
 #+begin_src emacs-lisp
-  (setq auto-save-file-name-transforms
+(setq auto-save-file-name-transforms
 	    `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
@@ -1036,18 +1035,6 @@ This package displays in the header-line the Org heading for the node that’s a
       (set-face-attribute 'org-table nil :font '"JetBrains Mono" :weight 'normal :height 1.0 :foreground "#bbc2cf"))
 (add-hook 'emacs-startup-hook 'org-colors-doom-one)
 #+end_src
-
-** Org-Macro-Slides
-- A presentation framework that can incorporate anything Emacs does
-- Any buffer can be part of a presentation sequence
-- Present Org documents with babel integration
-- Extensible presentation sequences and display options
-#+begin_src emacs-lisp
-(use-package macro-slides
-  :ensure (macro-slides :host github
-                        :repo "positron-solutions/macro-slides"))
-#+end_src
-
 * WRITING STUFF
 ** Typing Practice
 The typing-practice package runs solely in the minibuffer, so your boss thinks you are working 😊. It utilizes a database of the 1000 most commonly used English words, and let’s you customize how easy or difficult a session will be through a couple of variables. Before long, your hand should have a good feel for all of the most common English morphemes, giving you the foundation to quickly build other words with morphemes you’ve already learned. For example, after you have learned to type the word “the” (the most common English word) you will have a building block for quickly typing “there”, “these”, “their”, “father”, “they”, “other”, “together”, etc.
@@ -1134,8 +1121,8 @@ YASnippet is a tool that allows you to create templates do allow you to write le
 ** Spell Checker
 Jinx is a fast just-in-time spell-checker for Emacs.
 #+begin_src emacs-lisp
-  (use-package jinx
-     :hook (emacs-startup . global-jinx-mode))
+(use-package jinx
+   :hook (emacs-startup . global-jinx-mode))
 #+end_src
 
 ** Thesarus
@@ -1147,10 +1134,10 @@ Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
 ** Denote
 *Denote is a simple note-taking tool for Emacs. It is based on the idea that notes should follow a predictable and descriptive file-naming scheme. The file name must offer a clear indication of what the note is about, without reference to any other metadata. Denote basically streamlines the creation of such files while providing facilities to link between them.* Denote
 #+begin_src emacs-lisp
-    (use-package denote)
-  (setq denote-directory (expand-file-name "~/Notes")
-        denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
-        denote-file-type 'org
+(use-package denote)
+(setq denote-directory (expand-file-name "~/Notes")
+      denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
+      denote-file-type 'org
         )
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 #+end_src
@@ -1193,28 +1180,30 @@ nov.el provides a major mode for reading EPUB documents
 * AI ASSIANTS
 ** Ellama
 #+begin_src emacs-lisp
-  ;; (setq ellama-buffer-mode "org-mode")
-  (use-package ellama
-    :init
-    (setopt ellama-language "English")
-    (setopt ellama-buffer-mode 'org-mode)
-    (require 'llm-ollama)
-    (setopt ellama-provider
-                    (make-llm-ollama
-                     :chat-model "zephyr:latest" :embedding-model "zephyr:latest"))
-    ;; Predefined llm providers for interactive switching.
-    ;; You shouldn't add ollama providers here - it can be selected interactively
-    ;; without it. It is just example.
-    (setopt ellama-providers
-                    '(("zephyr" . (make-llm-ollama
-                                                   :chat-model "zephyr:latest"
-                                                   :embedding-model "zephyr:latest"))
-                          ("mistral" . (make-llm-ollama
-                                                    :chat-model "mistral:latest"
-                                                    :embedding-model "mistral:latest"))
-                          ("dolphin-mixtral" . (make-llm-ollama
-                                                    :chat-model "dolphin-mixtral:latest"
-                                                    :embedding-model "dolphin-mixtral:latest")))))
+       (use-package ellama
+         :init
+         (setopt ellama-language "English")
+         (setopt ellama-buffer-mode 'org-mode)
+         (require 'llm-ollama)
+         (setopt ellama-provider
+                         (make-llm-ollama
+                          :chat-model "zephyr:latest" :embedding-model "zephyr:latest"))
+         ;; Predefined llm providers for interactive switching.
+         ;; You shouldn't add ollama providers here - it can be selected interactively
+         ;; without it. It is just example.
+         (setopt ellama-providers
+                         '(("zephyr" . (make-llm-ollama
+                                        :chat-model "zephyr:latest"
+                                        :embedding-model "zephyr:latest"))
+                           ("mistral" . (make-llm-ollama
+                                        :chat-model "mistral:latest"
+                                        :embedding-model "mistral:latest"))
+                           ("dolphin-mixtral" . (make-llm-ollama
+                                        :chat-model "dolphin-mixtral:latest"
+                                        :embedding-model "dolphin-mixtral:latest"))
+                           ("llama3" . (make-llm-ollama
+                                        :chat-model "llama3:latest"
+                                        :embedding-model "llama3:latest")))))
 #+end_src
 
 ** Chatgpt-Shell
@@ -1447,7 +1436,7 @@ Embark makes it easy to choose a command to run based on what is near point, bot
 ** 2048
 #+begin_src emacs-lisp
   (use-package 2048-game
-    :elpaca (2048-game :type git :host github :repo "https://github.com/emacsmirror/2048-game.git")
+    :ensure (2048-game :type git :host github :repo "https://github.com/emacsmirror/2048-game.git")
     )
 #+end_src
 * Vterm
@@ -1469,5 +1458,5 @@ Managing multiple vterm buffers in Emacs This package is inspired by multi-term.
 * Casual
 Casual is an opinionated Transient-based porcelain for Emacs Calc.
 #+begin_src emacs-lisp
-(use-package casual)
+  ;; (use-package casual)
 #+end_src
