@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Reveal Presination
+# key: >r
+# --
+
+#+title: ${1:title}
+#+description: ${2:description}
+#+author: Gardner Berry
+#+options: num:nil toc:nil
+:Reveal_Properties:
+#+reveal_theme: moon
+:end:
+
+$0
+
+
+* Parking Lot :noexport:

@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Newsletter Snippet
+# key: >n
+# --
+
+#+title: `(insert (format-time-string "%Y-%m-%d"))`
+#+author: Gardner Berry
+#+options: toc:nil num:nil timestamp:nil
+
+Hello!
+${1:talk about this week and what you found...}
+
+* Videos
+
+* Articles
+
+* Books

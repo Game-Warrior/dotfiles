@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name:Bibliography Snippet
+# key: >c
+# --
+@${1:Article}{${2:the_title}
+title={${3:Title}},
+author={${4:Author}},
+url={${5:Link}},
+date={${6:yyyy-mm-dd}},
+publisher={${7:Publisher}},
+}
+$0

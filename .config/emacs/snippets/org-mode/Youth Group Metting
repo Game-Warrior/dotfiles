@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+# name: Youth-Group-Metting
+# key: >y
+# --
+
+#+title: ${1:title}
+#+description: ${2:description}
+#+author: Gardner Berry
+#+date: `(current-time-string)`
+#+options: num:nil toc:nil
+
+
+
+* Objective
+
+
+* Standing Items
+** Financial
+
+** Upcoming Events
+
+** Planning
+| Actions | Owners | Due-Date |
+|---------+--------+----------|
+|         |        |          |
+
+*** Challenges
+
+* Other
+
+* Parking Lot

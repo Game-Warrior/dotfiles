@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name:title
+# key:>t
+# --
+
+#+title: ${1:title}
+#+description: ${2:description}
+#+author: Gardner Berry
+#+options: toc:nil num:nil timestamp:nil
+
+$0
+
+
+* Parking Lot :noexport:

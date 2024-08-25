@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: Anki-german
+# key: >g
+# --
+
+* ${1:word}
+** Front
+${2:english}
+** Back
+${3:german}
+
+${}
