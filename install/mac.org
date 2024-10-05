@@ -120,10 +120,14 @@ mkdir ~/Org
 #+end_src
 ** Wallpapers
 #+begin_src shell
+  echo "Downloading my Wallpapers"
+  cd
+  git clone https://github.com/Game-Warrior/Wallpapers.git
 
-echo "Downloading Distrotube's Wallpapers"
-cd ~/Wallpapers/
-git clone https://gitlab.com/dwt1/wallpapers
+  echo "Downloading Distrotube's Wallpapers"
+  cd ~/Wallpapers/
+  git clone https://gitlab.com/dwt1/wallpapers
+
 #+end_src
 
 * Parking Lot :noexport:

@@ -64,6 +64,10 @@ mkdir ~/Developer/Projects
 echo "Making Org folder"
 mkdir ~/Org
 
+echo "Downloading my Wallpapers"
+cd
+git clone https://github.com/Game-Warrior/Wallpapers.git
+
 echo "Downloading Distrotube's Wallpapers"
 cd ~/Wallpapers/
 git clone https://gitlab.com/dwt1/wallpapers
