@@ -20,7 +20,6 @@ This Script installs my configuration files for UNIX like operating systems.
   - [[#installing-things-that-need-to-not-be-quarantined][Installing things that need to not be quarantined]]
 - [[#new-directories][New Directories]]
   - [[#developer][Developer]]
-  - [[#org][Org]]
   - [[#wallpapers][Wallpapers]]
 
 * Welcome Message
@@ -113,11 +112,6 @@ mkdir ~/Developer/Git-Repos
 mkdir ~/Developer/Projects
 #+end_src
 
-** Org
-#+begin_src shell
-echo "Making Org folder"
-mkdir ~/Org
-#+end_src
 ** Wallpapers
 #+begin_src shell
   echo "Downloading my Wallpapers"
