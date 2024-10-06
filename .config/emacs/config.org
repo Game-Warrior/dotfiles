@@ -10,6 +10,7 @@
 - [[#important-programs-to-load-first][IMPORTANT PROGRAMS TO LOAD FIRST]]
   - [[#adding-the-scripts-directory-to-path][Adding the scripts directory to path]]
   - [[#sourcing-the-scripts][Sourcing the scripts]]
+  - [[#fix-path-stuff][Fix Path Stuff]]
 - [[#gui-changes][GUI CHANGES]]
   - [[#theme][Theme]]
   - [[#title-bar][Title Bar]]
@@ -142,6 +143,15 @@ To keep this =config.org= a reasonable length, I have moved a lot of code to ind
 (load "~/.config/emacs/scripts/buffer-move.el") ;; Buffer-move for better window management
 #+end_src
 
+** Fix Path Stuff
+#+begin_src emacs-lisp
+;; Temp: Explicitly set PATH environment variable and update exec-path to match it.
+;; (the string here should be copied from the PATH in Emacs.app/Contents/Info.plist)
+(setenv "PATH" "/opt/homebrew/opt/unzip/bin:/opt/homebrew/bin:/Users/gb/.cargo/bin:/Users/gb/.config/emacs/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.sec
+urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple
+/usr/bin:/Applications/kitty.app/Contents/MacOS")
+(setq exec-path (split-string (getenv "PATH") path-separator))
+#+end_src
 
 * GUI CHANGES
 ** Theme
@@ -654,13 +664,10 @@ A Periodic table package for emacs.
     (setq org-return-follows-link  t)
 
 #+end_src
-<<<<<<< HEAD
 ** Syncthing
 #+begin_src emacs-lisp
 (use-package syncthing)
 #+end_src
-=======
->>>>>>> origin/main
 ** Autosave-files and Backups
 #+begin_src emacs-lisp
 (setq auto-save-file-name-transforms
@@ -1072,7 +1079,7 @@ Auto expansion for Abbrev-mode.
 YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
 #+begin_src emacs-lisp
   (use-package yasnippet)
-  (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+  (setq yas-snippet-dirs '("~/.config/emacs/snippets"))
 (add-hook 'text-mode-hook (lambda () (yas-global-mode 1)))
 #+end_src
 
@@ -1101,13 +1108,8 @@ YASnippet is a tool that allows you to create templates do allow you to write le
 ** Spell Checker
 Jinx is a fast just-in-time spell-checker for Emacs.
 #+begin_src emacs-lisp
-<<<<<<< HEAD
-(use-package jinx
-   :hook (emacs-startup . global-jinx-mode))
-=======
-   (use-package jinx
-      :hook (emacs-startup . global-jinx-mode))
->>>>>>> origin/main
+  ;; (use-package jinx
+     ;; :hook (emacs-startup . global-jinx-mode))
 #+end_src
 
 ** Thesarus
@@ -1120,17 +1122,10 @@ Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
 ** Denote
 *Denote is a simple note-taking tool for Emacs. It is based on the idea that notes should follow a predictable and descriptive file-naming scheme. The file name must offer a clear indication of what the note is about, without reference to any other metadata. Denote basically streamlines the creation of such files while providing facilities to link between them.* Denote
 #+begin_src emacs-lisp
-<<<<<<< HEAD
 (use-package denote)
 (setq denote-directory (expand-file-name "~/Notes")
       denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
       denote-file-type 'org
-=======
-    (use-package denote)
-  (setq denote-directory (expand-file-name "~/Notes")
-        denote-known-keywords '("emacs" "history" "english" "school" "philosophy" "miami" "urbanism" "MoreThanJustBikes")
-        denote-file-type 'org
->>>>>>> origin/main
         )
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 #+end_src
@@ -1373,19 +1368,19 @@ A git blame plugin for emacs inspired by VS Code’s GitLens plugin and Vim plug
 ** Vterm
 Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library. As a result of using compiled code (instead of elisp), emacs-libvterm is fully capable, fast, and it can seamlessly handle large outputs.
 #+begin_src emacs-lisp
-(use-package vterm)
-(use-package vterm-toggle)
+  ;; (use-package vterm)
+  ;; (use-package vterm-toggle)
 #+end_src
 *** Multi-Vterm
 Managing multiple vterm buffers in Emacs This package is inspired by multi-term.el
-#+begin_src emacs-lisp
++begin_src emacs-lisp
 (use-package multi-vterm
 	:config
 	(add-hook 'vterm-mode-hook
 			(lambda ()
 			(setq-local evil-insert-state-cursor 'box)
 			(evil-insert-state))))
-#+end_src
++end_src
 
 * Completion
 ** Corefu

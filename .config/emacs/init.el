@@ -10,6 +10,13 @@
 (load "~/.config/emacs/scripts/elpaca-setup.el") ;; The Elpaca Package Manager
 (load "~/.config/emacs/scripts/buffer-move.el") ;; Buffer-move for better window management
 
+;; Temp: Explicitly set PATH environment variable and update exec-path to match it.
+;; (the string here should be copied from the PATH in Emacs.app/Contents/Info.plist)
+(setenv "PATH" "/opt/homebrew/opt/unzip/bin:/opt/homebrew/bin:/Users/gb/.cargo/bin:/Users/gb/.config/emacs/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.sec
+urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple
+/usr/bin:/Applications/kitty.app/Contents/MacOS")
+(setq exec-path (split-string (getenv "PATH") path-separator))
+
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 
   (use-package doom-themes
@@ -745,7 +752,7 @@
 (quietly-read-abbrev-file "~/.minemacs.d/abbrev_defs")
 
 (use-package yasnippet)
-  (setq yas-snippet-dirs '("~/Documents/emacs-stuff/snippets"))
+  (setq yas-snippet-dirs '("~/.config/emacs/snippets"))
 (add-hook 'text-mode-hook (lambda () (yas-global-mode 1)))
 
 (use-package git-timemachine
@@ -762,29 +769,17 @@
     :after magit
     :config (magit-todos-mode 1))
 
-<<<<<<< HEAD
-(use-package jinx
-   :hook (emacs-startup . global-jinx-mode))
-=======
-   (use-package jinx
-      :hook (emacs-startup . global-jinx-mode))
->>>>>>> origin/main
+;; (use-package jinx
+   ;; :hook (emacs-startup . global-jinx-mode))
 
 (use-package synosaurus
   :hook (org-mode . synosaurus-mode)
   )
 
-<<<<<<< HEAD
 (use-package denote)
 (setq denote-directory (expand-file-name "~/Notes")
       denote-known-keywords '("emacs" "history" "english" "school" "philosophy")
       denote-file-type 'org
-=======
-    (use-package denote)
-  (setq denote-directory (expand-file-name "~/Notes")
-        denote-known-keywords '("emacs" "history" "english" "school" "philosophy" "miami" "urbanism" "MoreThanJustBikes")
-        denote-file-type 'org
->>>>>>> origin/main
         )
 (add-hook 'dired-mode-hook #'denote-dired-mode)
 
@@ -976,15 +971,8 @@
                     :italic t)))
   )
 
-(use-package vterm)
-(use-package vterm-toggle)
-
-(use-package multi-vterm
-	:config
-	(add-hook 'vterm-mode-hook
-			(lambda ()
-			(setq-local evil-insert-state-cursor 'box)
-			(evil-insert-state))))
+;; (use-package vterm)
+;; (use-package vterm-toggle)
 
 (use-package corfu
   :hook (emacs-startup . global-corfu-mode)
