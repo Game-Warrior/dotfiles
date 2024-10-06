@@ -2,12 +2,51 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Good-Life"
- (filename . "~/Documents/School-2023-2024/History:SocialChange/Good-Life/")
+(("dotfiles"
+ (filename . "~/dotfiles/")
  (front-context-string . "..\n  drwxr-xr-x ")
- (rear-context-string . "0K May 11 21:01 ")
- (position . 151)
- (last-modified 26197 23355 127361 115000))
+ (rear-context-string . "9K Sep 26 20:59 ")
+ (position . 111)
+ (last-modified 26361 55395 576009 0))
+("Men-Of-Leasure.org"
+ (filename . "~/Documents/Projects/Men_Of_Leasure/Men-Of-Leasure.org")
+ (front-context-string . "\n* Outline\nAn ex")
+ (rear-context-string . "ip}{12pt}\n:end:\n")
+ (position . 636)
+ (last-modified 26344 57243 998407 0))
+("geology-main.org"
+ (filename . "~/Documents/Areas/Geology/geology-main.org")
+ (front-context-string . "\n* Earthquake ma")
+ (rear-context-string . "ip}{12pt}\n:end:\n")
+ (position . 610)
+ (last-modified 26339 5913 774312 0))
+(".config"
+ (filename . "~/.config/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "9K Aug 25 09:59 ")
+ (position . 110)
+ (last-modified 26329 55529 685549 0))
+("Spring-Fall-Schedule2024-25.pdf"
+ (filename . "~/Documents/Spring-Fall-Schedule2024-25.pdf")
+ (position . 1)
+ (last-modified 26326 32135 399039 0)
+ (page . 1)
+ (slice)
+ (size . fit-width)
+ (origin 0.0 . 0.0)
+ (handler . pdf-view-bookmark-jump-handler))
+("Areas"
+ (filename . "~/Documents/Areas/")
+ (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . "32 Aug 25 09:05 ")
+ (position . 120)
+ (last-modified 26315 22133 745678 0))
+("apush-chapter-summaries.org"
+ (filename . "~/Documents/Areas/APUSH/apush-chapter-summaries.org")
+ (front-context-string . "\n* Chapter 1\nThe")
+ (rear-context-string . "ip}{12pt}\n:end:\n")
+ (position . 641)
+ (last-modified 26315 22130 21761 0))
 ("Documents"
  (filename . "~/Documents/")
  (front-context-string . "..\n  drwxr-xr-x ")
@@ -20,12 +59,6 @@
  (rear-context-string . "0K Apr 20 15:18 ")
  (position . 114)
  (last-modified 26149 50817 438031 453000))
-("Resposibilites"
- (filename . "~/Documents/Resposibilites/")
- (front-context-string . "..\n  drwxr-xr-x ")
- (rear-context-string . "0K Apr 20 15:18 ")
- (position . 120)
- (last-modified 26149 50811 808876 807000))
 ("Resources"
  (filename . "~/Documents/Resources/")
  (front-context-string . "..\n  drwxr-xr-x ")
@@ -44,18 +77,6 @@
  (rear-context-string . "num:nil toc:nil\n")
  (position . 110)
  (last-modified 26130 46708 839433 493000))
-("History:SocialChange"
- (filename . "~/Documents/School-2023-2024/History:SocialChange/")
- (front-context-string . "China-Presentati")
- (rear-context-string . "0K Apr  4 08:08 ")
- (position . 186)
- (last-modified 26126 46287 632739 364000))
-("School-2023-2024"
- (filename . "~/Documents/School-2023-2024/")
- (front-context-string . "..\n  drwxr-xr-x ")
- (rear-context-string . "0K Apr  4 08:08 ")
- (position . 122)
- (last-modified 26126 46281 273420 191000))
 ("notes.org"
  (filename . "~/Documents/notes.org")
  (front-context-string . "\n* Table of Cont")
