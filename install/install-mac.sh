@@ -26,7 +26,7 @@ echo "Copying my .config folder"
 cp -r ~/dotfiles/.config ~/
 
 echo "Installing Everything"
-brew install coreutils firefox brave-browser warp joplin github-desktop discord element zoom.us libreoffice alfred alt-tab istat-menus background-music eza starship fish bash neowofetch pfetch zsh-syntax-highlighting font-overpass-nerd-font font-source-sans-pro enchant vale spark lolcat
+brew install coreutils firefox brave-browser warp kitty joplin github-desktop discord element zoom libreoffice alfred alt-tab istat-menus eza starship fish bash hyfetch pfetch zsh-syntax-highlighting iina font-juliamono font-atkinson-hyperlegible font-overpass-nerd-font font-source-sans-pro font-jetbrains-mono enchant vale spark lolcat balenaetcher zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-vi-mode speedtest-cli ollama wezterm btop
 
 valid_response=false
 
@@ -61,8 +61,9 @@ mkdir ~/Developer/
 mkdir ~/Developer/Git-Repos
 mkdir ~/Developer/Projects
 
-echo "Making Org folder"
-mkdir ~/Org
+echo "Downloading my Wallpapers"
+cd
+git clone https://github.com/Game-Warrior/Wallpapers.git
 
 echo "Downloading Distrotube's Wallpapers"
 cd ~/Wallpapers/
