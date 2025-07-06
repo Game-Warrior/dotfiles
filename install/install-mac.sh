@@ -26,7 +26,35 @@ echo "Copying my .config folder"
 cp -r ~/dotfiles/.config ~/
 
 echo "Installing Everything"
-brew install coreutils firefox brave-browser warp kitty joplin github discord element zoom libreoffice alfred alt-tab istat-menus eza starship fish bash hyfetch pfetch zsh-syntax-highlighting iina font-juliamono font-atkinson-hyperlegible font-overpass-nerd-font font-jetbrains-mono enchant vale spark lolcat balenaetcher zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-vi-mode speedtest-cli ollama wezterm btop
+
+   brew install aom freetype jpeg-turbo libpng libxrender pango
+   tesseract aribb24 frei0r jpeg-xl libraw little-cms2 pcre2 texinfo
+   aspell fribidi lame lolcat pfetch theora autoconf gcc leptonica
+   librsvg lz4 pinentry tree-sitter automake libarchive libsamplerate
+   lzo pixman unbound awk gettext libass libsndfile m4 pkgconf unzip
+   bash make poppler vale brotli glib mbedtls python-setuptools webp
+   btop gmp libbluray libssh mpdecimal wget gnu-sed libssh2 mpfr
+   winetricks cabextract gnu-tar wordnet cairo gnupg libevent ncurses
+   readline gnutls libgccjit libtool nettle ripgrep x265 cjson gpgme
+   xorgproto cmake graphite2 libgit2 xvid coreutils grep libgpg-error
+   libusb nss xz libheif libvidstab ollama snappy yt-dlp highway
+   libidn2 libvmaf spark enchant hyfetch libksba libvorbis openexr
+   speedtest-cli zimg eza openjpeg zlib fd imagemagick libx11
+   openssl@3 sqlite zsh-autosuggestions ffmpeg zsh-completions fish
+   isl starship zsh-syntax-highlighting flac jasper libogg libxdmcp
+   p7zip svt-av1 zsh-vi-mode fontconfig jpeg libomp libxext pandoc
+
+   alfred element github motrix universal-android-debloater alt-tab
+   elmedia-player google-drive obsidian unnaturalscrollwheels altserver
+   firefox google-earth-pro orion warp amethyst
+   font-atkinson-hyperlegible gplates qbittorrent wezterm
+   android-file-transfer font-jetbrains-mono gstreamer-runtime
+   rockboxutility wine-stable android-platform-tools font-juliamono iina
+   send-to-kindle xld balenaetcher font-overpass-nerd-font istat-menus
+   signal zed box-drive font-roboto-mono jdownloader steam zen
+   brave-browser font-ubuntu joplin thunderbird zoom calibre
+   font-ubuntu-mono kitty font-ubuntu-mono-nerd-font
+   libreoffice tor-browser discord ghostty marta ultimaker-cura
 
 valid_response=false
 
