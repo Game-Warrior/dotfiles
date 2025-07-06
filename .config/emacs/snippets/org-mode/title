@@ -7,6 +7,22 @@
 #+description: ${2:description}
 #+author: Gardner Berry
 #+options: toc:nil num:nil timestamp:nil
+:properties:
+#+latex_header: \usepackage{fontspec}
+#+latex_header: \setmainfont{Atkinson Hyperlegible}
+#+latex_compiler: luatex
+# #+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+#+latex_header: \usepackage{float}
+#+latex_header: \usepackage{setspace}
+#+LateX_header: \doublespacing
+#+LaTeX_HEADER: \usepackage{enumitem}\setlist[itemize]{nosep}
+#+LaTeX_HEADER: \usepackage{needspace}
+#+LaTeX_HEADER: \usepackage{booktabs}
+#+LaTeX_HEADER: \let\OldRule\rule
+#+LaTeX_HEADER: \renewcommand{\rule}[2]{\OldRule{\linewidth}{#2}}
+#+LaTeX_HEADER: \setlength{\parindent}{8pt}
+#+LaTeX_HEADER: \setlength{\parskip}{12pt}
+:end:
 
 $0
 
