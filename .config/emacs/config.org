@@ -190,22 +190,22 @@ Change the title bar format
 ** Fonts
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
-    :font "JetBrains Mono"
-    :height 140
+    :font "Roboto Mono"
+    :height 160
     :weight 'medium)
  (set-face-attribute 'variable-pitch nil
   :font "Atkinson Hyperlegible"
-  :height 150
+  :height 160
   :weight 'medium)
    (set-face-attribute 'fixed-pitch nil
-    :font "JetBrains Mono"
-    :height 140
+    :font "Roboto Mono"
+    :height 180
     :weight 'medium)
 
     ;; This sets the default font on all graphical frames created after restarting Emacs.
     ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
     ;; are not right unless I also add this method of setting the default font.
-    (add-to-list 'default-frame-alist '(font . "JetBrains Mono-14"))
+    (add-to-list 'default-frame-alist '(font . "Roboto Mono-14"))
 
     ;; Uncomment the following line if line spacing needs adjusting.
     ;; (setq-default line-spacing 0.12)
@@ -1163,12 +1163,7 @@ Auto expansion for Abbrev-mode.
 ** YAsnippet
 YASnippet is a tool that allows you to create templates do allow you to write less boilerplate when starting documents.
 #+begin_src emacs-lisp
-<<<<<<< HEAD
-  (use-package yasnippet
-    )
-=======
   (use-package yasnippet)
->>>>>>> origin/main
   (setq yas-snippet-dirs '("~/.config/emacs/snippets"))
 (add-hook 'text-mode-hook (lambda () (yas-global-mode 1)))
 #+end_src
@@ -1199,13 +1194,8 @@ YASnippet is a tool that allows you to create templates do allow you to write le
 ** Spell Checker
 Jinx is a fast just-in-time spell-checker for Emacs.
 #+begin_src emacs-lisp
-<<<<<<< HEAD
 (use-package jinx
    :hook (emacs-startup . global-jinx-mode))
-=======
-  ;; (use-package jinx
-     ;; :hook (emacs-startup . global-jinx-mode))
->>>>>>> origin/main
 #+end_src
 
 ** Thesarus

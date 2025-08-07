@@ -39,22 +39,22 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
 (setq frame-title-format "Hey bro, just FYI, this buffer is called %b or something like that.")
 
 (set-face-attribute 'default nil
-   :font "JetBrains Mono"
-   :height 140
+   :font "Roboto Mono"
+   :height 160
    :weight 'medium)
 (set-face-attribute 'variable-pitch nil
  :font "Atkinson Hyperlegible"
- :height 150
+ :height 160
  :weight 'medium)
   (set-face-attribute 'fixed-pitch nil
-   :font "JetBrains Mono"
-   :height 140
+   :font "Roboto Mono"
+   :height 180
    :weight 'medium)
 
    ;; This sets the default font on all graphical frames created after restarting Emacs.
    ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
    ;; are not right unless I also add this method of setting the default font.
-   (add-to-list 'default-frame-alist '(font . "JetBrains Mono-14"))
+   (add-to-list 'default-frame-alist '(font . "Roboto Mono-14"))
 
    ;; Uncomment the following line if line spacing needs adjusting.
    ;; (setq-default line-spacing 0.12)
@@ -65,19 +65,19 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
 (set-face-attribute 'mode-line nil :font "Ubuntu Mono-18")
-    (use-package doom-modeline
-      :hook (emacs-startup . doom-modeline-mode)
-      :init
+	(use-package doom-modeline
+	  :hook (emacs-startup . doom-modeline-mode)
+	  :init
   (setq doom-modeline-height 25     ;; sets modeline height
-	doom-modeline-bar-width 5   ;; sets right bar width
-	doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
-	doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode rst-mode latex-mode tex-mode text-mode) ;; Show word count
-	doom-modeline-time-icon t
-	doom-modeline-buffer-file-name-style 'autotruncate-except-project
-	doom-modeline-modal-icon nil
-	doom-modeline-buffer-encoding nil
+	    doom-modeline-bar-width 5   ;; sets right bar width
+	    doom-modeline-major-mode-icon t  ;; Whether display the icon for `major-mode'. It respects `doom-modeline-icon'.      doom-modeline-persp-name t  ;; adds perspective name to modeline
+	    doom-modeline-enable-word-count '(markdown-mode gfm-mode org-mode rst-mode latex-mode tex-mode text-mode) ;; Show word count
+	    doom-modeline-time-icon t
+	    doom-modeline-buffer-file-name-style 'autotruncate-except-project
+	    doom-modeline-modal-icon nil
+	    doom-modeline-buffer-encoding nil
 )
-	)
+	    )
 
 (menu-bar-mode -1)
 
@@ -519,12 +519,12 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
 
 (with-eval-after-load 'org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
-      org-deadline-warning-days 0
-      org-agenda-span 7
-      org-agenda-start-day "-0d"
-      org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
-      org-log-done 'time
-      )
+	org-deadline-warning-days 0
+	org-agenda-span 7
+	org-agenda-start-day "-0d"
+	org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
+	org-log-done 'time
+	)
 )
 
 (with-eval-after-load 'org-capture
@@ -814,12 +814,7 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
       (add-hook hook #'abbrev-mode))
 (quietly-read-abbrev-file "~/.config/emacs/abbrev_defs")
 
-<<<<<<< HEAD
-  (use-package yasnippet
-    )
-=======
-  (use-package yasnippet)
->>>>>>> origin/main
+(use-package yasnippet)
   (setq yas-snippet-dirs '("~/.config/emacs/snippets"))
 (add-hook 'text-mode-hook (lambda () (yas-global-mode 1)))
 
@@ -838,13 +833,8 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
     :after hl-todo
     :config (magit-todos-mode 1))
 
-<<<<<<< HEAD
 (use-package jinx
    :hook (emacs-startup . global-jinx-mode))
-=======
-  ;; (use-package jinx
-     ;; :hook (emacs-startup . global-jinx-mode))
->>>>>>> origin/main
 
 (use-package synosaurus
   )
@@ -979,10 +969,10 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
 (use-package dired-open
   :config
    (setq dired-open-extensions '(("gif" . "sxiv")
-				 ("jpg" . "sxiv")
-				 ("png" . "sxiv")
-				 ("mkv" . "IINA")
-				 ("mp4" . "IINA"))))
+				    ("jpg" . "sxiv")
+				    ("png" . "sxiv")
+				    ("mkv" . "IINA")
+				    ("mp4" . "IINA"))))
 
 (use-package peep-dired
   :after dired
@@ -1006,8 +996,8 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
  dired-listing-switches "-ahl --group-directories-first")
 
 (cond ((eq system-type 'darwin)
-       (setq insert-directory-program "/opt/homebrew/bin/gls"))
-      )
+	  (setq insert-directory-program "/opt/homebrew/bin/gls"))
+	 )
 
 (use-package nix-mode
   )
@@ -1049,11 +1039,11 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
   :hook (eshell-mode . +corfu-less-intrusive-h)
   :hook (minibuffer-setup . +corfu-enable-in-minibuffer-h)
   :bind (:map corfu-map
-	 ("M-m" . +corfu-complete-in-minibuffer)
-	 ("<tab>" . corfu-next)
-	 ("<backtab>" . corfu-previous)
-	 ("C-j" . corfu-next)
-	 ("C-k" . corfu-previous))
+	   ("M-m" . +corfu-complete-in-minibuffer)
+	   ("<tab>" . corfu-next)
+	   ("<backtab>" . corfu-previous)
+	   ("C-j" . corfu-next)
+	   ("C-k" . corfu-previous))
   :custom
   (corfu-auto t) ; Enable auto completion
   (corfu-cycle t) ; Allows cycling through candidates
@@ -1063,8 +1053,8 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
   (defun +corfu-enable-in-minibuffer-h ()
     "Enable Corfu in the minibuffer if `completion-at-point' is bound."
     (when (where-is-internal #'completion-at-point (list (current-local-map)))
-      (setq-local corfu-auto nil) ; Enable/disable auto completion
-      (corfu-mode 1)))
+	(setq-local corfu-auto nil) ; Enable/disable auto completion
+	(corfu-mode 1)))
 )
 
   (use-package corfu-terminal
@@ -1122,10 +1112,10 @@ urity.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.
     ;; Emacs, "C-k" have a special meaning of `kill-line'. So lets map "C-S-k"
     ;; to serve the original "C-k".
     :bind (:map vertico-map
-	   ("C-j" . vertico-next)
-	   ("C-k" . vertico-previous)
-	   :map minibuffer-local-map
-	   ("C-S-k" . kill-line))
+	     ("C-j" . vertico-next)
+	     ("C-k" . vertico-previous)
+	     :map minibuffer-local-map
+	     ("C-S-k" . kill-line))
     :custom
     (vertico-cycle t)
     (vertico-resize nil)
